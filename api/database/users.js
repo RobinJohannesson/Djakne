@@ -19,25 +19,25 @@ module.exports = {
 		});
 	},
 
-	add: function(userData, res) {
-		connection.query('INSERT INTO users (name, email, password) VALUES(?, ?, ?)', userData, function(error, ok) {
+	create: function(data, res) {
+		connection.query('INSERT INTO users (name, email, password) VALUES(?, ?, ?)', data, function(error, message) {
 			if(error) return response.serverError(res);
-			return response.created(res, {"User-id": ok.insertId} );
+			return response.created(res, {'User-id': message.insertId} );
 		});
 	},
 
-	update: function(userData, res) {
-		connection.query('UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?', userData, function(error, ok) {
+	update: function(data, res) {
+		connection.query('UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?', data, function(error, message) {
 			if(error) return response.serverError(res);
-			if(ok.affectedRows === 0) return response.notFound(res);
+			if(message.affectedRows === 0) return response.notFound(res);
 			return response.updated(res);
 		});
 	},
 
 	remove: function(id, res) {
-		connection.query('DELETE FROM users WHERE id = ?', id, function(error, ok) {
+		connection.query('DELETE FROM users WHERE id = ?', id, function(error, message) {
 			if(error) return response.serverError(res);
-			if(ok.affectedRows === 0) return response.notFound(res);
+			if(message.affectedRows === 0) return response.notFound(res);
 			return response.removed(res);
 		})
 	}
