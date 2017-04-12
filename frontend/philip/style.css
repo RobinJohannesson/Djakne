@@ -1,0 +1,45 @@
+.undline{
+    border-style: none none solid none;
+    border-width: thin;
+}
+.mg0{
+    margin: 0;
+}
+.pd0{
+    padding: 0px;
+}
+.pd10{
+    padding: 10px;
+}
+.pd30{
+    padding: 30px 0px;
+}
+.center{
+    text-align: center;
+}
+.slogan{
+    margin-top: -2%;
+    margin-bottom: 10%;
+}
+.artikel{
+    margin: 10px 0px;
+    border-style: solid;
+    border-width: thin;
+}
+.fav{
+    border-style: none solid solid none;
+    border-width: thin;
+}
+.logReg{
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    border-style: solid;
+    border-width: thin;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+@media screen and (min-width: 761px){
+    .logReg{
+        text-align: center;
+    }
+}
