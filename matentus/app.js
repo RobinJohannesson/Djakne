@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var handlebars = require('express-handlebars').create({defaultLayout:'index'});
+var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
