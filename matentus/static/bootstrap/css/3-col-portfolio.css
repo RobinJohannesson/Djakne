@@ -15,3 +15,24 @@ body {
 footer {
     margin: 50px 0;
 }
+footer p {
+/*should be in middle*/
+}
+
+
+
+.img_label {
+    position:absolute;
+    bottom: 0px;
+    /*width is the width of current pic*/
+    width:360px;
+    height: 25%;
+    color: white;
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,0.7);
+   
+}
+#label_text {
+    margin: 2.5%;
+    color: white;
+}
