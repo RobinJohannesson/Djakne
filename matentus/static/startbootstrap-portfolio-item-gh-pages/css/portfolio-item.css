@@ -1,3 +1,7 @@
+.social-div{
+    text-align: center;
+    margin-top: 0px;
+}
 /*!
  * Start Bootstrap - Portfolio Item (http://startbootstrap.com/)
  * Copyright 2013-2016 Start Bootstrap
@@ -13,5 +17,8 @@ body {
 }
 
 footer {
-    margin: 50px 0;
+    margin: 40px 0;
+}
+.copy{
+    margin: 10px 0px;
 }

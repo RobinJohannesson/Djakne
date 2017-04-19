@@ -9,13 +9,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Portfolio Item - Start Bootstrap Template</title>
+    <title>Matentus | {{Productname}}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/portfolio-item.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="comment.css">
+    <link rel="stylesheet" href="bootstrap-social/bootstrap-social.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +30,6 @@
 </head>
 
 <body>
-
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -39,19 +41,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="#">Matentus</a>
             </div>
+            
             <!-- Collect the nav links, forms, and other content for toggling -->
+            
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="#">Kategorier</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="#">Populära</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="#">Senaste</a>
+                    </li>
+                    <li>
+                        <a href="#">Vi tipsar</a>
                     </li>
                 </ul>
             </div>
@@ -66,8 +73,8 @@
         <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Portfolio Item
-                    <small>Item Subheading</small>
+                <h1 class="page-header">{{Productname}}
+                    <small>{{Subheading}}</small>
                 </h1>
             </div>
         </div>
@@ -77,13 +84,13 @@
         <div class="row">
 
             <div class="col-md-8">
-                <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+                <img class="img-responsive" src="http://placehold.it/750x500" alt="prod">
             </div>
 
             <div class="col-md-4">
-                <h3>Project Description</h3>
+                <h3>Beskrivning</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-                <h3>Project Details</h3>
+                <h3>Detaljerna</h3>
                 <ul>
                     <li>Lorem Ipsum</li>
                     <li>Dolor Sit Amet</li>
@@ -94,7 +101,42 @@
 
         </div>
         <!-- /.row -->
-
+        <!-- Comments Row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Kommentarer</h3>
+            </div><!-- /col-sm-12 -->
+        </div><!-- /row -->
+        <div class="row">
+            <div class="comment col-sm-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>{{Username}}</strong> <span class="text-muted">commented {{days}} days ago</span>
+                    </div>
+                    <div class="panel-body">
+                        {{content}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="widget-area no-padding blank">
+                <div class="status-upload">
+                    <form>
+                        <textarea placeholder="Din kommentar"></textarea>
+                        <ul>
+                            <li></li>
+                        </ul>
+                        <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i>
+                            Kommentera
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- /.row -->
         <!-- Related Projects Row -->
         <div class="row">
 
@@ -134,13 +176,32 @@
         <!-- Footer -->
         <footer>
             <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                <table class="social-div col-xs-6 col-xs-offset-3 col-md-2 col-md-offset-5">
+                    <tbody>
+                        <tr>
+                            <td class="align-middle">
+                                <a class="btn btn-social-icon btn-twitter">
+                                    <span class="fa fa-twitter"></span>
+                                </a>
+                            </td>
+                            <td class="align-middle">
+                                <a class="align-middle btn btn-social-icon btn-linkedin">
+                                    <span class="fa fa-linkedin"></span>
+                                </a>
+                            </td>
+                            <td class="align-middle">
+                                <a class="btn btn-social-icon btn-facebook" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="fa fa-facebook"></span>
+                                </a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="copy col-xs-12 text-center">
+                    <p>Copyright &copy; Matentus 2017</p>
                 </div>
             </div>
             <!-- /.row -->
         </footer>
-
     </div>
     <!-- /.container -->
 
