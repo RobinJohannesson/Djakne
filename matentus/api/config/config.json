@@ -8,8 +8,8 @@
   },
   "matentus": {
     "username": "root",
-    "password": null,
-    "database": "matentus",
+    "password": "password",
+    "database": "test",
     "host": "localhost",
     "dialect": "mysql"
   },

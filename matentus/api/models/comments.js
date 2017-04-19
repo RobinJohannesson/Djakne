@@ -1,23 +1,24 @@
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
-  var Category = sequelize.define("Category", {  
+  var Comment = sequelize.define("Comment", {  
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    title: {
-        type: DataTypes.STRING,
-        allowNull: false
+    text: {
+    		type: DataTypes.STRING,
+    		allowNull: false
     }
   }, {
     classMethods: {
       associate: function(models) {
-        Category.hasMany(models.Subcategory)
+        Comment.belongsTo(models.Product),
+        Comment.belongsTo(models.User) 
       }
     }
   });
 
-  return Category;
+  return Comment;
 };

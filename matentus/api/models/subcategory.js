@@ -14,8 +14,8 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-       Subcategory.belongsTo(models.Category, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' })          
-       
+       Subcategory.belongsTo(models.Category),
+       Subcategory.hasMany(models.Product)          
       }
     }
   });
