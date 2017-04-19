@@ -1,3 +1,31 @@
+#burger{
+    float: left;
+    margin: 0;
+    height: 50px;
+    width: 50px;
+    padding-top: 0px;
+    border-style: none;
+    border-radius: 0;
+}
+#burger .icon-bar{
+    width: 100%;
+    margin-top: 8px;
+    background: #000;
+}
+#brand{
+    padding: 0;
+    float: none;
+    
+}
+.collapse{
+    background: #111;
+    transform: 0.5s;
+}
+.navbar{
+    background: rgba(160, 160, 160, 0.8);
+    border-style: none;
+    box-shadow: 0 0.5px 20px 1px rgba(160, 160, 160, 0.8);
+}
 .sorts{
     margin-top: -20px;
 }
