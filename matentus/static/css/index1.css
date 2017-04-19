@@ -57,8 +57,8 @@ ul img {
 #side_menu {
     position:absolute;
     bottom: 0px;
-    /*width is the width of current pic*/
-    width:20%;
+    /*width is the width of current pic
+    width:20%;*/
     height: 100%;
     background: rgb(0,0,0);
     background: rgba(0,0,0,0.7);
@@ -71,14 +71,11 @@ ul img {
 
 close_icon{
     position:absolute;
-    right: 87%;
-    top: 1%;
 }
 .close{
     color: rgb(0,0,0);
     color: rgba(0,0,0,0.8); 
-    width: 10%;
-    padding: 2%;
+    padding: 10px 0px;
 }
 .side_content{
     list-style: none;
