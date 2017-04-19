@@ -16,6 +16,8 @@
 
     <!-- Custom CSS -->
     <link href="css/index1.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -28,12 +30,8 @@
 </head>
 
 <body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+<div id="wrapper">
+    <!--<div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <a> <img src="images/facebook.png"></a>
@@ -41,46 +39,42 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">Matentus</a>
-            </div>
-            
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">Kategorier</a>
-                    </li>
-                    <li>
-                        <a href="#">Populära</a>
-                    </li>
-                    <li>
-                        <a href="#">Senaste</a>
-                    </li>
-                    <li>
-                        <a href="#">Vi tipsar</a>
-                    </li>
-                </ul>
-                <div id="icons">
-                    <ul class="nav navbar-nav ">
-                        <li>
-                            <a href="#"> <img src="images/facebook.png"></a>
-                        </li>
-                        <li>
-                            <a href="#"> <img src="images/gmail.png"></a>
-                        </li>
-                        <li>
-                            <a href="#"> <img src="images/mail.png"></a>
-                        </li>
-                    </ul>             
-                </div>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-    </nav>
+            </div>-->
+    <!-- Navigation -->
+   <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+    </div>
 
     <!-- Page Content -->
     <div class="container">
-
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
         <!-- Page Header -->
         <div class="row">
             <div class="col-lg-12">
@@ -111,47 +105,7 @@
             
             <!-- correct-->
             
-            
-            <div class="col-md-4 portfolio-item test">
-                <a href="#">
-                    <img class="img-responsive" src="images/kaffe.jpg" alt="">
-                </a>
-                <div class="img_label">
-                    <h2 id="label_text"> Kaffe är gott </h2>  
-                </div>
-            </div>
-            <div class="col-md-4 portfolio-item test">
-                <a href="#">
-                    <img class="img-responsive" src="images/kaffe.jpg" alt="">
-                </a>
-                <div class="img_label">
-                    <h2 id="label_text"> Kaffe är gott </h2>  
-                </div>
-            </div>
-            <div class="col-md-4 portfolio-item test">
-                <a href="#">
-                    <img class="img-responsive" src="images/kaffe.jpg" alt="">
-                </a>
-                <div class="img_label">
-                    <h2 id="label_text"> Kaffe är gott </h2>  
-                </div>
-            </div>
-            <div class="col-md-4 portfolio-item test">
-                <a href="#">
-                    <img class="img-responsive" src="images/kaffe.jpg" alt="">
-                </a>
-                <div class="img_label">
-                    <h2 id="label_text"> Kaffe är gott </h2>  
-                </div>
-            </div>
-            <div class="col-md-4 portfolio-item test">
-                <a href="#">
-                    <img class="img-responsive" src="images/kaffe.jpg" alt="">
-                </a>
-                <div class="img_label">
-                    <h2 id="label_text"> Kaffe är gott </h2>  
-                </div>
-            </div>
+        
             
         </div>
         <!-- /.row -->
@@ -171,13 +125,22 @@
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>
-    <script src="js/test.js"></script>
+    <script src="js/jquerysimple.js"></script>
+    <script src="js/bootstrap.simple.js"></script>
+    
+    <script src="js/simplesidebar.js"></script>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
+</div>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("toggled");
+    });
+    </script>
 </body>
 
 </html>
