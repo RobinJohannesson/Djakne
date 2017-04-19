@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Category.hasMany(models.Subcategory)
+        Category.hasMany(models.Subcategory,{ foreignKey: { allowNull: false }, onDelete: 'CASCADE' })
       }
     }
   });
