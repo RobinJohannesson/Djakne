@@ -27,7 +27,6 @@ footer p {
     /*width is the width of current pic*/
     width:360px;
     height: 25%;
-    color: white;
     background: rgb(0,0,0);
     background: rgba(0,0,0,0.7);
    
@@ -43,5 +42,15 @@ ul img {
 
 #icons{
     margin-left: 80%;
+}
+.heart_icon{
+    position:absolute;
+    top: 5%;
+    left: 85%;
+}
+.heart{
+    color: rgb(0,0,0);
+    color: rgba(0,0,0,0.8); 
+    font-size: 250%;
 }
 
