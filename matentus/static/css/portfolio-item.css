@@ -1,16 +1,29 @@
 #burger{
     float: left;
-    margin: 0;
-    height: 50px;
-    width: 50px;
-    padding-top: 0px;
-    border-style: none;
     border-radius: 0;
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+}
+#kategori{
+    float: left;
+    border-radius: 0;
+    display: block;
+    width: 70px;
+    height: 70px;
 }
 #burger .icon-bar{
     width: 100%;
     margin-top: 8px;
     background: #000;
+}
+.sorts{
+    margin-top: 0px;
+    padding-top: 30px;
+}
+.sort{
+    font-size: 120%;
 }
 #brand{
     padding: 0;
@@ -25,12 +38,6 @@
     background: rgba(160, 160, 160, 0.8);
     border-style: none;
     box-shadow: 0 0.5px 20px 1px rgba(160, 160, 160, 0.8);
-}
-.sorts{
-    margin-top: -20px;
-}
-.sort{
-    font-size: 120%;
 }
 .social-div{
     text-align: center;
