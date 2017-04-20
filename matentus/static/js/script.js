@@ -1,6 +1,6 @@
 function showMenu() {
     var menu = document.getElementById("side_menu"),
-        menu_icon = document.getElementById("menu_btn");
+        menu_icon = document.getElementById("burger");
     if (menu.style.display == "block") {
         menu.style.display = "none";
 
@@ -10,12 +10,12 @@ function showMenu() {
     }
     console.log("hej");
 }
-$("#menu_btn").click(showMenu);
+$("#burger").click(showMenu);
 
 
 function hideMenu() {
     var menu = document.getElementById("side_menu"),
-        menu_icon = document.getElementById("menu_btn");
+        menu_icon = document.getElementById("burger");
     menu.style.display = "none";
     menu_icon.style.display = "";
 
