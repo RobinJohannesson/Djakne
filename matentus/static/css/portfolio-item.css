@@ -16,7 +16,26 @@
     border-color: #fff;
 }
 .btn-group > .active{
+    background: #fff;
+    color: #000;
+    border-bottom-style: none;
+}
+.sorts{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+.sort{
+    transition: 0.5s;
+    font-size: 120%;
+    background: #d3d3d3;
     color: #fff;
+    border-color: #d3d3d3;
+}
+.btn-group > .sort:hover{
+    background: #fff;
+}
+.btn-group > .sort:active:focus{
+    background: #fff;
 }
 .padding-0{
     padding: 0;
@@ -30,23 +49,6 @@
 }
 .icon-bar{
     background-color: #000;
-}
-.sorts{
-    margin-top: 0px;
-    padding-top: 0px;
-}
-.sort{
-    transition: 0.5s;
-    font-size: 120%;
-    background: #fff;
-    color: #888;
-    border-color: #ddd;
-    border
-}
-#brand{
-    padding: 0;
-    float: none;
-    
 }
 .collapse{
     background: #111;
