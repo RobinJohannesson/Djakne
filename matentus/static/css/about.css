@@ -1,0 +1,39 @@
+@keyframes scaleIn{
+    from {transform: "scale(0)"}
+    to {transform: "scale(1)"}
+}
+*{
+    animation-delay: 1s;
+    animation: scaleIn 1s;
+}
+html, body{
+    height: 100%;
+}
+.row{
+    font-weight: 200;
+}
+.about-content{
+    padding-top: 20px;
+}
+.big-text{
+    font-size: 30px;
+}
+.poweredby{
+    height: 100%;
+}
+.powered{
+    margin-bottom: 0px;
+}
+.djakne-img{
+    height: 120px;
+    background-position: center;
+    background-size: cover;
+    background-image: url(http://www.djakne.se/wp-content/themes/djakne/images/djaknelogo.svg);
+}
+.madeby{
+    
+}
+.mah-img{
+    background-color: #222;
+    padding: 5px
+}
