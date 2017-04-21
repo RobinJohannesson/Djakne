@@ -55,6 +55,7 @@ ul img {
 
 #side_menu {
     position:absolute;
+    position: fixed;
     bottom: 0px;
     /*width is the width of current pic
     width:20%;*/
