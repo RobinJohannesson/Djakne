@@ -1,0 +1,51 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.heading p {
+    position: absolute;
+    right:5%;
+    top: 5%;
+}
+
+
+.btn-primary{
+    background-color: black;
+    border-color: black;
+}
+
+.btn-primary:hover{
+    background-color: grey;
+    border-color: grey;
+}
+
+.admin_div{
+    display:none;
+}
+.default_div{
+    display: block;
+}
+
+#new_category i{
+    color: black;
+    font-size: 300%;
+    padding-right: 5%;
+    padding-top: 5%;
+}
+#new_category {
+    font-size: 100%;
+    background-color: white;
+    color: black;
+    
+}
+.btn-group > .active{
+    background: #fff;
+    color: #000;
+    border-bottom-style: none;
+}
+
+
+.img_thumbnail{
+    max-width: 50px;
+}
+

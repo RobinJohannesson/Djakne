@@ -17,3 +17,5 @@ function hideMenu() {
 
 $("#close_btn").click(hideMenu);
 $(".category").click(hideMenu);
+
+
