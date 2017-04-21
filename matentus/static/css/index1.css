@@ -96,8 +96,55 @@ h3 {
     border-width: 0px 0px 1px 0px;
 }
 
+#burger{
+	margin-top: 3.5%;
+}
 
+.sign_in i{
+    color: white;
+    font-size: 150%;
+    margin-right: 10%;
+    
+}
+.label-default{
+    background-color: black;
+    border-radius: 5px 0px 0px 5px;
+    display: flex;
+    align-items: center;
+    width:18%;
+}
+.sign_in a {
+    color: white;
+    position: fixed;
+    left:97%;
+    
+}
+.hover_social{
+    animation-play-state: paused;
+    animation: slide_back 1s;  
+}
 
+#facebook{
+    top: 11%;
+}
+#google{
+    top: 20%;
+}
+#email{
+    top: 30%;
+}
 
-
-
+.sign_in a:hover{
+    left:86%;
+    color: white;  
+    animation: slider 1s;
+}
+@keyframes slider{
+    from {left:97%}
+    to {left:86%}   
+}
+/*
+@keyframes slide_back{
+    from {left:86%}
+    to {left:97%}   
+}*/
