@@ -14,5 +14,6 @@ function hideMenu() {
     menu.style.display = "none";
     menu_icon.style.transform = "scale(1)";
 }
+
 $("#close_btn").click(hideMenu);
 $(".category").click(hideMenu);

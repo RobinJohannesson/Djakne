@@ -14,11 +14,17 @@
     border-style: none none solid none;
     border-width: thin;
     border-color: #fff;
+    
+    animation: slide_back 1s;
 }
 .btn-group > .active{
     background: #fff;
     color: #000;
     border-bottom-style: none;
+}
+.kat-div{
+    box-shadow: inset 0px 2px 20px 1px;
+    padding: 0px 0px 10px 0px;
 }
 .sorts{
     margin-top: 0px;
