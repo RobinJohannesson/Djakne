@@ -34,6 +34,14 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $("#new_category").click(function(){
+        $(".cat_radio_choice").css("display", "block");
+
+    });
+});
+
+/*Till nästa gång: rätt div ska visas när man väljer typ av kategori i radio buttons*/
 
 
 $(".admin_btn").click(function () {

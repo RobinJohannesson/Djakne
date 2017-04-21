@@ -49,3 +49,14 @@ body {
     max-width: 50px;
 }
 
+.sub_cat_div {
+    display: none;
+}
+
+.main_cat_div {
+    display: none;
+}
+
+.cat_radio_choice {
+    display: none;
+}
