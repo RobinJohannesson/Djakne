@@ -23,3 +23,10 @@ function hideMenu() {
 
 $("#close_btn").click(hideMenu);
 $(".category").click(hideMenu);
+
+/*
+$(document).ready(function(){
+    $(".hover_social").mouseleave(function(){
+        $(".hover_social").css("animation-play-state", "running");
+    });
+});*/
