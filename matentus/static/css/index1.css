@@ -1,9 +1,3 @@
-/*!
- * Start Bootstrap - 3 Col Portfolio (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
-
 body {
     padding-top: 0px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
@@ -95,6 +89,7 @@ h3 {
     border-style: solid;
     border-width: 0px 0px 1px 0px;
 }
+
 
 #burger{
 	margin-top: 3.5%;
