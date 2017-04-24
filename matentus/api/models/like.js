@@ -11,6 +11,8 @@ module.exports = function(sequelize, DataTypes) {
         primaryKey: true
     }
   }, {
+    timestamps: false,
+    underscored: true,
     classMethods: {
       associate: function(models) {
         Like.belongsTo(models.Product),

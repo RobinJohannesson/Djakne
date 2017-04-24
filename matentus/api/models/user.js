@@ -1,6 +1,7 @@
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
+
   var User = sequelize.define("User", {  
     id: {
         type: DataTypes.INTEGER,
@@ -24,6 +25,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
+    timestamps: false,
+    underscored: true,
     classMethods: {
       associate: function(models) {
         User.hasMany(models.Comment),

@@ -12,6 +12,8 @@ module.exports = function(sequelize, DataTypes) {
     		allowNull: false
     }
   }, {
+    timestamps: true,
+    underscored: true,
     classMethods: {
       associate: function(models) {
         Comment.belongsTo(models.Product),

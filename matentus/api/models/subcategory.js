@@ -12,12 +12,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
           }
   }, {
-    classMethods: {
-      associate: function(models) {
-       Subcategory.belongsTo(models.Category),
-       Subcategory.hasMany(models.Product)          
-      }
-    }
+    timestamps: false,
+    underscored: true
   });
 
   return Subcategory;
