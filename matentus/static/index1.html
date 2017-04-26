@@ -58,22 +58,34 @@
             </a>   
         
         </div>
-        <div class="row sign-in-mobile bg-primary text-white">
+        <div class="row sign-in-mobile text-white">
                 <!--p class="mx-auto sign-up-with text-right col-xs-5">Logga in med:</p-->
                 <a id="sign-up-with" class="p-8 m-10 bg-primary">
                 Logga in med:
                 </a>
-                <a class="mx-auto btn btn-social-icon">
+                <a class="mx-auto btn btn-social-icon color-grey">
                     <i class="fa fa-facebook"></i>
                 </a>
-                <a class="mx-auto btn btn-social-icon m-20">
+                <a class="mx-auto btn btn-social-icon m-20 color-grey">
                     <i class="fa fa-google"></i>
                 </a>
-                <a class="mx-auto btn btn-social-icon">
+                <a id="email-btn" class="mx-auto btn btn-social-icon color-grey">
                     <i class="fa fa-envelope"></i>
                 </a>
         </div>
-        
+        <div id="email-form-div" class="row">
+            <form id="email-form">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class=" col-xs-12 form-text text-muted text-center">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+            </form>
+        </div>
         <div id="header" class="row sorts">
             <button id="burger" type="button" class="navbar-toggle col-xs-2 col-md-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>

@@ -93,6 +93,15 @@ h3 {
 #burger{
 	margin-top: 3.5%;
 }
+/*Create account with EMAIL*/
+#email-form{
+    background: #000;
+    color: #fff;
+    padding: 20px;
+}
+.email-click{
+    color: #fff;
+}
 /*Sign in CSS*/
 .sign-in-mobile{
     background: #000;
@@ -102,11 +111,17 @@ h3 {
 }
 .sign-in-mobile a{
     width: 34px;
-    color: #777;
     transition: 0.5s;
     border-style: solid;
-    border-color: #777;
     border-width: 0.5px;
+}
+.color-grey{
+    color: #777;
+    border-color: #777;
+}
+.color-white{
+    color: #fff;
+    border-color: #fff;
 }
 .sign-in-mobile a:hover{
     color: #eee;
@@ -173,7 +188,7 @@ h3 {
     .sign_in a {
         color: white;
         position: fixed;
-        left:98%;
+        left:97%;
         z-index: 102;
     }
 }
