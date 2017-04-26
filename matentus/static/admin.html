@@ -179,26 +179,47 @@
         <!-- /.row -->
 
         <!-- Projects Row -->
-<form class=" col-lg-10 col-lg-offset-1 admin_div" id="admin_add_product">
+    
+<form class=" col-lg-10 col-lg-offset-1 admin_div" id="admin_add_product"> <br><br>
+    <!--
   <div class="form-group " >
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+-->
+    
+  <div class="form-group col-lg-6">
+    <label for="title">Produktitel</label>
+    <input type="text" class="form-control" id="title-input">
   </div>
-  <div class="form-group">
-    <label for="exampleSelect1">Example select</label>
-    <select class="form-control" id="exampleSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
+    
+     <div class="form-group col-lg-6">
+    <label for="distributor">Leverantör</label>
+    <input type="text" class="form-control" id="distributor-input">
+  </div>
+    
+  <div class="form-group col-lg-6">
+    <label for="select-main-cat">Välj huvudkategori</label>
+    <select class="form-control" id="select-main-cat">
+      <option>huvudkategori 1</option>
+      <option>huvudkategori 2</option>
+      <option>huvudkategori 3</option>
+
     </select>
   </div>
+    
+      <div class="form-group col-lg-6">
+    <label for="select-sub-cat">Välj subkategori</label>
+    <select class="form-control" id="select-sub-cat">
+      <option>subkategori 1</option>
+      <option>subkategori 2</option>
+      <option>subkategori 3</option>
+      <option>subkategori 4</option>
+      <option>subkategori 5</option>
+    </select>
+  </div>
+    <!--
   <div class="form-group">
     <label for="exampleSelect2">Example multiple select</label>
     <select multiple class="form-control" id="exampleSelect2">
@@ -209,15 +230,18 @@
       <option>5</option>
     </select>
   </div>
-  <div class="form-group">
-    <label for="exampleTextarea">Example textarea</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+-->
+  <div class="form-group col-lg-12">
+    <label for="product-description">Produktbeskrivning</label>
+    <textarea class="form-control" id="product-description" rows="3"></textarea>
   </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    
+  <div class="form-group col-lg-12">
+    <label for="image-upload">Bild</label>
+    <input type="file" class="form-control-file" id="image-upload" aria-describedby="fileHelp">
+    <small id="fileHelp" class="form-text text-muted">Bilden bör vara i måttet 400x400.</small><br>
   </div>
+    <!--
   <fieldset class="form-group">
     <legend>Radio buttons</legend>
     <div class="form-check">
@@ -245,7 +269,8 @@
       Check me out
     </label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+-->
+  <button type="submit" class="btn btn-primary col-lg-12">Ladda upp</button>
 </form>
         <!-- /.row -->
       
