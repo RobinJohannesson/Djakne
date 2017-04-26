@@ -68,7 +68,6 @@ ul img {
 close_icon{
     position:absolute;
     
-    
 }
 .close{
     color: rgb(0,0,0);
@@ -93,11 +92,14 @@ h3 {
     border-width: 0px 0px 1px 0px;
 }
 
-
 #burger{
 	margin-top: 3.5%;
 }
-
+@media screen and (max-width: 720px){
+    .sign_in a{
+        display: none;
+    }
+}
 .sign_in i{
     color: white;
     font-size: 150%;
