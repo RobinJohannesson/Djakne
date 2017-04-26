@@ -77,7 +77,32 @@
             </div>
             </div>
    
-        <div class="col-lg-10 col-lg-offset-1 default_div" id="admin_request">
+        <div class="col-lg-5 col-lg-offset-1 default_div" id="admin_request">
+        <table class="table">
+            
+            <thead>
+              <tr>
+                <th>Produktnamn</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="#"><div>Kaffe</div></a></td>
+                
+              </tr>
+              <tr>
+                <td><a href="#"><div>Te</div></a></td>
+                
+              </tr>
+              <tr>
+                <td><a href="#"><div>Lamm</div></a></td>
+                
+              </tr>
+            </tbody>
+      </table>
+    </div>
+    <div class="col-lg-10 col-lg-offset-1 admin_div" id="admin_manage_product" >
         <table class="table">
             
             <thead>
@@ -88,26 +113,53 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+             <tr>
                 <td>Kaffe</td>
                 <td>Zoegas </td>
                 <td><img src="images/exkaffe.jpg" alt="en bild" class="img_thumbnail"></td>
+                  <td>
+                <a href="#" class=" change">
+               <i class="fa fa-trash-o  fa-lg" aria-hidden="true"></i>
+                </a>  
+                <a href="#" class="change">
+                <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                    </a> 
+                </td>
+                
+                 
               </tr>
               <tr>
                 <td>Te</td>
                 <td>Lipton</td>
                 <td><img alt="en bild"></td>
+                <td>
+                <a href="#" class=" change">
+               <i class="fa fa-trash-o  fa-lg" aria-hidden="true"></i>
+                </a>  
+                <a href="#" class="change">
+                <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                    </a> 
+                </td>
+                
               </tr>
               <tr>
                 <td>Lamm</td>
                 <td>Bonden</td>
                 <td><img alt="en bild"></td>
+                <td>
+                <a href="#" class=" change">
+               <i class="fa fa-trash-o  fa-lg" aria-hidden="true"></i>
+                </a>  
+                <a href="#" class="change">
+                <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                    </a> 
+                </td>
+                
               </tr>
             </tbody>
       </table>
     </div>
     
-    <div class="col-lg-10 col-lg-offset-1 admin_div" id="admin_manage_product">hantera prod</div>
     
     
     <div class="col-lg-6 col-lg-offset-1 admin_div" id="admin_categories">
@@ -117,10 +169,10 @@
         <div>
             <form>
                 <div class="cat_radio_choice">
-                <label class="radio-inline radio_btn_categories">
+                <label class="radio-inline radio_btn_categories" id="main_cat_choice">
                     <input type="radio" name="optradio"> Huvudkategori
                 </label>       
-                <label class="radio-inline radio_btn_categories" >
+                <label class="radio-inline radio_btn_categories" id="sub_cat_choice">
                     <input type="radio" name="optradio"> Subkategori
                 </label>   
                     </div>
@@ -130,21 +182,25 @@
                     <span class="input-group-addon">Titel</span>
                     <input id="sub_cat_title" type="text" class="form-control" name="sub_cat_title">
                 </div>
-                <div class="form-group">
-                    <label for="drop_cat">Välj huvudkategori</label>
+                <div class="form-group" >
                     <select class="form-control" id="drop_cat">
+                    <option selected= "true" disabled= "disabled">Välj huvudkategori</option>
                     <option>Mat</option>
                     <option>Kaffe</option>
                   </select>
                 </div>
-                <button type="submit" class="btn btn-default">Spara</button>
+                <div class="sub_cat_save">
+                    <button type="submit" class="btn btn-primary">Spara</button>
+                </div>
             </div>
             <div class="main_cat_div">
                 <div class="input-group">
                     <span class="input-group-addon">Titel</span>
                     <input id="main_cat_title" type="text" class="form-control" name="main_cat_title">
                 </div>
-                <button type="submit" class="btn btn-default">Spara</button>
+                <div class="main_cat_save">
+                    <button type="submit" class="btn btn-primary ">Spara</button>
+                </div>
             </div>
         </div>
         
@@ -180,7 +236,7 @@
 
         <!-- Projects Row -->
     
-<form class=" col-lg-10 col-lg-offset-1 admin_div" id="admin_add_product"> <br><br>
+<form class=" col-lg-10 col-lg-offset-1 admin_div" id="admin_add_product"> 
     <!--
   <div class="form-group " >
     <label for="exampleInputEmail1">Email address</label>
@@ -235,12 +291,21 @@
     <label for="product-description">Produktbeskrivning</label>
     <textarea class="form-control" id="product-description" rows="3"></textarea>
   </div>
-    
-  <div class="form-group col-lg-12">
-    <label for="image-upload">Bild</label>
-    <input type="file" class="form-control-file" id="image-upload" aria-describedby="fileHelp">
-    <small id="fileHelp" class="form-text text-muted">Bilden bör vara i måttet 400x400.</small><br>
+ <div class="col-lg-2 "> 
+     <img src="http://placehold.it/180" alt="your image" />
+</div>    
+  <div class="form-group col-lg-4" id="image_upload">
+    <label for="image-upload">Bilduppladdning</label>
+    <input type="file" class="form-control-file" aria-describedby="fileHelp" onchange="readURL(this);">
+    <small id="fileHelp" class="form-text text-muted">Bilden bör vara i måttet 180x180.</small>
+   <div class="btn_save">
+        <button type="submit" class="btn btn-primary ">Ladda upp</button>
+    </div>
   </div>
+   
+    </form>
+    
+   
     <!--
   <fieldset class="form-group">
     <legend>Radio buttons</legend>
@@ -270,8 +335,8 @@
     </label>
   </div>
 -->
-  <button type="submit" class="btn btn-primary col-lg-12">Ladda upp</button>
-</form>
+    
+
         <!-- /.row -->
       
         <!-- Footer -->
