@@ -20,7 +20,8 @@
     <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="css/comment.css" rel="stylesheet">
     <link href="bootstrap/bootstrap-social/bootstrap-social.css" rel="stylesheet">
-
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -76,13 +77,18 @@
         <div id="email-form-div" class="row">
             <form id="email-form">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class=" col-xs-12 form-text text-muted text-center">We'll never share your email with anyone else.</small>
+                    <label for="InputEmail">Email </label>
+                    <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Email">
+                    <small id="emailHelp" class=" col-xs-12 form-text text-muted text-center">Vi kommer aldrig sprida vidare din email.</small>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="InputPassword">Lösenord</label>
+                    <input type="password" class="form-control" id="InputPassword" placeholder="Lösenord">
+                </div>
+                <div class="form-group">
+                    <label for="InputName">Namn</label>
+                    <input type="password" class="mb-10 form-control" id="InputName" placeholder="Namn">
+                    <button type="submit" class="btn btn-primary form-control">Submit</button>
                 </div>
             </form>
         </div>
@@ -95,7 +101,7 @@
             </button>
             <img alt="head" src="images/header2.PNG" class="col-xs-8 col-sm-10 col-md-10">
             <button id="kategori" type="button" class="navbar-toggle col-xs-12 sort btn btn-default col-xs-12" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                Alla Kategorier<span class="glyphicon glyphicon-menu-down"></span>
+                Kategorier<span class="glyphicon glyphicon-menu-down"></span>
             </button>
             <div id="kat-div" class="kat-div col-xs-12">
                 <h3 class="col-xs-12">Mat</h3>

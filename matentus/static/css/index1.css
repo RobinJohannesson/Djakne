@@ -164,8 +164,9 @@ h3 {
 .sign_in a {
     color: white;
     position: fixed;
-    left:97%;
+    left:96%;
     z-index: 102;
+    width: 100%;
 }
 .sign_in a:hover{
     color: white;  
@@ -176,24 +177,28 @@ h3 {
     animation-play-state: paused;
     animation: slide_back 1s;  
 }
+
 @media screen and (max-width: 960px){
     .sign_in a{
         left: 96%;
     }
     .sign_in a:hover{ 
-        animation: slider960 1s;
+        left: 71%;
+        animation: slider 1s;
     }
 }
-@media screen and (max-width: 1140px){
+@media screen and (min-width: 961px){
     .sign_in a {
-        color: white;
-        position: fixed;
         left:97%;
         z-index: 102;
     }
+    .sign_in a:hover{ 
+        animation: slider961 1s;
+        left:80%;
+    }
 }
 #facebook{
-    top: 7%;
+    top: 6.7%;
 }
 #google{
     top: 12%;
@@ -203,15 +208,18 @@ h3 {
 }
 
 @keyframes slider{
-    from {left:97%}
-    to {left:83%}   
+    from {left:96%}
+    to {left:71%}   
 }
-@keyframes slider960{
+@keyframes slider961{
     from {left:95%}
     to {left:80%}   
 }
 
 /*Margin and padding classes*/
+.mb-10{
+    margin-bottom: 10px;
+}
 .m-0{
     margin: 0;
 }
