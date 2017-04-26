@@ -67,13 +67,11 @@ ul img {
 
 close_icon{
     position:absolute;
-    
 }
 .close{
     color: rgb(0,0,0);
     color: rgba(0,0,0,0.8); 
     padding: 10px 0px;
-   
 }
 .side_content{
     list-style: none;
@@ -95,9 +93,44 @@ h3 {
 #burger{
 	margin-top: 3.5%;
 }
+/*Sign in CSS*/
+.sign-in-mobile{
+    background: #000;
+    display: none;
+    text-align: center;
+    padding:4px;
+}
+.sign-in-mobile a{
+    width: 34px;
+    color: #777;
+    transition: 0.5s;
+    border-style: solid;
+    border-color: #777;
+    border-width: 0.5px;
+}
+.sign-in-mobile a:hover{
+    color: #eee;
+    border-color: #eee
+}
+#sign-up-with{
+    border-style: none;
+    background: #000;
+}
+#sign-up-with:hover{
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+}
+.px-2 {
+  padding-left: ($spacer-x * .5) !important;
+  padding-right: ($spacer-x * .5) !important;
+}
 @media screen and (max-width: 720px){
     .sign_in a{
         display: none;
+    }
+    .sign-in-mobile{
+        display: block;
     }
 }
 .sign_in i{
@@ -117,13 +150,33 @@ h3 {
     color: white;
     position: fixed;
     left:97%;
-    
+    z-index: 102;
+}
+.sign_in a:hover{
+    color: white;  
+    animation: slider 1s;
+    left:83%;
 }
 .hover_social{
     animation-play-state: paused;
     animation: slide_back 1s;  
 }
-
+@media screen and (max-width: 960px){
+    .sign_in a{
+        left: 96%;
+    }
+    .sign_in a:hover{ 
+        animation: slider960 1s;
+    }
+}
+@media screen and (max-width: 1140px){
+    .sign_in a {
+        color: white;
+        position: fixed;
+        left:98%;
+        z-index: 102;
+    }
+}
 #facebook{
     top: 7%;
 }
@@ -134,17 +187,37 @@ h3 {
     top: 18%;
 }
 
-.sign_in a:hover{
-    left:86%;
-    color: white;  
-    animation: slider 1s;
-}
 @keyframes slider{
     from {left:97%}
-    to {left:86%}   
+    to {left:83%}   
 }
-/*
-@keyframes slide_back{
-    from {left:86%}
-    to {left:97%}   
-}*/
+@keyframes slider960{
+    from {left:95%}
+    to {left:80%}   
+}
+
+/*Margin and padding classes*/
+.m-0{
+    margin: 0;
+}
+.m-10{
+    margin: 0px 10px;
+}
+.m-20{
+    margin: 0px 20px;
+}
+.p-2{
+    padding: 2px;
+}
+.p-4{
+    padding: 4px;
+}
+.p-6{
+    padding: 6px;
+}
+.p-8{
+    padding: 8px;
+}
+.p-10{
+    padding: 10px;
+}
