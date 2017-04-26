@@ -1,3 +1,4 @@
+//show page content admin
 $(document).ready(function(){
     $("#add_product_btn").click(function(){
         $("#admin_add_product").css("display", "block");
@@ -62,6 +63,7 @@ $(".admin_btn").click(function () {
     $(this).addClass("active");
 });
 
+//image preview
  function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -74,3 +76,21 @@ $(".admin_btn").click(function () {
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
+//delete alert
+$(document).ready(function(){
+    $(".fa-trash-o").click(function(){
+        confirm("Är du säker på att du vill ta bort produkten?");
+        var txt;
+
+
+    });
+});
+
+//show form when pencil clicked
+$(document).ready(function(){
+    $(".fa-pencil").click(function(){
+        $(".manage_form").css("display", "block");
+        
+    });
+});

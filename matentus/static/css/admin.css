@@ -6,6 +6,7 @@ body {
     position: absolute;
     right:5%;
     top: 5%;
+    font-size: 180%;
 }
 
 
@@ -119,4 +120,13 @@ body {
 #image_upload{
     padding-top:5.5%;
     padding-left: 3%;
+}
+
+.manage_form{
+    display: none;
+}
+.manage_form h3{
+    border-bottom: 0px;
+    padding-left: 4%;
+    
 }

@@ -40,14 +40,15 @@
             
        
      </div>
-        <div class="row sorts">
+       <div class="row sorts col-lg-12 col-lg-offset-1" >
+            <!--
             <button id="burger" type="button" class="navbar-toggle col-xs-2 col-md-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            
+            -->
             <img alt="head" src="images/header2.PNG" class="col-xs-9 col-md-10">
             
             
@@ -158,6 +159,61 @@
               </tr>
             </tbody>
       </table>
+        
+        <div class="manage_form">
+            <div class="col-lg-3"><h3>Ändra produktinfo</h3></div>
+            <form class=" col-lg-12"> 
+  
+
+          <div class="form-group col-lg-6">
+            <label for="title">Produktitel</label>
+            <input type="text" class="form-control" id="title-input">
+          </div>
+
+             <div class="form-group col-lg-6">
+            <label for="distributor">Leverantör</label>
+            <input type="text" class="form-control" id="distributor-input">
+          </div>
+
+          <div class="form-group col-lg-6">
+            <label for="select-main-cat">Välj huvudkategori</label>
+            <select class="form-control" id="select-main-cat">
+              <option>huvudkategori 1</option>
+              <option>huvudkategori 2</option>
+              <option>huvudkategori 3</option>
+
+            </select>
+          </div>
+
+              <div class="form-group col-lg-6">
+            <label for="select-sub-cat">Välj subkategori</label>
+            <select class="form-control" id="select-sub-cat">
+              <option>subkategori 1</option>
+              <option>subkategori 2</option>
+              <option>subkategori 3</option>
+              <option>subkategori 4</option>
+              <option>subkategori 5</option>
+            </select>
+          </div>
+
+          <div class="form-group col-lg-12">
+            <label for="product-description">Produktbeskrivning</label>
+            <textarea class="form-control" id="product-description" rows="3"></textarea>
+          </div>
+         <div class="col-lg-2 "> 
+             <img src="http://placehold.it/180" alt="your image" />
+        </div>    
+          <div class="form-group col-lg-4" id="image_upload">
+            <label for="image-upload">Bilduppladdning</label>
+            <input type="file" class="form-control-file" aria-describedby="fileHelp" onchange="readURL(this);">
+            <small id="fileHelp" class="form-text text-muted">Bilden bör vara i måttet 180x180.</small>
+           <div class="btn_save">
+                <button type="submit" class="btn btn-primary ">Ladda upp</button>
+            </div>
+          </div>
+   
+    </form>
+        </div>
     </div>
     
     
