@@ -1,9 +1,0 @@
-{
-  "matentus": {
-    "username": "AB7455",
-    "password": "matentus",
-    "database": "ab7455",
-    "host": "ddwap.mah.se",
-    "dialect": "mysql"
-  }
-}
