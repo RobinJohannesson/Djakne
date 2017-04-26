@@ -24,6 +24,12 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+    
+      .when('/:token', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
       .otherwise({
         redirectTo: '/'
       });

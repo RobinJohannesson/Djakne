@@ -144,8 +144,7 @@ app.get('/auth/facebook/callback',
         function(req, res, userX) {
     var payload = {id: userX.id};
     var token = jwt.sign(payload, jwtOptions.secretOrKey);
-    res.json(token);
-    res.redirect('/');
+    res.redirect('http://localhost:9000/token='+token);
 });
 
 router.get('/test'), function(req, res){
@@ -191,27 +190,6 @@ app.get('/auth/google/callback',
     res.json(token);
     res.redirect('/');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router;
 
