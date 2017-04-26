@@ -119,7 +119,7 @@ passport.use(new FacebookStrategy({
                                   function(accessToken, refreshToken, profile, cb) {
     console.log(accessToken)
     var user = models.User.find( {
-        where: {googleid: profile.id}
+        where: {fbid: profile.id}
     })
     .then(function(user) {
         if (!user) {
