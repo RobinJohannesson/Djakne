@@ -14,7 +14,6 @@ angular.module('app')
       'AngularJS',
       'Karma'
     ];
- console.log("Test");
- console.log($routeParams);
- console.log("Test"); 
+ localStorage.setItem("authtoken", $routeParams.token);
+ console.log(localStorage.getItem("authtoken"));
   });

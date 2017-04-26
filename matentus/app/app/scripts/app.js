@@ -13,6 +13,7 @@ angular
     'ngRoute'
   ])
   .config(function ($routeProvider) {
+  
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -25,7 +26,7 @@ angular
         controllerAs: 'about'
       })
     
-      .when('/:token', {
+      .when('/auth/:token', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'

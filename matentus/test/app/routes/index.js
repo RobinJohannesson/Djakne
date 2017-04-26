@@ -127,9 +127,7 @@ passport.use(new FacebookStrategy({
 
         } 
         if(user) {
-            var payload = {id: profile.id};
-            var token = jwt.sign(payload, jwtOptions.secretOrKey);
-            console.log(token);
+            cb(null,user);
         } else {
             //res.json({message:"passwords did not match"});
         } 
@@ -144,12 +142,16 @@ app.get('/auth/facebook/callback',
         function(req, res, userX) {
     var payload = {id: userX.id};
     var token = jwt.sign(payload, jwtOptions.secretOrKey);
-    res.redirect('http://localhost:9000/token='+token);
+    res.redirect('http://localhost:9000/#!/auth/'+token);
 });
 
 router.get('/test'), function(req, res){
     console.log("/test");
 }
+
+
+
+
 
 //Google Login
 
@@ -157,9 +159,9 @@ passport.use(new GoogleStrategy({
     clientID: "1062166543636-m8nnt9b73m9o566ohuqtrsp32c7dvq5a.apps.googleusercontent.com",
     clientSecret: "IGnFuF0KUav4k72oPfdlrkbn",
     callbackURL: "http://localhost:3000/auth/google/callback"
-  },
-  function(accessToken, refreshToken, profile, cb) {
-   console.log(accessToken)
+},
+                                function(accessToken, refreshToken, profile, cb) {
+    console.log(accessToken)
     var user = models.User.find( {
         where: {googleid: profile.id}
     })
@@ -169,8 +171,6 @@ passport.use(new GoogleStrategy({
 
         } 
         if(user) {
-            var payload = {id: profile.id};
-            var token = jwt.sign(payload, jwtOptions.secretOrKey);
             cb(null,user);
         } else {
             //res.json({message:"passwords did not match"});
@@ -180,16 +180,19 @@ passport.use(new GoogleStrategy({
 
 
 app.get('/auth/google',
-  passport.authenticate('google',{session: false, scope: ['email']}));
+        passport.authenticate('google',{session: false, scope: ['email']}));
 
 app.get('/auth/google/callback', 
-   passport.authenticate('google', {session: false, failureRedirect: '/test' }),
+        passport.authenticate('google', {session: false, failureRedirect: '/test' }),
         function(req, res, userX) {
     var payload = {id: userX.id};
     var token = jwt.sign(payload, jwtOptions.secretOrKey);
-    res.json(token);
-    res.redirect('/');
+    res.redirect('http://localhost:9000/#!/auth/'+token);
+   
 });
+
+
+
 
 module.exports = router;
 
