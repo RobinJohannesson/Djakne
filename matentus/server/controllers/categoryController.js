@@ -21,6 +21,10 @@ module.exports = {
 	
 	createCategory:		function(req, res){
 							models.Category.create({title: req.body.title});
+	},
+	
+	deleteCategory:		function (req, res){
+		//TODO
 	}
 	
 }

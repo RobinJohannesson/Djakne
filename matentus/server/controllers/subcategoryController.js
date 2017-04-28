@@ -19,5 +19,13 @@ module.exports = {
 					.then(function(subcategory) {
 						res.json(subcategory);
 					});
-				}
+				},
+	create:		function(req, res){
+					models.Subcategory.create({title: req.body.title, category_id: req.body.categoryid });
+				},
+	
+	delete:		function (req, res){
+				//TODO
+	}
+	
 }

@@ -23,6 +23,9 @@ router.get('/', function(req, res) {
 	subcategoryController.getAll(req, res);
 });
 
+router.post('/create', function (req, res){
+	subcategoryController.create(req, res);
+});
 
 // -----------------------------------------------------
 // Local exports
