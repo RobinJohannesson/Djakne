@@ -60,6 +60,7 @@ ul img {
     /*display: none;*/                          /* <-- Här har kajsa ändrat från none till block */
     display: block;
     z-index: 100;
+    left: 0%;
 }
 
 .side_content {
