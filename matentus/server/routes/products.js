@@ -22,6 +22,9 @@ router.get('/:id/likes', function(req, res) {
 	likeController.getAllLikesOfProduct(req, res);
 });
 
+router.post('/postproduct', function(req, res){
+	productController.createProduct(req, res);
+});
 
 // -----------------------------------------------------
 // Local exports

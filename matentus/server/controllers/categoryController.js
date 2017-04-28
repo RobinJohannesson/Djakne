@@ -17,7 +17,12 @@ module.exports = {
 					.then(function(category) {
 						res.json(category);
 					});
-				}
+				},
+	
+	createCategory:		function(req, res){
+							models.Category.create({title: req.body.title});
+	}
+	
 }
 
 // router.get('/', function(req, res) {
