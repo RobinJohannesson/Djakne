@@ -38,5 +38,4 @@ function LoginCtrl(facebookLoginService, googleLoginService, localLoginService) 
     // localLoginService.login();
   }
 
-
 }

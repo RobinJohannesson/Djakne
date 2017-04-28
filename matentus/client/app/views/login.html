@@ -1,6 +1,44 @@
+<div ng-controller="LoginCtrl as ctrl">
+<!--     Mobile Login    -->
+<script src="../scripts/styling/style.js"></script>
+<div class="row sign-in-mobile text-white">
+        <!--p class="mx-auto sign-up-with text-right col-xs-5">Logga in med:</p-->
+        <a id="sign-up-with" class="col-xs-10 p-8 m-10 bg-primary">
+        Logga in med:
+        </a>
+        <a ng-click="ctrl.loginFacebook()" class="mx-auto btn btn-social-icon color-grey">
+            <i class="fa fa-facebook"></i>
+        </a>
+        <a ng-click="ctrl.loginGoogle()" class="mx-auto btn btn-social-icon m-20 color-grey">
+            <i class="fa fa-google"></i>
+        </a>
+        <a id="email-btn" class="mx-auto btn btn-social-icon color-grey">
+            <i class="fa fa-envelope"></i>
+        </a>
+</div>
+<div id="email-form-div" class="row">
+    <form id="email-form">
+        <!--action="http://localhost:3000/api/register/newuser" method="post"-->
+        <div class="form-group">
+            <label for="InputEmail">Email </label>
+            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Email">
+            <small id="emailHelp" class=" col-xs-12 form-text text-muted text-center">Vi kommer aldrig sprida vidare din email.</small>
+        </div>
+        <div class="form-group">
+            <label for="InputPassword">Lösenord</label>
+            <input type="password" class="form-control" id="InputPassword" placeholder="Lösenord">
+        </div>
+        <div class="form-group">
+            <label for="InputName">Namn</label>
+            <input type="password" class="mb-10 form-control" id="InputName" placeholder="Namn">
+            <button ng-click="ctrl.loginLocal()" type="submit" class="btn btn-primary form-control">Submit</button>
+        </div>
+    </form>
+</div>
+    <div class="sign-in">
+<!--   Desktop Login   -->
 
 
-<div ng-controller="LoginCtrl as ctrl" class="sign-in">
         
   <!--  <a class="btn btn-social-icon label-default">
         <i class="fa fa-facebook-official" aria-hidden="true"></i>
@@ -23,4 +61,5 @@
       <i class="fa fa-envelope-o" aria-hidden="true"></i>Sign in with Email
   </a>   
 
+</div>
 </div>
