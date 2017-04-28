@@ -82,6 +82,52 @@ footer {
 #burger{
 	margin-top: 3.5%;
 }
+/*Login*/
+#facebook{
+    top: 6.7%;
+}
+#google{
+    top: 12%;
+}
+#email{
+    top: 18%;
+}
+@keyframes slider{
+    from {left:96%}
+    to {left:71%}   
+}
+@keyframes slider961{
+    from {left:95%}
+    to {left:80%}   
+}
+.sign-in i{
+    color: white;
+    font-size: 150%;
+    margin-right: 10%;   
+}
+.label-default{
+    background-color: black;
+    border-radius: 5px 0px 0px 5px;
+    display: flex;
+    align-items: center;
+    width:18%;
+}
+.sign-in a {
+    color: white;
+    position: fixed;
+    left:96%;
+    z-index: 102;
+    width: 100%;
+}
+.sign-in a:hover{
+    color: white;  
+    animation: slider 1s;
+    left:83%;
+}
+/*.hover-social{
+    animation-play-state: paused;
+    animation: slide_back 1s;  
+}*/
 
 /*Create account with EMAIL*/
 #email-form{
@@ -131,80 +177,35 @@ footer {
   padding-right: ($spacer-x * .5) !important;
 }
 @media screen and (max-width: 720px){
-    .sign_in a{
+    .sign-in a{
         display: none;
     }
     .sign-in-mobile{
         display: block;
     }
 }
-.sign_in i{
-    color: white;
-    font-size: 150%;
-    margin-right: 10%;
-    
-}
-.label-default{
-    background-color: black;
-    border-radius: 5px 0px 0px 5px;
-    display: flex;
-    align-items: center;
-    width:18%;
-}
-.sign_in a {
-    color: white;
-    position: fixed;
-    left:96%;
-    z-index: 102;
-    width: 100%;
-}
-.sign_in a:hover{
-    color: white;  
-    animation: slider 1s;
-    left:83%;
-}
-.hover_social{
-    animation-play-state: paused;
-    animation: slide_back 1s;  
-}
+
 
 @media screen and (max-width: 960px){
-    .sign_in a{
+    .sign-in a{
         left: 96%;
     }
-    .sign_in a:hover{ 
+    .sign-in a:hover{ 
         left: 71%;
         animation: slider 1s;
     }
 }
 @media screen and (min-width: 961px){
-    .sign_in a {
+    .sign-in a {
         left:97%;
         z-index: 102;
     }
-    .sign_in a:hover{ 
+    .sign-in a:hover{ 
         animation: slider961 1s;
         left:80%;
     }
 }
-#facebook{
-    top: 6.7%;
-}
-#google{
-    top: 12%;
-}
-#email{
-    top: 18%;
-}
 
-@keyframes slider{
-    from {left:96%}
-    to {left:71%}   
-}
-@keyframes slider961{
-    from {left:95%}
-    to {left:80%}   
-}
 
 /*Margin and padding classes*/
 .mb-10{
