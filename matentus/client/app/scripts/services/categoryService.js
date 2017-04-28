@@ -27,11 +27,13 @@
     }
 
     function getAllSubCategories() {
+      console.log("Get all subcategories");
       $http({
         method: 'GET',
         url: 'http://localhost:3000/api/subcategories'
       })
       .then(function(response) {
+        console.log(response);
         setSubCategories(response.data);
       }, errorLogger);
     }
@@ -52,7 +54,7 @@
 
     return {
       categories: state.categories,
-      subCategories: subCategories
+      subCategories: state.subCategories
     };
 
   };
