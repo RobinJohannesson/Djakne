@@ -20,6 +20,7 @@ footer {
     height: 25%;
     background: rgb(0,0,0);
     background: rgba(0,0,0,0.7);   
+    width: 95%;
 }
 #label-text {
     margin: 2.5%;
@@ -27,13 +28,23 @@ footer {
 }
 .heart-icon{
     position:absolute;
-    top: 5%;
-    left: 85%;
+    top: 3%;
+    left: 83%;
 }
 .heart{
     color: rgb(0,0,0);
     color: rgba(0,0,0,0.8); 
     font-size: 250%;
+}
+.img{
+    display: block;
+    width:370px;
+    height: 278px;  
+    overflow: hidden;  
+}
+.img img{
+    width: 100%;
+    height: auto;
 }
 
 /*Sidebar*/
