@@ -22,12 +22,10 @@ function SidebarCtrl(categoryService) {
   var ctrl = this;
 
   ctrl.shouldShowDropdown = false;
-  ctrl.categories = categoryService.categories;
   ctrl.toggleDropdown = toggleDropdown;
 
   function toggleDropdown() {
   	ctrl.shouldShowDropdown = ctrl.shouldShowDropdown ? false : true;
-  	console.log(ctrl.shouldShowDropdown);
   }
 
 }

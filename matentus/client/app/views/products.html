@@ -6,7 +6,7 @@
   <!-- Categories button -->
 
   <button ng-click="ctrl.toggleCategories()" id="kategori" type="button" class="navbar-toggle col-xs-12 sort btn btn-default col-xs-12" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-  Kategorier <span class="glyphicon glyphicon-menu-down"></span>
+  {{ ctrl.categoryHeader }} <span class="glyphicon glyphicon-menu-down"></span>
   </button>
 
   <!-- Categories dropdown -->
@@ -25,7 +25,7 @@
 
   <div class="btn-group btn-group-justified" role="group" aria-label="...">
     <div class="btn-group" role="group">
-        <button type="button" class="col-xs-12 sort btn btn-default active">
+        <button ng-click="" type="button" class="col-xs-12 sort btn btn-default active">
             Populära
         </button>
     </div>
@@ -45,8 +45,8 @@
 
   <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">KATEGORI
-            <small> UNDERKATEGORI</small>
+        <h1 class="page-header">
+            <small></small>
         </h1>
     </div>
   </div>

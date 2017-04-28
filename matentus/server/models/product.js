@@ -1,6 +1,9 @@
+var sequelize = require("sequelize");
+
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
+
   var Product = sequelize.define("Product", {  
     id: {
         type: DataTypes.INTEGER,
@@ -30,6 +33,10 @@ module.exports = function(sequelize, DataTypes) {
     image: {
       type: DataTypes.STRING
     }, 
+    created: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     timestamps: false,
     underscored: true,

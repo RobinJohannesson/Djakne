@@ -32,7 +32,6 @@
         url: 'http://localhost:3000/api/subcategories'
       })
       .then(function(response) {
-        console.log(response);
         setSubCategories(response.data);
       }, errorLogger);
     }
