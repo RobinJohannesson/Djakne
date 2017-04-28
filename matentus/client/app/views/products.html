@@ -14,8 +14,8 @@
   <div ng-if="ctrl.shouldShowCategories" id="kat-div" class="kat-div col-xs-12">
     <div ng-repeat="category in ctrl.categories">
       <h2 ng-click="ctrl.toggleSubCategories(category.id)"> {{ category.title }} </h2>
-      <div ng-if="ctrl.currentCategory === category.id" ng-repeat="subcategory in ctrl.subCategories" >
-        <p ng-if="subcategory.category_id === category.id"> {{ subcategory.title }} </p>
+      <div ng-if="ctrl.currentCategoryId === category.id" ng-repeat="subcategory in ctrl.subCategories" >
+        <a href="#!/{{ category.title }}/{{ subcategory.title }}/{{ subcategory.id }}" ng-if="subcategory.category_id === category.id"> {{ subcategory.title }} </a>
       </div>
     </div>
   </div>
@@ -52,10 +52,10 @@
   </div>
 
 
-  <!-- This is where all products is displayed -->
+  <!-- This is where all products are displayed -->
 
   <div class="row">
-    <div ng-repeat="product in ctrl.products" class="col-lg-4 col-xs-12 portfolio-item">
+    <div ng-repeat="product in ctrl.products" class="col-lg-4 col-xs-12 portfolio-item" ng-if="!ctrl.currentSubCategoryId || ctrl.currentSubCategoryId == product.subcategory_id">
         <div class="img">
             <a href="#">
                 <img class="img-responsive" src=" {{ product.image }}" alt="">

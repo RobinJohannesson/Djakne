@@ -27,7 +27,6 @@
     }
 
     function getAllSubCategories() {
-      console.log("Get all subcategories");
       $http({
         method: 'GET',
         url: 'http://localhost:3000/api/subcategories'

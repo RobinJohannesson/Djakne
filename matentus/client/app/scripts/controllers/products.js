@@ -8,33 +8,35 @@ angular.module('matentusApp')
 
 
 // ------------------------------------------------------------
-//  This controller has access to "services/httpService.js"
+//  This controller has access to these services
 // ------------------------------------------------------------
 
-ProductsCtrl.$inject = ['productService', 'categoryService'];
+ProductsCtrl.$inject = ['$routeParams', 'productService', 'categoryService'];
 
 
 // ------------------------------------------------------------
 //  Variables and functions available to "views/products.html"
 // ------------------------------------------------------------
 
-function ProductsCtrl(productService, categoryService) {
+function ProductsCtrl($routeParams, productService, categoryService) {
   	var ctrl = this;
-  
+
+	ctrl.currentCategoryId = null;
+  	ctrl.currentSubCategoryId = $routeParams.subcategory_id;
+  	ctrl.shouldShowCategories = false;
+
 	ctrl.categories = categoryService.categories;
 	ctrl.subCategories = categoryService.subCategories;
 	ctrl.products = productService.products;
+
 	ctrl.toggleCategories = toggleCategories;
 	ctrl.toggleSubCategories = toggleSubCategories;
-	ctrl.shouldShowCategories = false;
-	ctrl.currentCategory = null;
 
 	function toggleCategories() {
 	    ctrl.shouldShowCategories = ctrl.shouldShowCategories ? false : true;
 	}
 
 	function toggleSubCategories(id) {
-		ctrl.currentCategory = (ctrl.currentCategory === id) ? null : id;
-		console.log(ctrl.currentCategory);
+		ctrl.currentCategoryId = (ctrl.currentCategory === id) ? null : id;
 	}
 }
