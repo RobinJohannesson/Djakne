@@ -25,9 +25,16 @@ function ProductsCtrl(productService, categoryService) {
 	ctrl.subCategories = categoryService.subCategories;
 	ctrl.products = productService.products;
 	ctrl.toggleCategories = toggleCategories;
+	ctrl.toggleSubCategories = toggleSubCategories;
 	ctrl.shouldShowCategories = false;
+	ctrl.currentCategory = null;
 
 	function toggleCategories() {
 	    ctrl.shouldShowCategories = ctrl.shouldShowCategories ? false : true;
+	}
+
+	function toggleSubCategories(id) {
+		ctrl.currentCategory = (ctrl.currentCategory === id) ? null : id;
+		console.log(ctrl.currentCategory);
 	}
 }

@@ -1,48 +1,60 @@
 <!-- Products HTML | Has access to variables and functions in "scripts/controllers/products.js" -->
 
-<!-- Maybe put a page title and subtitle here -->
 <div ng-controller="ProductsCtrl as ctrl">
-    
-    <button ng-click="ctrl.toggleCategories()" id="kategori" type="button" class="navbar-toggle col-xs-12 sort btn btn-default col-xs-12" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-    Kategorier<span class="glyphicon glyphicon-menu-down"></span>
-    </button>
-            <div ng-if="ctrl.shouldShowCategories" id="kat-div" class="kat-div col-xs-12">
-                
-                <ul ng-repeat="category in ctrl.categories"><li>
-                {{ category.title }}
-                </li></ul>
-            </div>
-             
-        <div class="btn-group btn-group-justified" role="group" aria-label="...">
-              <div class="btn-group" role="group">
-                  <button type="button" class="col-xs-12 sort btn btn-default active">
-                      Populära
-                  </button>
-              </div>
-              <div class="btn-group" role="group">
-                  <button type="button" class="col-xs-12 sort btn btn-default">
-                      Senaste
-                  </button>
-              </div>
-              <div class="btn-group" role="group">
-                  <button type="button" class="col-xs-12 sort btn btn-default">
-                      Vi Tipsar
-                  </button>
-              </div>
-          </div>
-<div class="row">
+
+
+  <!-- Categories button -->
+
+  <button ng-click="ctrl.toggleCategories()" id="kategori" type="button" class="navbar-toggle col-xs-12 sort btn btn-default col-xs-12" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+  Kategorier <span class="glyphicon glyphicon-menu-down"></span>
+  </button>
+
+  <!-- Categories dropdown -->
+
+  <div ng-if="ctrl.shouldShowCategories" id="kat-div" class="kat-div col-xs-12">
+    <div ng-repeat="category in ctrl.categories">
+      <h2 ng-click="ctrl.toggleSubCategories(category.id)"> {{ category.title }} </h2>
+      <div ng-if="ctrl.currentCategory === category.id" ng-repeat="subcategory in ctrl.subCategories" >
+        <p ng-if="subcategory.category_id === category.id"> {{ subcategory.title }} </p>
+      </div>
+    </div>
+  </div>
+   
+
+  <!-- Sort products by -->
+
+  <div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+        <button type="button" class="col-xs-12 sort btn btn-default active">
+            Populära
+        </button>
+    </div>
+    <div class="btn-group" role="group">
+        <button type="button" class="col-xs-12 sort btn btn-default">
+            Senaste
+        </button>
+    </div>
+    <div class="btn-group" role="group">
+        <button type="button" class="col-xs-12 sort btn btn-default">
+            Vi Tipsar
+        </button>
+    </div>
+  </div>
+
+  <!-- Category and subcategory title -->
+
+  <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">
-            <small></small>
+        <h1 class="page-header">KATEGORI
+            <small> UNDERKATEGORI</small>
         </h1>
     </div>
-</div>
+  </div>
 
 
-<!-- This is where all products is displayed -->
+  <!-- This is where all products is displayed -->
 
-<div class="row">
-
+  <div class="row">
     <div ng-repeat="product in ctrl.products" class="col-lg-4 col-xs-12 portfolio-item">
         <div class="img">
             <a href="#">
@@ -59,8 +71,8 @@
             </div>
         </div>
     </div>
+  </div>
 
-</div>
 </div>
 
 
