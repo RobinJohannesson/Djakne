@@ -21,7 +21,18 @@ ProductsCtrl.$inject = ['productService'];
 function ProductsCtrl(productService) {
   var ctrl = this;
 
-  ctrl.products = productService.products;
+  
+
+  ctrl.shouldShowCategories = false;
+  ctrl.toggleCategories = toggleCategories;
+
+  function toggleCategories() {
+  	ctrl.shouldShowCategories = ctrl.shouldShowCategories ? false : true;
+  	console.log(ctrl.shouldShowCategories);
+  }
 
 }
+
+
+
 

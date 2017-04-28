@@ -47,6 +47,9 @@ footer {
     height: auto;
 }
 
+#kat-div{
+    display: block;
+}
 /*Sidebar*/
 #side-menu {
     position:absolute;
