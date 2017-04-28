@@ -10,22 +10,25 @@
     </div>
 </div>
 
+
 <!-- This is where all products is displayed -->
 
 <div class="row">
-    <div ng-repeat="product in ctrl.products" class="col-md-4 portfolio-item">
+
+    <div ng-repeat="product in ctrl.products" class="col-lg-4 col-xs-12 portfolio-item">
         <a href="#">
             <img class="img-responsive" src=" {{ product.image }}" alt="">
         </a>
-        <div class="img_label">
-            <h2 id="label_text"> {{ product.title }} </h2>
+        <div class="img-label col-lg-12 col-xs-12">
+            <h2 id="label-text"> {{ product.title }} </h2>
         </div>
-        <div class="heart_icon">
+        <div class="heart-icon">
             <a href="#" >
                 <span class="glyphicon glyphicon-heart heart"></span>
             </a>
         </div>
     </div>
+
 </div>
 
 
