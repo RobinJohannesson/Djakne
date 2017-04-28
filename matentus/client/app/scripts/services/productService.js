@@ -28,12 +28,13 @@
       state.products.push.apply(state.products, products);
     }
 
+
     var errorLogger = function(response) {
       console.log(response);
     };    
 
     return {
-      products: state.products,
+      products: state.products
     };
 
   };

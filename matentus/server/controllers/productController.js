@@ -6,7 +6,7 @@ var router  = express.Router();
 module.exports = {
 	getAll: 	function(req, res) {
 					var subcategoryId = req.params.id;
-					models.Product.findAll()
+					models.Product.findAll({order: 'likeAmount desc'})
 					.then(function(products) {
 						res.json(products);
 					});

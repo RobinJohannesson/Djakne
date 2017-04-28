@@ -36,10 +36,7 @@ function ProductsCtrl($routeParams, productService, categoryService) {
 	ctrl.toggleSubCategories = toggleSubCategories;
 	ctrl.sortProductsBy = sortProductsBy;
 
-
-
 	updateCategoryHeader();
-	
 
 	function toggleCategories() {
 	    ctrl.shouldShowCategories = ctrl.shouldShowCategories ? false : true;
@@ -56,10 +53,10 @@ function ProductsCtrl($routeParams, productService, categoryService) {
 	function sortProductsBy(property) {
 		ctrl.products.sort( function (a, b) {
 		    if ((typeof b[property] === 'undefined' && typeof a[property] !== 'undefined') || a[property] < b[property]) {
-		        return -1;
+		        return 1;
 		    }
 		    if ((typeof a[property] === 'undefined' && typeof b[property] !== 'undefined') || a[property] > b[property]) {
-		        return 1;
+		        return -1;
 		    }
 		    return 0;
 		});
