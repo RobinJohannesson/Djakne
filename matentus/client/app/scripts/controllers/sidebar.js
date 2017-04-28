@@ -11,7 +11,7 @@ angular.module('matentusApp')
 // 	This controller has access to "services/categoryService.js"
 // ------------------------------------------------------------
 
-MainCtrl.$inject = ['categoryService'];
+SidebarCtrl.$inject = ['categoryService'];
 
 // ------------------------------------------------------------
 // 	Variables and functions available to "views/navbar.html"

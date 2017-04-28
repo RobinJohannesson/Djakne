@@ -8,14 +8,9 @@ angular
     // $locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'ctrl'
-      })
-      .when('/products', {
-        templateUrl: 'views/products.html',
+       templateUrl: 'views/products.html',
         controller: 'ProductsCtrl',
-        controllerAs: 'ctrl'      
+        controllerAs: 'ctrl'    
       })
       .otherwise({
         redirectTo: '/'
