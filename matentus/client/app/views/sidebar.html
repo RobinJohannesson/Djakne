@@ -13,14 +13,14 @@
   <!-- End of hamburger button -->
 
   <!-- Side menu -->
-  <div ng-if="ctrl.shouldShowDropdown" class="col-xs-9 col-sm-5 col-lg-2" id="side_menu">
-    <div class="col-xs-3 col-md-4 col-md-offset-8 close_icon">
+  <div ng-if="ctrl.shouldShowDropdown" class="col-xs-9 col-sm-5 col-lg-2" id="side-menu">
+    <div class="col-xs-3 col-xs-offset-9 col-md-2 col-md-offset-10 col-lg-3 col-lg-offset-9 close-icon">
       <a href="#">
-        <img ng-click="ctrl.toggleDropdown()" alt="#" src="../images/close.png" class="close col-xs-12" id="close_btn">
+        <img ng-click="ctrl.toggleDropdown()" alt="#" src="../images/close.png" class="close col-xs-12" >
       </a>
     </div>
     <div>
-      <ul ng-repeat="category in ctrl.categories" class="categ-list side_content col-xs-12">
+      <ul ng-repeat="category in ctrl.categories" class="categ-list side-content col-xs-12">
         <li>{{ category.title }} </li>
       </ul>
     </div>
