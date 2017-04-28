@@ -1,5 +1,6 @@
 var models  = require('../models');
 var express = require('express');
+var bodyParser = require('body-parser');
 var router  = express.Router();
 
 module.exports = {
@@ -20,5 +21,10 @@ module.exports = {
 					.then(function(product) {
 						res.json(product);
 					});
-				}
+				},
+	
+	createProduct:		function(req, res) {
+							models.Product.create({title: req.body.title, description: req.body.description, image: 'imagelink', rating: 0, approved: false, likeAmount: 0, subcategory_id: req.body.subcategoryid});
+	}
+	
 }
