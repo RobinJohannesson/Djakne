@@ -7,19 +7,12 @@
     Kategorier<span class="glyphicon glyphicon-menu-down"></span>
     </button>
             <div ng-if="ctrl.shouldShowCategories" id="kat-div" class="kat-div col-xs-12">
-                <h3 class="col-xs-12">Mat</h3>
-                <h4 class="col-xs-4">Frukost</h4>
-                <h4 class="col-xs-4">Frukost</h4>
-                <h4 class="col-xs-4">Frukost</h4>
-                <h4 class="col-xs-4">Frukost</h4>
-                <h4 class="col-xs-4">Frukost</h4>
-                <h3 class="col-xs-12">Dryck</h3>
-                <h4 class="col-xs-4">Kaffe</h4>
-                <h4 class="col-xs-4">Kaffe</h4>
-                <h4 class="col-xs-4">Kaffe</h4>
-                <h4 class="col-xs-4">Kaffe</h4>
-                <h4 class="col-xs-4">Kaffe</h4>
-            </div>  
+                
+                <ul ng-repeat="category in ctrl.categories"><li>
+                {{ category.title }}
+                </li></ul>
+            </div>
+             
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
               <div class="btn-group" role="group">
                   <button type="button" class="col-xs-12 sort btn btn-default active">
