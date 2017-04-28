@@ -26,6 +26,10 @@ router.post('/postproduct', function(req, res){
 	productController.createProduct(req, res);
 });
 
+router.get('/', function(req, res) {
+	productController.getAll(req, res);
+});
+
 // -----------------------------------------------------
 // Local exports
 // -----------------------------------------------------
