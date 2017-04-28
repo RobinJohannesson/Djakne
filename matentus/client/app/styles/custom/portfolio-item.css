@@ -1,0 +1,89 @@
+html, body{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+}
+#burger{
+    float: left;
+    border-radius: 0;
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+}
+#kategori{
+    margin: 0;
+    float: left;
+    border-radius: 0;
+    display: block;
+    border-style: none none solid none;
+    border-width: thin;
+    border-color: #fff;
+    
+    animation: slide_back 1s;
+}
+.btn-group > .active{
+    background: #fff;
+    color: #000;
+    border-bottom-style: none;
+}
+.kat-div{
+    box-shadow: inset 0px 2px 20px 1px;
+    padding: 0px 0px 10px 0px;
+}
+.sorts{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+.sort{
+    transition: 0.5s;
+    font-size: 120%;
+    background: #d3d3d3;
+    color: #fff;
+    border-color: #d3d3d3;
+}
+.btn-group > .sort:hover{
+    background: #fff;
+}
+.btn-group > .sort:active:focus{
+    background: #fff;
+}
+.padding-0{
+    padding: 0;
+}
+.margin-0{
+    margin: 0;
+}
+#burger .icon-bar{
+    width: 100%;
+    margin-top: 8px;
+}
+.icon-bar{
+    background-color: #000;
+}
+.collapse{
+    background: #111;
+    transform: 0.5s;
+}
+.navbar{
+    background: rgba(160, 160, 160, 0.8);
+    border-style: none;
+    box-shadow: 0 0.5px 20px 1px rgba(160, 160, 160, 0.8);
+}
+.social-div{
+    text-align: center;
+    margin-top: 0px;
+}
+/*!
+ * Start Bootstrap - Portfolio Item (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+.portfolio-item {
+    margin-bottom: 25px;
+}
+footer {
+    margin: 40px 0;
+}
+.copy{
+    margin: 10px 0px;
+}

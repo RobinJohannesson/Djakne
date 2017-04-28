@@ -1,0 +1,248 @@
+body {
+    padding-top: 0px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+.portfolio-item {
+    margin-bottom: 25px;
+}
+
+footer {
+    margin: 50px 0;
+}
+footer p {
+/*should be in middle*/
+}
+
+
+
+.img_label {
+    position:absolute;
+    bottom: 0px;
+    /*width is the width of current pic*/
+    width:360px;
+    height: 25%;
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,0.7);
+   
+}
+#label_text {
+    margin: 2.5%;
+    color: white;
+}
+
+ul img {
+    width: 30px;
+}
+
+#icons{
+    margin-left: 80%;
+}
+.heart_icon{
+    position:absolute;
+    top: 5%;
+    left: 85%;
+}
+.heart{
+    color: rgb(0,0,0);
+    color: rgba(0,0,0,0.8); 
+    font-size: 250%;
+}
+
+#side_menu {
+    position:absolute;
+    position: fixed;
+    bottom: 0px;
+    /*width is the width of current pic
+    width:20%;*/
+    height: 100%;
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,0.9);
+    box-shadow: 1px 0px 30px 5px #000;
+    /*display: none;*/                          /* <-- Här har kajsa ändrat från none till block */
+    display: block;
+    z-index: 100;
+}
+
+.side_content {
+    margin: 2.5%;
+    color: white;
+}
+
+.close_icon{
+    position:absolute;
+}
+.close{
+    color: rgb(0,0,0);
+    color: rgba(0,0,0,0.8); 
+    padding: 10px 0px;
+}
+.side_content{
+    list-style: none;
+    margin-top: 30%;
+}
+.side_content li a {
+    text-decoration: none;
+    color: white;
+}
+.side_content li {
+    padding: 5%;
+    color: white;  
+}
+h3 {
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+}
+
+#burger{
+	margin-top: 3.5%;
+}
+/*Create account with EMAIL*/
+#email-form{
+    background: #000;
+    color: #fff;
+    padding: 20px;
+}
+.email-click{
+    color: #fff;
+}
+/*Sign in CSS*/
+.sign-in-mobile{
+    background: #000;
+    display: none;
+    text-align: center;
+    padding:4px;
+}
+.sign-in-mobile a{
+    width: 34px;
+    transition: 0.5s;
+    border-style: solid;
+    border-width: 0.5px;
+}
+.color-grey{
+    color: #777;
+    border-color: #777;
+}
+.color-white{
+    color: #fff;
+    border-color: #fff;
+}
+.sign-in-mobile a:hover{
+    color: #eee;
+    border-color: #eee
+}
+#sign-up-with{
+    border-style: none;
+    background: #000;
+}
+#sign-up-with:hover{
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+}
+.px-2 {
+  padding-left: ($spacer-x * .5) !important;
+  padding-right: ($spacer-x * .5) !important;
+}
+@media screen and (max-width: 720px){
+    .sign_in a{
+        display: none;
+    }
+    .sign-in-mobile{
+        display: block;
+    }
+}
+.sign_in i{
+    color: white;
+    font-size: 150%;
+    margin-right: 10%;
+    
+}
+.label-default{
+    background-color: black;
+    border-radius: 5px 0px 0px 5px;
+    display: flex;
+    align-items: center;
+    width:18%;
+}
+.sign_in a {
+    color: white;
+    position: fixed;
+    left:96%;
+    z-index: 102;
+    width: 100%;
+}
+.sign_in a:hover{
+    color: white;  
+    animation: slider 1s;
+    left:83%;
+}
+.hover_social{
+    animation-play-state: paused;
+    animation: slide_back 1s;  
+}
+
+@media screen and (max-width: 960px){
+    .sign_in a{
+        left: 96%;
+    }
+    .sign_in a:hover{ 
+        left: 71%;
+        animation: slider 1s;
+    }
+}
+@media screen and (min-width: 961px){
+    .sign_in a {
+        left:97%;
+        z-index: 102;
+    }
+    .sign_in a:hover{ 
+        animation: slider961 1s;
+        left:80%;
+    }
+}
+#facebook{
+    top: 6.7%;
+}
+#google{
+    top: 12%;
+}
+#email{
+    top: 18%;
+}
+
+@keyframes slider{
+    from {left:96%}
+    to {left:71%}   
+}
+@keyframes slider961{
+    from {left:95%}
+    to {left:80%}   
+}
+
+/*Margin and padding classes*/
+.mb-10{
+    margin-bottom: 10px;
+}
+.m-0{
+    margin: 0;
+}
+.m-10{
+    margin: 0px 10px;
+}
+.m-20{
+    margin: 0px 20px;
+}
+.p-2{
+    padding: 2px;
+}
+.p-4{
+    padding: 4px;
+}
+.p-6{
+    padding: 6px;
+}
+.p-8{
+    padding: 8px;
+}
+.p-10{
+    padding: 10px;
+}

@@ -1,0 +1,30 @@
+
+<!-- Sidebar HTML | Has access to variables and functions in "scripts/controllers/sidebar.js" -->
+
+<div ng-controller="SidebarCtrl as ctrl">
+
+  <!-- Hamburger button -->
+  <button ng-click="ctrl.toggleDropdown()" id="burger" type="button" class="navbar-toggle col-xs-2 col-md-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <!-- End of hamburger button -->
+
+  <!-- Side menu -->
+  <div ng-if="ctrl.shouldShowDropdown" class="col-xs-9 col-sm-5 col-lg-2">
+    <div class="col-xs-3 col-xs-offset-9 col-md-4 col-md-offset-8 close_icon" id="side_menu">
+      <a href="#">
+        <img ng-click="ctrl.toggleDropdown()" alt="#" src="../images/close.png" class="close col-xs-12" id="close_btn">
+      </a>
+    </div>
+    <div>
+      <ul ng-repeat="category in ctrl.categories" class="categ-list side_content col-xs-12">
+        <li>{{ category.title }} </li>
+      </ul>
+    </div>
+  </div>
+  <!-- End of side menu -->
+
+</div>

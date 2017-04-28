@@ -1,0 +1,132 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.heading p {
+    position: absolute;
+    right:5%;
+    top: 5%;
+    font-size: 180%;
+}
+
+
+.btn-primary{
+    background-color: black;
+    border-color: black;
+}
+
+.btn-primary:hover{
+    background-color: grey;
+    border-color: grey;
+}
+
+.admin_div{
+    display:none;
+    margin-top: 3%;
+}
+.default_div{
+    display: block;
+    margin-top: 3%;
+}
+
+#admin_add_product, #admin_categories{
+    margin-top: 1%
+}
+#new_category i{
+    color: black;
+    font-size: 300%;
+    padding-right: 5%;
+    padding-top: 5%;
+}
+#new_category {
+    font-size: 100%;
+    background-color: white;
+    color: black;
+    
+}
+.btn-group > .active{
+    background: #fff;
+    color: #000;
+    border-bottom-style: none;
+}
+
+.img_thumbnail{
+    max-width: 50px;
+}
+.sub_cat_div {
+    display: none;
+    padding-top: 3%
+}
+
+.main_cat_div {
+    display: none;
+    padding-top: 3%
+}
+
+.cat_radio_choice {
+    display: none;
+}
+.main_cat_save{
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+.form-group{
+    padding-top: 3%;
+}
+.sub_cat_save{
+   
+    padding-bottom: 3%;
+}
+
+.btn-primary{
+    background-color: black;
+    border-color: black;
+}
+
+.btn-primary:hover{
+    background-color: grey;
+    border-color: grey;
+}
+.change{
+    color: black;
+    float: right;
+    padding-right: 10%;
+    
+}
+.change:hover{
+    color: darkgrey;
+}
+.delete{
+    float: right;
+    color: black;
+   
+}
+.delete:hover{
+    color: darkgrey;
+}
+
+.default_div a {
+    text-decoration: none;
+    color: black;
+}
+.default_div td:hover{
+    background-color: #F8F8F8;
+}
+
+.btn_save{
+    margin-top: 4.5%;
+}
+
+#image_upload{
+    padding-top:5.5%;
+    padding-left: 3%;
+}
+
+.manage_form{
+    display: none;
+}
+.manage_form h3{
+    border-bottom: 0px;
+    padding-left: 4%;
+    
+}
