@@ -12,14 +12,16 @@ angular.module('matentusApp')
 // 	This controller has access to "services/httpService.js"
 // ------------------------------------------------------------
 
-// ProductsCtrl.$inject = [''];
+ProductsCtrl.$inject = ['productService'];
 
 // ------------------------------------------------------------
 // 	Variables and functions available to "views/products.html"
 // ------------------------------------------------------------
 
-function ProductsCtrl() {
+function ProductsCtrl(productService) {
   var ctrl = this;
-  // ctrl.test = httpService.categories;
+
+  ctrl.products = productService.products;
+
 }
 

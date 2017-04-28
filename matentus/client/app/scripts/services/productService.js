@@ -7,25 +7,25 @@
 (function () {
   'use strict';
 
-  var categoryService = function ($http) {
+  var productService = function ($http) {
 
     var state = {};
-    state.categories = [];
-    getAllProducts();
+    state.products = [];
+    getProducts();
 
-    function getAllProducts() {
+    function getProducts() {
       $http({
         method: 'GET',
-        url: 'http://localhost:3000/api/categories'
+        url: 'http://localhost:3000/api/products'
       })
       .then(function(response) {
-        setCategories(response.data);
+        setProducts(response.data);
       }, errorLogger);
     }
 
-    function setProducts(categories) {
-      state.categories.length = 0;
-      state.categories.push.apply(state.categories, categories);
+    function setProducts(products) {
+      state.products.length = 0;
+      state.products.push.apply(state.products, products);
     }
 
     var errorLogger = function(response) {
@@ -33,12 +33,12 @@
     };    
 
     return {
-      categories: state.categories,
+      products: state.products,
     };
 
   };
 
   angular.module('matentusApp')
-    .factory('categoryService', categoryService);
+    .factory('productService', productService);
     
 })();

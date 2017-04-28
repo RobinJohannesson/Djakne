@@ -1,42 +1,32 @@
 <!-- Products HTML | Has access to variables and functions in "scripts/controllers/products.js" -->
-<div ng-controller="ProductsCtrl as ctrl">
 
-        <!-- Page Header -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Page Heading
-                    <small>Secondary Text</small>
-                </h1>
-            </div>
-        </div>
-        <!-- /.row -->
+<!-- Maybe put a page title and subtitle here -->
 
-        <!-- Projects Row -->
-        <div class="row">
-            
-            <!-- correct-->
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="images/kaffe.jpg" alt="">
-                </a>
-                <div class="img_label">
-                    <h2 id="label_text">TEST TEST TEST</h2>
-                </div>
-                <div class="heart_icon">
-                    <a href="#" >
-                        <span class="glyphicon glyphicon-heart heart"></span>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- correct-->
-            
-        
-            
-        </div>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            <small></small>
+        </h1>
+    </div>
 </div>
-        <!-- /.row -->
 
+<!-- This is where all products is displayed -->
+
+<div class="row">
+    <div ng-repeat="product in ctrl.products" class="col-md-4 portfolio-item">
+        <a href="#">
+            <img class="img-responsive" src=" {{ product.image }}" alt="">
+        </a>
+        <div class="img_label">
+            <h2 id="label_text"> {{ product.title }} </h2>
+        </div>
+        <div class="heart_icon">
+            <a href="#" >
+                <span class="glyphicon glyphicon-heart heart"></span>
+            </a>
+        </div>
+    </div>
+</div>
 
 
 
