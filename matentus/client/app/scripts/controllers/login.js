@@ -30,7 +30,7 @@ function LoginCtrl(facebookLoginService, googleLoginService, localLoginService) 
 
   function loginGoogle() {
   	console.log("Login Google");
-    // googleLoginService.login();
+    googleLoginService.login();
   }
 
   function loginLocal() {

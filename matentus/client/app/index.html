@@ -111,68 +111,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script type="text/javascript">
-  (function() {
-    var po = document.createElement('script');
-    po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://plus.google.com/js/client:plusone.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(po, s);
-  })();
-  </script>
-        <div class="col-md-6">
-                <button class="g-signin " 
-                    data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email"
-                    data-requestvisibleactions="http://schemas.google.com/AddActivity"
-                    data-clientId="1062166543636-m8nnt9b73m9o566ohuqtrsp32c7dvq5a.apps.googleusercontent.com"
-                    data-accesstype="offline"
-                    data-callback="mycoddeSignIn"
-                    data-theme="dark"
-                    data-cookiepolicy="single_host_origin">
-                </button>
-            </div>
-        <script type="text/javascript">
-    var gpclass = (function(){
-    
-    //Defining Class Variables here
-    var response = undefined;
-    return {
-        //Class functions / Objects
-        
-        mycoddeSignIn:function(response){
-            // The user is signed in
-            if (response['access_token']) {
-            
-                //Get User Info from Google Plus API
-                gapi.client.load('plus','v1',this.getUserInformation);
-                
-            } else if (response['error']) {
-                // There was an error, which means the user is not signed in.
-                //alert('There was an error: ' + authResult['error']);
-            }
-        },
-        
-        getUserInformation: function(){
-            var request = gapi.client.plus.people.get( {'userId' : 'me'} );
-            request.execute( function(profile) {
-                var email = profile['emails'].filter(function(v) {
-                    return v.type === 'account'; // Filter out the primary email
-                })[0].value;
-                var fName = profile.displayName;
-                $("#inputFullname").val(fName);
-                $("#inputEmail").val(email);
-                console.log(fName);
-                console.log(email);
-            });
-        }
-    
-    }; //End of Return
-    })();
-    
-    function mycoddeSignIn(gpSignInResponse){
-        gpclass.mycoddeSignIn(gpSignInResponse);
-    }
-    </script>
+    <script src="https://apis.google.com/js/api.js"></script>
 
 	</body>
 
