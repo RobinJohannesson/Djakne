@@ -23,16 +23,16 @@ function ProductCtrl($scope, $http) {
   ctrl.postProduct = postProduct;
   // ctrl.test = httpService.categories;
   function postProduct(){
-      console.log("test");
       console.log($scope);
       $http({
           method: 'POST',
           url: 'http://localhost:3000/api/products/postproduct',
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          data: {title: $scope.title, description: $scope.desc, subcategory: 1}
+          data: $.param({title: $scope.formData.title, description: $scope.formData.desc, subcategoryid: 1})
       })
       .then(function(response){
           console.log("testarrrr");
+          console.log(response);
       })
   }
 }
