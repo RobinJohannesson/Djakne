@@ -17,6 +17,11 @@ angular
         controller: 'ProductsCtrl',
         controllerAs: 'ctrl' 
       })
+      .when('/postproduct', {
+        templateUrl: 'views/postProduct.html',
+        controller: 'ProductCtrl',
+        controllerAs: 'ctrl' 
+      })
       .otherwise({
         redirectTo: '/'
       });

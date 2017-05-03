@@ -1,0 +1,19 @@
+<div ng-controller="productCtrl as ctrl">
+      <form data-toggle="validator" role="form">
+  <div class="form-group">
+    <label for="inputName" class="control-label">Name</label>
+    <input type="text" class="form-control" id="inputName" placeholder="Test Testsson" required>
+  </div>
+  <div class="form-group">
+    <label for="inputDescription" class="control-label">Beskrivning</label>
+      <textarea class="form-control" rows="5" id="inputDescription" placeholder="Beskrivning..." required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="inputImage" class="control-label">Ladda upp bild</label>
+      <input class="form-control" type="file" id="inputImage">
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+</div>
