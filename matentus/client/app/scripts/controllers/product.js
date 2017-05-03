@@ -28,7 +28,7 @@ function ProductCtrl($scope, $http) {
           method: 'POST',
           url: 'http://localhost:3000/api/products/postproduct',
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          data: $.param({title: $scope.formData.title, description: $scope.formData.desc, subcategoryid: 1})
+          data: $.param({title: $scope.formData.title, description: $scope.formData.desc, subcategoryid: 1, image: $scope.formData.image})
       })
       .then(function(response){
           console.log("testarrrr");
