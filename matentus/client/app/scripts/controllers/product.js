@@ -24,6 +24,10 @@ function ProductCtrl($scope, $http) {
   // ctrl.test = httpService.categories;
   function postProduct(){
       console.log($scope);
+      console.log($scope.getTheFiles);
+      $scope.getTheFiles = function ($files) {
+          console.log($files);
+      };
       $http({
           method: 'POST',
           url: 'http://localhost:3000/api/products/postproduct',
@@ -31,7 +35,6 @@ function ProductCtrl($scope, $http) {
           data: $.param({title: $scope.formData.title, description: $scope.formData.desc, subcategoryid: 1, image: $scope.formData.image})
       })
       .then(function(response){
-          console.log("testarrrr");
           console.log(response);
       })
   }
