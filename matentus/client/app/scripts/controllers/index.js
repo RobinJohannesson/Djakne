@@ -22,6 +22,11 @@ angular
         controller: 'ProductCtrl',
         controllerAs: 'ctrl' 
       })
+      .when('/admin/', {
+       templateUrl: 'views/admin.html',
+       controller: 'AdminCtrl',
+       controllerAs: 'ctrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
