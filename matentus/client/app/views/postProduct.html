@@ -1,5 +1,5 @@
-<div ng-controller="productCtrl as ctrl">
-      <form data-toggle="validator" role="form">
+<div ng-controller="ProductCtrl as ctrl">
+  <form data-toggle="validator" role="form">
   <div class="form-group">
     <label for="inputTitle" class="control-label">Titel</label>
     <input type="text" class="form-control" id="inputTitle" placeholder="Titeln" required>
@@ -13,7 +13,7 @@
       <input class="form-control" type="file" id="inputImage">
   </div>
   <div class="form-group">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" ng-click="ctrl.postProduct">Submit</button>
   </div>
 </form>
 </div>

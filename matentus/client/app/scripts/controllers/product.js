@@ -21,5 +21,8 @@ angular.module('matentusApp')
 function ProductCtrl() {
   var ctrl = this;
   // ctrl.test = httpService.categories;
+  function postProduct(){
+    alert("funkar");  
+  }
 }
 
