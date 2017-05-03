@@ -20,7 +20,7 @@ angular.module('matentusApp')
 
 function ProductCtrl($scope, $http) {
   var ctrl = this;
-    ctrl.postProduct = postProduct;
+  ctrl.postProduct = postProduct;
   // ctrl.test = httpService.categories;
   function postProduct(){
       console.log("test");
