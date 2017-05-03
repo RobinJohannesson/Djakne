@@ -23,11 +23,16 @@ module.exports = {
 				},
 	
 	createProduct:		function(req, res) {
+							console.log("Hej");
 							models.Product.create({title: req.body.title, description: req.body.description, image: 'imagelink', rating: 0, approved: false, likeAmount: 0, subcategory_id: req.body.subcategoryid});
 	},
 	
 	deleteProduct:		function (req, res){
-		//TODO
+							//TODO
+	},
+	
+	approveProduct:		function (req, res){
+						   //TODO
 	}
 	
 }
