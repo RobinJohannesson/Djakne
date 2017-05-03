@@ -8,6 +8,25 @@ footer {
 }
 */
 
+/*sorting*/
+.category-dropdown{
+    display: block;
+    margin: 0;
+    float: left;
+    border-radius: 0;
+    display: block;
+    border-style: none none solid none;
+    border-width: thin;
+    border-color: #fff;
+    
+    animation: slide_back 1s;
+}
+
+.category-content{
+   
+    box-shadow: inset 0px 1px 8px 1px;
+    
+}
 /*Products*/
 .portfolio-item {
     padding: 0%;
@@ -47,9 +66,7 @@ footer {
     height: auto;
 }
 
-#kat-div{
-    display: block;
-}
+
 /*Sidebar*/
 #side-menu {
     position:absolute;
@@ -180,6 +197,7 @@ footer {
 #sign-up-with{
     border-style: none;
     background: #000;
+    width: auto;
 }
 #sign-up-with:hover{
     background: #000;
