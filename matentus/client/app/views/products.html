@@ -11,7 +11,7 @@
 
  <!-- Categories dropdown -->
 
- <div ng-if="ctrl.shouldShowCategories" id="kat-div" class="kat-div col-xs-12">
+ <div ng-if="ctrl.shouldShowCategories" id="kat-div" class="kat-div col-xs-12 sort">
    <div ng-repeat="category in ctrl.categories">
      <h2 ng-click="ctrl.toggleSubCategories(category.id)"> {{ category.title }} </h2>
      <div ng-if="ctrl.currentCategoryId === category.id" ng-repeat="subcategory in ctrl.subCategories" >
@@ -33,12 +33,22 @@
        <button ng-click="ctrl.sortProductsBy('created')" type="button" class="col-xs-12 sort btn btn-default ">
            Senaste
        </button>
-   </div>
-   <div class="btn-group" role="group">
+   </div >
+<div class="dropdown btn-group" role="group">
+  <button class="btn btn-secondary dropdown-toggle col-xs-12 sort btn-default"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+   <!--<div class="btn-group" role="group">
        <button ng-click="ctrl.sortProductsBy('rating')" type="button" class="col-xs-12 sort btn btn-default">
            Vi Tipsar
        </button>
-   </div>
+   </div>-->
  </div>
 
  <!-- Category and subcategory title -->
