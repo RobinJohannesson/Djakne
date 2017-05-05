@@ -6,26 +6,28 @@
 'use strict';
 
 angular.module('matentusApp')
-	.controller('AdminCtrl', AdminCtrl);
+    .controller('AdminCtrl', AdminCtrl);
 
 // ------------------------------------------------------------
 // 	This controller has access to "services/httpService.js"
 // ------------------------------------------------------------
 
- AdminCtrl.$inject = ['$scope'];
+AdminCtrl.$inject = ['$scope', '$location','$routeParams'];
 
 // ------------------------------------------------------------
 // 	Variables and functions available to "views/admin.html"
 // ------------------------------------------------------------
 
-function AdminCtrl($scope) {
-    $scope = $scope;
+function AdminCtrl($scope, $location,$routeParams) {
+
     var ctrl = this;
-    ctrl.postAdmin = postAdmin;
-  // ctrl.test = httpService.categories;
-    function postAdmin(){
-        alert("funkar");  
-  };
+    ctrl.changeView=changeView;
+    // ctrl.test = httpService.categories;
+    function changeView(view){
+        console.log("t="+view);
+        $location.url('/admin'+view);
+    }
+
 };
 
 

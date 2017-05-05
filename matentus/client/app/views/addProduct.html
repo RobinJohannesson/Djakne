@@ -1,0 +1,85 @@
+<div ng-controller="AdminCtrl as ctrl">
+    <!-- Page Content -->
+
+
+    <div class="btn-group btn-group-justified admin_btns" role="group" aria-label="...">
+                <div  class="btn-group" role="group">
+                    <button ng-click ="ctrl.changeView('/')" type="button" class="col-xs-12 admin_btn btn btn-default" id="product_request_btn">
+                        Produktförfrågningar
+                    </button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button ng-click ="ctrl.changeView('/addproduct')" type="button" class="col-xs-12 admin_btn btn btn-default active" id="add_product_btn">
+                        Lägg till produkt
+                    </button>
+                </div>
+                
+                <div class="btn-group" role="group">
+                    <button ng-click ="ctrl.changeView('/changeproduct')" type="button" class="col-xs-12 admin_btn btn btn-default" id="manage_product_btn">
+                        Ändra produkt
+                    </button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button ng-click ="ctrl.changeView('/managecategories')" type="button" class="col-xs-12 admin_btn btn btn-default" id="manage_cat_btn">
+                        Hantera kategorier
+                    </button>
+                </div>
+            </div>
+
+    <form class=" col-lg-10 col-lg-offset-1 admin_div" id="admin_add_product"> 
+        <!--
+<div class="form-group " >
+<label for="exampleInputEmail1">Email address</label>
+<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+</div>
+-->
+
+        <div class="form-group col-lg-6">
+            <label for="title">Produktitel</label>
+            <input type="text" class="form-control" id="title-input">
+        </div>
+
+        <div class="form-group col-lg-6">
+            <label for="distributor">Leverantör</label>
+            <input type="text" class="form-control" id="distributor-input">
+        </div>
+
+        <div class="form-group col-lg-6">
+            <label for="select-main-cat">Välj huvudkategori</label>
+            <select class="form-control" id="select-main-cat">
+                <option>huvudkategori 1</option>
+                <option>huvudkategori 2</option>
+                <option>huvudkategori 3</option>
+
+            </select>
+        </div>
+
+        <div class="form-group col-lg-6">
+            <label for="select-sub-cat">Välj subkategori</label>
+            <select class="form-control" id="select-sub-cat">
+                <option>subkategori 1</option>
+                <option>subkategori 2</option>
+                <option>subkategori 3</option>
+                <option>subkategori 4</option>
+                <option>subkategori 5</option>
+            </select>
+        </div>
+
+        <div class="form-group col-lg-12">
+            <label for="product-description">Produktbeskrivning</label>
+            <textarea class="form-control" id="product-description" rows="3"></textarea>
+        </div>
+        <div class="col-lg-2 "> 
+            <img src="http://placehold.it/180" alt="your image" />
+        </div>    
+        <div class="form-group col-lg-4" id="image_upload">
+            <label for="image-upload">Bilduppladdning</label>
+            <input type="file" class="form-control-file" aria-describedby="fileHelp" onchange="readURL(this);">
+            <small id="fileHelp" class="form-text text-muted">Bilden bör vara i måttet 180x180.</small>
+            <div class="btn_save">
+                <button type="submit" class="btn btn-primary ">Ladda upp</button>
+            </div>
+        </div>
+
+    </form>

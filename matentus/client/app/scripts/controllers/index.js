@@ -22,8 +22,25 @@ angular
         controller: 'ProductCtrl',
         controllerAs: 'ctrl' 
       })
-      .when('/admin/', {
+      .when('/admin', {
        templateUrl: 'views/admin.html',
+       controller: 'AdminCtrl',
+       controllerAs: 'ctrl'
+      })
+      
+      .when('/admin/addproduct', {
+       templateUrl: 'views/addProduct.html',
+       controller: 'AdminCtrl',
+       controllerAs: 'ctrl'
+      })
+      .when('/admin/managecategories', {
+       templateUrl: 'views/manageCategory.html',
+       controller: 'AdminCtrl',
+       controllerAs: 'ctrl'
+      })
+      
+      .when('/admin/changeproduct', {
+       templateUrl: 'views/changeProduct.html',
        controller: 'AdminCtrl',
        controllerAs: 'ctrl'
       })
