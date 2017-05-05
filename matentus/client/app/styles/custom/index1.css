@@ -1,3 +1,10 @@
+.beta{
+    background: #999;
+    color: #fff;
+    font-size: 120%;
+    font-weight: 100;
+    padding: 0px;
+}
 /*
 .portfolio-item {
     margin-bottom: 25px;
@@ -59,14 +66,17 @@ footer {
     color: rgba(0,0,0,0.8); 
     font-size: 250%;
 }
+.img, .img > a, .img > a > img{
+    padding: 0px;
+}
 .img{
     display: block;
     width:370px;
     height: 278px;  
-    overflow: hidden;  
+    overflow: hidden;
 }
-.img img{
-    width: 100%;
+.img > a > img{
+    width: 110%;
     height: auto;
 }
 
