@@ -11,7 +11,7 @@ angular.module('matentusApp')
 // 	This controller has access to "services/login/..."
 // ------------------------------------------------------------
 
-LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginService'];
+LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginService', '$scope'];
 
 // ------------------------------------------------------------
 // 	Variables and functions available to "views/login.html"
@@ -33,9 +33,10 @@ function LoginCtrl(facebookLoginService, googleLoginService, localLoginService) 
     googleLoginService.login();
   }
 
-  function loginLocal() {
+  function loginLocal($scope) {
   	console.log("Login Local");
-    // localLoginService.login();
+    console.log($scope);
+    localLoginService.login();
   }
 
 }

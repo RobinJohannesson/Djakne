@@ -2,10 +2,13 @@
   'use strict';
 
   var localLoginService = function ($http) {
-
-
+      var isOnline = false;
+      
+    var login = function(){
+        console.log("local login service");
+    };
     return {
-      // login: login
+      login: login
     };
 
   };
