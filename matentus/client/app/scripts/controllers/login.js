@@ -41,7 +41,7 @@ function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, 
       method: 'POST',
       url: 'http://localhost:3000/api/register/newuser',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      data: $.param({user: $scope.formLogin.name, mail: $scope.formLogin.mail, password: $scope.formLogin.pass})
+      data: $.param({user: $scope.formLogin.name, email: $scope.formLogin.mail, password: $scope.formLogin.pass})
     })
     .then(function(response){
       console.log(response);
