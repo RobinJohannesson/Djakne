@@ -34,9 +34,16 @@ function ProductsCtrl($routeParams, productService, categoryService) {
 
 	ctrl.toggleCategories = toggleCategories;
 	ctrl.toggleSubCategories = toggleSubCategories;
-	ctrl.sortProductsBy = sortProductsBy;
 
-	updateCategoryHeader();
+	ctrl.currentOrder = '';
+	ctrl.orderBy = orderBy;
+
+	orderBy('likeAmount');
+
+	function orderBy(property) {
+		ctrl.currentOrder = property;
+	}
+
 
 	function toggleCategories() {
 	    ctrl.shouldShowCategories = ctrl.shouldShowCategories ? false : true;
@@ -48,18 +55,6 @@ function ProductsCtrl($routeParams, productService, categoryService) {
 
 	function updateCategoryHeader() {
 		ctrl.categoryHeader = (ctrl.currentCategoryTitle && ctrl.currentSubCategoryTitle) ? ctrl.currentCategoryTitle + ' > ' + ctrl.currentSubCategoryTitle : 'Kategorier';
-	}
-
-	function sortProductsBy(property) {
-		ctrl.products.sort( function (a, b) {
-		    if ((typeof b[property] === 'undefined' && typeof a[property] !== 'undefined') || a[property] < b[property]) {
-		        return 1;
-		    }
-		    if ((typeof a[property] === 'undefined' && typeof b[property] !== 'undefined') || a[property] > b[property]) {
-		        return -1;
-		    }
-		    return 0;
-		});
 	}
 
 }
