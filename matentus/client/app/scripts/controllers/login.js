@@ -17,7 +17,7 @@ LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginSe
 // 	Variables and functions available to "views/login.html"
 // ------------------------------------------------------------
 
-function LoginCtrl(facebookLoginService, googleLoginService, localLoginService) {
+function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, $scope) {
 
   var ctrl = this;
   ctrl.loginFacebook = loginFacebook;
