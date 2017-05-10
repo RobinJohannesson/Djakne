@@ -13,8 +13,6 @@ var passportJWT = require("passport-jwt");
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
 
-
-
 // -----------------------------------------------------
 // Authentication
 // -----------------------------------------------------
@@ -39,7 +37,6 @@ var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
 passport.initialize();
 passport.use(strategy);
 
-
 // -----------------------------------------------------
 // Define API routes
 // -----------------------------------------------------
@@ -58,7 +55,6 @@ router.post('/postproduct',  passport.authenticate('jwt', { session: false }), f
 router.get('/',  function(req, res){
 	productController.getAll(req, res);
 });
-
 
 // -----------------------------------------------------
 // Local exports

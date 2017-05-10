@@ -42,14 +42,6 @@ module.exports = {
 
 	},
 
-	createFacebookUser: function (req, res){
-
-	},
-
-	createGoogleUser: function (req, res){
-
-	},
-
 	controlPassword: function(password, hashedPassword){
 		console.log(hashedPassword);
 		console.log(passwordHash2.isHashed(hashedPassword));

@@ -6,8 +6,6 @@ var express = require('express');
 var router = express.Router();
 var loginController = require('../controllers/loginController');
 
-
-
 // -----------------------------------------------------
 // Facebook Login Route
 // -----------------------------------------------------
@@ -31,8 +29,6 @@ router.post('/email', function(req, res) {
 router.post('/google', function(req, res) {
 	loginController.googlelogin(req, res);
 });
-
-
 
 // -----------------------------------------------------
 // Local exports

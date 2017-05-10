@@ -7,7 +7,6 @@ var userController = require('../controllers/userController');
 var likeController = require('../controllers/likeController');
 var commentController = require('../controllers/commentController');
 
-
 // -----------------------------------------------------
 // Define API routes
 // -----------------------------------------------------
@@ -23,7 +22,6 @@ router.get('/', function(req, res) {
 router.get('/:id/likes', function(req, res) {
 	likeController.getAllLikesOfUser(req, res);
 });
-
 
 // -----------------------------------------------------
 // Local exports

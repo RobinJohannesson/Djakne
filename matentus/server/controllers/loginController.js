@@ -9,6 +9,7 @@ var jwt = require('jsonwebtoken');
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
 
+
 var jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
 jwtOptions.secretOrKey = 'tasmanianDevil';
@@ -33,16 +34,14 @@ var authenticate = new Promise(function() {
 module.exports = {
 
 	fblogin: 	function(req, res) {
-
+		var fbtoken = req.body.fbtoken;
 		// authenticate to facebook api
 
-		models.Category.findAll().then(function(categories) {
-			res.json(categories);
-		});
 	},
 	
 	googlelogin: 	function(req, res) {
-
+		
+		// authenticate to google api
 
 	},
 

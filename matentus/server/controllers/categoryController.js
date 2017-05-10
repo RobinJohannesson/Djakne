@@ -28,16 +28,3 @@ module.exports = {
 	}
 	
 }
-
-// router.get('/', function(req, res) {
-//   models.Category.findAll({
-//     include: [ models.Task ]
-//   }).then(function(users) {
-//     res.render('index', {
-//       title: 'Sequelize: Express Example',
-//       users: users
-//     });
-//   });
-// });
-
-// module.exports = router;
