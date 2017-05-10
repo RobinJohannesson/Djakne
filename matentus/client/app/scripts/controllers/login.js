@@ -11,13 +11,13 @@ angular.module('matentusApp')
 // 	This controller has access to "services/login/..."
 // ------------------------------------------------------------
 
-LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginService', '$scope'];
+LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginService', '$scope', '$http'];
 
 // ------------------------------------------------------------
 // 	Variables and functions available to "views/login.html"
 // ------------------------------------------------------------
 
-function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, $scope) {
+function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, $scope, $http) {
 
   var ctrl = this;
   ctrl.loginFacebook = loginFacebook;
@@ -33,9 +33,19 @@ function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, 
     googleLoginService.login();
   }
 
-  function loginLocal($scope) {
+  function loginLocal() {
   	console.log("Login Local");
     console.log($scope);
+    console.log($scope.formLogin);
+    $http({
+      method: 'POST',
+      url: 'http://localhost:3000/api/register/newuser',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      data: $.param({user: $scope.formLogin.name, mail: $scope.formLogin.mail, password: $scope.formLogin.pass})
+    })
+    .then(function(response){
+      console.log(response);
+    })
     localLoginService.login();
   }
 
