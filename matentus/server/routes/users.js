@@ -11,9 +11,6 @@ var commentController = require('../controllers/commentController');
 // -----------------------------------------------------
 // Define API routes
 // -----------------------------------------------------
-router.get('/:id/comments', function(req, res) {
-	commentController.getAllCommentsOfUser(req, res);
-});
 
 router.get('/:id', function(req, res) {
 	userController.get(req, res);

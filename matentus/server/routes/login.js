@@ -9,12 +9,29 @@ var loginController = require('../controllers/loginController');
 
 
 // -----------------------------------------------------
-// Define API routes
+// Facebook Login Route
 // -----------------------------------------------------
 
-router.post('/facebook' function(req, res) {
-	loginController.login(req, res);
+router.post('/facebook', function(req, res) {
+	loginController.fblogin(req, res);
 });
+
+// -----------------------------------------------------
+// Local Login Route
+// -----------------------------------------------------
+
+router.post('/email', function(req, res) {
+	loginController.locallogin(req, res);
+});
+
+// -----------------------------------------------------
+// Google Login Routee
+// -----------------------------------------------------
+
+router.post('/google', function(req, res) {
+	loginController.googlelogin(req, res);
+});
+
 
 
 // -----------------------------------------------------

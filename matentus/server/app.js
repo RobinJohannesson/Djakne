@@ -16,6 +16,7 @@ var categories = require('./routes/categories');
 var subcategories = require('./routes/subcategories');
 var products = require('./routes/products');
 var register = require('./routes/register');
+var login = require('./routes/login');
 
 // -----------------------------------------------------
 // Create express application
@@ -54,6 +55,7 @@ app.use('/api/categories', categories);
 app.use('/api/subcategories', subcategories);
 app.use('/api/products', products);
 app.use('/api/register', register);
+app.use('/api/login', login);
 
 // -----------------------------------------------------
 // Error handler - Catch 404 and forward
