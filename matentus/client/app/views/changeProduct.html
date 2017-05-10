@@ -35,50 +35,25 @@
                 <th>Bild</th>
               </tr>
             </thead>
-            <tbody>
-             <tr>
-                <td>Kaffe</td>
-                <td>Zoegas </td>
+            <tbody ng-controller="ProductsCtrl as ctrl">
+             <tr ng-repeat="product in ctrl.products">
+                <td>{{product.title}}</td>
+                <td>Zoegas</td>
                 <td><img src="images/exkaffe.jpg" alt="en bild" class="img_thumbnail"></td>
                   <td>
                 <a href="#" class=" change">
                <i class="fa fa-trash-o  fa-lg" aria-hidden="true"></i>
                 </a>  
-                <a href="#" class="change">
-                <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
-                    </a> 
+                     
+                <a class="change">
+                <i ng-click="ctrl.toggleForm()" class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                </a> 
+                   
                 </td>
                 
                  
               </tr>
-              <tr>
-                <td>Te</td>
-                <td>Lipton</td>
-                <td><img alt="en bild"></td>
-                <td>
-                <a href="#" class=" change">
-               <i class="fa fa-trash-o  fa-lg" aria-hidden="true"></i>
-                </a>  
-                <a href="#" class="change">
-                <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
-                    </a> 
-                </td>
-                
-              </tr>
-              <tr >
-                <td>Lamm</td>
-                <td>Bonden</td>
-                <td><img alt="en bild"></td>
-                <td>
-                <a href="#" class=" change">
-               <i class="fa fa-trash-o  fa-lg" aria-hidden="true"></i>
-                </a>  
-                <a class="change">
-                    <i ng-click="ctrl.toggleForm()" class="fa fa-pencil fa-lg" aria-hidden="true"></i>
-                </a> 
-                </td>
-                
-              </tr>
+            
             </tbody>
       </table>
         
