@@ -22,14 +22,19 @@ function AdminCtrl($scope, $location,$routeParams) {
 
     var ctrl = this;
     ctrl.changeView=changeView;
+    
+    ctrl.shouldShowForm = false;
+    ctrl.toggleForm = toggleForm;
     // ctrl.test = httpService.categories;
     function changeView(view){
         console.log("t="+view);
         $location.url('/admin'+view);
+        
     }
-
+ function toggleForm() {
+  	ctrl.shouldShowForm = ctrl.shouldShowForm ? false : true;
+  }
 };
-
 
 
 /*

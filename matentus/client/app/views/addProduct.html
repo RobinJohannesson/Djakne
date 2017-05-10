@@ -1,7 +1,7 @@
 <div ng-controller="AdminCtrl as ctrl">
     <!-- Page Content -->
 
-
+<div class="col-lg-12 default_div" >
     <div class="btn-group btn-group-justified admin_btns" role="group" aria-label="...">
                 <div  class="btn-group" role="group">
                     <button ng-click ="ctrl.changeView('/')" type="button" class="col-xs-12 admin_btn btn btn-default" id="product_request_btn">
@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-    <form class=" col-lg-10 col-lg-offset-1 admin_div" id="admin_add_product"> 
+    <form class=" col-lg-12 default_div" id="admin_add_product"> 
         <!--
 <div class="form-group " >
 <label for="exampleInputEmail1">Email address</label>
@@ -55,7 +55,7 @@
             </select>
         </div>
 
-        <div class="form-group col-lg-6">
+        <div class="form-group col-lg-6 displaynone">
             <label for="select-sub-cat">Välj subkategori</label>
             <select class="form-control" id="select-sub-cat">
                 <option>subkategori 1</option>
@@ -73,7 +73,7 @@
         <div class="col-lg-2 "> 
             <img src="http://placehold.it/180" alt="your image" />
         </div>    
-        <div class="form-group col-lg-4" id="image_upload">
+        <div class="form-group col-lg-4 " id="image_upload">
             <label for="image-upload">Bilduppladdning</label>
             <input type="file" class="form-control-file" aria-describedby="fileHelp" onchange="readURL(this);">
             <small id="fileHelp" class="form-text text-muted">Bilden bör vara i måttet 180x180.</small>
@@ -83,3 +83,4 @@
         </div>
 
     </form>
+    </div>
