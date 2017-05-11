@@ -13,6 +13,9 @@ var passportJWT = require("passport-jwt");
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
 
+var multer = require('multer');
+var upload = multer({ dest: 'images/'});
+
 // -----------------------------------------------------
 // Authentication
 // -----------------------------------------------------
@@ -40,9 +43,16 @@ passport.use(strategy);
 // -----------------------------------------------------
 // Define API routes
 // -----------------------------------------------------
+
 router.get('/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.get(req, res);
 });
+
+
+// --> Tillfälligt för att testa hämta produkter utan autentisering
+//router.get('/:id', function(req, res) {
+//	productController.get(req, res);
+//});
 
 router.get('/:id/likes',  passport.authenticate('jwt', { session: false }), function(req, res) {
 	likeController.getAllLikesOfProduct(req, res);
@@ -55,6 +65,15 @@ router.post('/postproduct',  passport.authenticate('jwt', { session: false }), f
 router.get('/',  function(req, res){
 	productController.getAll(req, res);
 });
+
+// Ladda upp ny produkt med bildfil -> Bilden lagras i /images
+
+router.post('/upload', upload.single('image'), function(req, res) {
+	console.log(req.body);
+	console.log(req.file);
+	productController.createProduct(req, res);
+});
+
 
 // -----------------------------------------------------
 // Local exports

@@ -1,41 +1,16 @@
 
 // ------------------------------------------------------------
-// 	Product Controller
+//  Product Controller
 // ------------------------------------------------------------
 
 'use strict';
 
 angular.module('matentusApp')
-	.controller('ProductCtrl', ProductCtrl);
+  .controller('ProductCtrl', ProductCtrl);
 
-// ------------------------------------------------------------
-// 	This controller has access to "services/httpService.js"
-// ------------------------------------------------------------
+ ProductCtrl.$inject = ['productService'];
 
- ProductCtrl.$inject = ['$scope', '$http', '$routeParams'];
-
-// ------------------------------------------------------------
-// 	Variables and functions available to "views/product.html"
-// ------------------------------------------------------------
-
-function ProductCtrl($scope, $http) {
+function ProductCtrl(productService) {
   var ctrl = this;
-  ctrl.postProduct = postProduct;
-  // ctrl.test = httpService.categories;
-  function postProduct(){
-      console.log($scope);
-      console.log($scope.getTheFiles);
-      $scope.getTheFiles = function ($files) {
-          console.log($files);
-      };
-      $http({
-          method: 'POST',
-          url: 'http://localhost:3000/api/products/postproduct',
-          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-          data: $.param({title: $scope.formData.title, description: $scope.formData.desc, subcategoryid: 1, image: $scope.formData.image})
-      })
-      .then(function(response){
-          console.log(response);
-      })
-  }
+  
 }

@@ -17,7 +17,7 @@ router.get('/:id', function(req, res) {
 
 router.get('/', function(req, res) {
 	userController.getAll(req, res);
-})
+});
 
 router.get('/:id/likes', function(req, res) {
 	likeController.getAllLikesOfUser(req, res);
