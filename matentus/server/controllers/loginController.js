@@ -38,13 +38,19 @@ module.exports = {
 		// authenticate to facebook api
 
 	},
-	
+
 	googlelogin: 	function(req, res) {
-		
+
 		// authenticate to google api
 
 	},
-
+	
+	/*
+	Local Login
+	Status, 0 : User authenticated, token returned.
+	Status, 1 : User dont exist.
+	Status, 2 : User exist, wrong password.
+	*/
 	locallogin: 	function(req, res) {
 		if(req.body.email && req.body.password){
 			var email = req.body.email;
@@ -64,6 +70,35 @@ module.exports = {
 			} else {
 				res.status(401).json({status:"2"});
 			} 
+		});
+	},
+	
+	/*
+	Create Local User
+	Status, 0 : User created, token returned.
+	Status, 1 : User already exist.
+	*/
+	createEmailUser:	function(req, res){
+		var hashedPassword = passwordHash.generate(req.body.password);       
+
+		var user = models.User.find({
+			where: {email: req.body.email}	   
+		})
+		.then(function(user) {
+			if (user){
+				res.jsonjson({status:1});
+			}
+			else if (!user) {
+				models.User.create({name: req.body.name, email: req.body.email, password: hashedPassword, admin: 0});
+				var user = models.User.find( {
+					where: {email: req.body.email}
+				})
+				.then(function() {
+					var payload = {id: user.id};
+					var token = jwt.sign(payload, jwtOptions.secretOrKey);
+					res.json({status: 0, token: token});
+				})
+			}
 		});
 	}
 }

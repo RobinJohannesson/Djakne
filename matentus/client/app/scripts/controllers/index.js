@@ -52,6 +52,11 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'ctrl'
       })
+       .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'ctrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
