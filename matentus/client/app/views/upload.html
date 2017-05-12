@@ -4,44 +4,44 @@
       <!-- Input title -->
       <div class="form-group col-lg-6">
         <label for="inputTitle" class="control-label">Titel</label>
-        <input type="text" class="form-control" ng-model="product.title" id="inputTitle" placeholder="" required />
+        <input type="text" class="form-control" ng-model="ctrl.product.title" id="inputTitle" placeholder="" required />
       </div>
     
       <!-- Input supplier -->
       <div class="form-group col-lg-6">
         <label for="distributor">Leverantör</label>
-        <input type="text" class="form-control" ng-model="product.distributor" id="distributor-input" />
+        <input type="text" class="form-control" ng-model="ctrl.product.distributor" id="distributor-input" />
       </div>
     
       <!-- Choose category -->
       <div class="form-group col-lg-6">
         <label for="select-main-cat">Huvudkategori</label>
-        <select ng-options="category.id as category.title for category in ctrl.categories" ng-model="product.category_id" class="form-control" id="select-main-cat"></select>
+        <select ng-options="category.id as category.title for category in ctrl.categories" ng-model="ctrl.product.category_id" class="form-control" id="select-main-cat"></select>
       </div>
 
 
       <!-- Choose subcategory -->
       <div class="form-group col-lg-6">
         <label for="select-sub-cat">Underkategori</label>
-        <select ng-options="subCategory.id as subCategory.title for subCategory in ctrl.subCategories | filter: {category_id: product.category_id}" ng-model="product.subcategory_id" class="form-control" id="select-sub-cat"></select>
+        <select ng-options="subCategory.id as subCategory.title for subCategory in ctrl.subCategories | filter: {category_id: product.category_id}" ng-model="ctrl.product.subcategory_id" class="form-control" id="select-sub-cat"></select>
       </div>
 
       <!-- Input description -->
       <div class="form-group col-lg-12">
         <label for="inputDescription" class="control-label">Beskrivning</label>
-          <textarea class="form-control" ng-model="product.description" rows="3" id="inputDescription" placeholder="" required></textarea>
+          <textarea class="form-control" ng-model="ctrl.product.description" rows="3" id="inputDescription" placeholder="" required></textarea>
       </div>
 
       <!-- Choose image file -->
       <div class="form-group col-lg-12" id="image_upload">
         <label for="image-upload">Bilduppladdning</label>
-        <input type="file" file-model="product.image" class="form-control-file" aria-describedby="fileHelp" />
+        <input type="file" file-model="ctrl.product.image" class="form-control-file" aria-describedby="fileHelp" />
         <small id="fileHelp" class="form-text text-muted">Bilden bör vara i måttet 180x180.</small>
       </div>
 
       <!-- Submit button -->
       <div class="form-group col-lg-12">
-        <button type="submit" class="btn btn-primary" ng-click="ctrl.upload(product)">Ladda upp</button>
+        <button type="submit" class="btn btn-primary" ng-click="ctrl.upload()">Ladda upp</button>
       </div>
    
     </form>

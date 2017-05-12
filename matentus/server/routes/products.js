@@ -74,6 +74,10 @@ router.post('/upload', upload.single('image'), function(req, res) {
 	productController.createProduct(req, res);
 });
 
+router.get('/images/:filename', function(req, res) {
+	var fileName = req.params.filename;
+	console.log("Requesting an image: " + fileName);
+});
 
 // -----------------------------------------------------
 // Local exports

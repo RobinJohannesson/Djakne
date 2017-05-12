@@ -44,7 +44,6 @@ function ProductsCtrl($routeParams, productService, categoryService) {
 		ctrl.currentOrder = property;
 	}
 
-
 	function toggleCategories() {
 	    ctrl.shouldShowCategories = ctrl.shouldShowCategories ? false : true;
 	}

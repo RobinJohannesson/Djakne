@@ -12,20 +12,15 @@ angular.module('matentusApp')
 
 function UploadCtrl(categoryService, productService, uploadService) {
   var ctrl = this;
-  
+
   ctrl.categories = categoryService.categories;
   ctrl.subCategories = categoryService.subCategories;
-
   ctrl.upload = upload;
+  ctrl.product = {};
 
-  function upload(data) {
-    console.log("upload controller: upload()");
-    console.log(data);
-    uploadService.upload(data);
+  function upload() {
+    console.log(ctrl.product);
+    uploadService.upload(ctrl.product);
   }
-
-
-
-
 
 }

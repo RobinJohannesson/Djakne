@@ -1,6 +1,6 @@
 
 // ------------------------------------------------------------
-//  Product Service. All properties of the returned object is
+//  Upload Service. All properties of the returned object is
 //  reachable for any controller who $inject this service.
 // ------------------------------------------------------------
 
@@ -10,19 +10,17 @@
   var uploadService = function ($http) {
 
       
-  	function upload(data) {
+  	function upload(product) {
   		var url = 'http://localhost:3000/api/products/upload';
   		var formData = new FormData();
-  		for(var key in data) {
-  			formData.append(key, data[key]);
+  		for(var key in product) {
+  			formData.append(key, product[key]);
   		}
   		$http.post(url, formData, {
   			transformRequest: angular.identity,
   			headers: { 'Content-Type': undefined }
   		});
   	}
-
-
     return {
       upload: upload
     };

@@ -40,8 +40,7 @@ module.exports = {
 	
 	createProduct:		function(req, res) {
 							models.Product.create({title: req.body.title, description: req.body.description, image: req.file.filename, rating: 0, approved: false, likeAmount: 0, subcategory_id: req.body.subcategory_id, created: 2017-05-01});
-							res.json("Added new product");
-							console.log("Added new product!");
+							console.log("Added new product: " + req.file.filename);
 	},
 	
 	deleteProduct:		function (req, res){
