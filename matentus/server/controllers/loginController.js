@@ -45,6 +45,12 @@ module.exports = {
 
 	},
 	
+	checkLoginStatus: 	function(req, res) {
+
+		// authenticate to google api
+
+	},
+	
 	/*
 	Local Login
 	Status, 0 : User authenticated, token returned.

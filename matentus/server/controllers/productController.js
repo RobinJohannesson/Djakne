@@ -6,7 +6,7 @@ var fs = require('fs');
 
 module.exports = {
 	getAll: 	function(req, res) {
-					var subcategoryId = req.params.id;
+					//var subcategoryId = req.params.id;
 					models.Product.findAll()
 					.then(function(products) {
 						res.json(products);
