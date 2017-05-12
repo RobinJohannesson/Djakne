@@ -21,23 +21,37 @@
  
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    
-    <ul class="nav navbar-nav col-lg-12">
-      <li class="active">
-  <button ng-click="ctrl.toggleDropdown()" id="burger" type="button" class="navbar-toggle col-xs-2 col-md-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      
+    <!-- Hamburger-->
+      
+    <ul class="nav navbar-nav col-lg-12 col-md-12 col-xs-12">
+      <li class="active col-lg-3 col-md-3">
+  <button ng-click="ctrl.toggleDropdown()" id="burger" type="button" class="navbar-toggle col-lg-3 col-md-3">
     <span class="sr-only">Toggle navigation</span>
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
         </li>
-      <li class="col-lg-3 col-lg-offset-2"><a href="#" ng-click="ctrl.orderBy('likeAmount')" type="button" class="col-xs-12" ng-class="{active: ctrl.currentOrder == 'likeAmount'}">Populärt</a></li>
-      <li class="col-lg-3"><a href="#" ng-click="ctrl.orderBy('created')" type="button" class="col-xs-12" ng-class="{active: ctrl.currentOrder == 'created'}">Senaste</a></li>
-    <li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-3">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ ctrl.categoryHeader }}
-        <span class="caret"></span></a>
-        <ul ng-if="ctrl.shouldShowCategories" class="dropdown-menu">
-          <li class="col-lg-3" ng-repeat="category in ctrl.categories"><a href="#!/{{ category.title }}"> {{ category.title }} </a></li>
+        <!-- Populärt -->
+
+      <li class="col-lg-3 col-md-3">
+          <a class="col-lg-3 col-md-3 col-xs-12"href="#" ng-click="ctrl.orderBy('likeAmount')" type="button" ng-class="{active: ctrl.currentOrder == 'likeAmount'}">Populärt</a>
+      </li>
+        
+        <!-- Senaste -->
+        
+      <li class="col-lg-3 col-md-3">
+          <a href="#" ng-click="ctrl.orderBy('created')" type="button" class="col-lg-3 col-md-3 col-xs-12" ng-class="{active: ctrl.currentOrder == 'created'}">Senaste</a>
+      </li>
+        
+        <!-- Kategorier -->
+
+    <li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-3 col-md-3">
+        <a class="dropdown-toggle col-lg-3 col-md-3" data-toggle="dropdown" href="#">{{ ctrl.categoryHeader }}<span class="caret"></span></a>
+        
+        <ul ng-if="ctrl.shouldShowCategories" class="dropdown-menu col-lg-3 col-md-3">
+          <li class="col-lg-3 col-md-3" ng-repeat="category in ctrl.categories"><a href="#!/{{ category.title }}"> {{ category.title }} </a></li>
         </ul>
       </li>
     </ul>
