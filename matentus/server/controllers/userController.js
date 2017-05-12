@@ -23,25 +23,6 @@ module.exports = {
 		});
 	},
 
-	createEmailUser:	function(req, res){
-		var hashedPassword = passwordHash.generate(req.body.password);       
-
-		var user = models.User.find( {
-			where: {email: req.body.email}	   
-		})
-		.then(function(user) {
-			if (user){
-				res.json(status=0);
-			}
-			else if (!user) {
-				models.User.create({name: req.body.name, email: req.body.email, password: hashedPassword, admin: 0});
-				res.json(status=1);
-			}
-
-		});
-
-	},
-
 	controlPassword: function(password, hashedPassword){
 		console.log(hashedPassword);
 		console.log(passwordHash2.isHashed(hashedPassword));
