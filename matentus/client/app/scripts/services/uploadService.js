@@ -11,7 +11,7 @@
 
       
   	function upload(product) {
-  		var url = 'http://localhost:3000/api/products/upload';
+  		var url = 'http://localhost:3000/api/products';
   		var formData = new FormData();
   		for(var key in product) {
   			formData.append(key, product[key]);
