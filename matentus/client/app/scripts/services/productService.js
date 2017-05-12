@@ -11,7 +11,9 @@
 
     var state = {};
     state.products = [];
+    state.suppliers = [];
     getProducts();
+    getSuppliers();
 
     function getProducts() {
       $http({
@@ -23,9 +25,24 @@
       }, errorLogger);
     }
 
+    function getSuppliers() {
+      $http({
+        method: 'GET',
+        url: 'http://localhost:3000/api/products/suppliers'
+      })
+      .then(function(response) {
+        setSuppliers(response.data);
+      }, errorLogger);
+    }
+
     function setProducts(products) {
       state.products.length = 0;
       state.products.push.apply(state.products, products);
+    }
+
+    function setSuppliers(suppliers) {
+      state.suppliers.length = 0;
+      state.suppliers.push.apply(state.suppliers, suppliers);
     }
 
     var errorLogger = function(response) {
@@ -33,7 +50,8 @@
     };    
 
     return {
-      products: state.products
+      products: state.products,
+      suppliers: state.suppliers
     };
 
   };

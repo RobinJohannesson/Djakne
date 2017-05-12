@@ -44,6 +44,10 @@ passport.use(strategy);
 // Define API routes
 // -----------------------------------------------------
 
+router.get('/suppliers', function(req, res) {
+	productController.getSuppliers(req, res);
+});
+
 router.get('/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.get(req, res);
 });
@@ -63,8 +67,11 @@ router.post('/postproduct',  passport.authenticate('jwt', { session: false }), f
 });
 
 router.get('/',  function(req, res){
+	productController.getSuppliers(req, res);
 	productController.getAll(req, res);
 });
+
+
 
 // Ladda upp ny produkt med bildfil -> Bilden lagras i /images
 

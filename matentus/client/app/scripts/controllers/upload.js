@@ -14,13 +14,14 @@ function UploadCtrl(categoryService, productService, uploadService) {
   var ctrl = this;
 
   ctrl.categories = categoryService.categories;
-  ctrl.subCategories = categoryService.subCategories;
+  ctrl.suppliers = productService.suppliers;
+
   ctrl.upload = upload;
   ctrl.product = {};
 
   function upload() {
-    console.log(ctrl.product);
     uploadService.upload(ctrl.product);
+    ctrl.product = {};
   }
 
 }

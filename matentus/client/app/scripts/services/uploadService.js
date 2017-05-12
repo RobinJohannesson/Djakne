@@ -9,7 +9,6 @@
 
   var uploadService = function ($http) {
 
-      
   	function upload(product) {
   		var url = 'http://localhost:3000/api/products';
   		var formData = new FormData();
