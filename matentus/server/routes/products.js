@@ -14,7 +14,7 @@ var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
 
 var multer = require('multer');
-var upload = multer({ dest: 'images/'});
+var upload = multer({ dest: 'public/images/'});
 
 // -----------------------------------------------------
 // Authentication
@@ -49,7 +49,7 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), function(re
 });
 
 
-// --> Tillfälligt för att testa hämta produkter utan autentisering
+// --> Tillfälligt för att testa hämta en produkt utan autentisering
 //router.get('/:id', function(req, res) {
 //	productController.get(req, res);
 //});
@@ -68,15 +68,8 @@ router.get('/',  function(req, res){
 
 // Ladda upp ny produkt med bildfil -> Bilden lagras i /images
 
-router.post('/upload', upload.single('image'), function(req, res) {
-	console.log(req.body);
-	console.log(req.file);
+router.post('/', upload.single('image'), function(req, res) {
 	productController.createProduct(req, res);
-});
-
-router.get('/images/:filename', function(req, res) {
-	var fileName = req.params.filename;
-	console.log("Requesting an image: " + fileName);
 });
 
 // -----------------------------------------------------

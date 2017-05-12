@@ -22,21 +22,6 @@ module.exports = {
 						res.json(product);
 					});
 				},
-
-	// --> Hur skickar vi data och bildfil i response till klient?
-
-	//get: 	function(req, res) {
-	//				var id = req.params.id;
-	//				models.Product.find( {
-	//					where: {id: id}
-	//				})
-	//				.then(function(product) {
-	//					console.log(product.image);
-	//				})
-	//				.then(function(product) {
-	//					res.json("Hej");
-	//				});
-	//			},
 	
 	createProduct:		function(req, res) {
 							models.Product.create({title: req.body.title, description: req.body.description, image: req.file.filename, rating: 0, approved: false, likeAmount: 0, subcategory_id: req.body.subcategory_id, created: 2017-05-01});
