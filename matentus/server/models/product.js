@@ -18,10 +18,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-//    supplier: {
-//      type: DataTypes.STRING,
-//      allowNull: true
-//    },
+    supplier: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     rating: {
       type: DataTypes.INTEGER(1),
       allowNull: false
@@ -46,7 +46,7 @@ module.exports = function(sequelize, DataTypes) {
     underscored: true,
     classMethods: {
       associate: function(models) {
-        Product.belongsTo(models.Subcategory),
+        Product.belongsTo(models.Category),
         Product.hasMany(models.Comment),
         Product.hasMany(models.Like)
       }

@@ -13,7 +13,6 @@ var bodyParser = require('body-parser');
 // -----------------------------------------------------
 var users = require('./routes/users');
 var categories = require('./routes/categories');
-var subcategories = require('./routes/subcategories');
 var products = require('./routes/products');
 var register = require('./routes/register');
 var login = require('./routes/login');
@@ -51,7 +50,6 @@ app.use(function(req, res, next) {
 // -----------------------------------------------------
 app.use('/api/users', users);
 app.use('/api/categories', categories);
-app.use('/api/subcategories', subcategories);
 app.use('/api/products', products);
 app.use('/api/register', register);
 app.use('/api/login', login);

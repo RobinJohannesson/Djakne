@@ -46,10 +46,6 @@ router.get('/:id', function(req, res) {
 	categoryController.get(req, res);
 });
 
-router.get('/:id/subcategories', function(req, res) {
-	subcategoryController.getAll(req, res);
-});
-
 router.post('/createcategory', function (req, res){
 	categoryController.createCategory(req, res);
 });
