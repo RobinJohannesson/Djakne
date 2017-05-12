@@ -44,7 +44,7 @@ module.exports = {
 		// authenticate to google api
 
 	},
-
+	
 	/*
 	Local Login
 	Status, 0 : User authenticated, token returned.
@@ -72,6 +72,12 @@ module.exports = {
 			} 
 		});
 	},
+	
+	/*
+	Create Local User
+	Status, 0 : User created, token returned.
+	Status, 1 : User already exist.
+	*/
 	createEmailUser:	function(req, res){
 		var hashedPassword = passwordHash.generate(req.body.password);       
 

@@ -16,7 +16,7 @@
             <i class="fa fa-envelope"></i>
         </a>
 </div>
-<div id="email-form-div" class="row">
+<div id="email-form-div" class="row" ng-show="ctrl.checkLoginStatus()">
     <form id="email-form">
         <!--action="http://localhost:3000/api/register/newuser" method="post"-->
         <div class="form-group">
@@ -34,6 +34,11 @@
             <button type="submit" class="btn btn-primary form-control" ng-click="ctrl.registerLocal()">Slutför registrering</button>
         </div>
     </form>
+</div>
+    
+<div id="logged-in-div" class="row" ng-show="ctrl.checkLoginStatus()">
+    <h2>Du är redan inloggad!</h2>
+    
 </div>
     <div class="sign-in">
 <!--   Desktop Login   -->
@@ -55,9 +60,11 @@
       <i class="fa fa-google-plus-official" aria-hidden="true"></i>
       Sign in with Google
   </a>
+<!--
   <a id="email-btn" class="mx-auto btn btn-social-icon color-grey">
             <i class="fa fa-envelope"></i>
         </a>  
+-->
 
 </div>
 </div>
