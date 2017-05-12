@@ -3,25 +3,48 @@
 <div ng-controller="ProductsCtrl as ctrl">
 
 
- <!-- Categories button -->
+ <!-- Categories button/dropdown old 
 
  <button ng-click="ctrl.toggleCategories()" id="kategori" type="button" class="navbar-toggle col-xs-12 sort btn btn-default col-xs-12" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
  {{ ctrl.categoryHeader }} <span class="glyphicon glyphicon-menu-down"></span>
  </button>
 
- <!-- Categories dropdown -->
 
  <div ng-if="ctrl.shouldShowCategories" id="kat-div" class="kat-div col-xs-12 sort">
    <div ng-repeat="category in ctrl.categories">
      <h2 ng-click="ctrl.toggleSubCategories(category.id)"> {{ category.title }} </h2>
-     <div ng-if="ctrl.currentCategoryId === category.id" ng-repeat="subcategory in ctrl.subCategories" >
+     <div ng-if="ctrl.currentCategoryId === category.id" ng-repeat="subcategory in ctrl.subCategories">
        <a href="#!/{{ category.title }}/{{ subcategory.title }}/{{ subcategory.id }}" ng-if="subcategory.category_id === category.id"> {{ subcategory.title }} </a>
      </div>
    </div>
- </div>
+ </div> -->
  
-
- <!-- Sort products by -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    
+    <ul class="nav navbar-nav col-lg-12">
+      <li class="active">
+  <button ng-click="ctrl.toggleDropdown()" id="burger" type="button" class="navbar-toggle col-xs-2 col-md-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+        </li>
+      <li class="col-lg-3 col-lg-offset-2"><a href="#" ng-click="ctrl.orderBy('likeAmount')" type="button" class="col-xs-12" ng-class="{active: ctrl.currentOrder == 'likeAmount'}">Populärt</a></li>
+      <li class="col-lg-3"><a href="#" ng-click="ctrl.orderBy('created')" type="button" class="col-xs-12" ng-class="{active: ctrl.currentOrder == 'created'}">Senaste</a></li>
+    <li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-3">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ ctrl.categoryHeader }}
+        <span class="caret"></span></a>
+        <ul ng-if="ctrl.shouldShowCategories" class="dropdown-menu">
+          <li class="col-lg-3" ng-repeat="category in ctrl.categories"><a href="#!/{{ category.title }}"> {{ category.title }} </a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <!--
+ <!-- Sort products by 
 
  <div class="btn-group btn-group-justified" role="group" aria-label="...">
    <div class="btn-group" role="group">
@@ -33,25 +56,25 @@
        <button ng-click="ctrl.orderBy('created')" type="button" class="col-xs-12 sort btn btn-default" ng-class="{active: ctrl.currentOrder == 'created'}">
            Senaste
        </button>
-   </div >
-<div class="dropdown btn-group" role="group">
-  <button class="btn btn-secondary dropdown-toggle col-xs-12 sort btn-default"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
+   </div>
+     
+ <!-- Categories dropdown 
+     
+<div class="btn-group" role="group">
+    <button ng-click="ctrl.toggleCategories()" class="navbar-toggle col-xs-12 sort btn btn-default col-xs-12" id="kategori" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    {{ ctrl.categoryHeader }} <span class="glyphicon glyphicon-menu-down"></span>
+    </button>
+    
+    <div ng-if="ctrl.shouldShowCategories" id="kat-div" class="kat-div col-xs-12 sort">
+        <div ng-repeat="category in ctrl.categories">
+       <a href="#!/{{ category.title }}"> {{ category.title }} </a>
+     </div>
+        </div>
+    </div>
 </div>
-   <!--<div class="btn-group" role="group">
-       <button ng-click="ctrl.sortProductsBy('rating')" type="button" class="col-xs-12 sort btn btn-default">
-           Vi Tipsar
-       </button>
-   </div>-->
- </div>
+     -->
 
- <!-- Category and subcategory title -->
+<!-- Category and subcategory title -->
 
  <div class="row">
    <div class="col-lg-12">
@@ -60,7 +83,7 @@
        </h1>
    </div>
  </div>
-
+    
 
  <!-- This is where all products are displayed -->
 

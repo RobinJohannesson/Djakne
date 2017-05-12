@@ -4,11 +4,9 @@ html, body{
 }
 #burger{
     float: left;
-    border-radius: 0;
     display: block;
     width: 50px;
     height: 50px;
-    margin-left: 10px;
 }
 #kategori{
     margin: 0;
@@ -53,7 +51,7 @@ html, body{
 .margin-0{
     margin: 0;
 }
-#burger .icon-bar{
+.icon-bar{
     width: 100%;
     margin-top: 8px;
 }
@@ -67,7 +65,7 @@ html, body{
 .navbar{
     background: rgba(160, 160, 160, 0.8);
     border-style: none;
-    box-shadow: 0 0.5px 20px 1px rgba(160, 160, 160, 0.8);
+
 }
 .social-div{
     text-align: center;
