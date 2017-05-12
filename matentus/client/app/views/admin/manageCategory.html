@@ -41,25 +41,38 @@
             </form>
         </div>
 
-        <table class="table">
+        <table class="table" ng-controller="ProductsCtrl as pctrl">
             <thead>
                 <tr>
                     <th>Kategorinamn</th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody ng-controller="ProductsCtrl as ctrl">
-                <tr ng-repeat="category in ctrl.categories">
-                    <td>{{ category.title }}</td>
+            
+            <tbody>
+                <tr ng-repeat="category in pctrl.categories">
+                    <td>{{category.title}}</td>
                     <td><a href="#" class=" change">
-               <i class="fa fa-trash-o  fa-lg" aria-hidden="true"></i>
+               <i   class="fa fa-trash-o  fa-lg" aria-hidden="true"></i>
                 </a>  
                 <a class="change">
-                    <i ng-click="ctrl.toggleForm()" class="fa fa-pencil fa-lg" aria-hidden="true"></i>
-                </a> </td>
+                    <i ng-click="ctrl.toggleFormChange()" class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                </a></td>
                 </tr>
                 
             </tbody>
+                
         </table>
     </div>
+    <div ng-controller="ProductsCtrl as pctrl" class="col-lg-12 change-cat-form">
+            <form ng-if="ctrl.shouldShowFormChange" class="col-lg-6">   
+                <div class="input-group">
+                    <span class="input-group-addon">Titel</span>
+                    <input id="main_cat_title" type="text" class="form-control" name="main_cat_title">
+                </div>
+                <div class="main_cat_save">
+                    <button type="submit" class="btn btn-primary ">Spara</button>
+                </div>
+            </form>
+        </div>
     

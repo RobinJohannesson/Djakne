@@ -25,15 +25,22 @@ function AdminCtrl($scope, $location,$routeParams) {
     
     ctrl.shouldShowForm = false;
     ctrl.toggleForm = toggleForm;
+    ctrl.shouldShowFormChange = false;
+    ctrl.toggleFormChange = toggleFormChange;
     // ctrl.test = httpService.categories;
     function changeView(view){
         console.log("t="+view);
         $location.url('/admin'+view);
-        
     }
  function toggleForm() {
   	ctrl.shouldShowForm = ctrl.shouldShowForm ? false : true;
   }
+ function toggleFormChange(){
+    
+   
+    ctrl.shouldShowFormChange = ctrl.shouldShowFormChange ? false :
+    true;
+}
 };
 
 
