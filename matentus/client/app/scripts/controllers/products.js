@@ -23,17 +23,13 @@ function ProductsCtrl($routeParams, productService, categoryService) {
 
 	ctrl.currentCategoryId = null;
 	ctrl.categoryHeader = 'Kategorier';
-  	ctrl.currentSubCategoryId = $routeParams.subcategory_id;
   	ctrl.currentCategoryTitle = $routeParams.category;
-  	ctrl.currentSubCategoryTitle = $routeParams.subcategory;
   	ctrl.shouldShowCategories = false;
 
 	ctrl.categories = categoryService.categories;
-	ctrl.subCategories = categoryService.subCategories;
 	ctrl.products = productService.products;
 
 	ctrl.toggleCategories = toggleCategories;
-	ctrl.toggleSubCategories = toggleSubCategories;
 
 	ctrl.currentOrder = '';
 	ctrl.orderBy = orderBy;
@@ -48,12 +44,8 @@ function ProductsCtrl($routeParams, productService, categoryService) {
 	    ctrl.shouldShowCategories = ctrl.shouldShowCategories ? false : true;
 	}
 
-	function toggleSubCategories(id) {
-		ctrl.currentCategoryId = (ctrl.currentCategory === id) ? null : id;
-	}
-
 	function updateCategoryHeader() {
-		ctrl.categoryHeader = (ctrl.currentCategoryTitle && ctrl.currentSubCategoryTitle) ? ctrl.currentCategoryTitle + ' > ' + ctrl.currentSubCategoryTitle : 'Kategorier';
+		ctrl.categoryHeader = (ctrl.currentCategoryTitle) ? ctrl.currentCategoryTitle : 'Kategorier';
 	}
 
 }

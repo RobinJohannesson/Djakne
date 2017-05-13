@@ -42,6 +42,10 @@ passport.use(strategy);
 // -----------------------------------------------------
 // Define API routes
 // -----------------------------------------------------
+router.get('/suppliers', function(req, res) {
+	productController.getSuppliers(req, res);
+});
+
 router.get('/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.get(req, res);
 });
@@ -63,9 +67,7 @@ router.get('/',  function(req, res){
 router.post('/', upload.single('image'), function(req, res) {
 	productController.createProduct(req, res);
 });
-router.get('/suppliers', function(req, res) {
-	productController.getSuppliers(req, res);
-});
+
 
 // -----------------------------------------------------
 // Local exports

@@ -20,8 +20,13 @@ function UploadCtrl(categoryService, productService, uploadService) {
   ctrl.product = {};
 
   function upload() {
+    console.log(ctrl.product);
     uploadService.upload(ctrl.product);
     ctrl.product = {};
+    ctrl.form.$setPristine();
+    document.getElementById('image').value = null;
+    console.log(ctrl.product);
   }
+
 
 }

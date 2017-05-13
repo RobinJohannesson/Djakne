@@ -32,6 +32,8 @@
       })
       .then(function(response) {
         setSuppliers(response.data);
+        console.log(response.data);
+
       }, errorLogger);
     }
 

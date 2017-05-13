@@ -11,10 +11,8 @@
 
     var state = {};
     state.categories = [];
-    state.subCategories = [];
 
     getAllCategories();
-    getAllSubCategories();
 
     function getAllCategories() {
       $http({
@@ -26,24 +24,9 @@
       }, errorLogger);
     }
 
-    function getAllSubCategories() {
-      $http({
-        method: 'GET',
-        url: 'http://localhost:3000/api/subcategories'
-      })
-      .then(function(response) {
-        setSubCategories(response.data);
-      }, errorLogger);
-    }
-
     function setCategories(categories) {
       state.categories.length = 0;
       state.categories.push.apply(state.categories, categories);
-    }
-
-    function setSubCategories(subCategories) {
-      state.subCategories.length = 0;
-      state.subCategories.push.apply(state.subCategories, subCategories);
     }
 
     var errorLogger = function(response) {
@@ -51,8 +34,7 @@
     };    
 
     return {
-      categories: state.categories,
-      subCategories: state.subCategories
+      categories: state.categories
     };
 
   };
