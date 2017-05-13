@@ -3,30 +3,33 @@
 // 	Upload Controller
 // ------------------------------------------------------------
 
-'use strict';
+(function () {
+	'use strict';
 
-angular.module('matentusApp')
+	angular.module('matentusApp')
 	.controller('UploadCtrl', UploadCtrl);
 
- UploadCtrl.$inject = ['categoryService', 'productService', 'uploadService'];
+	UploadCtrl.$inject = ['$scope', 'categoryService', 'productService', 'uploadService'];
 
-function UploadCtrl(categoryService, productService, uploadService) {
-  var ctrl = this;
+	function UploadCtrl($scope, categoryService, productService, uploadService) {
+		var ctrl = this;
 
-  ctrl.categories = categoryService.categories;
-  ctrl.suppliers = productService.suppliers;
+		ctrl.categories = categoryService.categories;
+		ctrl.suppliers = productService.suppliers;
+		ctrl.upload = upload;
+		ctrl.product = {};
 
-  ctrl.upload = upload;
-  ctrl.product = {};
+		function upload() {
+			uploadService.upload(ctrl.product);
+			clearInput();
+		}
 
-  function upload() {
-    console.log(ctrl.product);
-    uploadService.upload(ctrl.product);
-    ctrl.product = {};
-    ctrl.form.$setPristine();
-    document.getElementById('image').value = null;
-    console.log(ctrl.product);
-  }
+		function clearInput() {
+			ctrl.product = {};
+			ctrl.form.$setPristine();
+			document.getElementById('image').value = null;
+			$scope.$broadcast('angucomplete-alt:clearInput');
+		}
+	}
 
-
-}
+})();

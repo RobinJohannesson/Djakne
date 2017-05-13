@@ -3,14 +3,17 @@
 //  Product Controller
 // ------------------------------------------------------------
 
-'use strict';
+(function () {
+	'use strict';
 
-angular.module('matentusApp')
-  .controller('ProductCtrl', ProductCtrl);
+	angular.module('matentusApp')
+	.controller('ProductCtrl', ProductCtrl);
 
- ProductCtrl.$inject = ['productService'];
+	ProductCtrl.$inject = ['productService'];
 
-function ProductCtrl(productService) {
-  var ctrl = this;
-  
-}
+	function ProductCtrl(productService) {
+		var ctrl = this;
+		
+	}
+
+})();

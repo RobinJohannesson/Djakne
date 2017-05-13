@@ -2,50 +2,45 @@
 // ------------------------------------------------------------
 //  Products Controller
 // ------------------------------------------------------------
-'use strict';
-angular.module('matentusApp')
-    .controller('ProductsCtrl', ProductsCtrl);
 
+(function () {
+	'use strict';
 
-// ------------------------------------------------------------
-//  This controller has access to these services
-// ------------------------------------------------------------
+	angular.module('matentusApp')
+	.controller('ProductsCtrl', ProductsCtrl);
 
-ProductsCtrl.$inject = ['$routeParams', 'productService', 'categoryService'];
+	ProductsCtrl.$inject = ['$routeParams', 'productService', 'categoryService'];
 
+	function ProductsCtrl($routeParams, productService, categoryService) {
+		var ctrl = this;
 
-// ------------------------------------------------------------
-//  Variables and functions available to "views/products.html"
-// ------------------------------------------------------------
+		ctrl.currentCategoryId = null;
+		ctrl.categoryHeader = 'Kategorier';
+		ctrl.currentCategoryTitle = $routeParams.category;
+		ctrl.shouldShowCategories = false;
 
-function ProductsCtrl($routeParams, productService, categoryService) {
-  	var ctrl = this;
+		ctrl.categories = categoryService.categories;
+		ctrl.products = productService.products;
 
-	ctrl.currentCategoryId = null;
-	ctrl.categoryHeader = 'Kategorier';
-  	ctrl.currentCategoryTitle = $routeParams.category;
-  	ctrl.shouldShowCategories = false;
+		ctrl.toggleCategories = toggleCategories;
 
-	ctrl.categories = categoryService.categories;
-	ctrl.products = productService.products;
+		ctrl.currentOrder = '';
+		ctrl.orderBy = orderBy;
 
-	ctrl.toggleCategories = toggleCategories;
+		orderBy('likeAmount');
 
-	ctrl.currentOrder = '';
-	ctrl.orderBy = orderBy;
+		function orderBy(property) {
+			ctrl.currentOrder = property;
+		}
 
-	orderBy('likeAmount');
+		function toggleCategories() {
+			ctrl.shouldShowCategories = ctrl.shouldShowCategories ? false : true;
+		}
 
-	function orderBy(property) {
-		ctrl.currentOrder = property;
+		function updateCategoryHeader() {
+			ctrl.categoryHeader = (ctrl.currentCategoryTitle) ? ctrl.currentCategoryTitle : 'Kategorier';
+		}
+
 	}
 
-	function toggleCategories() {
-	    ctrl.shouldShowCategories = ctrl.shouldShowCategories ? false : true;
-	}
-
-	function updateCategoryHeader() {
-		ctrl.categoryHeader = (ctrl.currentCategoryTitle) ? ctrl.currentCategoryTitle : 'Kategorier';
-	}
-
-}
+})();

@@ -52,14 +52,22 @@
           for="distributor">
           Leverantör
         </label>
-        <input  
-          name="product-supplier"  
-          type="text" 
-          class="form-control" 
-          ng-model="ctrl.product.supplier" 
-          id="distributor-input" />
+      <angucomplete-alt
+              name="product-supplier"
+              ng-model="ctrl.product.supplier" 
+              placeholder=""
+              pause="100"
+              selected-object="selectedSupplier"
+              local-data="ctrl.suppliers"
+              search-fields="supplier"
+              title-field="supplier"
+              minlength="1"
+              input-class="form-control form-control-small"
+      />
       </div>
+
     </div>
+    
 
     <div class="col-lg-4">
 
@@ -76,7 +84,8 @@
           ng-model="ctrl.product.description" 
           rows="10" 
           id="inputDescription" 
-          placeholder="">        
+          placeholder=""
+          required>        
         </textarea>
       </div>
 

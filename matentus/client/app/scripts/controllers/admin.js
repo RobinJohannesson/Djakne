@@ -3,45 +3,41 @@
 // 	Admin Controller
 // ------------------------------------------------------------
 
-'use strict';
+(function () {
+	'use strict';
 
-angular.module('matentusApp')
-    .controller('AdminCtrl', AdminCtrl);
+	angular.module('matentusApp')
+	.controller('AdminCtrl', AdminCtrl);
 
-// ------------------------------------------------------------
-// 	This controller has access to "services/httpService.js"
-// ------------------------------------------------------------
+	AdminCtrl.$inject = ['$scope', '$location','$routeParams'];
 
-AdminCtrl.$inject = ['$scope', '$location','$routeParams'];
+	function AdminCtrl($scope, $location,$routeParams) {
 
-// ------------------------------------------------------------
-// 	Variables and functions available to "views/admin.html"
-// ------------------------------------------------------------
+		var ctrl = this;
+		ctrl.changeView=changeView;
 
-function AdminCtrl($scope, $location,$routeParams) {
-
-    var ctrl = this;
-    ctrl.changeView=changeView;
-    
-    ctrl.shouldShowForm = false;
-    ctrl.toggleForm = toggleForm;
-    ctrl.shouldShowFormChange = false;
-    ctrl.toggleFormChange = toggleFormChange;
+		ctrl.shouldShowForm = false;
+		ctrl.toggleForm = toggleForm;
+		ctrl.shouldShowFormChange = false;
+		ctrl.toggleFormChange = toggleFormChange;
     // ctrl.test = httpService.categories;
     function changeView(view){
-        console.log("t="+view);
-        $location.url('/admin'+view);
+    	console.log("t="+view);
+    	$location.url('/admin'+view);
     }
- function toggleForm() {
-  	ctrl.shouldShowForm = ctrl.shouldShowForm ? false : true;
-  }
- function toggleFormChange(){
-    
-   
-    ctrl.shouldShowFormChange = ctrl.shouldShowFormChange ? false :
-    true;
-}
+    function toggleForm() {
+    	ctrl.shouldShowForm = ctrl.shouldShowForm ? false : true;
+    }
+    function toggleFormChange(){
+
+
+    	ctrl.shouldShowFormChange = ctrl.shouldShowFormChange ? false :
+    	true;
+    }
 };
+
+})();
+
 
 
 /*

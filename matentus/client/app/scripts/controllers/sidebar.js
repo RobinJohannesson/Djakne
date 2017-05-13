@@ -2,30 +2,25 @@
 // 	Sidebar Controller
 // ------------------------------------------------------------
 
-'use strict';
+(function () {
+	'use strict';
 
-angular.module('matentusApp')
+	angular.module('matentusApp')
 	.controller('SidebarCtrl', SidebarCtrl);
 
-// ------------------------------------------------------------
-// 	This controller has access to "services/categoryService.js"
-// ------------------------------------------------------------
+	SidebarCtrl.$inject = ['categoryService'];
 
-SidebarCtrl.$inject = ['categoryService'];
+	function SidebarCtrl(categoryService) {
 
-// ------------------------------------------------------------
-// 	Variables and functions available to "views/navbar.html"
-// ------------------------------------------------------------
+		var ctrl = this;
 
-function SidebarCtrl(categoryService) {
+		ctrl.shouldShowDropdown = false;
+		ctrl.toggleDropdown = toggleDropdown;
 
-  var ctrl = this;
+		function toggleDropdown() {
+			ctrl.shouldShowDropdown = ctrl.shouldShowDropdown ? false : true;
+		}
 
-  ctrl.shouldShowDropdown = false;
-  ctrl.toggleDropdown = toggleDropdown;
+	}
 
-  function toggleDropdown() {
-  	ctrl.shouldShowDropdown = ctrl.shouldShowDropdown ? false : true;
-  }
-
-}
+})();

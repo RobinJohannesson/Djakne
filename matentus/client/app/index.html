@@ -1,144 +1,131 @@
 <!DOCTYPE>
 <html ng-app="matentusApp">
 
-	<head>
+<head>
 
-   	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-    <title>Matentus</title>
+	<title>Matentus</title>
 
-    <!-- Import CSS -->
-    <link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+	<!-- Import CSS -->
+	<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" />
+	<link rel="stylesheet" href="bower_components/angucomplete-alt/angucomplete-alt.css" />
 
-    <!-- Bootstrap Core CSS -->
-  	<link href="styles/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  	<link href="styles/bootstrap/bootstrap-social/bootstrap-social.css" rel="stylesheet">
+
+	<!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="styles/bootstrap/bootstrap-social/bootstrap-social.css" />
 
 	<!-- Custom CSS -->
-    <link href="styles/custom/index1.css" rel="stylesheet">
-    <link href="styles/custom/portfolio-item.css" rel="stylesheet">
-    <link href="styles/custom/simple-sidebar.css" rel="stylesheet">
-    <link href="styles/custom/comment.css" rel="stylesheet">
-    <link href="styles/custom/admin.css" rel="stylesheet">
-    <link href="styles/custom/upload.css" rel="stylesheet">
+	<link rel="stylesheet" href="styles/custom/index.css" />
+	<link rel="stylesheet" href="styles/custom/portfolio-item.css" />
+	<link rel="stylesheet" href="styles/custom/simple-sidebar.css" />
+	<link rel="stylesheet" href="styles/custom/comment.css" />
+	<link rel="stylesheet" href="styles/custom/admin.css" />
+	<link rel="stylesheet" href="styles/custom/upload.css" />
 
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <![endif]-->
 
-  </head>
+</head>
 
-	<body>
+<body>
 
-		<div class="container">
-            <div class="row">
-                <img class="beta col-xs-10 col-xs-offset-1 col-md-10 col-lg-6 col-lg-offset-6" alt="beta" src="images/beta.PNG">
-            </div>
-			<!-- Header area -->
-			<div id="header" class="row sorts">
-                
-				<div ng-include src="'views/login.html'"></div>
-				<div ng-include src="'views/sidebar.html'"></div>
-                
-				<img alt="head" src="images/header2.PNG" class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-				
-				<!--  <button id="kategori" type="button" class="navbar-toggle col-xs-12 sort btn btn-default col-xs-12" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				  Kategorier<span class="glyphicon glyphicon-menu-down"></span>
-				</button>
-			  <div id="kat-div" class="kat-div col-xs-12">
-		      <h3 class="col-xs-12">Mat</h3>
-		      <h4 class="col-xs-4">Frukost</h4>
-		      <h4 class="col-xs-4">Frukost</h4>
-		      <h4 class="col-xs-4">Frukost</h4>
-		      <h4 class="col-xs-4">Frukost</h4>
-		      <h4 class="col-xs-4">Frukost</h4>
-		      <h3 class="col-xs-12">Dryck</h3>
-		      <h4 class="col-xs-4">Kaffe</h4>
-		      <h4 class="col-xs-4">Kaffe</h4>
-		      <h4 class="col-xs-4">Kaffe</h4>
-		      <h4 class="col-xs-4">Kaffe</h4>
-		      <h4 class="col-xs-4">Kaffe</h4>
-			  </div> -->
+	<div class="container">
 
-	    </div>
-	  	<!-- End of header area -->
-
-	    <!-- Content area -->
-	    <div ng-view="">
-
-	    </div>
-	    <!-- End of content area -->
-        <div class="copy col-xs-12 text-center">
-            
-            <div>
-                 <a class="btn btn-social-icon footer-icon" href="#">
-                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
-                </a>
-                <a class="btn btn-social-icon footer-icon" href="#">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-            </div>
-           
-            <p>Copyright &copy; Matentus 2017</p>
-        </div>
+		<!-- Beta image -->
+		<div class="row">
+			<img class="beta col-xs-10 col-xs-offset-1 col-md-10 col-lg-6 col-lg-offset-6" alt="beta" src="images/beta.PNG">
 		</div>
+		<!-- End of beta image -->
 
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+		<!-- Header area -->
+		<div id="header" class="row sorts">
+			<div ng-include src="'views/login.html'"></div>
+			<div ng-include src="'views/sidebar.html'"></div>
+			<img alt="head" src="images/header2.PNG" class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+		</div>
+		<!-- End of header area -->
 
-    <script src="scripts/controllers/index.js"></script>
-    <script src="scripts/controllers/products.js"></script>
-   	<script src="scripts/controllers/sidebar.js"></script>
-   	<script src="scripts/controllers/login.js"></script>
-   	<script src="scripts/controllers/product.js"></script>
-    <script src="scripts/controllers/admin.js"></script>
-    <script src="scripts/controllers/upload.js"></script>
+		<!-- Content area -->
+		<div ng-view=""></div>
+		<!-- End of content area -->
 
-    <script src="scripts/services/categoryService.js"></script>
-    <script src="scripts/services/login/facebookLoginService.js"></script>
-    <script src="scripts/services/login/googleLoginService.js"></script>
-    <script src="scripts/services/login/localLoginService.js"></script>
-    <script src="scripts/services/productService.js"></script>
-    <script src="scripts/services/uploadService.js"></script>
+		<!-- Footer area -->
+		<div class="copy col-xs-12 text-center">
+			<div>
+				<a class="btn btn-social-icon footer-icon" href="#">
+					<i class="fa fa-facebook-official" aria-hidden="true"></i>
+				</a>
+				<a class="btn btn-social-icon footer-icon" href="#">
+					<i class="fa fa-instagram" aria-hidden="true"></i>
+				</a>
+			</div>
+			<p>Copyright &copy; Matentus 2017</p>
+		</div>
+		<!-- End of footer area -->
 
-    <script src="scripts/directives/fileModel.js"></script>
+	</div>
 
+	<!-- Bower components -->
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="bower_components/angucomplete-alt/angucomplete-alt.js"></script>
 
+	<!-- Controllers -->
+	<script src="scripts/controllers/index.js"></script>
+	<script src="scripts/controllers/products.js"></script>
+	<script src="scripts/controllers/sidebar.js"></script>
+	<script src="scripts/controllers/login.js"></script>
+	<script src="scripts/controllers/product.js"></script>
+	<script src="scripts/controllers/admin.js"></script>
+	<script src="scripts/controllers/upload.js"></script>
 
-    <!-- JavaScript -->
-    <script src="scripts/styling/style.js"></script>
-    <script src="scripts/styling/script.js"></script>
-    <script src="scripts/styling/simplesidebar.js"></script>
-    <script src="scripts/styling/bootstrap.simple.js"></script>
-    <script src="scripts/styling/jquerysimple.js"></script>
+	<!-- Services -->
+	<script src="scripts/services/categoryService.js"></script>
+	<script src="scripts/services/login/facebookLoginService.js"></script>
+	<script src="scripts/services/login/googleLoginService.js"></script>
+	<script src="scripts/services/login/localLoginService.js"></script>
+	<script src="scripts/services/productService.js"></script>
+	<script src="scripts/services/uploadService.js"></script>
 
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+	<!-- Directives -->
+	<script src="scripts/directives/fileModel.js"></script>
 
-    <div id="scripts"></div>
+	<!-- DOM manipulation-->
+	<script src="scripts/styling/style.js"></script>
+	<script src="scripts/styling/script.js"></script>
+	<script src="scripts/styling/simplesidebar.js"></script>
+	<script src="scripts/styling/bootstrap.simple.js"></script>
+	<script src="scripts/styling/jquerysimple.js"></script>
 
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://apis.google.com/js/api.js"></script>
+	<script>
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+		});
+	</script>
 
-	</body>
+	<div id="scripts"></div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="https://apis.google.com/js/api.js"></script>
+
+</body>
 
 </html>
