@@ -104,45 +104,63 @@ module.exports = {
 			created: '2017-01-01'
 		});
 	},
-	editProduct:	function(req, res){
-				var id = req.body.id;
-				models.Product.find({
-					where: {
-						id: id
-						//approved: true
-					}
-				})
-					.then(function(product) {
-					console.log(product.title)
-					if(product) {
-						if (product.title!=req.body.title){
-							if(req.body.title!=null){
-								product.update({ title: req.body.title});
-							}
-						}
-						if (product.description!=req.body.description){
-							if(req.body.description!=null){
-							product.update({ description: req.body.description});
-							}
-						}
-						if (product.category_id!=req.body.category_id){
-							if (req.body.category!=null){
-								product.update({ category_id: req.body.category_id});
-							}
-						}
-						if (product.supplier!=req.body.supplier){
-							if (req.body.supplier!=null){
-								product.update({ supplier: req.body.supplier});
-							}	
-						}
-						res.json(product)	
-					} else {
-						res.sendStatus(404);
-					}
-				});
-			}, 
-		
-	
+
+
+//	editProduct:	function(req, res){
+//		var id = req.body.id;
+//		models.Product.find({
+//			where: {
+//				id: id
+//				//approved: true
+//			}
+//		})
+//			.then(function(product) {
+//			console.log(product.title)
+//			if(product) {
+//				if (product.title!=req.body.title){
+//					product.update({ title: req.body.title});
+//
+//				}
+//				if (product.description!=req.body.description){
+//					product.update({ description: req.body.description});
+//				}
+//				if (product.category_id!=req.body.category_id){
+//					product.update({ category_id: req.body.category_id});
+//				}
+//				if (product.supplier!=req.body.supplier){
+//					product.update({ supplier: req.body.supplier});
+//				}
+//				res.json(product)	
+//			} else {
+//				res.sendStatus(404);
+//			}
+//		});
+//	}, 
+
+
+	updateProduct: 	function(req, res) {
+
+		var id = req.params.id;
+		var file = req.file;
+
+		if(file) {
+			updateImage(id, file.filename);
+		}
+
+		models.Product.update({
+			title: req.body.title,
+			description: req.body.description,
+			keyword: req.body.keyword,
+			supplier: req.body.supplier,
+			category_id: req.body.category_id
+		}, {
+			where: {
+				id: req.params.id
+			}
+		});
+	},
+
+
 
 	deleteProduct:	function (req, res){
 		var id = req.params.id;
@@ -162,8 +180,14 @@ module.exports = {
 		});
 	},
 
-	approveProduct:	function (req, res){
-		//TODO
+
+	function updateImage(id, filename) {
+	models.Product.update({
+	image: filename
+}, {
+	where: {
+		id: id
 	}
+});	
 
 }

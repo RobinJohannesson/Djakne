@@ -42,6 +42,11 @@ passport.use(strategy);
 // Define API routes
 // -----------------------------------------------------
 
+
+router.put('/:id', upload.single('file'), function(req, res) {
+	productController.updateProduct(req, res);
+});
+
 router.get('/suppliers', function(req, res) {
 	productController.getAllSuppliers(req, res);
 });
@@ -88,7 +93,7 @@ router.get('/',  function(req, res){
 	productController.getAllApproved(req, res);
 });
 
-router.post('/', upload.single('image'), function(req, res) {
+router.post('/', upload.single('file'), function(req, res) {
 	productController.createProduct(req, res);
 });
 

@@ -21,6 +21,8 @@
 		var ctrl = this;
 		ctrl.suggestions = adminService.suggestions;
 		ctrl.categories = categoryService.categories;
+		ctrl.accept = accept;
+		ctrl.change = change;
 
 		ctrl.currentView = suggestionsView;
 		ctrl.currentProduct = {};
@@ -39,6 +41,16 @@
 			if(category) {
 				ctrl.currentCategoryTitle = category.title;
 			}
+		}
+
+		function accept() {
+			ctrl.currentProduct.approved = true;
+			adminService.update(ctrl.currentProduct);
+		}
+
+		function change() {
+			console.log(ctrl.currentProduct);
+			adminService.update(ctrl.currentProduct);
 		}
 	};
 

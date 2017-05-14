@@ -13,6 +13,17 @@
 		state.suggestions = [];
 		getSuggestions();
 
+		function update(product) {
+			var url = 'http://localhost:3000/api/products/' + product.id;
+			var formData = new FormData();
+			for(var key in product) {
+				formData.append(key, product[key]);
+			}
+			$http.put(url, formData, {
+				transformRequest: angular.identity,
+				headers: { 'Content-Type': undefined }
+			});
+		}
 
 		function getSuggestion(id) {
 	        return $http({
@@ -48,7 +59,8 @@
 		};    
 
 		return {
-			suggestions: state.suggestions
+			suggestions: state.suggestions,
+			update: update
 		};
 
 	};
