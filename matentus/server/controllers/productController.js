@@ -179,15 +179,16 @@ module.exports = {
 			}
 		});
 	},
+}
 
 
-	function updateImage(id, filename) {
+function updateImage(id, filename) {
 	models.Product.update({
-	image: filename
-}, {
-	where: {
-		id: id
-	}
-});	
+		image: filename
+	}, {
+		where: {
+			id: id
+		}
+	});	
 
 }

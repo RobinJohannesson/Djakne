@@ -85,7 +85,7 @@ router.post('/editproduct', function(req, res){
 });
 
 //Lägg till auth.
-router.post('/deleteproduct/:id', function(req, res){
+router.delete('/:id', function(req, res){
 	productController.deleteProduct(req, res);
 });
 
