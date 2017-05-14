@@ -25,6 +25,16 @@
 			});
 		}
 
+		function remove(product) {
+			$http({
+				method: 'DELETE',
+				url: 'http://localhost:3000/api/products/' + product.id
+			})
+			.then(function(response) {
+				console.log("adminService removed a product");
+			}, errorHandler);
+		}
+
 		function getSuggestion(id) {
 	        return $http({
 	        		method: 'GET', 
@@ -60,7 +70,8 @@
 
 		return {
 			suggestions: state.suggestions,
-			update: update
+			update: update,
+			remove: remove
 		};
 
 	};

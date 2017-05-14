@@ -16,7 +16,7 @@
   				<td>{{ suggestion.supplier }}</td>
   				<td>
   					<a href="http://localhost:3000/images/{{suggestion.image}}">
-  						<img src="http://localhost:3000/images/{{suggestion.image}}" alt="en bild" class="img_thumbnail">
+  						<img src="http://localhost:3000/images/{{suggestion.image}}" alt="" class="img_thumbnail">
   					</a>
   				</td>
   				<td>
@@ -41,156 +41,157 @@
 
  
 
-<!-- Change product modal -->
-<div class="modal fade" id="modal-change-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  	<div class="modal-dialog" role="document">
-	    <div class="modal-content" style="border-radius: 0">  
+	<!-- Change product modal -->
+	<div class="modal fade" id="modal-change-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  	<div class="modal-dialog" role="document">
+		    <div class="modal-content" style="border-radius: 0">  
 
-		<form 
-			name="ctrl.form" 
-			class=" col-lg-10 col-lg-offset-1 admin_div" 
-			id="admin_add_product" 
-			data-toggle="validator" 
-			role="form"
-			style="padding-top: 20px"> 
+			<form 
+				name="ctrl.form" 
+				class=" col-lg-10 col-lg-offset-1 admin_div" 
+				id="admin_add_product" 
+				data-toggle="validator" 
+				role="form"
+				style="padding-top: 20px"> 
 
-				<!-- Input title -->
-				<div class="form-group col-lg-12">
-					<label 
-						for="inputTitle" 
-						class="control-label">
-						Titel
-					</label>
-					<input  
-						type="text"
-						name="product-name"  
-						class="form-control" 
-						ng-model="ctrl.currentProduct.title" 
-						id="inputTitle" 
-						maxlength="30" 
-						required 
-					/>
-				</div>
+					<!-- Input title -->
+					<div class="form-group col-lg-12">
+						<label 
+							for="inputTitle" 
+							class="control-label">
+							Titel
+						</label>
+						<input  
+							type="text"
+							name="product-name"  
+							class="form-control" 
+							ng-model="ctrl.currentProduct.title" 
+							id="inputTitle" 
+							maxlength="30" 
+							required 
+						/>
+					</div>
 
-				<!-- Input description -->
-				<div class="form-group col-lg-12">
-					<label 
-						for="inputDescription" 
-						class="control-label">
-						Beskrivning
-					</label>
-					<textarea   
-						name="product-description"  
-						class="form-control"    
-						ng-model="ctrl.currentProduct.description" 
-						rows="5" 
-						id="inputDescription" 
-						maxlength="255" 
-						required>    
-					</textarea>
-				</div>
+					<!-- Input description -->
+					<div class="form-group col-lg-12">
+						<label 
+							for="inputDescription" 
+							class="control-label">
+							Beskrivning
+						</label>
+						<textarea   
+							name="product-description"  
+							class="form-control"    
+							ng-model="ctrl.currentProduct.description" 
+							rows="5" 
+							id="inputDescription" 
+							maxlength="255" 
+							required>    
+						</textarea>
+					</div>
 
-				<!-- Choose category -->
-				<div class="form-group col-lg-12">
-					<label 
-						for="select-main-cat">
-						Kategori
-					</label>
-					<select   
-						name="product-category" 
-						ng-options="category.id as category.title for category in ctrl.categories" 
-						ng-model="ctrl.currentProduct.category_id" 
-						class="form-control" 
-						id="select-main-cat" 
-						required>
-						<option value=""></option>
-					</select>
-				</div>
+					<!-- Choose category -->
+					<div class="form-group col-lg-12">
+						<label 
+							for="select-main-cat">
+							Kategori
+						</label>
+						<select   
+							name="product-category" 
+							ng-options="category.id as category.title for category in ctrl.categories" 
+							ng-model="ctrl.currentProduct.category_id" 
+							class="form-control" 
+							id="select-main-cat" 
+							required>
+							<option value=""></option>
+						</select>
+					</div>
 
-				<!-- Input subcategory -->
-				<div class="form-group col-lg-12">
-					<label 
-						for="distributor">
-						Nyckelord
-					</label>
-					<angucomplete-alt
-						name="product-keyword"
-						pause="100"
-						selected-object="selected"
-						ng-model="ctrl.currentProduct.keyword"
-						local-data="ctrl.keywords"
-						search-fields="keyword"
-						title-field="keyword"
-						minlength="0"
-						input-class="form-control form-control-small"
-					/>
-				</div>
+					<!-- Input subcategory -->
+					<div class="form-group col-lg-12">
+						<label 
+							for="distributor">
+							Nyckelord
+						</label>
+						<angucomplete-alt
+							name="product-keyword"
+							pause="100"
+							selected-object="selected"
+							ng-model="ctrl.currentProduct.keyword"
+							local-data="ctrl.keywords"
+							search-fields="keyword"
+							title-field="keyword"
+							minlength="0"
+							input-class="form-control form-control-small"
+						/>
+					</div>
 
-				<!-- Input supplier -->
-				<div class="form-group col-lg-12">
-					<label 
-						for="distributor">
-						Leverantör
-					</label>
-					<angucomplete-alt
-						name="product-supplier"
-						pause="100"
-						selected-object="selected"
-						ng-model="ctrl.currentProduct.supplier"
-						local-data="ctrl.suppliers"
-						search-fields="supplier"
-						title-field="supplier"
-						minlength="1"
-						input-class="form-control form-control-small"
-					/>
-				</div>
+					<!-- Input supplier -->
+					<div class="form-group col-lg-12">
+						<label 
+							for="distributor">
+							Leverantör
+						</label>
+						<angucomplete-alt
+							name="product-supplier"
+							pause="100"
+							selected-object="selected"
+							ng-model="ctrl.currentProduct.supplier"
+							local-data="ctrl.suppliers"
+							search-fields="supplier"
+							title-field="supplier"
+							minlength="1"
+							input-class="form-control form-control-small"
+						/>
+					</div>
 
-				<!-- Choose image file -->
-				<div class="form-group col-lg-12" id="image_upload">
-					<label 
-						for="image-upload">
-						Bilduppladdning
-					</label>
-					<input 
-						name="product-file"  
-						id="file"
-						type="file" 
-						accept="image/*" 
-						file-model="ctrl.currentProduct.file" 
-						class="form-control-file mt-10" 
-						aria-describedby="fileHelp" 
-						required 
-					/>
-					<small 
-						id="fileHelp" 
-						class="form-text text-muted">
-						Bilden bör vara i måttet 180x180.
-					</small>
-				</div>
-		</form>
+					<!-- Choose image file -->
+					<div class="form-group col-lg-12" id="image_upload">
+						<label 
+							for="image-upload">
+							Bilduppladdning
+						</label>
+						<input 
+							name="product-file"  
+							id="file"
+							type="file" 
+							accept="image/*" 
+							file-model="ctrl.currentProduct.file" 
+							class="form-control-file mt-10" 
+							aria-describedby="fileHelp" 
+						/>
+						<small 
+							id="fileHelp" 
+							class="form-text text-muted">
+							Bilden bör vara i måttet 180x180.
+						</small>
+					</div>
+			</form>
 
-	    <div class="modal-footer">
-	       	<button 
-	       		ng-click="ctrl.accept()"
-				ng-disabled="product-form.$invalid"
-				class="btn btn-success">
-				Acceptera
-			</button>
-	        <button 
-	        	ng-click="ctrl.change()"
-				ng-disabled="product-form.$invalid"
-				class="btn btn-warning">
-				Redigera
-			</button>
-			<button type="button" class="btn btn-primary" data-dismiss="modal">
-				Stäng
-			</button>
+		    <div class="modal-footer">
+		       	<button 
+		       		ng-click="ctrl.accept()"
+					ng-disabled="product-form.$invalid"
+					class="btn btn-success"
+					data-dismiss="modal">
+					Acceptera
+				</button>
+		        <button 
+		        	ng-click="ctrl.update()"
+					ng-disabled="product-form.$invalid"
+					class="btn btn-warning"
+					data-dismiss="modal">
+					Redigera
+				</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">
+					Stäng
+				</button>
+		    </div>
+
 	    </div>
-
-    </div>
-  </div>
-</div>
-<!-- End of change product modal -->
+	  </div>
+	</div>
+	<!-- End of change product modal -->
 
 
 
@@ -198,21 +199,17 @@
 
 
 
-<!-- Delete product modal -->
-<div class="modal fade" id="modal-delete-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End of delete product modal -->
+	<!-- Delete product modal -->
+	<div class="modal fade" id="modal-delete-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  	<div class="modal-dialog" role="document">
+	    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+		        <h2 style="margin-bottom: 20px">Är du säker på att du vill ta bort "{{ ctrl.currentProduct.title }}"?</h2>
+		        <button type="button" class="btn btn-primary" data-dismiss="modal">Stäng</button>
+		        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="ctrl.remove()">Ta bort</button>
+	 		</div>
+	 	</div>
+	</div>
+	<!-- End of delete product modal -->
 
 
 

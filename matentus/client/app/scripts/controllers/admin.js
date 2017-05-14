@@ -22,7 +22,8 @@
 		ctrl.suggestions = adminService.suggestions;
 		ctrl.categories = categoryService.categories;
 		ctrl.accept = accept;
-		ctrl.change = change;
+		ctrl.update = update;
+		ctrl.remove = remove;
 
 		ctrl.currentView = suggestionsView;
 		ctrl.currentProduct = {};
@@ -31,6 +32,7 @@
 
 		function setCurrentProduct(product) {
 			ctrl.currentProduct = product;
+			console.log(ctrl.currentProduct);
 			setCurrentCategoryTitle();
 		}
 
@@ -48,9 +50,12 @@
 			adminService.update(ctrl.currentProduct);
 		}
 
-		function change() {
-			console.log(ctrl.currentProduct);
+		function update() {
 			adminService.update(ctrl.currentProduct);
+		}
+
+		function remove() {
+			adminService.remove(ctrl.currentProduct);
 		}
 	};
 
