@@ -63,9 +63,6 @@ router.get('/suggestions/:id', function(req, res) {
 	productController.getSuggestion(req, res);
 });
 
-
-
-
 router.get('/:id', function(req, res) {
 	productController.getApproved(req, res);
 });
@@ -80,6 +77,16 @@ router.get('/:id/likes',  passport.authenticate('jwt', { session: false }), func
 
 router.post('/postproduct',  passport.authenticate('jwt', { session: false }), function(req, res){
 	productController.createProduct(req, res);
+});
+
+//Lägg till auth.
+router.post('/editproduct', function(req, res){
+	productController.editProduct(req, res);
+});
+
+//Lägg till auth.
+router.post('/deleteproduct/:id', function(req, res){
+	productController.deleteProduct(req, res);
 });
 
 router.get('/',  function(req, res){
