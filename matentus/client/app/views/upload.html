@@ -1,155 +1,154 @@
 <div ng-controller="UploadCtrl as ctrl">
 
-  <form 
-    name="ctrl.form" 
-    ng-submit="ctrl.upload()" 
-    class=" col-lg-10 col-lg-offset-1 admin_div" 
-    id="admin_add_product" 
-    data-toggle="validator" 
-    role="form"> 
+	<form 
+		name="ctrl.form" 
+		ng-submit="ctrl.upload()" 
+		class=" col-lg-10 col-lg-offset-1 admin_div" 
+		id="admin_add_product" 
+		data-toggle="validator" 
+		role="form"> 
 
 
-    <div class="col-lg-4">
+		<div class="col-lg-4">
 
-      <!-- Input title -->
-      <div class="form-group col-lg-12">
-        <label 
-          for="inputTitle" 
-          class="control-label">
-          Titel
-        </label>
-        <input  
-          type="text"
-          name="product-name"  
-          class="form-control" 
-          ng-model="ctrl.product.title" 
-          id="inputTitle" 
-          placeholder="" 
-          maxlength="30" 
-          required 
-        />
-      </div>
+			<!-- Input title -->
+			<div class="form-group col-lg-12">
+				<label 
+					for="inputTitle" 
+					class="control-label">
+					Titel
+				</label>
+				<input  
+					type="text"
+					name="product-name"  
+					class="form-control" 
+					ng-model="ctrl.product.title" 
+					id="inputTitle" 
+					placeholder="" 
+					maxlength="30" 
+					required 
+				/>
+			</div>
 
-            <!-- Input description -->
-      <div class="form-group col-lg-12">
-        <label 
-          for="inputDescription" 
-          class="control-label">
-          Beskrivning
-        </label>
-        <textarea   
-          name="product-description"  
-          class="form-control"    
-          ng-model="ctrl.product.description" 
-          rows="6" 
-          id="inputDescription" 
-          placeholder=""
-          maxlength="255" 
-          required>        
-        </textarea>
-      </div>
+			<!-- Input description -->
+			<div class="form-group col-lg-12">
+				<label 
+					for="inputDescription" 
+					class="control-label">
+					Beskrivning
+				</label>
+				<textarea   
+					name="product-description"  
+					class="form-control"    
+					ng-model="ctrl.product.description" 
+					rows="6" 
+					id="inputDescription" 
+					placeholder=""
+					maxlength="255" 
+					required>        
+				</textarea>
+			</div>
 
-    
-    </div>
-    
+		</div>
 
-    <div class="col-lg-4">
 
-      <!-- Choose category -->
-      <div class="form-group col-lg-12">
-        <label 
-          for="select-main-cat">
-          Kategori
-        </label>
-        <select   
-          name="product-category" 
-          ng-options="category.id as category.title for category in ctrl.categories" 
-          ng-model="ctrl.product.category_id" 
-          class="form-control" 
-          id="select-main-cat" 
-          required>
-          <option value=""></option>
-        </select>
-      </div>
+		<div class="col-lg-4">
 
-      <!-- Input subcategory -->
-     <div class="form-group col-lg-12">
-        <label 
-          for="distributor">
-          Nyckelord
-        </label>
-      <angucomplete-alt
-              name="product-keyword"
-              placeholder=""
-              pause="100"
-              selected-object="selected"
-              ng-model="ctrl.product.keyword"
-              local-data="ctrl.keywords"
-              search-fields="keyword"
-              title-field="keyword"
-              minlength="0"
-              input-class="form-control form-control-small"
-      />
-      </div>
+			<!-- Choose category -->
+			<div class="form-group col-lg-12">
+				<label 
+					for="select-main-cat">
+					Kategori
+				</label>
+				<select   
+					name="product-category" 
+					ng-options="category.id as category.title for category in ctrl.categories" 
+					ng-model="ctrl.product.category_id" 
+					class="form-control" 
+					id="select-main-cat" 
+					required>
+					<option value=""></option>
+				</select>
+			</div>
 
-      <!-- Input supplier -->
-     <div class="form-group col-lg-12">
-        <label 
-          for="distributor">
-          Leverantör
-        </label>
-      <angucomplete-alt
-              name="product-supplier"
-              placeholder=""
-              pause="100"
-              selected-object="selected"
-              ng-model="ctrl.product.supplier"
-              local-data="ctrl.suppliers"
-              search-fields="supplier"
-              title-field="supplier"
-              minlength="1"
-              input-class="form-control form-control-small"
-      />
-      </div>
+			<!-- Input subcategory -->
+			<div class="form-group col-lg-12">
+				<label 
+					for="distributor">
+					Nyckelord
+				</label>
+				<angucomplete-alt
+					name="product-keyword"
+					placeholder=""
+					pause="100"
+					selected-object="selected"
+					ng-model="ctrl.product.keyword"
+					local-data="ctrl.keywords"
+					search-fields="keyword"
+					title-field="keyword"
+					minlength="0"
+					input-class="form-control form-control-small"
+				/>
+			</div>
 
-    </div>
+			<!-- Input supplier -->
+			<div class="form-group col-lg-12">
+				<label 
+					for="distributor">
+					Leverantör
+				</label>
+				<angucomplete-alt
+					name="product-supplier"
+					placeholder=""
+					pause="100"
+					selected-object="selected"
+					ng-model="ctrl.product.supplier"
+					local-data="ctrl.suppliers"
+					search-fields="supplier"
+					title-field="supplier"
+					minlength="1"
+					input-class="form-control form-control-small"
+				/>
+			</div>
 
-    <div class="col-lg-4">
+		</div>
 
-    <!-- Choose image file -->
-      <div class="form-group col-lg-12" id="image_upload">
-        <label 
-          for="image-upload">
-          Bilduppladdning
-        </label>
-        <input 
-          name="product-image"  
-          id="image"
-          type="file" 
-          accept="image/*" 
-          file-model="ctrl.product.image" 
-          class="form-control-file mt-10" 
-          aria-describedby="fileHelp" 
-          required 
-        />
-        <small 
-          id="fileHelp" 
-          class="form-text text-muted">
-          Bilden bör vara i måttet 180x180.
-        </small>
-      </div>
+		<div class="col-lg-4">
 
-      <!-- Submit button -->
-      <div class="form-group col-lg-12">
-        <button 
-          type="submit" 
-          ng-disabled="product-form.$invalid"
-          class="btn btn-primary mt-10">
-          Ladda upp
-        </button>
-      </div>
+			<!-- Choose image file -->
+			<div class="form-group col-lg-12" id="image_upload">
+				<label 
+					for="image-upload">
+					Bilduppladdning
+				</label>
+				<input 
+					name="product-image"  
+					id="image"
+					type="file" 
+					accept="image/*" 
+					file-model="ctrl.product.image" 
+					class="form-control-file mt-10" 
+					aria-describedby="fileHelp" 
+					required 
+				/>
+				<small 
+					id="fileHelp" 
+					class="form-text text-muted">
+					Bilden bör vara i måttet 180x180.
+				</small>
+			</div>
 
-    </div>
+			<!-- Submit button -->
+			<div class="form-group col-lg-12">
+				<button 
+					type="submit" 
+					ng-disabled="product-form.$invalid"
+					class="btn btn-primary mt-10">
+					Ladda upp
+				</button>
+			</div>
 
-  </form>
+		</div>
+
+	</form>
 </div>

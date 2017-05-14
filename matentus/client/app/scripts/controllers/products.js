@@ -17,6 +17,11 @@
 		ctrl.currentCategoryId = null;
 		ctrl.categoryHeader = 'Kategorier';
 		ctrl.currentCategoryTitle = $routeParams.category;
+		ctrl.currentCategoryId = $routeParams.category_id;
+
+		console.log("Category title: " + ctrl.currentCategoryTitle);
+		console.log("Category id: " + ctrl.currentCategoryId);
+
 		ctrl.shouldShowCategories = false;
 
 		ctrl.categories = categoryService.categories;
@@ -26,6 +31,7 @@
 
 		ctrl.currentOrder = '';
 		ctrl.orderBy = orderBy;
+		ctrl.like = like;
 
 		orderBy('likeAmount');
 
@@ -39,6 +45,11 @@
 
 		function updateCategoryHeader() {
 			ctrl.categoryHeader = (ctrl.currentCategoryTitle) ? ctrl.currentCategoryTitle : 'Kategorier';
+		}
+
+		function like(id) {
+			console.log("Likes product: " + id);
+			// TODO: Send like to server
 		}
 
 	}

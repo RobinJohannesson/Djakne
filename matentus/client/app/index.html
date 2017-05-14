@@ -24,7 +24,6 @@
 	<link rel="stylesheet" href="styles/custom/index.css" />
 	<link rel="stylesheet" href="styles/custom/portfolio-item.css" />
 	<link rel="stylesheet" href="styles/custom/simple-sidebar.css" />
-	<link rel="stylesheet" href="styles/custom/comment.css" />
 	<link rel="stylesheet" href="styles/custom/admin.css" />
 	<link rel="stylesheet" href="styles/custom/products.css" />
 
@@ -103,16 +102,16 @@
 	<script src="scripts/services/login/localLoginService.js"></script>
 	<script src="scripts/services/productService.js"></script>
 	<script src="scripts/services/uploadService.js"></script>
+	<script src="scripts/services/adminService.js"></script>
 
 	<!-- Directives -->
 	<script src="scripts/directives/fileModel.js"></script>
 
-	<!-- DOM manipulation-->
+	<!-- Custom DOM manipulation-->
 	<script src="scripts/styling/style.js"></script>
-	<script src="scripts/styling/script.js"></script>
-	<script src="scripts/styling/simplesidebar.js"></script>
-	<script src="scripts/styling/bootstrap.simple.js"></script>
-	<script src="scripts/styling/jquerysimple.js"></script>
+
+	<!-- Har kommenterat bort denna då boostraps javascript laddas in två ggr och skapar buggar /Kajsa -->
+	<!--<script src="scripts/styling/simplesidebar.js"></script>-->
 
 	<script>
 		$("#menu-toggle").click(function(e) {
@@ -121,11 +120,6 @@
 		});
 	</script>
 
-	<div id="scripts"></div>
-
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="https://apis.google.com/js/api.js"></script>
 

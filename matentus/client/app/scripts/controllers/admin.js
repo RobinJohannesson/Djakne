@@ -9,32 +9,38 @@
 	angular.module('matentusApp')
 	.controller('AdminCtrl', AdminCtrl);
 
-	AdminCtrl.$inject = ['$scope', '$location','$routeParams'];
+	AdminCtrl.$inject = ['adminService', 'categoryService'];
 
-	function AdminCtrl($scope, $location,$routeParams) {
+	function AdminCtrl(adminService, categoryService) {
+
+		const suggestionsView = 'views/admin/views/suggestions.html';
+		const addProductView = 'views/admin/views/addProduct.html';
+		const changeProductView = 'views/admin/views/changeProduct.html';
+		const manageCategoriesView = 'views/admin/views/manageCategories.html';
 
 		var ctrl = this;
-		ctrl.changeView=changeView;
+		ctrl.suggestions = adminService.suggestions;
+		ctrl.categories = categoryService.categories;
 
-		ctrl.shouldShowForm = false;
-		ctrl.toggleForm = toggleForm;
-		ctrl.shouldShowFormChange = false;
-		ctrl.toggleFormChange = toggleFormChange;
-    // ctrl.test = httpService.categories;
-    function changeView(view){
-    	console.log("t="+view);
-    	$location.url('/admin'+view);
-    }
-    function toggleForm() {
-    	ctrl.shouldShowForm = ctrl.shouldShowForm ? false : true;
-    }
-    function toggleFormChange(){
+		ctrl.currentView = suggestionsView;
+		ctrl.currentProduct = {};
+		ctrl.currentCategoryTitle = '';
+		ctrl.setCurrentProduct = setCurrentProduct;
 
+		function setCurrentProduct(product) {
+			ctrl.currentProduct = product;
+			setCurrentCategoryTitle();
+		}
 
-    	ctrl.shouldShowFormChange = ctrl.shouldShowFormChange ? false :
-    	true;
-    }
-};
+		function setCurrentCategoryTitle() {
+			var category = ctrl.categories.find(function(category) {
+				return category.id === ctrl.currentProduct.category_id;
+			})
+			if(category) {
+				ctrl.currentCategoryTitle = category.title;
+			}
+		}
+	};
 
 })();
 

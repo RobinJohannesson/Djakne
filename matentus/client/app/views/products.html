@@ -36,7 +36,7 @@
 			<!-- Populärt -->
 
 			<li class="col-lg-3 col-md-3">
-				<a class="col-lg-3 col-md-3 col-xs-12"href="#" ng-click="ctrl.orderBy('likeAmount')" type="button" ng-class="{active: ctrl.currentOrder == 'likeAmount'}">Populärt</a>
+				<a class="col-lg-3 col-md-3 col-xs-12" href="#" ng-click="ctrl.orderBy('likeAmount')" type="button" ng-class="{active: ctrl.currentOrder == 'likeAmount'}">Populärt</a>
 			</li>
 
 			<!-- Senaste -->
@@ -108,17 +108,19 @@
 		class="col-xs-12 col-s-12 col-md-6 col-lg-4 portfolio-item" >
 
 		<a href="#!/products/{{ product.id }}">
-			<img title="Likes: {{product.likeAmount}}, Created: {{product.created}}, Rating: {{product.rating}}" class="img-responsive" src="http://localhost:3000/images/{{product.image}}" alt="">
+			<img 
+				title="Likes: {{product.likeAmount}}, Created: {{product.created}}, Rating: {{product.rating}}" 
+				class="img-responsive" 
+				src="http://localhost:3000/images/{{product.image}}" 
+				alt="">
 		</a>
 
 		<div class="img-label">
 			<h2 id="label-text"> {{ product.title }} </h2>
 		</div>
 
-		<div class="heart-icon">
-			<a href="#" >
-				<span class="glyphicon glyphicon-heart heart"></span>
-			</a>
+		<div ng-click="ctrl.like()" class="heart-icon">
+			<span class="glyphicon glyphicon-heart heart"></span>
 		</div>
 
 

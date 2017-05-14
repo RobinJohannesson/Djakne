@@ -43,19 +43,31 @@ passport.use(strategy);
 // -----------------------------------------------------
 
 router.get('/suppliers', function(req, res) {
-	productController.getSuppliers(req, res);
+	productController.getAllSuppliers(req, res);
 });
 
 router.get('/keywords', function(req, res) {
-	productController.getKeywords(req, res);
+	productController.getAllKeywords(req, res);
 });
 
+router.get('/suggestions', function(req, res) {
+	productController.getAllSuggestions(req, res);
+});
+
+router.get('/suggestions/:id', function(req, res) {
+	productController.getSuggestion(req, res);
+});
+
+
+
+
+
 router.get('/:id', function(req, res) {
-	productController.get(req, res);
+	productController.getApproved(req, res);
 });
 
 router.get('/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
-	productController.get(req, res);
+	productController.getApproved(req, res);
 });
 
 router.get('/:id/likes',  passport.authenticate('jwt', { session: false }), function(req, res) {
@@ -67,7 +79,7 @@ router.post('/postproduct',  passport.authenticate('jwt', { session: false }), f
 });
 
 router.get('/',  function(req, res){
-	productController.getAll(req, res);
+	productController.getAllApproved(req, res);
 });
 
 router.post('/', upload.single('image'), function(req, res) {
