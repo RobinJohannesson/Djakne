@@ -104,7 +104,30 @@ module.exports = {
 							created: '2017-01-01'
 						});
 					},
-	
+
+	updateProduct: 	function(req, res) {
+
+						var id = req.params.id;
+						var file = req.file;
+
+						if(file) {
+							updateImage(id, file.filename);
+						}
+						
+						models.Product.update({
+							title: req.body.title,
+							description: req.body.description,
+							keyword: req.body.keyword,
+							supplier: req.body.supplier,
+							category_id: req.body.category_id
+						}, {
+							where: {
+								id: req.params.id
+							}
+						});
+					},
+
+
 	deleteProduct:	function (req, res){
 						//TODO
 					},
@@ -113,4 +136,14 @@ module.exports = {
 						//TODO
 					}
 	
+}
+
+function updateImage(id, filename) {
+	models.Product.update({
+		image: filename
+	}, {
+		where: {
+			id: id
+		}
+	});	
 }

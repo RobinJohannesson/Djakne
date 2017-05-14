@@ -29,7 +29,7 @@
 		function clearInput() {
 			ctrl.product = {};
 			ctrl.form.$setPristine();
-			document.getElementById('image').value = null;
+			document.getElementById('file').value = null;
 			$scope.$broadcast('angucomplete-alt:clearInput');
 		}
 	}

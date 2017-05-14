@@ -49,6 +49,7 @@
 		}
 
 		function change() {
+			console.log(ctrl.currentProduct);
 			adminService.update(ctrl.currentProduct);
 		}
 	};
