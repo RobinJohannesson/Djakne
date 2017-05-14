@@ -98,11 +98,17 @@ module.exports = {
 			supplier: req.body.supplier, 
 			image: req.file.filename, 
 			rating: 0, 
-			approved: false, 
+			approved: req.body.approved, 
 			likeAmount: 100, 
 			category_id: req.body.category_id, 
 			created: '2017-01-01'
-		});
+		})
+		.then(function() {
+			res.sendStatus(201);
+		})
+		.catch(function(err) {
+			res.sendStatus(500);
+		});;
 	},
 
 
@@ -140,53 +146,52 @@ module.exports = {
 
 	updateProduct: 	function(req, res) {
 
-						var id = req.params.id;
-						var file = req.file;
+		var id = req.params.id;
+		var file = req.file;
 
-						if(file) {
-							updateImage(id, file.filename);
-						}
+		if(file) {
+			updateImage(id, file.filename);
+		}
 
-						models.Product.update({
-							title: req.body.title,
-							description: req.body.description,
-							keyword: req.body.keyword,
-							supplier: req.body.supplier,
-							category_id: req.body.category_id,
-							approved: req.body.approved
-						}, {
-							where: {
-								id: req.params.id
-							}
-						})
-						.then(function() {
-							res.sendStatus(200);
-						})
-						.catch(function(err) {
-							res.sendStatus(500);
-						});
-					},
-
+		models.Product.update({
+			title: req.body.title,
+			description: req.body.description,
+			keyword: req.body.keyword,
+			supplier: req.body.supplier,
+			category_id: req.body.category_id,
+			approved: req.body.approved
+		}, {
+			where: {
+				id: req.params.id
+			}
+		})
+		.then(function() {
+			res.sendStatus(200);
+		})
+		.catch(function(err) {
+			res.sendStatus(500);
+		});
+	},
 
 
 	deleteProduct:	function (req, res){
-						var id = req.params.id;
-						console.log(id);
-						models.Product.find({
-							where: {
-								id: id
-							}
-						})
-						.then(function(product) {
-							if(product) {
-								product.destroy();
-								fs.unlinkSync('public/images/' + product.image);
-								res.sendStatus(200);
-							} else {
-								res.sendStatus(404);
-							}
-						});
-					}
+		var id = req.params.id;
+		console.log(id);
+		models.Product.find({
+			where: {
+				id: id
+			}
+		})
+		.then(function(product) {
+			if(product) {
+				product.destroy();
+				fs.unlinkSync('public/images/' + product.image);
+				res.sendStatus(200);
+			} else {
+				res.sendStatus(404);
+			}
+		});
+	}
 }
 
 
