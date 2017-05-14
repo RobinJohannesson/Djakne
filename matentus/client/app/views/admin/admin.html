@@ -1,80 +1,52 @@
 <div ng-controller="AdminCtrl as ctrl">
-  <!-- Page Content -->
+	<!-- Page Content -->
 
 
-  <div class="btn-group btn-group-justified admin_btns" role="group" aria-label="...">
-    <div  class="btn-group" role="group">
-      <button ng-click ="ctrl.changeView('/')" type="button" class="col-xs-12 admin_btn btn btn-default active" id="product_request_btn">
-        Produktförfrågningar
-      </button>
-    </div>
-    <div class="btn-group" role="group">
-      <button ng-click ="ctrl.changeView('/addproduct')" type="button" class="col-xs-12 admin_btn btn btn-default " id="add_product_btn">
-        Lägg till produkt
-      </button>
-    </div>
+	<div class="btn-group btn-group-justified admin_btns" role="group" aria-label="...">
 
-    <div class="btn-group" role="group">
-      <button ng-click ="ctrl.changeView('/changeproduct')" type="button" class="col-xs-12 admin_btn btn btn-default" id="manage_product_btn">
-        Ändra produkt
-      </button>
-    </div>
-    <div class="btn-group" role="group">
-      <button ng-click ="ctrl.changeView('/managecategories')" type="button" class="col-xs-12 admin_btn btn btn-default" id="manage_cat_btn">
-        Hantera kategorier
-      </button>
-    </div>
-  </div>
+		<div class="btn-group" role="group">
+			<button 
+				ng-click ="ctrl.changeView(ctrl.manageSuggestionsView)" 
+				type="button" 
+				class="col-xs-12 admin_btn btn btn-default"
+				ng-class="{active: ctrl.currentView == ctrl.manageSuggestionsView}" 
+				id="product_request_btn">
+				Produktförfrågningar
+			</button>
+		</div>
 
-  <div ng-include src="ctrl.currentView"></div>
+	<div class="btn-group" role="group">
+		<button 
+			ng-click = "ctrl.changeView(ctrl.addProductView)" 
+			type="button" 
+			class="col-xs-12 admin_btn btn btn-default"
+			ng-class="{active: ctrl.currentView == ctrl.addProductView}"  
+			id="add_product_btn">
+			Lägg till produkt
+		</button>
+	</div>
 
+	<div class="btn-group" role="group">
+		<button 
+			ng-click ="ctrl.changeView(ctrl.manageProductsView)" 
+			type="button" 
+			class="col-xs-12 admin_btn btn btn-default"
+			ng-class="{active: ctrl.currentView == ctrl.manageProductsView}"
+			id="manage_product_btn">
+			Ändra produkt
+		</button>
+	</div>
 
+	<div class="btn-group" role="group">
+		<button 
+			ng-click ="ctrl.changeView(ctrl.manageCategoriesView)" 
+			type="button" 
+			class="col-xs-12 admin_btn btn btn-default"
+			ng-class="{active: ctrl.currentView == ctrl.manageCategoriesView}"
+			id="manage_cat_btn">
+				Hantera kategorier
+			</button>
+		</div>
+	</div>
 
-
-
-  
-<!--ng cont-->
-
-  <!-- Page Header -->
-
-  <!-- /.row -->
-
-  <!-- Projects Row -->
-  <!--
-<fieldset class="form-group">
-<legend>Radio buttons</legend>
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-Option one is this and that&mdash;be sure to include why it's great
-</label>
-</div>
-<div class="form-check">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-Option two can be something else and selecting it will deselect option one
-</label>
-</div>
-<div class="form-check disabled">
-<label class="form-check-label">
-<input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-Option three is disabled
-</label>
-</div>
-</fieldset>
-<div class="form-check">
-<label class="form-check-label">
-<input type="checkbox" class="form-check-input">
-Check me out
-</label>
-</div>
--->
-
-
-  <!-- /.row -->
-
-  <!-- Footer -->
-  
-
-
-  <!-- /.container -->
+<div ng-include src="ctrl.currentView"></div>

@@ -13,26 +13,27 @@
 
 	function AdminCtrl(adminService, categoryService) {
 
-		const suggestionsView = 'views/admin/views/suggestions.html';
-		const addProductView = 'views/admin/views/addProduct.html';
-		const changeProductView = 'views/admin/views/changeProduct.html';
-		const manageCategoriesView = 'views/admin/views/manageCategories.html';
-
 		var ctrl = this;
+
+		ctrl.manageSuggestionsView = 'views/admin/views/manageSuggestions.html';
+		ctrl.manageProductsView = 'views/admin/views/manageProducts.html';
+		ctrl.manageCategoriesView = 'views/admin/views/manageCategories.html';
+		ctrl.addProductView = 'views/admin/views/addProduct.html';
+		ctrl.currentView = ctrl.manageSuggestionsView;
+
 		ctrl.suggestions = adminService.suggestions;
 		ctrl.categories = categoryService.categories;
+		ctrl.currentProduct = {};
+		ctrl.currentCategoryTitle = '';
+
 		ctrl.accept = accept;
 		ctrl.update = update;
 		ctrl.remove = remove;
-
-		ctrl.currentView = suggestionsView;
-		ctrl.currentProduct = {};
-		ctrl.currentCategoryTitle = '';
+		ctrl.changeView = changeView;
 		ctrl.setCurrentProduct = setCurrentProduct;
 
 		function setCurrentProduct(product) {
 			ctrl.currentProduct = product;
-			console.log(ctrl.currentProduct);
 			setCurrentCategoryTitle();
 		}
 
@@ -45,8 +46,13 @@
 			}
 		}
 
+		function changeView(view) {
+			ctrl.currentView = view;
+		}
+
 		function accept() {
 			ctrl.currentProduct.approved = true;
+			console.log(ctrl.currentProduct);
 			adminService.update(ctrl.currentProduct);
 		}
 

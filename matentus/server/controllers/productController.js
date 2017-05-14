@@ -152,7 +152,8 @@ module.exports = {
 			description: req.body.description,
 			keyword: req.body.keyword,
 			supplier: req.body.supplier,
-			category_id: req.body.category_id
+			category_id: req.body.category_id,
+			approved: req.body.approved
 		}, {
 			where: {
 				id: req.params.id

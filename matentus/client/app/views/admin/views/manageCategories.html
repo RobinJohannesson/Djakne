@@ -1,29 +1,4 @@
 
-<div ng-controller="AdminCtrl as ctrl">
-    <!-- Page Content -->
-    <div class="btn-group btn-group-justified admin_btns" role="group" aria-label="...">
-                <div  class="btn-group" role="group">
-                    <button ng-click ="ctrl.changeView('/')" type="button" class="col-xs-12 admin_btn btn btn-default" id="product_request_btn">
-                        Produktförfrågningar
-                    </button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button ng-click ="ctrl.changeView('/addproduct')" type="button" class="col-xs-12 admin_btn btn btn-default " id="add_product_btn">
-                        Lägg till produkt
-                    </button>
-                </div>
-                
-                <div class="btn-group" role="group">
-                    <button ng-click ="ctrl.changeView('/changeproduct')" type="button" class="col-xs-12 admin_btn btn btn-default" id="manage_product_btn">
-                        Ändra produkt
-                    </button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button ng-click ="ctrl.changeView('/managecategories')" type="button" class="col-xs-12 admin_btn btn btn-default active" id="manage_cat_btn">
-                        Hantera kategorier
-                    </button>
-                </div>
-            </div>
 
     <div class="col-lg-6 default_div" id="admin_manage_product" > 
         <a ng-click="ctrl.toggleForm()" class="btn label-default col-lg-12" id="new_category">

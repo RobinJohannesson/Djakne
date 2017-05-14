@@ -21,7 +21,6 @@
 		ctrl.product = {};
 
 		function upload() {
-			console.log(ctrl.product);
 			uploadService.upload(ctrl.product);
 			clearInput();
 		}

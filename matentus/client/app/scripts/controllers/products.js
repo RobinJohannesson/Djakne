@@ -19,9 +19,6 @@
 		ctrl.currentCategoryTitle = $routeParams.category;
 		ctrl.currentCategoryId = $routeParams.category_id;
 
-		console.log("Category title: " + ctrl.currentCategoryTitle);
-		console.log("Category id: " + ctrl.currentCategoryId);
-
 		ctrl.shouldShowCategories = false;
 
 		ctrl.categories = categoryService.categories;

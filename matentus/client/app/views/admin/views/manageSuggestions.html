@@ -39,8 +39,6 @@
   		</tbody>
   	</table>
 
- 
-
 	<!-- Change product modal -->
 	<div class="modal fade" id="modal-change-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	  	<div class="modal-dialog" role="document">
@@ -171,14 +169,14 @@
 		    <div class="modal-footer">
 		       	<button 
 		       		ng-click="ctrl.accept()"
-					ng-disabled="product-form.$invalid"
+					ng-disabled="ctrl.form.$invalid"
 					class="btn btn-success"
 					data-dismiss="modal">
 					Acceptera
 				</button>
 		        <button 
 		        	ng-click="ctrl.update()"
-					ng-disabled="product-form.$invalid"
+					ng-disabled="ctrl.form.$invalid"
 					class="btn btn-warning"
 					data-dismiss="modal">
 					Redigera
@@ -192,12 +190,6 @@
 	  </div>
 	</div>
 	<!-- End of change product modal -->
-
-
-
-
-
-
 
 	<!-- Delete product modal -->
 	<div class="modal fade" id="modal-delete-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
