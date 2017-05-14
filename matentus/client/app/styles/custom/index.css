@@ -37,48 +37,6 @@ footer {
     box-shadow: inset 0px 1px 8px 1px;
     
 }
-/*Products*/
-.portfolio-item {
-    padding: 0%;
-}
-
-.img-label {
-    position:absolute;
-    bottom: 0%;
-    /*width is the width of current pic*/
-    height: 25%;
-    background: rgb(0,0,0);
-    background: rgba(0,0,0,0.7);   
-    width: 95%;
-}
-#label-text {
-    margin: 2.5%;
-    color: white;
-}
-.heart-icon{
-    position:absolute;
-    top: 3%;
-    left: 83%;
-}
-.heart{
-    color: rgb(0,0,0);
-    color: rgba(0,0,0,0.8); 
-    font-size: 250%;
-}
-.img, .img > a, .img > a > img{
-    padding: 0px;
-}
-.img{
-    display: block;
-    width:370px;
-    height: 278px;  
-    overflow: hidden;
-}
-.img > a > img{
-    width: 110%;
-    height: auto;
-}
-
 
 /*Sidebar*/
 #side-menu {
@@ -280,4 +238,8 @@ footer {
 }
 .p-10{
     padding: 10px;
+}
+
+.col-pad {
+    padding: 0 10px 0 10px;
 }

@@ -1,0 +1,47 @@
+.portfolio-item {
+    padding: 0 12px 0 12px;
+    height: 280px;
+    overflow: hidden;
+}
+
+.portfolio-item img {
+    display: block;
+    width: 100%;
+    min-height: 280px;
+    position: relative;
+}
+.img-label {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 12px 0 12px;
+    height: 22%;
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,0.7);  
+    padding-left: 13px;
+}
+
+#label-text {
+    color: white;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+
+.heart-icon {
+    position:absolute;
+    margin: 0 12px 0 12px;
+    top: 5%;
+    right: 5%;
+}
+
+.heart {
+    color: rgb(0,0,0);
+    color: rgba(0,0,0,0.8); 
+    font-size: 300%;
+}
