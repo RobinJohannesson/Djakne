@@ -29,7 +29,6 @@ module.exports = function(sequelize, DataTypes) {
     underscored: true,
     classMethods: {
       associate: function(models) {
-        User.hasMany(models.Comment),
         User.hasMany(models.Like)
       }
     }

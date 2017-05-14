@@ -25,9 +25,35 @@
           ng-model="ctrl.product.title" 
           id="inputTitle" 
           placeholder="" 
+          maxlength="30" 
           required 
         />
       </div>
+
+            <!-- Input description -->
+      <div class="form-group col-lg-12">
+        <label 
+          for="inputDescription" 
+          class="control-label">
+          Beskrivning
+        </label>
+        <textarea   
+          name="product-description"  
+          class="form-control"    
+          ng-model="ctrl.product.description" 
+          rows="6" 
+          id="inputDescription" 
+          placeholder=""
+          maxlength="255" 
+          required>        
+        </textarea>
+      </div>
+
+    
+    </div>
+    
+
+    <div class="col-lg-4">
 
       <!-- Choose category -->
       <div class="form-group col-lg-12">
@@ -46,6 +72,26 @@
         </select>
       </div>
 
+      <!-- Input subcategory -->
+     <div class="form-group col-lg-12">
+        <label 
+          for="distributor">
+          Nyckelord
+        </label>
+      <angucomplete-alt
+              name="product-keyword"
+              placeholder=""
+              pause="100"
+              selected-object="selected"
+              ng-model="ctrl.product.keyword"
+              local-data="ctrl.keywords"
+              search-fields="keyword"
+              title-field="keyword"
+              minlength="0"
+              input-class="form-control form-control-small"
+      />
+      </div>
+
       <!-- Input supplier -->
      <div class="form-group col-lg-12">
         <label 
@@ -54,39 +100,16 @@
         </label>
       <angucomplete-alt
               name="product-supplier"
-              ng-model="ctrl.product.supplier" 
               placeholder=""
               pause="100"
-              selected-object="selectedSupplier"
+              selected-object="selected"
+              ng-model="ctrl.product.supplier"
               local-data="ctrl.suppliers"
               search-fields="supplier"
               title-field="supplier"
               minlength="1"
               input-class="form-control form-control-small"
       />
-      </div>
-
-    </div>
-    
-
-    <div class="col-lg-4">
-
-      <!-- Input description -->
-      <div class="form-group col-lg-12">
-        <label 
-          for="inputDescription" 
-          class="control-label">
-          Beskrivning
-        </label>
-        <textarea   
-          name="product-description"  
-          class="form-control"    
-          ng-model="ctrl.product.description" 
-          rows="10" 
-          id="inputDescription" 
-          placeholder=""
-          required>        
-        </textarea>
       </div>
 
     </div>

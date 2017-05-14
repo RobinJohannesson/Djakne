@@ -18,6 +18,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    keyword: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     supplier: {
       type: DataTypes.STRING,
       allowNull: true
@@ -47,7 +51,6 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Product.belongsTo(models.Category),
-        Product.hasMany(models.Comment),
         Product.hasMany(models.Like)
       }
     }

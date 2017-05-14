@@ -7,13 +7,28 @@
 (function () {
 	'use strict';
 
-	var productService = function ($http) {
+	var productService = function ($http, $location) {
 
 		var state = {};
 		state.products = [];
 		state.suppliers = [];
+		state.keywords = [];
 		getProducts();
 		getSuppliers();
+		getKeywords();
+
+		function getProduct(id) {
+	        return $http({
+	        		method: 'GET', 
+	        		url:'http://localhost:3000/api/products/' + id
+	        	})
+	        	.then(function(response) {
+					return response.data;	        	
+				}, errorHandler)
+	        	.catch(function(error) {
+	        		console.log(error);
+	        	});
+	    };
 
 		function getProducts() {
 			$http({
@@ -22,7 +37,7 @@
 			})
 			.then(function(response) {
 				setProducts(response.data);
-			}, errorLogger);
+			}, errorHandler);
 		}
 
 		function getSuppliers() {
@@ -32,7 +47,17 @@
 			})
 			.then(function(response) {
 				setSuppliers(response.data);
-			}, errorLogger);
+			}, errorHandler);
+		}
+
+		function getKeywords() {
+			$http({
+				method: 'GET',
+				url: 'http://localhost:3000/api/products/keywords'
+			})
+			.then(function(response) {
+				setKeywords(response.data);
+			}, errorHandler);
 		}
 
 		function setProducts(products) {
@@ -45,13 +70,20 @@
 			state.suppliers.push.apply(state.suppliers, suppliers);
 		}
 
-		var errorLogger = function(response) {
+		function setKeywords(keywords) {
+			state.keywords.length = 0;
+			state.keywords.push.apply(state.keywords, keywords);
+		}
+		var errorHandler = function(response) {
+			if(response.status === 404) $location.path('/404');
 			console.log(response);
 		};    
 
 		return {
 			products: state.products,
-			suppliers: state.suppliers
+			suppliers: state.suppliers,
+			keywords: state.keywords,
+			getProduct: getProduct
 		};
 
 	};

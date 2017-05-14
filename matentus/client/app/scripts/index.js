@@ -12,12 +12,12 @@ angular
 		controller: 'ProductsCtrl',
 		controllerAs: 'ctrl'    
 	})
-	.when('/produkter/skicka', {
+	.when('/products/suggest', {
 		templateUrl: 'views/upload.html',
 		controller: 'UploadCtrl',
 		controllerAs: 'ctrl' 
 	})
-	.when('/produkter/:product_id', {
+	.when('/products/:id', {
 		templateUrl: 'views/product.html',
 		controller: 'ProductCtrl',
 		controllerAs: 'ctrl' 
@@ -57,6 +57,9 @@ angular
 		templateUrl: 'views/register.html',
 		controller: 'LoginCtrl',
 		controllerAs: 'ctrl'
+	})
+	.when('/404', {
+		templateUrl: 'views/error/404.html',
 	})
 	.otherwise({
 		redirectTo: '/'

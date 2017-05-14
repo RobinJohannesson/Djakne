@@ -7,7 +7,6 @@ var router = express.Router();
 var productController = require('../controllers/productController');
 var likeController = require('../controllers/likeController');
 var loginController=require('../controllers/loginController.js')
-var commentController = require('../controllers/commentController');
 var passport = require("passport");
 var multer = require('multer');
 var upload = multer({ dest: 'public/images/'});
@@ -42,8 +41,17 @@ passport.use(strategy);
 // -----------------------------------------------------
 // Define API routes
 // -----------------------------------------------------
+
 router.get('/suppliers', function(req, res) {
 	productController.getSuppliers(req, res);
+});
+
+router.get('/keywords', function(req, res) {
+	productController.getKeywords(req, res);
+});
+
+router.get('/:id', function(req, res) {
+	productController.get(req, res);
 });
 
 router.get('/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
@@ -61,8 +69,6 @@ router.post('/postproduct',  passport.authenticate('jwt', { session: false }), f
 router.get('/',  function(req, res){
 	productController.getAll(req, res);
 });
-
-// Ladda upp ny produkt med bildfil -> Bilden lagras i /images
 
 router.post('/', upload.single('image'), function(req, res) {
 	productController.createProduct(req, res);

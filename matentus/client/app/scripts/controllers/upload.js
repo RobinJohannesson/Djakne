@@ -16,10 +16,12 @@
 
 		ctrl.categories = categoryService.categories;
 		ctrl.suppliers = productService.suppliers;
+		ctrl.keywords = productService.keywords;
 		ctrl.upload = upload;
 		ctrl.product = {};
 
 		function upload() {
+			console.log(ctrl.product);
 			uploadService.upload(ctrl.product);
 			clearInput();
 		}
