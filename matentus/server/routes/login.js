@@ -10,7 +10,7 @@ var loginController = require('../controllers/loginController');
 // Facebook Login Route
 // -----------------------------------------------------
 
-router.post('/facebook', function(req, res) {
+router.get('/facebook/:token', function(req, res) {
 	loginController.fblogin(req, res);
 });
 
