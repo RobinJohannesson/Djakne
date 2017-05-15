@@ -22,5 +22,11 @@ module.exports = {
 									.then(function(likes) {
 										res.json(likes);
 									});
-								}
+								},
+	
+	postLike:		function(req,res){
+						var userId = req.params.id;
+						var productId=req.params.productId;
+					}
+	
 }
