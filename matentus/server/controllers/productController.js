@@ -29,7 +29,7 @@ module.exports = {
 				approved: true
 			}
 		})
-			.then(function(products) {
+		.then(function(products) {
 			res.json(products);
 		});
 	},
@@ -146,7 +146,7 @@ module.exports = {
 
 	updateProduct: 	function(req, res) {
 
-		var id = req.params.id;
+		var id = req.body.id;
 		var file = req.file;
 
 		if(file) {
@@ -162,7 +162,7 @@ module.exports = {
 			approved: req.body.approved
 		}, {
 			where: {
-				id: req.params.id
+				id: id
 			}
 		})
 		.then(function() {
@@ -176,7 +176,6 @@ module.exports = {
 
 	deleteProduct:	function (req, res){
 		var id = req.params.id;
-		console.log(id);
 		models.Product.find({
 			where: {
 				id: id

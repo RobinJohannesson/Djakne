@@ -79,11 +79,18 @@
 			console.log(response);
 		};    
 
+		var refresh = function() {
+			getProducts();
+			getSuppliers();
+			getKeywords();
+		};
+
 		return {
 			products: state.products,
 			suppliers: state.suppliers,
 			keywords: state.keywords,
-			getProduct: getProduct
+			getProduct: getProduct,
+			refresh: refresh
 		};
 
 	};

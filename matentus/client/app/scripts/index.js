@@ -32,22 +32,6 @@ angular
 		controller: 'AdminCtrl',
 		controllerAs: 'ctrl'
 	})
-	.when('/admin/addproduct', {
-		templateUrl: 'views/admin/addProduct.html',
-		controller: 'AdminCtrl',
-		controllerAs: 'ctrl'
-	})
-	.when('/admin/managecategories', {
-		templateUrl: 'views/admin/manageCategory.html',
-		controller: 'AdminCtrl',
-		controllerAs: 'ctrl'
-	})
-	
-	.when('/admin/changeproduct', {
-		templateUrl: 'views/admin/changeProduct.html',
-		controller: 'AdminCtrl',
-		controllerAs: 'ctrl'
-	})
 	.when('/login', {
 		templateUrl: 'views/login.html',
 		controller: 'LoginCtrl',

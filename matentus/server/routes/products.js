@@ -43,7 +43,7 @@ passport.use(strategy);
 // -----------------------------------------------------
 
 
-router.put('/:id', upload.single('file'), function(req, res) {
+router.put('/', upload.single('file'), function(req, res) {
 	productController.updateProduct(req, res);
 });
 

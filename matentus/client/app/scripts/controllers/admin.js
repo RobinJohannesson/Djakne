@@ -9,9 +9,9 @@
 	angular.module('matentusApp')
 	.controller('AdminCtrl', AdminCtrl);
 
-	AdminCtrl.$inject = ['adminService', 'categoryService'];
+	AdminCtrl.$inject = ['$scope', 'adminService', 'uploadService', 'categoryService', 'productService'];
 
-	function AdminCtrl(adminService, categoryService) {
+	function AdminCtrl($scope, adminService, uploadService, categoryService, productService) {
 
 		var ctrl = this;
 
@@ -23,93 +23,99 @@
 
 		ctrl.suggestions = adminService.suggestions;
 		ctrl.categories = categoryService.categories;
+		ctrl.suppliers = productService.suppliers;
+		ctrl.keywords = productService.keywords;
+		ctrl.products = productService.products;
 		ctrl.currentProduct = {};
-		ctrl.currentCategoryTitle = '';
+		ctrl.currentCategory = {};
 
-		ctrl.accept = accept;
-		ctrl.update = update;
-		ctrl.remove = remove;
+		ctrl.addProduct = addProduct;
+		ctrl.approveProduct = approveProduct;
+		ctrl.dismissProduct = dismissProduct;
+		ctrl.updateProduct = updateProduct;
+		ctrl.deleteProduct = deleteProduct;
+		ctrl.addCategory = addCategory;
 		ctrl.changeView = changeView;
 		ctrl.setCurrentProduct = setCurrentProduct;
+		ctrl.setCurrentCategory = setCurrentCategory;
+		ctrl.clearCurrentProduct = clearCurrentProduct;
+		ctrl.addCategory = addCategory;
+		ctrl.updateCategory = updateCategory;
+		ctrl.deleteCategory = deleteCategory;
 
 		function setCurrentProduct(product) {
 			ctrl.currentProduct = product;
-			setCurrentCategoryTitle();
 		}
 
-		function setCurrentCategoryTitle() {
-			var category = ctrl.categories.find(function(category) {
-				return category.id === ctrl.currentProduct.category_id;
-			})
-			if(category) {
-				ctrl.currentCategoryTitle = category.title;
-			}
+		function setCurrentCategory(category) {
+			console.log("Setting current category");
+			ctrl.currentCategory = category;
+			console.log(ctrl.currentCategory);
 		}
 
 		function changeView(view) {
 			ctrl.currentView = view;
 		}
 
-		function accept() {
+		function addProduct() {
+			uploadService.upload(ctrl.currentProduct);
+			clearProductInput();
+		}
+
+		function approveProduct() {
 			ctrl.currentProduct.approved = true;
-			console.log(ctrl.currentProduct);
+			if(!ctrl.currentProduct.supplier) {
+				ctrl.currentProduct.supplier = 'Information saknas';
+			}
 			adminService.update(ctrl.currentProduct);
 		}
 
-		function update() {
+		function dismissProduct() {
+			ctrl.currentProduct.approved = false;
 			adminService.update(ctrl.currentProduct);
 		}
 
-		function remove() {
+		function updateProduct() {
+			if(!ctrl.currentProduct.supplier) {
+				ctrl.currentProduct.supplier = 'Information saknas';
+			}
+			adminService.update(ctrl.currentProduct);
+		}
+
+		function deleteProduct() {
 			adminService.remove(ctrl.currentProduct);
+			clearCurrentProduct();
+		}
+
+		function addCategory() {
+			adminService.addCategory(ctrl.currentCategory);
+			clearCurrentCategory();
+		}
+
+		function updateCategory() {
+			adminService.updateCategory(ctrl.currentCategory);
+			clearCurrentCategory();
+		}
+
+		function deleteCategory() {
+			adminService.deleteCategory(ctrl.currentCategory);
+			clearCurrentCategory();
+		}
+
+		function clearProductInput() {
+			ctrl.currentProduct = {};
+			ctrl.form.$setPristine();
+			document.getElementById('file').value = null;
+			$scope.$broadcast('angucomplete-alt:clearInput');
+		}
+
+		function clearCurrentCategory() {
+			ctrl.currentCategory = {};
+		}
+
+		function clearCurrentProduct() {
+			ctrl.currentProduct = {};
 		}
 	};
 
 })();
-
-
-
-/*
-
-
-$scope.one = true; // setting the first div visible when the page loads
-$scope.two = false; // hidden
-$scope.three = false; // hidden
-
-// Now have three functions that change the ng-show based on the click
-$scope.showOne = function (){
-  $scope.one = true;
-  $scope.two = false;
-  $scope.three = false;
-}
-
-$scope.showTwo = function (){
-  $scope.one = false;
-  $scope.two = true; // now show this one
-  $scope.three = false;
-    console.log("her")
-}
-
-$scope.requests = function($scope){
-    console.log("hej")
-};
-
-*/
-/*
-$scope.addProduct = function($scope){
-    $scope.view = '/views/addProduct.html';
-};
-
-function changeProduct(){
-    $("#admin_manage_product").css("display", "block");
-    $("#admin_request").css("display", "none");
-    $("#admin_categories").css("display", "none");
-    $("#admin_add_product").css("display", "none");
-};
-function manageCategory(){
-    $("#admin_categories").css("display", "block");
-    $("#admin_request").css("display", "none");
-    $("#admin_manage_product").css("display", "none");
-    $("#admin_add_product").css("display", "none");
-};*/
-

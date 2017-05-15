@@ -46,8 +46,16 @@ router.get('/:id', function(req, res) {
 	categoryController.get(req, res);
 });
 
-router.post('/createcategory', function (req, res){
-	categoryController.createCategory(req, res);
+router.post('/', function (req, res){
+	categoryController.create(req, res);
+});
+
+router.put('/', function(req, res) {
+	categoryController.update(req, res);
+});
+
+router.delete('/:id', function(req, res) {
+	categoryController.delete(req, res);
 });
 
 

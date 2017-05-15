@@ -7,22 +7,30 @@
 (function () {
 	'use strict';
 
-	var adminService = function ($http, $location) {
+	var adminService = function ($http, $location, productService, categoryService) {
 
 		var state = {};
 		state.suggestions = [];
 		getSuggestions();
 
 		function update(product) {
-			var url = 'http://localhost:3000/api/products/' + product.id;
+
 			var formData = new FormData();
 			for(var key in product) {
 				formData.append(key, product[key]);
 			}
-			$http.put(url, formData, {
+			
+			$http({
+				method: 'PUT',
+				url: 'http://localhost:3000/api/products',
+				data: formData,
 				transformRequest: angular.identity,
 				headers: { 'Content-Type': undefined }
-			});
+			})
+			.then(function(response) {
+				refresh();
+				productService.refresh();
+			}, errorHandler);
 		}
 
 		function remove(product) {
@@ -31,22 +39,55 @@
 				url: 'http://localhost:3000/api/products/' + product.id
 			})
 			.then(function(response) {
-				console.log("adminService removed a product");
+				getSuggestions();
+				productService.refresh();
+			}, errorHandler);
+		}
+
+		function addCategory(category) {
+			$http({
+				method: 'POST',
+				url: 'http://localhost:3000/api/categories',
+				data: category
+			})
+			.then(function(response) {
+				categoryService.refresh();
+			}, errorHandler);
+		}
+
+		function updateCategory(category) {
+			$http({
+				method: 'PUT',
+				url: 'http://localhost:3000/api/categories',
+				data: category
+			})
+			.then(function(response) {
+				categoryService.refresh();
+			}, errorHandler);
+		}
+
+		function deleteCategory(category) {
+			$http({
+				method: 'DELETE',
+				url: 'http://localhost:3000/api/categories/' + category.id,
+			})
+			.then(function(response) {
+				categoryService.refresh();
 			}, errorHandler);
 		}
 
 		function getSuggestion(id) {
-	        return $http({
-	        		method: 'GET', 
-	        		url:'http://localhost:3000/api/products/suggestions/' + id
-	        	})
-	        	.then(function(response) {
-					return response.data;	        	
-				}, errorHandler)
-	        	.catch(function(error) {
-	        		console.log(error);
-	        	});
-	    };
+			return $http({
+				method: 'GET', 
+				url:'http://localhost:3000/api/products/suggestions/' + id
+			})
+			.then(function(response) {
+				return response.data;	        	
+			}, errorHandler)
+			.catch(function(error) {
+				console.log(error);
+			});
+		};
 
 		function getSuggestions() {
 			$http({
@@ -68,15 +109,23 @@
 			console.log(response);
 		};    
 
+		var refresh = function() {
+			getSuggestions();
+		}
+
 		return {
 			suggestions: state.suggestions,
 			update: update,
-			remove: remove
+			remove: remove,
+			addCategory: addCategory,
+			updateCategory: updateCategory,
+			deleteCategory: deleteCategory,
+			refresh: refresh
 		};
 
 	};
 
 	angular.module('matentusApp')
 	.factory('adminService', adminService);
-	
+
 })();

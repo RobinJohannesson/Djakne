@@ -1,79 +1,204 @@
-
 <div class="col-lg-12 default_div" id="admin_manage_product" >
-        <table class="table">
-            
-            <thead>
-              <tr>
-                <th>Produktnamn</th>
-                <th>Leverantör</th>
-                <th>Bild</th>
-              </tr>
-            </thead>
-            <tbody ng-controller="ProductsCtrl as ctrl">
-             <tr ng-repeat="product in ctrl.products">
-                <td>{{product.title}}</td>
-                <td>Zoegas</td>
-                <td><img src="images/exkaffe.jpg" alt="en bild" class="img_thumbnail"></td>
-                  <td>
-                <a href="#" class=" change">
-               <i class="fa fa-trash-o  fa-lg" aria-hidden="true"></i>
-                </a>  
-                     
-                <a class="change">
-                <i ng-click="ctrl.toggleForm()" class="fa fa-pencil fa-lg" aria-hidden="true"></i>
-                </a> 
-                   
-                </td>
-                
-                 
-              </tr>
-            
-            </tbody>
-      </table>
-        
-        <div ng-if="ctrl.shouldShowForm" class="manage_form">
-            <div class="col-lg-3"><h3>Ändra produktinfo</h3></div>
-            <form class=" col-lg-12"> 
-  
-
-          <div class="form-group col-lg-6">
-            <label for="title">Produktitel</label>
-            <input type="text" class="form-control" id="title-input">
-          </div>
-
-             <div class="form-group col-lg-6">
-            <label for="distributor">Leverantör</label>
-            <input type="text" class="form-control" id="distributor-input">
-          </div>
-
-          <div class="form-group col-lg-6">
-            <label for="select-main-cat">Välj huvudkategori</label>
-            <select class="form-control" id="select-main-cat">
-              <option>huvudkategori 1</option>
-              <option>huvudkategori 2</option>
-              <option>huvudkategori 3</option>
-
-            </select>
-          </div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Produktnamn</th>
+				<th>Leverantör</th>
+				<th>Bild</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="product in ctrl.products">
+				<td>{{ product.title }}</td>
+				<td>{{ product.supplier }}</td>
+				<td>
+  					<a href="http://localhost:3000/images/{{product.image}}">
+  						<img src="http://localhost:3000/images/{{product.image}}" alt="" class="img_thumbnail">
+  					</a>
+				</td>
+				<td>
+  				  	<p 
+  				  		ng-click="ctrl.setCurrentProduct(product)" 
+  				  		data-toggle="modal" 
+  				  		data-target="#modal-delete-product"
+   				  		class="change"> 
+  						<i class="fa fa-trash-o  fa-lg" aria-hidden="true"></i>
+  					</p>  
+  				  	<p 
+  				  		ng-click="ctrl.setCurrentProduct(product)" 
+  				  		data-toggle="modal" 
+  				  		data-target="#modal-change-product"
+  				  		class="change">
+  						<i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+  					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 
 
-          <div class="form-group col-lg-12">
-            <label for="product-description">Produktbeskrivning</label>
-            <textarea class="form-control" id="product-description" rows="3"></textarea>
-          </div>
-         <div class="col-lg-2 "> 
-             <img src="http://placehold.it/180" alt="your image" />
-        </div>    
-          <div class="form-group col-lg-4" id="image_upload">
-            <label for="image-upload">Bilduppladdning</label>
-            <input type="file" class="form-control-file" aria-describedby="fileHelp" onchange="readURL(this);">
-            <small id="fileHelp" class="form-text text-muted">Bilden bör vara i måttet 180x180.</small>
-           <div class="btn_save">
-                <button type="submit" class="btn btn-primary ">Ladda upp</button>
-            </div>
-          </div>
-   
-    </form>
-        </div>
+
+<!-- Change product modal -->
+<div class="modal fade" id="modal-change-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+	    <div class="modal-content" style="border-radius: 0">  
+
+		<form 
+			name="ctrl.form" 
+			class=" col-lg-10 col-lg-offset-1 admin_div" 
+			id="admin_add_product" 
+			data-toggle="validator" 
+			role="form"
+			style="padding-top: 20px"> 
+
+				<!-- Input title -->
+				<div class="form-group col-lg-12">
+					<label 
+						for="inputTitle" 
+						class="control-label">
+						Titel
+					</label>
+					<input  
+						type="text"
+						name="product-name"  
+						class="form-control" 
+						ng-model="ctrl.currentProduct.title" 
+						id="inputTitle" 
+						maxlength="30" 
+						required 
+					/>
+				</div>
+
+				<!-- Input description -->
+				<div class="form-group col-lg-12">
+					<label 
+						for="inputDescription" 
+						class="control-label">
+						Beskrivning
+					</label>
+					<textarea   
+						name="product-description"  
+						class="form-control"    
+						ng-model="ctrl.currentProduct.description" 
+						rows="5" 
+						id="inputDescription" 
+						maxlength="255" 
+						required>    
+					</textarea>
+				</div>
+
+				<!-- Choose category -->
+				<div class="form-group col-lg-12">
+					<label 
+						for="select-main-cat">
+						Kategori
+					</label>
+					<select   
+						name="product-category" 
+						ng-options="category.id as category.title for category in ctrl.categories" 
+						ng-model="ctrl.currentProduct.category_id" 
+						class="form-control" 
+						id="select-main-cat" 
+						required>
+						<option value=""></option>
+					</select>
+				</div>
+
+				<!-- Input subcategory -->
+				<div class="form-group col-lg-12">
+					<label 
+						for="distributor">
+						Nyckelord
+					</label>
+					<angucomplete-alt
+						name="product-keyword"
+						pause="100"
+						selected-object="selected"
+						ng-model="ctrl.currentProduct.keyword"
+						local-data="ctrl.keywords"
+						search-fields="keyword"
+						title-field="keyword"
+						minlength="0"
+						input-class="form-control form-control-small"
+					/>
+				</div>
+
+				<!-- Input supplier -->
+				<div class="form-group col-lg-12">
+					<label 
+						for="distributor">
+						Leverantör
+					</label>
+					<angucomplete-alt
+						name="product-supplier"
+						pause="100"
+						selected-object="selected"
+						ng-model="ctrl.currentProduct.supplier"
+						local-data="ctrl.suppliers"
+						search-fields="supplier"
+						title-field="supplier"
+						minlength="0"
+						input-class="form-control form-control-small"
+					/>
+				</div>
+
+				<!-- Choose image file -->
+				<div class="form-group col-lg-12" id="image_upload">
+					<label 
+						for="image-upload">
+						Bilduppladdning
+					</label>
+					<input 
+						name="product-file"  
+						id="file"
+						type="file" 
+						accept="image/*" 
+						file-model="ctrl.currentProduct.file" 
+						class="form-control-file mt-10" 
+						aria-describedby="fileHelp" 
+					/>
+					<small 
+						id="fileHelp" 
+						class="form-text text-muted">
+						Bilden bör vara i måttet 180x180.
+					</small>
+				</div>
+		</form>
+
+	    <div class="modal-footer">
+	    	<button 
+	        	ng-click="ctrl.updateProduct()"
+				ng-disabled="ctrl.form.$invalid"
+				class="btn btn-success"
+				data-dismiss="modal">
+				Uppdatera
+			</button>
+	       	<button 
+	       		ng-click="ctrl.dismissProduct()"
+				ng-disabled="ctrl.form.$invalid"
+				class="btn btn-warning"
+				data-dismiss="modal">
+				Lägg tillbaka som förslag
+			</button>
+			<button type="button" class="btn btn-primary" data-dismiss="modal">
+				Stäng
+			</button>
+	    </div>
+
     </div>
-    
+  </div>
+</div>
+<!-- End of change product modal -->
+
+<!-- Delete product modal -->
+<div class="modal fade" id="modal-delete-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+	        <h2 style="margin-bottom: 20px">Är du säker på att du vill ta bort "{{ ctrl.currentProduct.title }}"?</h2>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Stäng</button>
+	        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="ctrl.deleteProduct()">Ta bort</button>
+ 		</div>
+ 	</div>
+</div>
+<!-- End of delete product modal -->

@@ -27,14 +27,19 @@
 		function setCategories(categories) {
 			state.categories.length = 0;
 			state.categories.push.apply(state.categories, categories);
+		}  
+
+		function refresh() {
+			getAllCategories();
 		}
 
 		var errorLogger = function(response) {
 			console.log(response);
-		};    
-
+		};  
+		
 		return {
-			categories: state.categories
+			categories: state.categories,
+			refresh: refresh
 		};
 
 	};

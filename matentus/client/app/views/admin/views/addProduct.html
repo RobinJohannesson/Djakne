@@ -1,13 +1,11 @@
-<div ng-controller="UploadCtrl as ctrl">
 
     <form 
         name="ctrl.form" 
-        ng-submit="ctrl.upload()" 
         class=" col-lg-10 col-lg-offset-1 admin_div" 
+        ng-submit="ctrl.addProduct()"
         id="admin_add_product" 
         data-toggle="validator" 
         role="form"> 
-
 
         <div class="col-lg-4">
 
@@ -22,7 +20,7 @@
                     type="text"
                     name="product-name"  
                     class="form-control" 
-                    ng-model="ctrl.product.title" 
+                    ng-model="ctrl.currentProduct.title" 
                     id="inputTitle" 
                     placeholder="" 
                     maxlength="30" 
@@ -40,7 +38,7 @@
                 <textarea   
                     name="product-description"  
                     class="form-control"    
-                    ng-model="ctrl.product.description" 
+                    ng-model="ctrl.currentProduct.description" 
                     rows="6" 
                     id="inputDescription" 
                     placeholder=""
@@ -63,7 +61,7 @@
                 <select   
                     name="product-category" 
                     ng-options="category.id as category.title for category in ctrl.categories" 
-                    ng-model="ctrl.product.category_id" 
+                    ng-model="ctrl.currentProduct.category_id" 
                     class="form-control" 
                     id="select-main-cat" 
                     required>
@@ -82,7 +80,7 @@
                     placeholder=""
                     pause="100"
                     selected-object="selected"
-                    ng-model="ctrl.product.keyword"
+                    ng-model="ctrl.currentProduct.keyword"
                     local-data="ctrl.keywords"
                     search-fields="keyword"
                     title-field="keyword"
@@ -102,11 +100,11 @@
                     placeholder=""
                     pause="100"
                     selected-object="selected"
-                    ng-model="ctrl.product.supplier"
+                    ng-model="ctrl.currentProduct.supplier"
                     local-data="ctrl.suppliers"
                     search-fields="supplier"
                     title-field="supplier"
-                    minlength="1"
+                    minlength="0"
                     input-class="form-control form-control-small"
                 />
             </div>
@@ -126,7 +124,7 @@
                     id="file"
                     type="file" 
                     accept="image/*" 
-                    file-model="ctrl.product.file" 
+                    file-model="ctrl.currentProduct.file" 
                     class="form-control-file mt-10" 
                     aria-describedby="fileHelp" 
                     required 
@@ -141,14 +139,22 @@
             <!-- Submit button -->
             <div class="form-group col-lg-12">
                 <button 
-                    type="submit" 
-                    ng-disabled="product-form.$invalid"
-                    class="btn btn-primary mt-10">
-                    Ladda upp
+                    ng-disabled="ctrl.form.$invalid"
+                    ng-click="ctrl.currentProduct.approved = false"
+                    type="submit"
+                    class="btn btn-warning mt-10"
+                    style="width: 100%; margin: 5px 15px 5px 15px">
+                    Ladda upp som förslag
+                </button>
+                <button 
+                    ng-disabled="ctrl.form.$invalid"
+                    ng-click="ctrl.currentProduct.approved = true"
+                    type="submit"
+                    class="btn btn-success"
+                    style="width: 100%; margin: 5px 15px 5px 15px">
+                    Ladda upp som färdig produkt
                 </button>
             </div>
-
         </div>
 
     </form>
-</div>

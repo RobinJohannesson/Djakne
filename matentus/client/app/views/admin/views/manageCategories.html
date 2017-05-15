@@ -1,53 +1,148 @@
 
+<div class="col-lg-6 default_div" id="admin_manage_product" > 
 
-    <div class="col-lg-6 default_div" id="admin_manage_product" > 
-        <a ng-click="ctrl.toggleForm()" class="btn label-default col-lg-12" id="new_category">
-            <i class="fa fa-plus-circle" aria-hidden="true"></i>Ny kategori
-        </a>
-        <div>
-            <form ng-if="ctrl.shouldShowForm" class="col-lg-12">   
-                <div class="input-group">
-                    <span class="input-group-addon">Titel</span>
-                    <input id="main_cat_title" type="text" class="form-control" name="main_cat_title">
-                </div>
-                <div class="main_cat_save">
-                    <button type="submit" class="btn btn-primary ">Spara</button>
-                </div>
-            </form>
-        </div>
+	<div 
+		data-toggle="modal" 
+  		data-target="#modal-add-category" 
+  		class="btn label-default col-lg-12" 
+  		id="new_category">
+		<i class="fa fa-plus-circle" aria-hidden="true"></i>
+		Ny kategori
+	</div>
 
-        <table class="table" ng-controller="ProductsCtrl as pctrl">
-            <thead>
-                <tr>
-                    <th>Kategorinamn</th>
-                    <th></th>
-                </tr>
-            </thead>
-            
-            <tbody>
-                <tr ng-repeat="category in pctrl.categories">
-                    <td>{{category.title}}</td>
-                    <td><a href="#" class=" change">
-               <i   class="fa fa-trash-o  fa-lg" aria-hidden="true"></i>
-                </a>  
-                <a class="change">
-                    <i ng-click="ctrl.toggleFormChange()" class="fa fa-pencil fa-lg" aria-hidden="true"></i>
-                </a></td>
-                </tr>
-                
-            </tbody>
-                
-        </table>
-    </div>
-    <div ng-controller="ProductsCtrl as pctrl" class="col-lg-12 change-cat-form">
-            <form ng-if="ctrl.shouldShowFormChange" class="col-lg-6">   
-                <div class="input-group">
-                    <span class="input-group-addon">Titel</span>
-                    <input id="main_cat_title" type="text" class="form-control" name="main_cat_title">
-                </div>
-                <div class="main_cat_save">
-                    <button type="submit" class="btn btn-primary ">Spara</button>
-                </div>
-            </form>
-        </div>
-    
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Kategorinamn</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr ng-repeat="category in ctrl.categories">
+				<td>{{ category.title }}</td>
+				<td>
+  				  	<p 
+  				  		ng-click="ctrl.setCurrentCategory(category)"
+  				  		data-toggle="modal" 
+  				  		data-target="#modal-delete-category"
+   				  		class="change"> 
+  						<i class="fa fa-trash-o  fa-lg" aria-hidden="true"></i>
+  					</p>  
+  				  	<p 
+  				  		ng-click="ctrl.setCurrentCategory(category)"
+  				  		data-toggle="modal" 
+  				  		data-target="#modal-update-category"
+  				  		class="change">
+  						<i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+  					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<!-- Add category modal -->
+<div class="modal fade" id="modal-add-category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+    	<form name="ctrl.form">
+				<div class="form-group">
+					<label 
+						for="category-name" 
+						class="control-label">
+						Titel
+					</label>
+		    		<input  
+						type="text"
+						name="category-name" 
+						id="category-name" 
+						class="form-control" 
+						ng-model="ctrl.currentCategory.title" 
+						maxlength="30" 
+						required 
+					/>
+				</div>
+		        <button 
+		        	type="button" 
+		        	class="btn btn-primary" 
+		        	data-dismiss="modal">
+		        	Stäng
+		        </button>
+		        <button 
+		        	type="button" 
+		        	class="btn btn-warning" 
+		        	data-dismiss="modal" 
+		        	ng-disabled="ctrl.form.$invalid"
+		        	ng-click="ctrl.addCategory()">
+		        	Lägg till
+		        </button>
+	 		</div>
+ 		</form>
+ 	</div>
+</div>
+<!-- End of add category modal -->
+
+<!-- Update category modal -->
+<div class="modal fade" id="modal-update-category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+    	<form name="ctrl.form">
+				<div class="form-group">
+					<label 
+						for="category-name" 
+						class="control-label">
+						Titel
+					</label>
+		    		<input  
+						type="text"
+						name="category-name" 
+						id="category-name" 
+						class="form-control" 
+						ng-model="ctrl.currentCategory.title" 
+						maxlength="30" 
+						required 
+					/>
+				</div>
+		        <button 
+		        	type="button" 
+		        	class="btn btn-primary" 
+		        	data-dismiss="modal">
+		        	Stäng
+		        </button>
+		        <button 
+		        	type="button" 
+		        	class="btn btn-success" 
+		        	data-dismiss="modal" 
+		        	ng-disabled="ctrl.form.$invalid"
+		        	ng-click="ctrl.updateCategory()">
+		        	Redigera
+		        </button>
+	 		</div>
+ 		</form>
+ 	</div>
+</div>
+<!-- End of update category modal -->
+
+<!-- Delete category modal -->
+<div class="modal fade" id="modal-delete-category" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+    		<h2 style="margin-bottom: 20px">Är du säker på att du vill ta bort "{{ ctrl.currentCategory.title }}"?</h2>
+	        <button 
+	        	type="button" 
+	        	class="btn btn-primary" 
+	        	data-dismiss="modal">
+	        	Stäng
+	        </button>
+	        <button 
+	        	type="button" 
+	        	class="btn btn-danger" 
+	        	data-dismiss="modal" 
+	        	ng-disabled="ctrl.form.$invalid"
+	        	ng-click="ctrl.deleteCategory()">
+	        	Ta bort
+	        </button>
+	 	</div>
+ 	</div>
+</div>
+<!-- End of delete category modal -->
