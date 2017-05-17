@@ -63,14 +63,9 @@ footer {
     list-style: none;
     margin-top: 30%;
 }
-.close-icon{
-    position:absolute;
-}
-.close{
-    color: rgb(0,0,0);
-    color: rgba(0,0,0,0.8); 
+.cross{
     padding-top: 50%;
-    width: 175%;
+    transform: scale(3);
 }
 .side-content li a {
     text-decoration: none;
@@ -78,7 +73,24 @@ footer {
 }
 .side-content li {
     padding: 5%;
-    color: white;  
+    color: #9d9d9d;
+    font-size: 18px;
+}
+.side-content li:hover{
+    color: #fff;
+}
+.beta-text{
+    max-width: 250px;
+    font-size: 15px;
+    font-weight: 700;
+    position: fixed;
+    top: 90%;
+    text-align: center;
+    color: #000;
+    background: rgba(255,255,255,0.9);
+    padding: 5px;
+    margin: 0px;
+    border-radius: 3px;
 }
 /*h3 {
     border-style: solid;

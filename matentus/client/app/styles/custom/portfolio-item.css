@@ -3,12 +3,14 @@ html, body{
     font-weight: 400;
 }
 #burger{
-    
     float: left;
     display: block;
     width: 50px;
     height: 50px;
     background: #000;
+}
+@media screen and (max-width: 960px){
+    .
 }
 #burger:hover .icon-bar {
     background-color: #fff!important;
@@ -16,10 +18,11 @@ html, body{
 .icon-bar{
     background-color: #9d9d9d!important;
     width: 100%;
-    margin-top: 8px;
+    height: 2px!important;
+    margin-top: 6px!important;
 }
-.icon-bar:hover{
-    
+.dropdown{
+    padding-left: 20px;
 }
 .dropdown ul{
     position: absolute;
@@ -38,7 +41,7 @@ html, body{
     background-color: black;
 }
 .latest{
-    padding-left: 5%;  
+    
 }    
 .dropdown-toggle{
     position: absolute;
