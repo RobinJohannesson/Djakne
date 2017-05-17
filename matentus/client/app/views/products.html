@@ -20,7 +20,7 @@
 </div> -->
 <!-- Side menu -->
 <div ng-if="ctrl.shouldShowDropdown" class="col-xs-9 col-sm-5 col-lg-3" id="side-menu">
-    <div class="close-icon                              col-xs-3 col-xs-offset-9                            col-md-2 col-md-offset-10                           col-lg-3 col-lg-offset-9">
+    <div class="close-icon col-xs-3 col-xs-offset-9 col-md-2 col-md-offset-10 col-lg-3 col-lg-offset-9">
         <a href="#">
             <img ng-click="ctrl.toggleDropdown()" alt="#" src="../images/close.png" class="cross col-xs-12" >
         </a>
@@ -41,7 +41,7 @@
         <div class="row">
 		<!-- Hamburger-->
             <ul class="nav navbar-nav col-lg-12 col-md-12 col-xs-12">
-                <li class="active col-xs-12 col-md-3 col-lg-3">
+                <li id="burger-li" class="col-xs-0 col-md-3 col-lg-3">
                     <button ng-click="ctrl.toggleDropdown()" id="burger" type="button" class="navbar-toggle col-xs-12">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -51,7 +51,7 @@
                 </li>
                 <!-- Populärt -->
 
-                <li class="col-lg-3 col-md-3 col-xs-6 text-center">
+                <li class="col-lg-3 col-md-3 col-xs-4 text-center">
                     <a class="col-xs-12" ng-click="ctrl.orderBy('likeAmount')" type="button" ng-class="{active: ctrl.currentOrder == 'likeAmount'}">
                         Populärt
                     </a>
@@ -59,13 +59,13 @@
 
                 <!-- Senaste -->
 
-                <li class="col-lg-3 col-md-3 col-xs-6 latest text-center">
+                <li class="col-lg-3 col-md-3 col-xs-4 latest text-center">
                     <a ng-click="ctrl.orderBy('created')" type="button" class="col-xs-12" ng-class="{active: ctrl.currentOrder == 'created'}">Senaste</a>
                 </li>
 
                 <!-- Kategorier -->
 
-                <li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-3 col-md-3 col-xs-12 text-center">
+                <li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-3 col-md-3 col-xs-4 text-center">
                     <a class="dropdown-toggle col-xs-12" data-toggle="dropdown">{{ ctrl.categoryHeader }}<span class="caret"></span></a>
                     <ul ng-if="ctrl.shouldShowCategories" class="dropdown-menu col-md-3 col-lg-12 ">
                         <li class="col-xs-12 col-lg-12" ng-repeat="category in ctrl.categories"><a href="#!/{{ category.title }}"> {{ category.title }} </a></li>

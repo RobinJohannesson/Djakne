@@ -10,7 +10,9 @@ html, body{
     background: #000;
 }
 @media screen and (max-width: 960px){
-    .
+    #burger-li{
+        display: none;
+    }
 }
 #burger:hover .icon-bar {
     background-color: #fff!important;
