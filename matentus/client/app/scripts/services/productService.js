@@ -84,6 +84,18 @@
 			getSuppliers();
 			getKeywords();
 		};
+        
+        function setlike(id) {
+            $http({
+				method: 'POST',
+				url: 'http://localhost:3000/postlike',
+				transformRequest: angular.identity,
+				headers: { 'Content-Type': undefined }
+			})
+			.then(function(response) {
+                console.log(response);
+			})
+        }
 
 		return {
 			products: state.products,

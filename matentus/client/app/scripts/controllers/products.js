@@ -45,9 +45,10 @@
 		}
 
 		function like(id) {
-			console.log("Likes product: " + id);
-			// TODO: Send like to server
-		}
+			console.log("Likes the product id: " + id);
+            // TODO: Send like to server
+            productService.setlike(id);
+        }
 
 	}
 
