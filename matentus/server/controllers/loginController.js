@@ -4,35 +4,8 @@ var router  = express.Router();
 var userController=require('../controllers/userController.js')
 var passwordHash = require('password-hash');
 var passport = require("passport");
-var passportJWT = require("passport-jwt");
-var jwt = require('jsonwebtoken');
-var ExtractJwt = passportJWT.ExtractJwt;
-var JwtStrategy = passportJWT.Strategy;
-var request = require('request');
-
-var jwtOptions = {}
-jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
-jwtOptions.secretOrKey = 'tasmanianDevil';
-
-var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
-	console.log('payload received', jwt_payload);
-	var user =  models.User.find( {
-		where: {id: jwt_payload.id}
-	})
-	.then(function(user) {
-		if (user) {
-			next(null, user);
-		} else {
-			next(null, false);
-		}
-	});
-});
-
-var authenticate = new Promise(function() {
-});
 
 module.exports = {
-	//TODO:Fixa så vi får ut email från vår access-token.
 	fblogin: 	function(req, res) {
 		var fbtoken = req.body.fbtoken;
 
@@ -53,14 +26,14 @@ module.exports = {
 						.then(function() {
 							var payload = {id: user.id};
 							var token = jwt.sign(payload, jwtOptions.secretOrKey);
-							res.json({status: 0, token: token});
+							res.json({token: token});
 						})
 						}
 
 					else {
 						var payload = {id: user.id};
 						var token = jwt.sign(payload, jwtOptions.secretOrKey);
-						res.json({status: 0, token: token});
+						res.json({token: token});
 					} 
 
 				}) 
@@ -68,7 +41,6 @@ module.exports = {
 		})
 	},
 	googlelogin: 	function(req, res) {
-		//TODO:Fixa så vi får ut email från vår access-token.
 		var googletoken = req.body.googletoken;
 		request.get({ url: 'https://www.googleapis.com/oauth2/v1/userinfo?access_token='+googletoken },      function(error, response, body) { 
 			if (!error && response.statusCode == 200) {
@@ -87,14 +59,14 @@ module.exports = {
 						.then(function() {
 							var payload = {id: user.id};
 							var token = jwt.sign(payload, jwtOptions.secretOrKey);
-							res.json({status: 0, token: token});
+							res.json({token: token});
 						})
 						}
 
 					else {
 						var payload = {id: user.id};
 						var token = jwt.sign(payload, jwtOptions.secretOrKey);
-						res.json({status: 0, token: token});
+						res.json({token: token});
 					} 
 
 				}) 
@@ -102,24 +74,8 @@ module.exports = {
 		})
 
 	},
-
-	checkLoginStatus: 	function(req, res) {
-		console.log("test");
-		if(passport.authenticate('jwt', { session: false })){
-			res.json({status: 1});
-		}
-		else{
-			res.json({status:2});
-		}
-		// Return status OK is Matentus-token is valid.
-
-	},
-
 	/*
 	Local Login
-	Status, 0 : User authenticated, token returned.
-	Status, 1 : User dont exist.
-	Status, 2 : User exist, wrong password.
 	*/
 	locallogin: 	function(req, res) {
 		if(req.body.email && req.body.password){
@@ -131,22 +87,20 @@ module.exports = {
 		})
 		.then(function(user) {
 			if (!user) {
-				res.status(401).json({status:"1"});
+				res.sendStatus(401);
 			} 
 			if(userController.controlPassword(req.body.password, user.password)) {
 				var payload = {id: user.id};
 				var token = jwt.sign(payload, jwtOptions.secretOrKey);
-				res.json({status: 0, token: token});
+				res.json({token: token});
 			} else {
-				res.status(401).json({status:"2"});
+				res.sendStatus(401);
 			} 
 		});
 	},
 
 	/*
 	Create Local User
-	Status, 0 : User created, token returned.
-	Status, 1 : User already exist.
 	*/
 	createEmailUser:	function(req, res){
 		var hashedPassword = passwordHash.generate(req.body.password);       
@@ -166,7 +120,7 @@ module.exports = {
 				.then(function() {
 					var payload = {id: user.id};
 					var token = jwt.sign(payload, jwtOptions.secretOrKey);
-					res.json({status: 0, token: token});
+					res.json({token: token});
 				})
 				}
 		});

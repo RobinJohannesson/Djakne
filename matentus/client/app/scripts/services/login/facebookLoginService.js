@@ -36,6 +36,7 @@
     			var status = response.data.status;
     			if (status===0){
     				var token=response.data.token;
+                    console.log(token);
     				localStorage.setItem('matentustoken', token);
     				$location.url('/');
     			}

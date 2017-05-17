@@ -3,6 +3,7 @@
 // -----------------------------------------------------
 
 var express = require('express');
+var passport=require('passport');
 var router = express.Router();
 var loginController = require('../controllers/loginController');
 
@@ -11,7 +12,6 @@ var loginController = require('../controllers/loginController');
 // -----------------------------------------------------
 
 router.post('/facebook', function(req, res) {
-	console.log("Test1");
 	loginController.fblogin(req, res);
 });
 
@@ -31,8 +31,11 @@ router.post('/google', function(req, res) {
 	loginController.googlelogin(req, res);
 });
 
-router.post('/status', function(req, res) {
-	loginController.checkLoginStatus(req, res);
+// -----------------------------------------------------
+// Login Status Route
+// -----------------------------------------------------
+router.get('/status',passport.authenticate('jwt', { session: false }), function(req, res) {
+	res.sendStatus(200);
 });
 
 // -----------------------------------------------------

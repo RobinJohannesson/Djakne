@@ -5,8 +5,12 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var models= require('./models');
 var bodyParser = require('body-parser');
-
+var passport = require("passport");
+var passportJWT = require("passport-jwt");
+var ExtractJwt = passportJWT.ExtractJwt;
+var JwtStrategy = passportJWT.Strategy;
 
 // -----------------------------------------------------
 // Require local modules
@@ -44,6 +48,28 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+var jwtOptions = {}
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
+jwtOptions.secretOrKey = 'tasmanianDevil';
+
+var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
+    console.log("Auth");
+	console.log('payload received', jwt_payload);
+	var user =  models.User.find( {
+		where: {id: jwt_payload.id}
+	})
+	.then(function(user) {
+		if (user) {
+			next(null, user);
+		} else {
+			next(null, false);
+		}
+	});
+});
+passport.initialize();
+passport.use(strategy);
+
 
 
 // -----------------------------------------------------

@@ -7,36 +7,10 @@ var router = express.Router();
 var productController = require('../controllers/productController');
 var likeController = require('../controllers/likeController');
 var loginController=require('../controllers/loginController.js')
-var passport = require("passport");
 var multer = require('multer');
 var upload = multer({ dest: 'public/images/'});
-var passportJWT = require("passport-jwt");
-var ExtractJwt = passportJWT.ExtractJwt;
-var JwtStrategy = passportJWT.Strategy;
+var passport=require('passport');
 
-// -----------------------------------------------------
-// Authentication
-// -----------------------------------------------------
-
-var jwtOptions = {}
-jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
-jwtOptions.secretOrKey = 'tasmanianDevil';
-
-var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
-	console.log('payload received', jwt_payload);
-	var user =  models.User.find( {
-		where: {id: jwt_payload.id}
-	})
-	.then(function(user) {
-		if (user) {
-			next(null, user);
-		} else {
-			next(null, false);
-		}
-	});
-});
-passport.initialize();
-passport.use(strategy);
 
 // -----------------------------------------------------
 // Define API routes
@@ -63,9 +37,9 @@ router.get('/suggestions/:id', function(req, res) {
 	productController.getSuggestion(req, res);
 });
 
-router.get('/:id', function(req, res) {
-	productController.getApproved(req, res);
-});
+//router.get('/:id', function(req, res) {
+//	productController.getApproved(req, res);
+//});
 
 router.get('/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.getApproved(req, res);
