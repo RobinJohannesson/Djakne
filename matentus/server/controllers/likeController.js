@@ -1,7 +1,7 @@
 var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
-
+var jwt = require('jsonwebtoken');
 module.exports = {
 
 	getAllLikesOfUser: 			function(req, res) {
@@ -25,8 +25,15 @@ module.exports = {
 								},
 	
 	postLike:		function(req,res){
-						var userId = req.params.id;
-						var productId=req.params.productId;
+						token=req.headers.authorization;
+						token=token.replace("JWT", "");
+						token=token.replace(" ", "");
+						//var productId=req.body.productId;
+						//console.log(productId);
+						//console.log(decoded);
+		
+						//TODO Extract user-id from token.
+						//TODO Create like in database.
 					}
 	
 }

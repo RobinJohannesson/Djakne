@@ -9,9 +9,9 @@
 	angular.module('matentusApp')
 	.controller('ProductsCtrl', ProductsCtrl);
 
-	ProductsCtrl.$inject = ['$routeParams', 'productService', 'categoryService'];
+	ProductsCtrl.$inject = ['$routeParams', 'productService', 'categoryService','$http'];
 
-	function ProductsCtrl($routeParams, productService, categoryService) {
+	function ProductsCtrl($routeParams, productService, categoryService, $http) {
 		var ctrl = this;
 
 		ctrl.currentCategoryId = null;
@@ -52,7 +52,21 @@
 
 		function like(id) {
 			console.log("Likes product: " + id);
-			// TODO: Send like to server
+			var token = localStorage.getItem('matentustoken');
+			$http({
+    			method: 'POST',
+    			url: 'http://localhost:3000/api/products/postlike',
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
+    			//data: $.param({productid: id})
+				data: {productId: id}
+    		})
+    		.then(function(response){
+    			var status = response.status;
+    			if (status==200){
+    				console.log("Din like har räknats");
+    			}
+    		})
+			
 		}
 
 		function toggleDropdown() {
