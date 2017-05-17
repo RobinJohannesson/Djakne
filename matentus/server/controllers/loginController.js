@@ -137,27 +137,36 @@ module.exports = {
 	/*
 	Create Local User
 	*/
-	createEmailUser:	function(req, res){
+	createEmailUser:	function(req, res) {
+
+		console.log(req.body);
+
 		var hashedPassword = passwordHash.generate(req.body.password);       
 
-		var user = models.User.find({
+		models.User.find({
 			where: {email: req.body.email}	   
 		})
 		.then(function(user) {
-			if (user){
-				res.json({status:1});
-			}
-			else if (!user) {
-				models.User.create({name: req.body.name, email: req.body.email, password: hashedPassword, admin: 0});
-				var user = models.User.find( {
-					where: {email: req.body.email}
-				})
+			if(!user) {
+				console.log("There was no such user...");
+				models.User.create({name: req.body.name, email: req.body.email, password: hashedPassword, admin: 0})
 				.then(function() {
-					var payload = {id: user.id};
-					var token = jwt.sign(payload, jwtOptions.secretOrKey);
-					res.json({token: token});
-				})
-				}
-		});
+					models.User.find({
+						where: {email: req.body.email}
+					})
+					.then(function(user) {
+						console.log("Now there is one");
+						console.log(user);
+						var payload = {id: user.id};
+						var token = jwt.sign(payload, jwtOptions.secretOrKey);
+						res.json({token: token});
+					});
+				});
+			} else {
+				var payload = {id: user.id};
+				var token = jwt.sign(payload, jwtOptions.secretOrKey);
+				res.json({token: token});
+			}
+		})
 	}
 }

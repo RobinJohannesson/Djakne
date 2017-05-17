@@ -8,7 +8,7 @@ var loginController = require('../controllers/loginController');
 // -----------------------------------------------------
 // Register User route
 // -----------------------------------------------------
-router.post('/newuser', function(req, res) {
+router.post('/email', function(req, res) {
     loginController.createEmailUser(req, res);
 });
 module.exports = router;

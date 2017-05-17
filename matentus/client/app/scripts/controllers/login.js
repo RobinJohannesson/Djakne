@@ -21,6 +21,8 @@
 		//ctrl.loginStatus=checkLoginStatus();
 		//checkLoginStatus();
 
+        ctrl.loginForm = {};
+
 		function loginFacebook() {
 			facebookLoginService.login();
 		}
@@ -30,22 +32,22 @@
 		}
 
 		function loginLocal() {
-				$http({
-    			method: 'POST',
-    			url: 'http://localhost:3000/api/login/email',
-    			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    			data: $.param({email: $scope.formLogin.mail, password: $scope.formLogin.pass})
-    		})
-    		.then(function(response){
-    			var status = response.status;
-    			if (status==200){
-    				var token=response.data.token;
-    				localStorage.setItem('matentustoken', token);
-                    console.log(localStorage.getItem('matentustoken'));
-    				$location.url('/');
-    			}
-    		})
+            localLoginService.login(ctrl.loginForm);
     	}
+
+        function registerLocal() {
+            localLoginService.register(ctrl.registerForm);
+        }
+
+
+
+
+
+
+
+
+
+
 
     	function checkLoginStatus() {
     		if (!localStorage.getItem('matentustoken'))
@@ -70,23 +72,6 @@
 				})
     		}
     	}
-
-    	function registerLocal() {
-    		$http({
-    			method: 'POST',
-    			url: 'http://localhost:3000/api/register/newuser',
-    			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    			data: $.param({name: $scope.formLogin.name, email: $scope.formLogin.mail, password: $scope.formLogin.pass})
-    		})
-    		.then(function(response){
-    			var status = response.data.status;
-    			if (status==0){
-    				var token=response.data.token;
-    				localStorage.setItem('matentustoken', token);
-    				$location.url('/');
-    			}
-    		})
-    	}  
     }
     
 })();
