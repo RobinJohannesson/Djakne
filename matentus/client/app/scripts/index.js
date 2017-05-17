@@ -42,6 +42,11 @@ angular
 		controller: 'LoginCtrl',
 		controllerAs: 'ctrl'
 	})
+    .when('/about', {
+		templateUrl: 'views/about.html',
+		controller: 'AboutCtrl',
+		controllerAs: 'ctrl'
+	})
 	.when('/404', {
 		templateUrl: 'views/error/404.html',
 	})
