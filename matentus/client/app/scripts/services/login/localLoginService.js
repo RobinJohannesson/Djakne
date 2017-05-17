@@ -35,7 +35,6 @@
     			data: registerForm
     		})
     		.then(function(response) {
-    			console.log(response);
     			var status = response.status;
     			if (status === 200) {
     				var token = response.data.token;
@@ -45,9 +44,35 @@
     		});
 		};
 
+
+        var checkLoginStatus = function() {
+            if (!localStorage.getItem('matentustoken'))
+                return true;
+            else{
+                var token=localStorage.getItem('matentustoken');
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:3000/api/login/status',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param({token: "JWT "+token})
+                })
+                .then(function(response){
+                    var status = response.status;
+                    console.log(status);
+                //        if (status==0){
+                //          return true;
+                //        }
+                //        else if (status==1){
+                //          return false;
+                //        }
+                })
+            }
+        };
+
 		return {
 			login: login,
-			register: register
+			register: register,
+            checkLoginStatus: checkLoginStatus
 		};
 
 	};
