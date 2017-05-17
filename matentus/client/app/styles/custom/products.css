@@ -1,6 +1,13 @@
 /*--triangle for kategorier--*/
-.active{
-    
+.sort-btn{
+    border-bottom: solid #000;
+    border-width: 1px;
+}
+.sort-btn:hover{
+    border-color: #fff;
+}
+.sort-active{
+    border-color: #fff!important;
 }
 .triangle{
     font-size: 10px;
