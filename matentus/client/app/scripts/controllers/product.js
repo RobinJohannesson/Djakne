@@ -18,15 +18,15 @@
 		ctrl.product = {};
 		ctrl.products = productService.products;
 		ctrl.filterRelated = filterRelated;
-		ctrl.open=open;
-		ctrl.loggedIn=false;
+		ctrl.loggedIn = false;
+
 		fetchProduct();
 
 		function fetchProduct() { 
 		    productService.getProduct(ctrl.id)
 		    .then(function(product) { 
 				if (!product){
-					open();
+					showLoginModal();
 				}
 				else{
 					ctrl.product = product;
@@ -41,7 +41,7 @@
 		 }
 
 		
-		function open(){
+		function showLoginModal(){
 			$('#modal-login').modal('show');
 		}
 		        
