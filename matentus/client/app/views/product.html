@@ -1,5 +1,5 @@
-<div ng-controller="ProductCtrl as ctrl">
-    
+<div ng-controller="ProductCtrl as ctrl" >
+   <div ng-if='ctrl.loggedIn'> 
         <div class="row">
             <!--a href="#menu_btn" class="btn btn-default" id="menu_btn"><span class="glyphicon glyphicon-menu-hamburger"></span></a-->
         </div>
@@ -35,7 +35,7 @@
         <!-- /.row -->
         <!-- Related Projects Row -->
         <div class="row">
-
+            <button type="button" class="btn btn-danger" ng-click="ctrl.open()" >Ta bort</button> 
             <div class="col-lg-12">
                 <h3 class="page-header">Relaterade produkter</h3>
             </div>
@@ -51,9 +51,18 @@
 
         </div>
         <!-- /.row -->
-
+</div>
         <hr>
-    
+    <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+	        <h2 style="margin-bottom: 20px">Du måste logga in!</h2>
+            <button class="button btn btn-primary" onclick="location.href='/';" data-dismiss="modal">Stäng</button>
+
+ 		</div>
+ 	</div>
+       
+</div>
 </div>
 
     

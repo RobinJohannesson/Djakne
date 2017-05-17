@@ -18,19 +18,31 @@
 		ctrl.product = {};
 		ctrl.products = productService.products;
 		ctrl.filterRelated = filterRelated;
-		
+		ctrl.open=open;
+		ctrl.loggedIn=false;
 		fetchProduct();
 
 		function fetchProduct() { 
 		    productService.getProduct(ctrl.id)
 		    .then(function(product) { 
-		    	ctrl.product = product; 
+				if (!product){
+					open();
+				}
+				else{
+					ctrl.product = product;
+					ctrl.loggedIn=true;	
+				}
+		    	
 		    }); 
 		 }
 
 		 function filterRelated(product) {
 		 	return product.supplier === ctrl.product.supplier || product.keyword === ctrl.product.keyword;
 		 }
+		
+		function open(){
+			$('#modal-login').modal('show');
+		}
 		
 	}
 

@@ -78,6 +78,9 @@
 			state.keywords.push.apply(state.keywords, keywords);
 		}
 		var errorHandler = function(response) {
+			if (response.status==401){
+				return null;
+			}
 			if(response.status === 404) $location.path('/404');
 			console.log(response);
 		};    
