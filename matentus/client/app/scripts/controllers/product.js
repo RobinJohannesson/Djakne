@@ -21,6 +21,7 @@
 		ctrl.loggedIn = false;
 
 		fetchProduct();
+        ctrl.testController = testController;
 
 		function fetchProduct() { 
 		    productService.getProduct(ctrl.id)
