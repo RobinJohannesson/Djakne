@@ -14,6 +14,3 @@ $("#email-btn").click(function () {
     $("#email-btn").toggleClass("color-grey color-white");
     $("#email-form-div").slideToggle();
 });
-$("#burger").click(function () {
-    
-});
