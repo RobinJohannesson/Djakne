@@ -4,11 +4,22 @@ html, body{
 }
 #burger{
     /*Ändrar EJ färg på strecken*/
-    color: #666;
     float: left;
     display: block;
     width: 50px;
     height: 50px;
+    background: #000;
+}
+#burger:hover .icon-bar {
+    background-color: #fff!important;
+}
+.icon-bar{
+    background-color: #9d9d9d!important;
+    width: 100%;
+    margin-top: 8px;
+}
+.icon-bar:hover{
+    
 }
 #kategori{
     margin: 0;
@@ -18,7 +29,6 @@ html, body{
     border-style: none none solid none;
     border-width: thin;
     border-color: #fff;
-    
     animation: slide_back 1s;
 }
 .btn-group > .active{
@@ -53,18 +63,12 @@ html, body{
 .margin-0{
     margin: 0;
 }
-.icon-bar{
-    background-color: #9d9d9d!important;
-    width: 100%;
-    margin-top: 8px;
-}
 .collapse{
     background: #111;
     transform: 0.5s;
 }
 .navbar{
     border-style: none;
-
 }
 .social-div{
     text-align: center;
