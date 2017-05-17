@@ -51,6 +51,13 @@
 			console.log("Likes product: " + id);
 			// TODO: Send like to server
 		}
+        ctrl.shouldShowDropdown = false;
+		ctrl.toggleDropdown = toggleDropdown;
+
+		function toggleDropdown() {
+			ctrl.shouldShowDropdown = ctrl.shouldShowDropdown ? false : true;
+		}
+
 
 	}
 

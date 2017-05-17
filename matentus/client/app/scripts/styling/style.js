@@ -14,5 +14,6 @@ $("#email-btn").click(function () {
     $("#email-btn").toggleClass("color-grey color-white");
     $("#email-form-div").slideToggle();
 });
-/*---- "Burger"-menyn ----*/
-$("#side-menu").css({display: "block", left: "0px", });
+$("#burger").click(function () {
+    
+});
