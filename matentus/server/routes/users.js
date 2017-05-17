@@ -10,15 +10,16 @@ var likeController = require('../controllers/likeController');
 // Define API routes
 // -----------------------------------------------------
 
-router.get('/:id', function(req, res) {
+router.get('/:id',passport.authenticate('jwt', { session: false }), function(req, res) {
 	userController.get(req, res);
 });
 
-router.get('/', function(req, res) {
+router.get('/',passport.authenticate('jwt', { session: false }), function(req, res) {
 	userController.getAll(req, res);
 });
 
-router.get('/:id/likes', function(req, res) {
+//TODO
+router.get('/:id/likes',passport.authenticate('jwt', { session: false }), function(req, res) {
 	likeController.getAllLikesOfUser(req, res);
 });
 

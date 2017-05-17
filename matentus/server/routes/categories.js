@@ -17,15 +17,15 @@ router.get('/:id', function(req, res) {
 	categoryController.get(req, res);
 });
 
-router.post('/', function (req, res){
+router.post('/',passport.authenticate('jwt', { session: false }), function (req, res){
 	categoryController.create(req, res);
 });
 
-router.put('/', function(req, res) {
+router.put('/',passport.authenticate('jwt', { session: false }), function(req, res) {
 	categoryController.update(req, res);
 });
 
-router.delete('/:id', function(req, res) {
+router.delete('/:id',passport.authenticate('jwt', { session: false }), function(req, res) {
 	categoryController.delete(req, res);
 });
 

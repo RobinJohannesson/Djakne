@@ -17,49 +17,31 @@ var passport=require('passport');
 // -----------------------------------------------------
 
 
-router.put('/', upload.single('file'), function(req, res) {
+router.put('/', upload.single('file'),passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.updateProduct(req, res);
 });
 
-router.get('/suppliers', function(req, res) {
+router.get('/suppliers',passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.getAllSuppliers(req, res);
 });
 
-router.get('/keywords', function(req, res) {
+router.get('/keywords',passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.getAllKeywords(req, res);
 });
 
-router.get('/suggestions', function(req, res) {
+router.get('/suggestions',passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.getAllSuggestions(req, res);
 });
 
-router.get('/suggestions/:id', function(req, res) {
+router.get('/suggestions/:id',passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.getSuggestion(req, res);
 });
-
-//router.get('/:id', function(req, res) {
-//	productController.getApproved(req, res);
-//});
 
 router.get('/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.getApproved(req, res);
 });
 
-router.get('/:id/likes',  passport.authenticate('jwt', { session: false }), function(req, res) {
-	likeController.getAllLikesOfProduct(req, res);
-});
-
-router.post('/postproduct',  passport.authenticate('jwt', { session: false }), function(req, res){
-	productController.createProduct(req, res);
-});
-
-//Lägg till auth.
-router.post('/editproduct', function(req, res){
-	productController.editProduct(req, res);
-});
-
-//Lägg till auth.
-router.delete('/:id', function(req, res){
+router.delete('/:id',passport.authenticate('jwt', { session: false }), function(req, res){
 	productController.deleteProduct(req, res);
 });
 
@@ -67,11 +49,17 @@ router.get('/',  function(req, res){
 	productController.getAllApproved(req, res);
 });
 
-router.post('/', upload.single('file'), function(req, res) {
+router.post('/', upload.single('file'),passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.createProduct(req, res);
 });
 
-router.post('/postlike', function(req, res){
+//TODO
+router.get('/:id/likes',  passport.authenticate('jwt', { session: false }), function(req, res) {
+	likeController.getAllLikesOfProduct(req, res);
+});
+
+//TODO
+router.post('/postlike',passport.authenticate('jwt', { session: false }), function(req, res){
     likeController.postLike(req, res);
 })
 
