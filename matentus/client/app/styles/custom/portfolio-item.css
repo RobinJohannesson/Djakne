@@ -3,7 +3,7 @@ html, body{
     font-weight: 400;
 }
 #burger{
-    /*Ändrar EJ färg på strecken*/
+    
     float: left;
     display: block;
     width: 50px;
@@ -21,11 +21,31 @@ html, body{
 .icon-bar:hover{
     
 }
-.dropdown-menu{
-    background-color: black;
+.dropdown ul{
+    position: absolute;
+    left: 11.5%;
+    border-radius: 0 0 0 0;
     color: white;
-    padding-top: -10%;    
+    background-color: black;
+    top: 91%;
 }
+.dropdown li a{
+    text-align: center;
+    color: #9d9d9d;
+}
+.dropdown li a:hover{
+    color: white;
+    background-color: black;
+}
+.latest{
+    padding-left: 5%;  
+}    
+.dropdown-toggle{
+    position: absolute;
+    width: 189px;
+    left: 40%;
+}
+
 #kategori{
     margin: 0;
     float: left;
@@ -62,6 +82,7 @@ html, body{
 .btn-group > .sort:active:focus{
     background: #fff;
 }
+
 .padding-0{
     padding: 0;
 }
