@@ -8,6 +8,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
+    <meta property="og:url" content="http://localhost:9000" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Matentus" />
+    <meta property="og:description" content="Färska varor direkt från skånska gårdar" />
+    <meta property="og:image" content="http://www.your-domain.com/path/image.jpg" />
 
 	<title>Matentus</title>
 
@@ -113,7 +118,16 @@
 
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="https://apis.google.com/js/api.js"></script>
-
+    
+    <!--test av sociala delningar-->
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/sv_SE/sdk.js#xfbml=1&version=v2.9&appId=1960319234199009";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </body>
 
 </html>
