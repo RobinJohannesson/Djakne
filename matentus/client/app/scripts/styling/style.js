@@ -1,7 +1,8 @@
 /*sorteringsknappar*/
-$(".sort").click(function () {
-    $(".sort").removeClass("active");
-    $(this).addClass("active");
+$(".sort-btn").click(function () {
+    alert("Kay");
+    $(".sort-btn").removeClass("sort-active");
+    $(this).addClass("sort-active");
 });
 /* Kategori-diven */
 $("#kat-div").slideUp();
