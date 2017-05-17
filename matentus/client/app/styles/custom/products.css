@@ -55,6 +55,34 @@
     -ms-transform: translateY(-50%);
 }
 
+.img-label-related {
+    position: absolute;
+    bottom: 0;
+    height: 22%;
+    width: 90%;
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,0.7);  
+    padding-left: 13px;
+}
+
+#label-text-related {
+    color: white;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+
+.related {
+    height: 180px;
+    min-width: 270px;
+}
+
+
+
 .heart-icon {
     position:absolute;
     margin: 0 12px 0 12px;
