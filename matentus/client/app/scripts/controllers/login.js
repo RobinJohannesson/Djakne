@@ -26,7 +26,6 @@
 		}
 
 		function loginGoogle() {
-			console.log("Login Google");
 			googleLoginService.login();
 		}
 

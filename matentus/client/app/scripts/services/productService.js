@@ -18,6 +18,7 @@
 		getKeywords();
 
 		function getProduct(id) {
+			console.log("Matentus token från GET PRODUCT: ");
 			console.log(localStorage.getItem('matentustoken'));
 	        return $http({
 	        		method: 'GET', 

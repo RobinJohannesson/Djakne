@@ -22,10 +22,15 @@
 						data: {googletoken: response.Zi.access_token}
 					})
 						.then(function(response){
-						var status = response.data.status;
-						if (status===0){
+							console.log("response from server login: ");
+							console.log(response);
+							console.log(response.status);
+
+						var status = response.status;
+						if (status === 200){
 							var token=response.data.token;
 							localStorage.setItem('matentustoken', token);
+							console.log("Matentus token_ ");
 							console.log(localStorage.getItem('matentustoken'));
 							$location.url('/');
 						}

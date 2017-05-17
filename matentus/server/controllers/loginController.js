@@ -59,28 +59,41 @@ module.exports = {
 			}
 		})
 	},
+
 	googlelogin: 	function(req, res) {
+
 		var googletoken = req.body.googletoken;
 		request.get({ url: 'https://www.googleapis.com/oauth2/v1/userinfo?access_token='+googletoken },      function(error, response, body) { 
 			if (!error && response.statusCode == 200) {
-				var info =JSON.parse(response.body);
-				var email=info['email'];
-				console.log(email);
-				var user = models.User.find( {
-					where: {email: email}
+
+				var info = JSON.parse(response.body);
+				var email = info['email'];
+				var name = info['name'];
+
+				models.User.find( {
+					where: {
+						email: email
+					}
 				})
 				.then(function(user) {
-					if (!user) {
-						models.User.create({name: info['name'], email: info['email'], admin: 0});
-						var user = models.User.find( {
-							where: {email: req.body.email}
-						})
+					if(!user) {
+						console.log("No such user");
+						models.User.create({name: name, email: email, admin: 0})
 						.then(function() {
-							var payload = {id: user.id};
-							var token = jwt.sign(payload, jwtOptions.secretOrKey);
-							res.json({token: token});
+							models.User.find( {
+								where: {
+									email: email
+								}
+							})
+							.then(function(user) {
+								console.log("New user: ");
+								console.log(user);
+								var payload = {id: user.id};
+								var token = jwt.sign(payload, jwtOptions.secretOrKey);
+								res.json({token: token});
+							});
 						})
-						}
+					}
 
 					else {
 						var payload = {id: user.id};
