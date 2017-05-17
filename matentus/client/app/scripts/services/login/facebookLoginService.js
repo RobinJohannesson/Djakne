@@ -33,11 +33,13 @@
     			data: {fbtoken: facebookAccessToken}
     		})
     		.then(function(response){
-    			var status = response.data.status;
-    			if (status===0){
+    			var status = response.status;
+                console.log(status);
+    			if (status===200){
     				var token=response.data.token;
                     console.log(token);
     				localStorage.setItem('matentustoken', token);
+                    console.log(localStorage.getItem('matentustoken'))
     				$location.url('/');
     			}
     		})

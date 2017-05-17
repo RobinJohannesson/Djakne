@@ -11,6 +11,7 @@ var passport = require("passport");
 var passportJWT = require("passport-jwt");
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
+var jwt = require('jsonwebtoken');
 
 // -----------------------------------------------------
 // Require local modules
@@ -45,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 });
 
@@ -67,6 +68,7 @@ var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
 		}
 	});
 });
+
 passport.initialize();
 passport.use(strategy);
 

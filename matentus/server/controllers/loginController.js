@@ -4,6 +4,15 @@ var router  = express.Router();
 var userController=require('../controllers/userController.js')
 var passwordHash = require('password-hash');
 var passport = require("passport");
+var request = require("request");
+var jwt = require('jsonwebtoken');
+var passportJWT = require("passport-jwt");
+var ExtractJwt = passportJWT.ExtractJwt;
+var JwtStrategy = passportJWT.Strategy;
+
+var jwtOptions = {}
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
+jwtOptions.secretOrKey = 'tasmanianDevil';
 
 module.exports = {
 	fblogin: 	function(req, res) {
