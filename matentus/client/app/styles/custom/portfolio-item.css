@@ -21,6 +21,11 @@ html, body{
 .icon-bar:hover{
     
 }
+.dropdown-menu{
+    background-color: black;
+    color: white;
+    padding-top: -10%;    
+}
 #kategori{
     margin: 0;
     float: left;
