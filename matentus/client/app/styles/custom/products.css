@@ -1,3 +1,9 @@
+/*--triangle for kategorier--*/
+.triangle{
+    font-size: 10px;
+    margin-top: -1px;
+}
+/**/
 .portfolio-item {
     padding: 0 12px 0 12px;
     height: 280px;

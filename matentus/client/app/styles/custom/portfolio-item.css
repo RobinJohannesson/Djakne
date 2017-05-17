@@ -3,6 +3,8 @@ html, body{
     font-weight: 400;
 }
 #burger{
+    /*Ändrar EJ färg på strecken*/
+    color: #666;
     float: left;
     display: block;
     width: 50px;
@@ -52,18 +54,15 @@ html, body{
     margin: 0;
 }
 .icon-bar{
+    background-color: #9d9d9d!important;
     width: 100%;
     margin-top: 8px;
-}
-.icon-bar{
-    background-color: #000;
 }
 .collapse{
     background: #111;
     transform: 0.5s;
 }
 .navbar{
-    background: rgba(160, 160, 160, 0.8);
     border-style: none;
 
 }
