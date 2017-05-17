@@ -7,7 +7,7 @@
 	'use strict';
 
 	angular.module('matentusApp')
-	.controller('ProductCtrl', ProductCtrl, 'Socialshare');
+	.controller('ProductCtrl', ProductCtrl);
 
 	ProductCtrl.$inject = ['$routeParams', 'productService'];
 
@@ -45,15 +45,6 @@
 		function showLoginModal(){
 			$('#modal-login').modal('show');
 		}
-		        
-		function testController(Socialshare){
-            Socialshare.share({
-            'provider': 'facebook',
-            'attrs': {
-            'socialshareUrl': 'http://google.com'
-            }
-            })
-        }
 
 	}
 
