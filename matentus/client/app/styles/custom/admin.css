@@ -27,6 +27,7 @@ body {
     white-space: nowrap;
 }
 /*General*/
+
 .btn-primary:hover{
     background-color: grey;
     border-color: grey;
