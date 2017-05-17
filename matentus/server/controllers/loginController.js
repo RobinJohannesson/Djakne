@@ -113,18 +113,23 @@ module.exports = {
 	Local Login
 	*/
 	locallogin: 	function(req, res) {
+		console.log("Local login: ");
+		console.log(req);
 		if(req.body.email && req.body.password){
 			var email = req.body.email;
 			var password = req.body.password;
 		}
-		var user = models.User.find( {
-			where: {email: email}
+
+		models.User.find( {
+			where: {
+				email: email
+			}
 		})
 		.then(function(user) {
 			if (!user) {
 				res.sendStatus(401);
 			} 
-			if(userController.controlPassword(req.body.password, user.password)) {
+			if(userController.controlPassword(password, user.password)) {
 				var payload = {id: user.id};
 				var token = jwt.sign(payload, jwtOptions.secretOrKey);
 				res.json({token: token});
