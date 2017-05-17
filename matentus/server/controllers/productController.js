@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var router  = express.Router();
 var fs = require('fs');
+var moment = require('moment');
 
 module.exports = {
 
@@ -101,7 +102,8 @@ module.exports = {
 			approved: req.body.approved, 
 			likeAmount: 100, 
 			category_id: req.body.category_id, 
-			created: '2017-01-01'
+			created: moment().format().slice(2, 19)
+            //.toISOString().slice(2,19).split("T").join("-").split(":").join("-")
 		})
 		.then(function() {
 			res.sendStatus(201);
