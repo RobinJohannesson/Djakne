@@ -102,7 +102,7 @@ module.exports = {
 			approved: req.body.approved, 
 			likeAmount: 100, 
 			category_id: req.body.category_id, 
-			created: moment().format().slice(2, 19)
+			created: moment().format().slice(0, 19)
 		})
 		.then(function() {
 			res.sendStatus(201);
