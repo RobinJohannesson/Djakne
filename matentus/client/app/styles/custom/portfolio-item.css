@@ -42,10 +42,7 @@ html, body{
 }    
 .dropdown-toggle{
     position: absolute;
-    width: 189px;
-    left: 40%;
 }
-
 #kategori{
     margin: 0;
     float: left;

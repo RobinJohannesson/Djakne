@@ -48,7 +48,7 @@
 			</li>
 			<!-- Populärt -->
 
-			<li class="col-lg-3 col-md-3">
+			<li class="col-lg-3 col-md-3 col-xs-12 text-center">
 				<a 
                         class="col-xs-12" 
                         ng-click="ctrl.orderBy('likeAmount')" type="button" 
@@ -59,13 +59,13 @@
 
 			<!-- Senaste -->
 
-			<li class="col-lg-3 col-md-3 latest">
+			<li class="col-lg-3 col-md-3 col-xs-12 latest text-center">
 				<a ng-click="ctrl.orderBy('created')" type="button" class="col-xs-12" ng-class="{active: ctrl.currentOrder == 'created'}">Senaste</a>
 			</li>
 
 			<!-- Kategorier -->
 
-			<li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-3 col-md-3">
+			<li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-3 col-md-3 text-center">
 				<a class="dropdown-toggle col-xs-12" data-toggle="dropdown">{{ ctrl.categoryHeader }}<span class="caret"></span></a>
 				<ul ng-if="ctrl.shouldShowCategories" class="dropdown-menu col-md-3 col-lg-12 ">
 					<li class="col-xs-12 col-lg-12" ng-repeat="category in ctrl.categories"><a href="#!/{{ category.title }}"> {{ category.title }} </a></li>
