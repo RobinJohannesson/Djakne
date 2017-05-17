@@ -18,11 +18,14 @@
 		getKeywords();
 
 		function getProduct(id) {
+			console.log(localStorage.getItem('matentustoken'));
 	        return $http({
 	        		method: 'GET', 
-	        		url:'http://localhost:3000/api/products/' + id
+	        		url:'http://localhost:3000/api/products/' + id,
+					headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
 	        	})
 	        	.then(function(response) {
+					console.log(response);
 					return response.data;	        	
 				}, errorHandler)
 	        	.catch(function(error) {
