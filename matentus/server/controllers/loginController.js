@@ -23,6 +23,7 @@ module.exports = {
 			if (!error && response.statusCode == 200) {
 
 				var info =JSON.parse(response.body);
+
 				var email = info['email'];
 				var name = info['name'];
 
@@ -67,6 +68,7 @@ module.exports = {
 			if (!error && response.statusCode == 200) {
 
 				var info = JSON.parse(response.body);
+
 				var email = info['email'];
 				var name = info['name'];
 
@@ -101,8 +103,9 @@ module.exports = {
 						res.json({token: token});
 					} 
 
-				}) 
-				}
+				});
+
+			}
 		})
 
 	},

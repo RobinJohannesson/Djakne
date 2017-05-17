@@ -37,10 +37,11 @@
     			data: $.param({email: $scope.formLogin.mail, password: $scope.formLogin.pass})
     		})
     		.then(function(response){
-    			var status = response.data.status;
-    			if (status==0){
+    			var status = response.status;
+    			if (status==200){
     				var token=response.data.token;
     				localStorage.setItem('matentustoken', token);
+                    console.log(localStorage.getItem('matentustoken'));
     				$location.url('/');
     			}
     		})
@@ -58,7 +59,7 @@
     				data: $.param({token: "JWT "+token})
     			})
     			.then(function(response){
-    				var status = response;
+    				var status = response.status;
     				console.log(status);
 				//        if (status==0){
 				//          return true;
