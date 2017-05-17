@@ -116,12 +116,17 @@
 		</a>
 
 		<div class="img-label">
-			<h2 id="label-text"> {{ product.title }} </h2>
+			<h4 id="label-text"> {{ product.title }} </h4>
 		</div>
 
 		<div ng-click="ctrl.like()" class="heart-icon">
-			<span class="glyphicon glyphicon-heart heart"></span>
+            <i class="fa fa-heart-o heart" aria-hidden="true"></i>
 		</div>
+        <!--<div>
+        När liked ska denna visas
+            <i class="fa fa-heart heart" aria-hidden="true"></i>
+
+        </div>-->
 
 
 	</div>
