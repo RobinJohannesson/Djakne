@@ -10,7 +10,8 @@ var loginController = require('../controllers/loginController');
 // Facebook Login Route
 // -----------------------------------------------------
 
-router.get('/facebook/:token', function(req, res) {
+router.post('/facebook', function(req, res) {
+	console.log("Test1");
 	loginController.fblogin(req, res);
 });
 
@@ -31,7 +32,7 @@ router.post('/google', function(req, res) {
 });
 
 router.post('/status', function(req, res) {
-	loginController.checkStatusLogin(req, res);
+	loginController.checkLoginStatus(req, res);
 });
 
 // -----------------------------------------------------

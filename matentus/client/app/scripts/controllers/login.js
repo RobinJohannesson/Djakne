@@ -18,8 +18,8 @@
 		ctrl.loginLocal = loginLocal;
 		ctrl.registerLocal = registerLocal;
 		ctrl.checkLoginStatus=checkLoginStatus;
-		ctrl.loginStatus=checkLoginStatus();
-		checkLoginStatus();
+		//ctrl.loginStatus=checkLoginStatus();
+		//checkLoginStatus();
 
 		function loginFacebook() {
 			facebookLoginService.login();
@@ -31,8 +31,20 @@
 		}
 
 		function loginLocal() {
-			console.log("Login Local");
-    		//googleLoginService.login();
+				$http({
+    			method: 'POST',
+    			url: 'http://localhost:3000/api/login/email',
+    			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    			data: $.param({email: $scope.formLogin.mail, password: $scope.formLogin.pass})
+    		})
+    		.then(function(response){
+    			var status = response.data.status;
+    			if (status==0){
+    				var token=response.data.token;
+    				localStorage.setItem('matentustoken', token);
+    				$location.url('/');
+    			}
+    		})
     	}
 
     	function checkLoginStatus() {

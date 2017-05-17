@@ -7,7 +7,7 @@
 (function () {
 	'use strict';
 
-	var facebookLoginService = function ($http) {
+	var facebookLoginService = function ($http, $location) {
 
 		var isOnline = false;
 
@@ -21,16 +21,25 @@
 						if(response.authResponse) {
 							loginLocal(response.authResponse.accessToken);
 						}
-					});
+					},{scope:'email', return_scopes:true});
 				}
 			});
 		}
 
 		var loginLocal = function(facebookAccessToken) {
-			console.log('Sending facebook access token to API: ' + facebookAccessToken);
-
-      // TODO: Send to facebook login route in API and store returned JWT token in localStorage
-
+			$http({
+    			method: 'POST',
+    			url: 'http://localhost:3000/api/login/facebook',
+    			data: {fbtoken: facebookAccessToken}
+    		})
+    		.then(function(response){
+    			var status = response.data.status;
+    			if (status===0){
+    				var token=response.data.token;
+    				localStorage.setItem('matentustoken', token);
+    				$location.url('/');
+    			}
+    		})
   }
 
   var share = function() {
