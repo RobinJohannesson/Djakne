@@ -103,7 +103,6 @@ module.exports = {
 			likeAmount: 100, 
 			category_id: req.body.category_id, 
 			created: moment().format().slice(2, 19)
-            //.toISOString().slice(2,19).split("T").join("-").split(":").join("-")
 		})
 		.then(function() {
 			res.sendStatus(201);
