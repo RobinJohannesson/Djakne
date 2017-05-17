@@ -34,6 +34,8 @@
 
 		function orderBy(property) {
 			ctrl.currentOrder = property;
+            console.log("order by: " + ctrl.currentOrder);
+
 		}
 
 		function toggleCategories() {
@@ -42,6 +44,7 @@
 
 		function updateCategoryHeader() {
 			ctrl.categoryHeader = (ctrl.currentCategoryTitle) ? ctrl.currentCategoryTitle : 'Kategorier';
+            console.log("uptadeCategoryHeader: " + ctrl.categoryHeader);
 		}
 
 		function like(id) {

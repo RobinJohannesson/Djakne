@@ -1,6 +1,11 @@
+body{
+    font-family: 'Raleway', sans-serif;
+
+}
 .beta{
+    text-align: center;
     color: #fff;
-    font-size: 120%;
+    font-size: 100%;
     font-weight: 100;
     padding: 0px;
 }
@@ -24,7 +29,6 @@ footer {
     margin: 0;
     float: left;
     border-radius: 0;
-    display: block;
     border-style: none none solid none;
     border-width: thin;
     border-color: #fff;
@@ -103,7 +107,7 @@ footer {
 .sign-in i{
     color: white;
     font-size: 150%;
-    margin-right: 10%;   
+    padding-left: 0.8%;
 }
 .label-default{
     background-color: black;
