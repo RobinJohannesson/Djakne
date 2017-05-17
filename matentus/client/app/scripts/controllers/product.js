@@ -31,6 +31,7 @@
 		 function filterRelated(product) {
 		 	return product.supplier === ctrl.product.supplier || product.keyword === ctrl.product.keyword;
 		 }
+        
 		function testController(Socialshare){
             Socialshare.share({
             'provider': 'facebook',
