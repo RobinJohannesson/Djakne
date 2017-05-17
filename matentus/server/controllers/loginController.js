@@ -34,12 +34,13 @@ var authenticate = new Promise(function() {
 module.exports = {
 	//TODO:Fixa så vi får ut email från vår access-token.
 	fblogin: 	function(req, res) {
-		var fbtoken = req.params.token;
-		request.get({ url: 'https://graph.facebook.com/me?access_token='+fbtoken },      function(error, response, body) { 
+		var fbtoken = req.body.fbtoken;
+
+		request.get({ url: 'https://graph.facebook.com/me?fields=name,email&access_token='+fbtoken },      function(error, response, body) { 
 			if (!error && response.statusCode == 200) {
 				var info =JSON.parse(response.body);
-				email=info['email'];
-
+				var email=info['email'];
+				console.log(email);
 				var user = models.User.find( {
 					where: {email: email}
 				})
@@ -54,24 +55,62 @@ module.exports = {
 							var token = jwt.sign(payload, jwtOptions.secretOrKey);
 							res.json({status: 0, token: token});
 						})
-						if(user) {
-							var payload = {id: user.id};
-							var token = jwt.sign(payload, jwtOptions.secretOrKey);
-							res.json({status: 0, token: token});
-						} 
-					};
+						}
+
+					else {
+						var payload = {id: user.id};
+						var token = jwt.sign(payload, jwtOptions.secretOrKey);
+						res.json({status: 0, token: token});
+					} 
+
 				}) 
 				}
 		})
 	},
 	googlelogin: 	function(req, res) {
+		//TODO:Fixa så vi får ut email från vår access-token.
+		var googletoken = req.body.googletoken;
+		request.get({ url: 'https://www.googleapis.com/oauth2/v1/userinfo?access_token='+googletoken },      function(error, response, body) { 
+			if (!error && response.statusCode == 200) {
+				var info =JSON.parse(response.body);
+				var email=info['email'];
+				console.log(email);
+				var user = models.User.find( {
+					where: {email: email}
+				})
+				.then(function(user) {
+					if (!user) {
+						models.User.create({name: info['name'], email: info['email'], admin: 0});
+						var user = models.User.find( {
+							where: {email: req.body.email}
+						})
+						.then(function() {
+							var payload = {id: user.id};
+							var token = jwt.sign(payload, jwtOptions.secretOrKey);
+							res.json({status: 0, token: token});
+						})
+						}
 
-		// authenticate to google api
+					else {
+						var payload = {id: user.id};
+						var token = jwt.sign(payload, jwtOptions.secretOrKey);
+						res.json({status: 0, token: token});
+					} 
+
+				}) 
+				}
+		})
 
 	},
 
 	checkLoginStatus: 	function(req, res) {
-
+		console.log("test");
+		if(passport.authenticate('jwt', { session: false })){
+			res.json({status: 1});
+		}
+		else{
+			res.json({status:2});
+		}
 		// Return status OK is Matentus-token is valid.
 
 	},

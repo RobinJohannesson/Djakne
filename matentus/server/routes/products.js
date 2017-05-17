@@ -97,6 +97,10 @@ router.post('/', upload.single('file'), function(req, res) {
 	productController.createProduct(req, res);
 });
 
+router.post('/postlike', function(req, res){
+    likeController.postLike(req, res);
+})
+
 
 // -----------------------------------------------------
 // Local exports
