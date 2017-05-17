@@ -27,7 +27,7 @@
     </div>
     <div>
         <ul class="categ-list side-content col-xs-12">
-            <li class="col-xs-12">Om Oss</li>
+            <a href="#!/about"><li class="col-xs-12">Om Oss</li></a>
             <li class="col-xs-12">Skicka in ett produktförslag!</li>
             <li class="log-out col-xs-12">Logga ut</li>
             <!--img class="beta col-xs-12" alt="beta" src="../images/beta-vit.PNG"-->
@@ -41,7 +41,7 @@
         <div class="row">
 		<!-- Hamburger-->
             <ul class="nav navbar-nav col-lg-12 col-md-12 col-xs-12">
-                <li id="burger-li" class="sort-btn col-xs-0 col-md-3 col-lg-3">
+                <li id="burger-li" class="col-xs-0 col-md-3 col-lg-3">
                     <button ng-click="ctrl.toggleDropdown()" id="burger" type="button" class="navbar-toggle col-xs-12">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -59,7 +59,7 @@
 
                 <!-- Senaste -->
 
-                <li class="sort-btn col-lg-2 col-md-3 col-xs-4 latest text-center">
+                <li class="col-lg-2 col-md-3 col-xs-4 latest text-center">
                     <a ng-click="ctrl.orderBy('created')" type="button" class="sort-btn col-xs-12" ng-class="{active: ctrl.currentOrder == 'created'}">Senaste</a>
                 </li>
 

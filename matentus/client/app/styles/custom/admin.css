@@ -13,15 +13,21 @@ body {
 #new-category i{
     color: black;
     font-size: 300%;
-    padding-right: 5%;
-    padding-top: 5%;
+    padding: 0% 5% 5% 10%;
+    
 }
+
 #new-category {
     font-size: 100%;
     background-color: white;
     color: black;
 }
+
+.label-default{
+    white-space: nowrap;
+}
 /*General*/
+
 .btn-primary:hover{
     background-color: grey;
     border-color: grey;
