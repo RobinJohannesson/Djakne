@@ -126,8 +126,11 @@
 		<div class="img-label">
 			<h4 id="label-text"> {{ product.title }} </h4>
 		</div>
+        
 		<div ng-click="ctrl.like(product.id)" class="heart-icon">
-            <i class="fa fa-heart-o heart" aria-hidden="true" ng-show="ctrl.checkUserLike(product.id)"></i>
+            <i class="fa fa-heart-o heart" aria-hidden="true" ng-show="ctrl.checkUserLike(product.id)">
+                <p id="numb-of-likes" class="numb-of-likes">3</p>
+            </i>
             <i class="fa fa-heart heart" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)"></i>
 		</div>
         <!--<div>
