@@ -8,7 +8,7 @@
     border-bottom: solid #000;
     border-width: 2px;
 }
-.sort-btn:hover{
+.sort-btn:, .sort-btn:active{
     border-color: #fff;
 }
 .sort-active{
