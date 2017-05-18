@@ -25,6 +25,11 @@ router.get('/suppliers',passport.authenticate('jwt', { session: false }), functi
 	productController.getAllSuppliers(req, res);
 });
 
+router.get('/userlikes',passport.authenticate('jwt', { session: false }), function(req, res) {
+	console.log("Test111");
+	likeController.getAllLikesOfUser(req, res);
+});
+
 router.get('/keywords',passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.getAllKeywords(req, res);
 });
@@ -53,15 +58,14 @@ router.post('/', upload.single('file'),passport.authenticate('jwt', { session: f
 	productController.createProduct(req, res);
 });
 
-//TODO
 router.get('/:id/likes',  passport.authenticate('jwt', { session: false }), function(req, res) {
 	likeController.getAllLikesOfProduct(req, res);
 });
 
-//TODO
 router.post('/postlike',passport.authenticate('jwt', { session: false }), function(req, res){
+	console.log("test");
     likeController.postLike(req, res);
-})
+});
 
 
 // -----------------------------------------------------
