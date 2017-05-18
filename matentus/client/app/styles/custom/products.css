@@ -19,16 +19,6 @@
     font-size: 10px;
     margin-top: -1px;
 }
-/*TITLE-ROW*/
-.products-row{
-    padding: 2%;
-    margin-top: -3%;
-}
-@media screen and (min-width: 720px){
-    .products-row{
-        padding: 3% 0.3%;
-    }
-}
 .portfolio-item {
     padding: 0 12px 0 12px;
     height: 280px;
@@ -62,8 +52,31 @@
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
 }
+.products-row{
+    padding: 2%;
+    margin-top: -3%;
+}
+/*LIKE ICONS*/
+.heart-icon {
+    position:absolute;
+    margin: 0 12px 0 12px;
+    bottom: 5%;
+    right: 5%;
+}
+.heart {
+    color: white;
+    font-size: 200%;
+    color: rgba(255,255,255, 0.9);
+}
+/*----------*/
+@media screen and (min-width: 720px){
+    .products-row{
+        padding: 3% 0.3%;
+    }
+}
+/*      THE FOLLOWING CSS IS FOR THE PRODUCT.HTML    */
 
-/*RELATED PRODUCTS CSS*/
+/*               RELATED PRODUCTS CSS                */
 .title-row{
     padding: 0 10px;
     margin-top: -2%;
@@ -87,11 +100,9 @@
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
 }
-
 .related-wrap{
     padding: 0px;
 }
-
 .portfolio-item-related{
     overflow: hidden;
     height: 150px;
@@ -107,16 +118,3 @@
     transform: translate(0px, 1px);
 }
 /*-----RELATED END-----*/
-.heart-icon {
-    position:absolute;
-    margin: 0 12px 0 12px;
-
-    bottom: 5%;
-    right: 5%;
-}
-
-.heart {
-    color: white;
-    font-size: 200%;
-    color: rgba(255,255,255, 0.9);
-}
