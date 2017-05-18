@@ -86,11 +86,12 @@
 			getProducts();
 
 			var matentusToken = localStorage.getItem('matentusToken');
+			
 			if(matentusToken) {
 				getSuppliers();
 				getKeywords();
 			} else {
-				console.log("Logga in för att hämta produkter, suppliers, keywords");
+				console.log("Logga in för att hämta suppliers och keywords");
 			}
 		};
 

@@ -11,7 +11,7 @@
 
 		var state = {};
 		state.suggestions = [];
-		getSuggestions();
+		refresh();
 
 		function update(product) {
 
@@ -32,7 +32,10 @@
 				console.log(response);
 				console.log(localStorage.getItem('matentustoken'));
 				productService.refresh();
-			}, errorHandler);
+			})
+			.catch(function(error) {
+				errorHandler(error);
+			});;
 		}
 
 		function remove(product) {
@@ -43,7 +46,10 @@
 			.then(function(response) {
 				getSuggestions();
 				productService.refresh();
-			}, errorHandler);
+			})
+			.catch(function(error) {
+				errorHandler(error);
+			});;
 		}
 
 		function addCategory(category) {
@@ -54,7 +60,10 @@
 			})
 			.then(function(response) {
 				categoryService.refresh();
-			}, errorHandler);
+			})
+			.catch(function(error) {
+				errorHandler(error);
+			});;
 		}
 
 		function updateCategory(category) {
@@ -65,7 +74,10 @@
 			})
 			.then(function(response) {
 				categoryService.refresh();
-			}, errorHandler);
+			})
+			.catch(function(error) {
+				errorHandler(error);
+			});;
 		}
 
 		function deleteCategory(category) {
@@ -75,7 +87,10 @@
 			})
 			.then(function(response) {
 				categoryService.refresh();
-			}, errorHandler);
+			})
+			.catch(function(error) {
+				errorHandler(error);
+			});;
 		}
 
 		function getSuggestion(id) {
@@ -85,9 +100,9 @@
 			})
 			.then(function(response) {
 				return response.data;	        	
-			}, errorHandler)
+			})
 			.catch(function(error) {
-				console.log(error);
+				errorHandler(error);
 			});
 		};
 
@@ -98,7 +113,10 @@
 			})
 			.then(function(response) {
 				setSuggestions(response.data);
-			}, errorHandler);
+			})
+			.catch(function(error) {
+				errorHandler(error);
+	        });;
 		}
 
 		function setSuggestions(suggestions) {
@@ -106,15 +124,16 @@
 			state.suggestions.push.apply(state.suggestions, suggestions);
 		}
 
-		var errorHandler = function(response) {
-			if(response.status === 404) $location.path('/404');
-			console.log(response);
+		var errorHandler = function(error) {
+			if(error.status === 404) $location.path('/404');
+			//if(error.status === 401) do something
+			//console.log(response);
 		};    
 
-		var refresh = function() {
+		function refresh() {
 			getSuggestions();
 		}
-
+		
 		return {
 			suggestions: state.suggestions,
 			update: update,

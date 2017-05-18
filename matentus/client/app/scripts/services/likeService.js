@@ -15,7 +15,6 @@
 		refresh();
 
 		function getUserLikes(){
-			console.log("LikeService getting your likes");
 			$http({
 				method: 'GET',
 				url: 'http://localhost:3000/api/products/userlikes',
@@ -23,7 +22,6 @@
 			})
 				.then(function(response){
 				if (response.status == 200){
-					console.log(response.data);
 					setLikes(response.data);
 				}
 				else {
@@ -42,7 +40,7 @@
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
 				data: {productId: id}
 			})
-				.then(function(response){
+			.then(function(response){
 				console.log(response);
 				var status = response.status;
 				if (status === 200){
@@ -63,18 +61,12 @@
 		}
 
 		function refresh() {
-			console.log("LikeService Refresh...");
-			var matentusToken = localStorage.getItem('matentusToken');
-			if(matentusToken) {
-				// Check with server if user is really online
-				getUserLikes();
-			}
+			getUserLikes();
 		}
 		
-
 		return {
 			refresh: refresh,
-			userLikes: state.userLikes,
+			likes: state.likes,
 			likeProduct: likeProduct,
 			getUserLikes: getUserLikes
 		};

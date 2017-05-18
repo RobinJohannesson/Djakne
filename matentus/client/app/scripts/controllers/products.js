@@ -22,7 +22,7 @@
 		ctrl.categoryHeader = 'Kategorier';
 		ctrl.currentOrder = '';
 
-		ctrl.userlikes = likeService.userLikes;
+		ctrl.likes = likeService.likes;
 		
 		
 		ctrl.categories = categoryService.categories;
@@ -59,18 +59,15 @@
 			ctrl.shouldShowDropdown = ctrl.shouldShowDropdown ? false : true;
 		}
 
-		function checkUserLike (id){
-			// var currentProductId = id;
-			// var likes= ctrl.userlikes.data;
-			
-			// for ( var like in likes)
-			// {
-			// 	if(ctrl.userlikes.data[like].product_id===currentProductId){
-			// 		return true;
-			// 	}
-			// }
-			return false;	
-		
+		function checkUserLike (id) {
+			var like = ctrl.likes.filter(function(like) {
+				return like.product_id === id;
+			});
+
+			if(like.length === 0) {
+				return false;
+			} 
+			return true;
 		}
 
 	}

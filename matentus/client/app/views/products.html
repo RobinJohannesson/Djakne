@@ -117,7 +117,7 @@
 
 		<a href="#!/products/{{ product.id }}">
 			<img 
-				title="Likes: {{product.likeAmount}}, Created: {{product.created}}, Rating: {{product.rating}}" 
+				title="ID: {{product.id}}, Likes: {{product.likeAmount}}, Created: {{product.created}}, Rating: {{product.rating}}" 
 				class="img-responsive" 
 				src="http://localhost:3000/images/{{product.image}}" 
 				alt="">
@@ -132,11 +132,8 @@
 		</div>
         
 		<div ng-click="ctrl.likeProduct(product.id)" class="heart-icon">
-
-            <i class="fa fa-heart-o heart" aria-hidden="true" ng-show="ctrl.checkUserLike(product.id)">
-            </i>
-            <i class="fa fa-heart heart" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)">
-            </i>
+            <i class="fa fa-heart-o heart" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)"></i>
+            <i class="fa fa-heart heart" aria-hidden="true" ng-show="ctrl.checkUserLike(product.id)"></i>
 		</div>
         <!--<div>
         När liked ska denna visas   

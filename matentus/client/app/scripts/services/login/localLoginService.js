@@ -7,7 +7,7 @@
 (function () {
 	'use strict';
 
-	var localLoginService = function ($http, $location) {
+	var localLoginService = function ($http, $location, adminService, likeService) {
 		var isOnline = false;
 		
 		var login = function(loginForm) {
@@ -40,6 +40,8 @@
     				var token = response.data.token;
     				localStorage.setItem('matentustoken', token);
     				$location.url('/');
+                    likeService.refresh();
+                    adminService.refresh();
     			}
     		});
 		};

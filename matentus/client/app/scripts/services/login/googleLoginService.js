@@ -7,7 +7,7 @@
 (function () {
 	'use strict';
 
-	var googleLoginService = function ($http,$location) {
+	var googleLoginService = function ($http, $location, adminService, likeService) {
 		var isOnline = false;
 		var login = function() {
 			gapi.load('auth2', function(){
@@ -28,11 +28,12 @@
 
 						var status = response.status;
 						if (status === 200){
-							var token=response.data.token;
+							var token = response.data.token;
 							localStorage.setItem('matentustoken', token);
-							console.log("Matentus token_ ");
 							console.log(localStorage.getItem('matentustoken'));
 							$location.url('/');
+							likeService.refresh();
+							adminService.refresh();
 						}
 					})
 				});
