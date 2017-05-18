@@ -19,6 +19,7 @@
 		ctrl.products = productService.products;
 		ctrl.filterRelated = filterRelated;
 		ctrl.loggedIn = false;
+        ctrl.facebookshare = facebookshare;
 
 		fetchProduct();
 
@@ -32,8 +33,7 @@
 					ctrl.product = product;
 					ctrl.loggedIn=true;	
 				}
-		    	
-		    }); 
+		    });
 		 }
 
 		 function filterRelated(product) {
@@ -44,7 +44,12 @@
 		function showLoginModal(){
 			$('#modal-login').modal('show');
 		}
-
+        
+        function facebookshare(){
+            console.log("testar loss");
+            window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgoogle.com&amp;src=sdkpreparse', 'newwindow', 'width=500, height=500');
+            return false;
+        }
 	}
 
 })();

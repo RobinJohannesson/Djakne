@@ -60,7 +60,7 @@
                 <!-- Senaste -->
 
                 <li class="col-lg-2 col-md-3 col-xs-4 latest text-center">
-                    <a ng-click="ctrl.orderBy('created')" type="button" class="sort-btn col-xs-12" ng-class="{active: ctrl.currentOrder == 'created'}">Senaste</a>
+                    <a class="sort-btn col-xs-12" ng-click="ctrl.orderBy('created')" type="button" ng-class="{active: ctrl.currentOrder == 'created'}">Senaste</a>
                 </li>
 
                 <!-- Kategorier -->
@@ -106,20 +106,10 @@
 </div>
 -->
 
-<!-- Category and subcategory title -->
-
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">
-			<small></small>
-		</h1>
-	</div>
-</div>
-
 
 <!-- This is where all products are displayed -->
 
-<div class="row">
+<div class="products-row row">
 
 	<div 
 		ng-repeat="product in ctrl.products | orderBy: ctrl.currentOrder:true" 
@@ -136,8 +126,12 @@
 		<div class="img-label">
 			<h4 id="label-text"> {{ product.title }} </h4>
 		</div>
+        
 		<div ng-click="ctrl.like(product.id)" class="heart-icon">
-            <i class="fa fa-heart-o heart" aria-hidden="true"></i>
+            <i class="fa fa-heart-o heart" aria-hidden="true" ng-show="ctrl.checkUserLike(product.id)">
+                <p id="numb-of-likes" class="numb-of-likes">3</p>
+            </i>
+            <i class="fa fa-heart heart" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)"></i>
 		</div>
         <!--<div>
         När liked ska denna visas   

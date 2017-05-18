@@ -1,14 +1,11 @@
 <div ng-controller="ProductCtrl as ctrl" >
-   <div ng-if='ctrl.loggedIn'> 
-        <div class="row">
-            <!--a href="#menu_btn" class="btn btn-default" id="menu_btn"><span class="glyphicon glyphicon-menu-hamburger"></span></a-->
-        </div>
+   <div ng-if='ctrl.loggedIn' class="title-row">
         
         <!-- Portfolio Item Heading -->
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">{{ ctrl.product.title }}
-                    <small>{{Subheading}}</small>
+            <div class="col-xs-12">
+                <h1 class="page-header">
+                    {{ ctrl.product.title }}
                 </h1>
             </div>
         </div>
@@ -39,24 +36,25 @@
                 <h3 class="page-header">Relaterade produkter</h3>
             </div>
          
-            <div ng-repeat="product in ctrl.products | filter: ctrl.filterRelated" class="col-xs-12 col-xs-12 col-md-6 col-lg-3">
-                <div ng-if="!(product.id == ctrl.id)">
+            <div ng-repeat="product in ctrl.products | filter: ctrl.filterRelated" class="related-wrap">
+                <div ng-if="!(product.id == ctrl.id)" class="col-xs-6 col-md-3 col-lg-3 portfolio-item-related">
                     <a href="#!/products/{{ product.id }}" id="related-a">
-                        <img title="{{ product.keyword }}" class="img-responsive related" src="http://localhost:3000/images/{{ product.image }}" alt="">
+                        <img title="{{ product.keyword }}" class="related img-responsive" src="http://localhost:3000/images/{{ product.image }}" alt="produktbild">
                     </a>
-                    
-        <div class="img-label-related">
-			<h5 id="label-text-related"> {{ product.title }} </h5>
-		</div>
-                    
-		<div ng-click="ctrl.like(product.id)" class="heart-icon">
-            <i class="fa fa-heart-o heart" aria-hidden="true"></i>
-		</div>
+                    <div id="img-label-related" class="img-label-related col-xs-12">
+                        <h5 id="label-text-related"> {{ product.title }} </h5>
+                    </div>
+                    <div ng-click="ctrl.like(product.id)" class="heart-icon-related heart-icon">
+                        <i class="fa fa-heart-o heart" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
 
             </div>
         <!-- /.row -->
+           <a class="btn" ng-click="ctrl.facebookshare()">
+	           <i class="fa fa-facebook-official" aria-hidden="true"></i> Dela på facebook
+	       </a>
 </div>
         <hr>
     <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

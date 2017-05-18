@@ -25,10 +25,12 @@
 				url: 'http://localhost:3000/api/products',
 				data: formData,
 				transformRequest: angular.identity,
-				headers: { 'Content-Type': undefined }
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken'), 'Content-Type': undefined}
 			})
 			.then(function(response) {
 				refresh();
+				console.log(response);
+				console.log(localStorage.getItem('matentustoken'));
 				productService.refresh();
 			}, errorHandler);
 		}
