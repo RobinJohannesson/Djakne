@@ -20,9 +20,14 @@
     margin-top: -1px;
 }
 /*TITLE-ROW*/
-.title-row{
-    padding: 0 10px;
-    margin-top: -2%;
+.products-row{
+    padding: 2%;
+    margin-top: -3%;
+}
+@media screen and (min-width: 720px){
+    .products-row{
+        padding: 3% 0.3%;
+    }
 }
 .portfolio-item {
     padding: 0 12px 0 12px;
@@ -58,6 +63,11 @@
     -ms-transform: translateY(-50%);
 }
 
+/*RELATED PRODUCTS CSS*/
+.title-row{
+    padding: 0 10px;
+    margin-top: -2%;
+}
 .img-label-related {
     position: absolute;
     bottom: 0;
@@ -96,7 +106,7 @@
     font-size: 11px;
     transform: translate(0px, 1px);
 }
-
+/*-----RELATED END-----*/
 .heart-icon {
     position:absolute;
     margin: 0 12px 0 12px;
