@@ -7,111 +7,76 @@
 (function () {
 	'use strict';
 
-	var likeService = function ($http, $location) {
+	var likeService = function ($http) {
 
 		var state = {};
-		state.products = [];
-		state.suppliers = [];
-		state.keywords = [];
+		state.likes = [];
+
 		refresh();
 
-		function getProduct(id) {
-	        return $http({
-	        		method: 'GET', 
-	        		url:'http://localhost:3000/api/products/' + id,
-					headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
-	        	})
-	        	.then(function(response) {
-					console.log(response);
-					return response.data;	        	
-				}, errorHandler)
-	        	.catch(function(error) {
-	        		console.log(error);
-	        	});
-	    };
-
-		function getProducts() {
+		function getUserLikes(){
+			console.log("LikeService getting your likes");
 			$http({
 				method: 'GET',
-				url: 'http://localhost:3000/api/products'
+				url: 'http://localhost:3000/api/products/userlikes',
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
 			})
-			.then(function(response) {
-				setProducts(response.data);
-			}, errorHandler);
+				.then(function(response){
+				if (response.status == 200){
+					console.log(response.data);
+					setLikes(response.data);
+				}
+				else {
+					console.log("Failed to load your likes.");
+				}
+			})
+
 		}
 
-		function getSuppliers() {
+		function likeProduct(id) {
+			console.log("Likes product: " + id);
+			var token = localStorage.getItem('matentustoken');
 			$http({
-				method: 'GET',
-				url: 'http://localhost:3000/api/products/suppliers'
+				method: 'POST',
+				url: 'http://localhost:3000/api/products/postlike',
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
+				data: {productId: id}
 			})
-			.then(function(response) {
-				setSuppliers(response.data);
-			}, errorHandler);
-		}
-
-		function getKeywords() {
-			$http({
-				method: 'GET',
-				url: 'http://localhost:3000/api/products/keywords'
+				.then(function(response){
+				console.log(response);
+				var status = response.status;
+				if (status === 200){
+					refresh();
+				}
+				else if (status === 201){
+					refresh();
+				}
+				else if (status === 401){
+					console.log("Du måste logga in för att likea produkter");
+				}
 			})
-			.then(function(response) {
-				setKeywords(response.data);
-			}, errorHandler);
 		}
 
-		function setProducts(products) {
-			state.products.length = 0;
-			state.products.push.apply(state.products, products);
+		function setLikes(likes) {
+			state.likes.length = 0;
+			state.likes.push.apply(state.likes, likes);
 		}
-
-		function setSuppliers(suppliers) {
-			state.suppliers.length = 0;
-			state.suppliers.push.apply(state.suppliers, suppliers);
-		}
-
-		function setKeywords(keywords) {
-			state.keywords.length = 0;
-			state.keywords.push.apply(state.keywords, keywords);
-		}
-		var errorHandler = function(response) {
-			if (response.status==401){
-				return null;
-			}
-			if(response.status === 404) $location.path('/404');
-			console.log(response);
-		};    
 
 		function refresh() {
-			getProducts();
-
+			console.log("LikeService Refresh...");
 			var matentusToken = localStorage.getItem('matentusToken');
 			if(matentusToken) {
-				getSuppliers();
-				getKeywords();
-			} else {
-				console.log("Logga in för att hämta produkter, suppliers, keywords");
+				// Check with server if user is really online
+				getUserLikes();
 			}
-		};
-        
-        function setlike(id) {
-            $http({
-				method: 'POST',
-				url: 'http://localhost:3000/postlike',
-				transformRequest: angular.identity,
-				headers: { 'Content-Type': undefined }
-			})
-			.then(function(response) {
-                console.log(response);
-			})
-        }
+		}
+		
 
 		return {
-			products: state.products,
-			suppliers: state.suppliers,
-			keywords: state.keywords,
-			getProduct: getProduct,
-			refresh: refresh
+			refresh: refresh,
+			userLikes: state.userLikes,
+			likeProduct: likeProduct,
+			getUserLikes: getUserLikes
 		};
 
 	};

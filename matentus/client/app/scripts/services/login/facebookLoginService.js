@@ -7,7 +7,7 @@
 (function () {
 	'use strict';
 
-	var facebookLoginService = function ($http, $location) {
+	var facebookLoginService = function ($http, $location, likeService, adminService) {
 
 
 
@@ -31,41 +31,43 @@
 
 		var loginLocal = function(facebookAccessToken) {
 			$http({
-    			method: 'POST',
-    			url: 'http://localhost:3000/api/login/facebook',
-    			data: {fbtoken: facebookAccessToken}
-    		})
-    		.then(function(response){
-    			var status = response.status;
-                console.log(status);
-    			if (status===200){
-    				var token=response.data.token;
-                    console.log(token);
-    				localStorage.setItem('matentustoken', token);
-                    console.log(localStorage.getItem('matentustoken'))
-    				$location.url('/');
-    			}
-    		})
-  }
+				method: 'POST',
+				url: 'http://localhost:3000/api/login/facebook',
+				data: {fbtoken: facebookAccessToken}
+			})
+			.then(function(response){
+				var status = response.status;
+				console.log(status);
+				if (status===200){
+					var token=response.data.token;
+					console.log(token);
+					localStorage.setItem('matentustoken', token);
+					console.log(localStorage.getItem('matentustoken'))
+					$location.url('/');
+					likeService.refresh();
+					adminService.refresh();
+				}
+			})
+		}
 
-  var share = function() {
-  	FB.ui(
-  	{
-  		method: 'share',
-  		href: 'https://developers.facebook.com/docs/'
-  	}, function(response){
-  		console.log(response);
-  	});
-  }
+		var share = function() {
+			FB.ui(
+			{
+				method: 'share',
+				href: 'https://developers.facebook.com/docs/'
+			}, function(response){
+				console.log(response);
+			});
+		}
 
-  return {
-  	login: login,
-  	share: share
-  };
+		return {
+			login: login,
+			share: share
+		};
 
-};
+	};
 
-angular.module('matentusApp')
-.factory('facebookLoginService', facebookLoginService);
+	angular.module('matentusApp')
+	.factory('facebookLoginService', facebookLoginService);
 
 })();
