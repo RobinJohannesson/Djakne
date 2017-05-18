@@ -8,7 +8,7 @@
     border-bottom: solid #000;
     border-width: 2px;
 }
-.sort-btn:, .sort-btn:active{
+.sort-btn:hover, .sort-btn:active{
     border-color: #fff;
 }
 .sort-active{
@@ -19,13 +19,16 @@
     font-size: 10px;
     margin-top: -1px;
 }
-/**/
+/*TITLE-ROW*/
+.title-row{
+    padding: 0 10px;
+    margin-top: -2%;
+}
 .portfolio-item {
     padding: 0 12px 0 12px;
     height: 280px;
     overflow: hidden;
 }
-
 .portfolio-item img {
     display: block;
     width: 100%;
@@ -64,7 +67,6 @@
     background: rgba(0,0,0,0.7);  
     padding-left: 13px;
 }
-
 #label-text-related {
     color: white;
     padding: 0;
@@ -76,12 +78,24 @@
     -ms-transform: translateY(-50%);
 }
 
-.related {
-    height: 180px;
-    min-width: 270px;
+.related-wrap{
+    padding: 0px;
 }
 
-
+.portfolio-item-related{
+    overflow: hidden;
+    height: 150px;
+    padding: 10px;
+    margin: 2% 0%;
+}
+.related {
+    min-height: 150px;
+    width: 100%;
+}
+.heart-icon-related {
+    font-size: 11px;
+    transform: translate(0px, 1px);
+}
 
 .heart-icon {
     position:absolute;
