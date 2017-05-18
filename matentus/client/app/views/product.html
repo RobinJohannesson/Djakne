@@ -41,7 +41,7 @@
                     <a href="#!/products/{{ product.id }}" id="related-a">
                         <img title="{{ product.keyword }}" class="related img-responsive" src="http://localhost:3000/images/{{ product.image }}" alt="">
                     </a>
-                    <div class="img-label-related">
+                    <div class="img-label-related col-xs-12">
                         <h5 id="label-text-related"> {{ product.title }} </h5>
                     </div>
                     <div ng-click="ctrl.like(product.id)" class="heart-icon-related heart-icon">
