@@ -102,6 +102,13 @@ html, body{
     text-align: center;
     margin-top: 0px;
 }
+
+.fbshare{
+    color: #000;
+    font-size: 18px;
+    padding: 0;
+    border: 0;
+}
 /*!
  * Start Bootstrap - Portfolio Item (http://startbootstrap.com/)
  * Copyright 2013-2016 Start Bootstrap
