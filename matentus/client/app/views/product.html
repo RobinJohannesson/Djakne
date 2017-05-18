@@ -39,9 +39,9 @@
             <div ng-repeat="product in ctrl.products | filter: ctrl.filterRelated" class="related-wrap">
                 <div ng-if="!(product.id == ctrl.id)" class="col-xs-6 col-md-3 col-lg-3 portfolio-item-related">
                     <a href="#!/products/{{ product.id }}" id="related-a">
-                        <img title="{{ product.keyword }}" class="related img-responsive" src="http://localhost:3000/images/{{ product.image }}" alt="">
+                        <img title="{{ product.keyword }}" class="related img-responsive" src="http://localhost:3000/images/{{ product.image }}" alt="produktbild">
                     </a>
-                    <div class="img-label-related col-xs-12">
+                    <div id="img-label-related" class="img-label-related col-xs-12">
                         <h5 id="label-text-related"> {{ product.title }} </h5>
                     </div>
                     <div ng-click="ctrl.like(product.id)" class="heart-icon-related heart-icon">
