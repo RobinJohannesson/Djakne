@@ -83,14 +83,14 @@
 }
 @media screen and (min-width: 720px){
     .img-label-related{
-        width: 93.3%;
+        width: 90.5%;
     }
 }
 .img-label-related {
     position: absolute;
     bottom: 0;
     height: 22%;
-    width: 90.9%;
+    width: 93.3%;
     background: rgb(0,0,0);
     background: rgba(0,0,0,0.7);  
     padding-left: 4%;
@@ -110,7 +110,7 @@
 }
 .portfolio-item-related{
     overflow: hidden;
-    height: 150px;
+    height: 200px;
     padding: 10px;
     margin: 2% 0%;
 }
