@@ -19,6 +19,7 @@
 		ctrl.products = productService.products;
 		ctrl.filterRelated = filterRelated;
 		ctrl.loggedIn = false;
+        ctrl.facebookshare = facebookshare;
 
 		fetchProduct();
 
@@ -45,7 +46,7 @@
 			$('#modal-login').modal('show');
 		}
         
-        var facebookshare = function(){
+        function facebookshare(){
             (function(d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id)) return;
@@ -54,7 +55,6 @@
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         }
-        facebookshare();
 	}
 
 })();
