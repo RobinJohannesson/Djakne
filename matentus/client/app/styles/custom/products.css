@@ -78,17 +78,17 @@
 
 /*               RELATED PRODUCTS CSS                */
 .title-row{
-    padding: 0 10px;
+    padding: 0 3%;
     margin-top: -2%;
 }
-@media screen and (min-width: 720px){
+@media screen and (max-width: 720px){
     .img-label-related{
         width: 90.5%;
     }
 }
 .img-label-related {
     position: absolute;
-    bottom: 0;
+    bottom: 0%;
     height: 22%;
     width: 93.3%;
     background: rgb(0,0,0);
@@ -97,8 +97,8 @@
 }
 #label-text-related {
     color: white;
-    padding: 0;
-    margin: 0;
+    padding: 0%;
+    margin: 0%;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -110,12 +110,12 @@
 }
 .portfolio-item-related{
     overflow: hidden;
-    height: 200px;
-    padding: 10px;
+    height: 25%;
+    padding: 1%;
     margin: 2% 0%;
 }
 .related {
-    min-height: 150px;
+    min-height: 80%;
     width: 100%;
 }
 .heart-icon-related {
