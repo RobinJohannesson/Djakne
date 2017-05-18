@@ -22,7 +22,6 @@
         ctrl.facebookshare = facebookshare;
 
 		fetchProduct();
-        facebookshare();
 
 		function fetchProduct() { 
 		    productService.getProduct(ctrl.id)
@@ -48,13 +47,8 @@
         
         function facebookshare(){
             console.log("testar loss");
-            (function(d, s, id){
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {return;}
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
+            window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgoogle.com&amp;src=sdkpreparse', 'newwindow', 'width=500, height=500');
+            return false;
         }
 	}
 
