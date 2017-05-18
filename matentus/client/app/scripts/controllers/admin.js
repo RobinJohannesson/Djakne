@@ -13,6 +13,20 @@
 
 	function AdminCtrl($scope, adminService, uploadService, categoryService, productService) {
 
+		function checkLoginStatus() {
+			var matentusToken = localStorage.getItem('matentusToken');
+			if(!matentusToken) {
+				// Be användaren att logga in
+				console.log("Var snäll logga in som admin");
+			}
+		}
+
+
+
+		// Kolla om matentustoken finns
+		// Om det finns - Skicka till servern och kolla så att användaren är inloggad och är admin. Hämta och visa produkter.
+		// Om det inte finns - Visa inga produkter, be användaren att logga in som admin. Led tillbaka till samma sida.
+
 		var ctrl = this;
 
 		ctrl.manageSuggestionsView = 'views/admin/views/manageSuggestions.html';
@@ -48,9 +62,7 @@
 		}
 
 		function setCurrentCategory(category) {
-			console.log("Setting current category");
 			ctrl.currentCategory = category;
-			console.log(ctrl.currentCategory);
 		}
 
 		function changeView(view) {

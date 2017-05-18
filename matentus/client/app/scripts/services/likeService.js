@@ -1,13 +1,13 @@
 
 // ------------------------------------------------------------
-//  Product Service. All properties of the returned object is
+//  Like Service. All properties of the returned object is
 //  reachable for any controller who $inject this service.
 // ------------------------------------------------------------
 
 (function () {
 	'use strict';
 
-	var productService = function ($http, $location) {
+	var likeService = function ($http, $location) {
 
 		var state = {};
 		state.products = [];
@@ -93,6 +93,18 @@
 				console.log("Logga in för att hämta produkter, suppliers, keywords");
 			}
 		};
+        
+        function setlike(id) {
+            $http({
+				method: 'POST',
+				url: 'http://localhost:3000/postlike',
+				transformRequest: angular.identity,
+				headers: { 'Content-Type': undefined }
+			})
+			.then(function(response) {
+                console.log(response);
+			})
+        }
 
 		return {
 			products: state.products,
@@ -105,6 +117,6 @@
 	};
 
 	angular.module('matentusApp')
-	.factory('productService', productService);
+	.factory('likeService', likeService);
 	
 })();

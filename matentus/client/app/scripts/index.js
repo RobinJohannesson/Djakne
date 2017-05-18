@@ -54,18 +54,4 @@ angular
 		redirectTo: '/'
 	});
 
-
-    // --------------------------------------------------------------------
-    //  Facebook Login - This code should be moved somewhere else...
-    // --------------------------------------------------------------------
-
-
-    window.fbAsyncInit = function() {
-    	FB.init({
-    		appId      : '636938996509987',
-    		xfbml      : true,
-    		version    : 'v2.9'
-    	});
-    	FB.AppEvents.logPageView();
-    };
 }]);

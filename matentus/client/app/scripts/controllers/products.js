@@ -14,30 +14,28 @@
 	function ProductsCtrl($routeParams, productService, categoryService, $http) {
 		var ctrl = this;
 
-		ctrl.currentCategoryId = null;
-		ctrl.categoryHeader = 'Kategorier';
 		ctrl.currentCategoryTitle = $routeParams.category;
 		ctrl.currentCategoryId = $routeParams.category_id;
-		ctrl.checkUserLike=checkUserLike;
-		ctrl.getUserLikes=getUserLikes;
 		ctrl.shouldShowCategories = false;
-		ctrl.updateLikes=updateLikes;
+		ctrl.shouldShowDropdown = false;
+		ctrl.currentCategoryId = null;
+		ctrl.categoryHeader = 'Kategorier';
+		ctrl.currentOrder = '';
+		ctrl.userlikes = {};
+		
+		ctrl.updateLikes = updateLikes;
 		ctrl.categories = categoryService.categories;
 		ctrl.products = productService.products;
-
 		ctrl.toggleCategories = toggleCategories;
-
-		ctrl.currentOrder = '';
+		ctrl.checkUserLike = checkUserLike;
+		ctrl.getUserLikes = getUserLikes;
+		ctrl.toggleDropdown = toggleDropdown;
 		ctrl.orderBy = orderBy;
 		ctrl.like = like;
-
-		orderBy('likeAmount');
-
-		ctrl.shouldShowDropdown = false;
-		ctrl.toggleDropdown = toggleDropdown;
-		ctrl.userlikes;
-		ctrl.getUserLikes();
 		
+		orderBy('likeAmount');
+		getUserLikes();
+
 		function updateLikes(){
 			ctrl.getUserLikes();
 		}

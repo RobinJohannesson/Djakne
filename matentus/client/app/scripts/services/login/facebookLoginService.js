@@ -9,6 +9,9 @@
 
 	var facebookLoginService = function ($http, $location) {
 
+
+
+
 		var isOnline = false;
 
 		var login = function() {
