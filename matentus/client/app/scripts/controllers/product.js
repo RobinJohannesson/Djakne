@@ -22,6 +22,7 @@
         ctrl.facebookshare = facebookshare;
 
 		fetchProduct();
+        facebookshare();
 
 		function fetchProduct() { 
 		    productService.getProduct(ctrl.id)
@@ -33,9 +34,7 @@
 					ctrl.product = product;
 					ctrl.loggedIn=true;	
 				}
-		    	
-		    }); 
-            facebookshare();
+		    });
 		 }
 
 		 function filterRelated(product) {
