@@ -3,12 +3,12 @@
 	<!--     Mobile Login    -->
 	<script src="../scripts/styling/style.js"></script>
 
-	<div class="row sign-in-mobile text-white">
+	<div class="row sign-in-mobile text-white" ng-show="!ctrl.getLoginStatus()">
 		<!--p class="mx-auto sign-up-with text-right col-xs-5">Logga in med:</p-->
 		<a id="sign-up-with" class="col-xs-10 p-8 m-10 bg-primary">
 			Logga in med:
 		</a>
-		<a ng-click="ctrl.loginFacebook()" class="mx-auto btn btn-social-icon color-grey">
+		<a ng-click="ctrl.loginFacebook()" class="mx-auto btn btn-social-icon color-grey" >
 			<i class="fa fa-facebook"></i>
 		</a>
 		<a ng-click="ctrl.loginGoogle()" class="mx-auto btn btn-social-icon m-20 color-grey">
@@ -18,7 +18,7 @@
 			<i class="fa fa-envelope"></i>
 		</a>
 	</div>
-
+	
 	<!-- Login form --> 
 	<div id="email-form-div" class="row">
 		<form id="email-form" name="ctrl.form" role="form">
