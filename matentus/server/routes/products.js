@@ -30,6 +30,10 @@ router.get('/userlikes',passport.authenticate('jwt', { session: false }), functi
 	likeController.getAllLikesOfUser(req, res);
 });
 
+router.get('/productlikes',passport.authenticate('jwt', { session: false }), function(req, res) {
+	likeController.getAllLikesOfProduct(req, res);
+});
+
 router.get('/keywords',passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.getAllKeywords(req, res);
 });
