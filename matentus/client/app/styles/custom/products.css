@@ -95,15 +95,25 @@ ul.nav{
     background: rgba(0,0,0,0.15);
     border-radius: 3px;
 }*/
-.numb-of-likes{
+#numb-of-likes{
+    font-family: 'Raleway', sans-serif;
     text-align: center;
     width: 10%;
     position: absolute;
     color: #000;
-    left: 86.3%;
-    top: 32%;
-    z-index: 20;
-    font-size: 100%;
+    left: 20.0%;
+    top: 22%;
+    font-size: 38%;
+}
+#numb-of-likes-white{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    width: 10%;
+    position: absolute;
+    color: #fff;
+    left: 20.0%;
+    top: 22%;
+    font-size: 38%;
 }
 /*----------*/
 @media screen and (min-width: 750px){
