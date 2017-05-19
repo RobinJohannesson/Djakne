@@ -54,6 +54,9 @@ body {
 .form-group{
     padding-top: 3%;
 }
+.form-control{
+    resize: vertical;
+}
 .change{
     color: black;
     float: right;
@@ -76,4 +79,15 @@ body {
     padding-top:5.5%;
     padding-left: 3%;
 }
-
+.likes-admin i:hover{
+    color: darkgrey;   
+}
+.add-prod-img{
+    width: 20%;
+}
+.fa-file-text-o{
+    font-size: 100%;
+    color: black;
+    width: 25%;
+    margin-left: 3%;
+}
