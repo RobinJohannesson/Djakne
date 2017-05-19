@@ -6,7 +6,7 @@
 	'use strict';
 
 	angular.module('matentusApp')
-	.controller('LoginCtrl', LoginCtrl);
+		.controller('LoginCtrl', LoginCtrl);
 
 	LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginService', '$scope', '$http', '$location'];
 
@@ -18,41 +18,55 @@
 		ctrl.loginLocal = loginLocal;
 		ctrl.registerLocal = registerLocal;
 		ctrl.checkLoginStatus = checkLoginStatus;
-		ctrl.getLoginStatus=getLoginStatus();
-		ctrl.getUserType=getUserType();
-		
+		ctrl.getLoginStatus=getLoginStatus;
+		ctrl.getUserType=getUserType;
+		ctrl.isOnline=false;
+		ctrl.isAdmin=false;
 		ctrl.checkLoginStatus();
 
-        ctrl.loginForm = {};
+		ctrl.loginForm = {};
 
 		function loginFacebook() {
 			facebookLoginService.login();
+			
 		}
 
 		function loginGoogle() {
 			googleLoginService.login();
+			ctrl.checkLoginStatus();
 		}
 
 		function loginLocal() {
-            localLoginService.login(ctrl.loginForm);
-    	}
+			localLoginService.login(ctrl.loginForm);
+			ctrl.checkLoginStatus();
+		}
 
-        function registerLocal() {
-            localLoginService.register(ctrl.registerForm);
-        }
+		function registerLocal() {
+			localLoginService.register(ctrl.registerForm);
+		}
 
-        function checkLoginStatus() {
-            localLoginService.checkLoginStatus();
-        }
-		
+		function checkLoginStatus() {
+			localLoginService.checkLoginStatus()
+				.then(function(response) {
+				if (response.status){
+					ctrl.isOnline=true;
+					if(response.data.isAdmin){
+						ctrl.isAdmin=true;
+					}
+
+				}
+			}
+					 );	
+		}
+
 		function getLoginStatus() {
-			localLoginService.getLoginStatus();
+			return ctrl.isOnline;
 		}
-		
+
 		function getUserType() {
-			localLoginService.getUserType();
-			
+			return ctrl.isAdmin;
+
 		}
-    }
-    
+	}
+
 })();

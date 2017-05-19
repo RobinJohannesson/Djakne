@@ -9,6 +9,7 @@ var jwt = require('jsonwebtoken');
 var passportJWT = require("passport-jwt");
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
+var jwtDecode = require('jwt-decode');
 
 var jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
@@ -93,7 +94,27 @@ module.exports = {
 			} 
 		});
 	},
-
+	
+	getUserType:	function(req, res){
+		token=req.headers.authorization;
+		token=token.replace("JWT", "");
+		token=token.replace(" ", "");
+		var decoded = jwtDecode(token);
+		userId=decoded.id;
+		console.log("----------");
+		console.log("HEj");
+		console.log("----------");
+		models.User.find( {
+			where: {id: userId}
+		})
+			.then(function(user) {
+				var isAdmin=user.admin;
+				res.json({isAdmin: isAdmin});
+		});
+		
+		
+	},
+	
 	// --------------------------------------------------------------------------------------------
 	//	Login with email. If user does not already exists, one will be created and stored in db.
 	// --------------------------------------------------------------------------------------------
