@@ -64,8 +64,8 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), function
 	productController.delete(req, res);
 });
 
-router.get('/:id/likes', passport.authenticate('jwt', { session: false }), function(req, res) {
-	likeController.getAllLikesOfProduct(req, res);
+router.get('/emaillist', passport.authenticate('jwt', { session: false }), function(req, res) {
+	likeController.createEmailList(req, res);
 });
 
 router.post('/postlike', passport.authenticate('jwt', { session: false }), function(req, res){
