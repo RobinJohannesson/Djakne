@@ -71,6 +71,21 @@ ul.nav{
     padding: 2%;
     margin-top: -3%;
 }
+.home{
+    position: absolute;
+    font-size: 90%;
+    margin-right: 5%;
+        
+}
+.home a{
+    color: black;
+}
+.home a:hover{
+    color: #9d9d9d;
+}
+#page-header{
+
+}
 /*LIKE ICONS*/
 .heart-icon {
     transform: scale(1.5);
@@ -150,6 +165,17 @@ ul.nav{
     .numb-of-likes{
         left: 85.9%;
     }
+}
+#page-header{
+    padding-left: 8%;
+}
+.home{
+    color: black;
+    font-size: 150%;
+    top: 45%;
+}
+.home:hover{
+    color: #9d9d9d;
 }
 /*      THE FOLLOWING CSS IS FOR THE PRODUCT.HTML    */
 
