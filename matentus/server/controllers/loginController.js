@@ -15,110 +15,93 @@ jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
 jwtOptions.secretOrKey = 'tasmanianDevil';
 
 module.exports = {
+
+	// --------------------------------------------------------------------------------------------
+	//	Login with Facebook. If user does not already exists, one will be created and stored in db.
+	// --------------------------------------------------------------------------------------------
+
 	fblogin: 	function(req, res) {
 		var fbtoken = req.body.fbtoken;
 
-		request.get({ url: 'https://graph.facebook.com/me?fields=name,email&access_token='+fbtoken },      function(error, response, body) { 
+		request.get({ url: 'https://graph.facebook.com/me?fields=name,email&access_token=' + fbtoken }, function(error, response, body) { 
 
-			if (!error && response.statusCode == 200) {
+			if(!error && response.statusCode == 200) {
 
-				var info =JSON.parse(response.body);
-
+				var info = JSON.parse(response.body);
 				var email = info['email'];
 				var name = info['name'];
 
-				models.User.find( {
+				models.User.find({
 					where: {
 						email: email
 					}
 				})
 				.then(function(user) {
-					if(!user) {
-						models.User.create({name: name, email: email, admin: 0})
-						.then(function() {
-							models.User.find( {
-								where: {
-									email: email
-								}
-							})
-							.then(function(user) {
-								var payload = {id: user.id};
-								var token = jwt.sign(payload, jwtOptions.secretOrKey);
-								res.json({token: token});
-							});
-						})
-					}
-
-					else {
-						var payload = {id: user.id};
-						var token = jwt.sign(payload, jwtOptions.secretOrKey);
-						res.json({token: token});
+					if(user) {
+						sendTokenResponse(res, user);				
 					} 
-
+					else {
+						models.User.create({ 
+							name: name, 
+							email: email, 
+							admin: 0
+						})
+						.then(function(user) {
+							sendTokenResponse(res, user);
+						});
+					}
 				});
-
-			}
-		})
+			} 
+		});
 	},
+
+	// --------------------------------------------------------------------------------------------
+	//	Login with Google. If user does not already exists, one will be created and stored in db.
+	// --------------------------------------------------------------------------------------------
 
 	googlelogin: 	function(req, res) {
 
 		var googletoken = req.body.googletoken;
 		request.get({ url: 'https://www.googleapis.com/oauth2/v1/userinfo?access_token='+googletoken },      function(error, response, body) { 
-			if (!error && response.statusCode == 200) {
+			
+			if(!error && response.statusCode == 200) {
 
 				var info = JSON.parse(response.body);
-
 				var email = info['email'];
 				var name = info['name'];
 
-				models.User.find( {
+				models.User.find({
 					where: {
 						email: email
 					}
 				})
 				.then(function(user) {
-					if(!user) {
-						console.log("No such user");
-						models.User.create({name: name, email: email, admin: 0})
-						.then(function() {
-							models.User.find( {
-								where: {
-									email: email
-								}
-							})
-							.then(function(user) {
-								console.log("New user: ");
-								console.log(user);
-								var payload = {id: user.id};
-								var token = jwt.sign(payload, jwtOptions.secretOrKey);
-								res.json({token: token});
-							});
-						})
-					}
-
-					else {
-						var payload = {id: user.id};
-						var token = jwt.sign(payload, jwtOptions.secretOrKey);
-						res.json({token: token});
+					if(user) {
+						sendTokenResponse(res, user);				
 					} 
-
+					else {
+						models.User.create({ 
+							name: name, 
+							email: email, 
+							admin: 0
+						})
+						.then(function(user) {
+							sendTokenResponse(res, user);
+						});
+					}
 				});
-
-			}
-		})
-
+			} 
+		});
 	},
-	/*
-	Local Login
-	*/
+
+	// --------------------------------------------------------------------------------------------
+	//	Login with email. If user does not already exists, one will be created and stored in db.
+	// --------------------------------------------------------------------------------------------
+
 	locallogin: 	function(req, res) {
-		console.log("Local login: ");
-		console.log(req);
-		if(req.body.email && req.body.password){
-			var email = req.body.email;
-			var password = req.body.password;
-		}
+
+		var email = req.body.email;
+		var password = req.body.password;
 
 		models.User.find( {
 			where: {
@@ -174,4 +157,10 @@ module.exports = {
 			}
 		})
 	}
+}
+
+function sendTokenResponse(res, user) {
+	var payload = {id: user.id};
+	var token = jwt.sign(payload, jwtOptions.secretOrKey);
+	res.json({token: token});
 }
