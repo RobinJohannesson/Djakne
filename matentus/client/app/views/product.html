@@ -5,7 +5,7 @@
         <div class="row">
             
             <div class="col-xs-12">
-           <div>
+            <div>
                     
             
                 <a href="/#!" class="home">
@@ -25,6 +25,9 @@
 
             <div class="col-md-6">
                 <img class="img-responsive" src="http://localhost:3000/images/{{ ctrl.product.image }}" alt="prod">
+                 <a class="btn fbshare" ng-click="ctrl.facebookshare()">
+	           <i class="fa fa-facebook-official" aria-hidden="true"></i> Dela på facebook
+	        </a>
             </div>
 
             <div class="col-md-6">
@@ -34,7 +37,7 @@
                 <h3>Leverantör</h3>
                 <p>{{ ctrl.product.supplier }}</p>
                  <h3>Leverans</h3>
-                <p>När tillräckligt många gillar denna produkt, kontaktar vi leverantören. <br> Ett erbjudande kommer sedan via mail till de som visat intresse för produkten. <br>Så glöm inte att gilla!</p><br>
+                <p>När tillräckligt många gillar denna produkt, kontaktar vi leverantören. Ett erbjudande kommer sedan via mail till de som visat intresse för produkten. Så glöm inte att gilla!</p>
             <div ng-controller="ProductsCtrl as ctrl">
                 <div ng-click="ctrl.likeProduct(product.id)" class="heart-icon-prod">
             <i class="fa fa-heart-o heart-prod" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)">
@@ -54,14 +57,12 @@
             
 
         </div>
-            <a class="btn fbshare" ng-click="ctrl.facebookshare()">
-	           <i class="fa fa-facebook-official" aria-hidden="true"></i> Dela på facebook
-	        </a>
+           
         <!-- /.row -->
         <!-- Related Projects Row -->
-        <div class="row">
+        <div class="row rel-row">
             <div class="col-lg-12">
-                <h3 class="page-header">Relaterade produkter</h3>
+                <h3 class="page-header-rel">Relaterade produkter</h3>
             </div>
          
             <div ng-repeat="product in ctrl.products | filter: ctrl.filterRelated" class="related-wrap">

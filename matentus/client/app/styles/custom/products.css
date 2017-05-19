@@ -1,3 +1,6 @@
+
+/*GENERAL*/
+
 .portfolio-item, .portfolio-item img{
     border-radius: 2px;
 }
@@ -39,21 +42,6 @@
     padding: 2%;
     margin-top: -3%;
 }
-.home{
-    position: absolute;
-    font-size: 90%;
-    margin-right: 5%;
-        
-}
-.home a{
-    color: black;
-}
-.home a:hover{
-    color: #9d9d9d;
-}
-#page-header{
-
-}
 /*LIKE ICONS*/
 .heart-icon {
     transform: scale(1.5);
@@ -62,29 +50,10 @@
     bottom: 5%;
     right: 5%;
 }
-.heart-icon-prod{
-    transform: scale(3);
-    position:absolute;
-    padding-left: 1.3%;
-    bottom: -3%; 
-}
 .heart {
     font-size: 200%;
-    color: rgba(255,255,255, 0.9);
-    
+    color: rgba(255,255,255, 0.9);    
 }
-/*.numb-of-likes{
-    position: absolute;
-    color: #fff;
-    left: 88%;
-    top: -340%;
-    padding: 0px 2px 0px 2px;
-    font-weight: 100;
-    font-size: 15px;
-    box-shadow: 0 0 20px 1px rgba(0,0,0,0.3);
-    background: rgba(0,0,0,0.15);
-    border-radius: 3px;
-}*/
 #numb-of-likes{
     font-family: 'Raleway', sans-serif;
     text-align: center;
@@ -105,27 +74,7 @@
     top: 24%;
     font-size: 32%;
 }
-#numb-of-likes-prod{
-    font-family: 'Raleway', sans-serif;
-    text-align: center;
-    width: 10%;
-    position: absolute;
-    color: #fff;
-    font-size: 32%;
-    left: 52.0%;
-    top: 31%;
-}
-#numb-of-likes-white-prod{
-    font-family: 'Raleway', sans-serif;
-    text-align: center;
-    width: 10%;
-    position: absolute;
-    color: #000;
-    font-size: 32%;
-    left: 52.0%;
-    top: 31%;
-}
-/*----------*/
+/*media queries*/
 @media screen and (min-width: 750px){
     .products-row{
         padding: 3% 0.3%;
@@ -133,87 +82,10 @@
     .numb-of-likes{
         left: 85.9%;
     }
-    #page-header{
-    padding-left: 5%;
 }
-.home{
-    color: black;
-    font-size: 150%;
-    top: 45%;
-}
-.home:hover{
-    color: #9d9d9d;
-    }
-}
-@media screen and (min-width: 992px){
-#page-header{
-    padding-left: 3%;
-}
-.home{
-    color: black;
-    font-size: 150%;
-    top: 45%;
-}
-.home:hover{
-    color: #9d9d9d;
-    }}
+
+/*----------*/
+
+
 /*      THE FOLLOWING CSS IS FOR THE PRODUCT.HTML    */
 
-/*               RELATED PRODUCTS CSS                */
-.title-row{
-    padding: 0 3%;
-    margin-top: -2%;
-}
-@media screen and (max-width: 750px){
-    #img-label-related{
-        width: 95.8%;
-    }
-#page-header{
-    padding-left: 5%;
-}
-.home{
-    color: black;
-    font-size: 150%;
-    top: 45%;
-}
-.home:hover{
-    color: #9d9d9d;
-}
-}
-.img-label-related {
-    position: absolute;
-    bottom: 0%;
-    height: 22%;
-    width: 92.0%;
-    background: rgb(0,0,0);
-    background: rgba(0,0,0,0.7);  
-    padding-left: 4%;
-}
-#label-text-related {
-    color: white;
-    padding: 0%;
-    margin: 0%;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-}
-.related-wrap{
-    padding: 0px;
-}
-.portfolio-item-related{
-    overflow: hidden;
-    height: 25%;
-    padding: 1%;
-    margin: 2% 0%;
-}
-.related {
-    min-height: 80%;
-    width: 100%;
-}
-.heart-icon-related {
-    font-size: 11px;
-    transform: translate(0px, 1px);
-}
-/*-----RELATED END-----*/
