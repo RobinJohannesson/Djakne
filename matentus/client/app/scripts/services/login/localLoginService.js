@@ -59,6 +59,17 @@
                         }
                     });
         };
+
+        var checkAdmin = function() {
+            return  $http({
+                        method: 'GET',
+                        url: api + '/login/status',
+                        headers: {'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
+                    })
+                    .then(function(response) {
+                        return response.data.isAdmin;
+                    });
+        };
         
         function saveToken(token) {
             localStorage.setItem('matentustoken', token);
@@ -73,6 +84,7 @@
         return {
             login: login,
             checkLoginStatus: checkLoginStatus,
+            checkAdmin: checkAdmin,
             isOnline: isOnline
         };
 

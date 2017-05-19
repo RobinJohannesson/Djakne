@@ -16,13 +16,12 @@
 		ctrl.loginFacebook = loginFacebook;
 		ctrl.loginGoogle = loginGoogle;
 		ctrl.loginLocal = loginLocal;
-		ctrl.registerLocal = registerLocal;
 		ctrl.checkLoginStatus = checkLoginStatus;
-		ctrl.getLoginStatus=getLoginStatus;
-		ctrl.getUserType=getUserType;
-		ctrl.isOnline=false;
-		ctrl.isAdmin=false;
-		ctrl.checkLoginStatus();
+		ctrl.isOnline = false;
+		ctrl.isAdmin = false;
+
+		checkLoginStatus();
+		checkAdmin();
 
 		ctrl.loginForm = {};
 
@@ -38,10 +37,6 @@
 			localLoginService.login(ctrl.loginForm);
 		}
 
-		function registerLocal() {
-			localLoginService.register(ctrl.registerForm);
-		}
-
 		function checkLoginStatus() {
 			localLoginService.checkLoginStatus()
 			.then(function(isOnline) {
@@ -49,13 +44,11 @@
 			});	
 		}
 
-		function getLoginStatus() {
-			return ctrl.isOnline;
-		}
-
-		function getUserType() {
-			return ctrl.isAdmin;
-
+		function checkAdmin() {
+			localLoginService.checkAdmin() 
+			.then(function(isAdmin) {
+				ctrl.isAdmin = isAdmin;
+			});
 		}
 	}
 
