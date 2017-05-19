@@ -24,9 +24,13 @@ module.exports = {
 	},
 
 	getAllLikesOfProduct: 		function(req, res) {
+        console.log("TESTAAAAR");
+        var productId = req.body.productId;
+        console.log(productId);
 		var productId = req.params.id;
+        console.log(productId);
 		models.Like.findAll( {
-			where: {ProductId: productId}
+			where: {product_id: 78}
 		})
 			.then(function(likes) {
 			res.json(likes);

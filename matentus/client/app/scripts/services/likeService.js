@@ -30,6 +30,27 @@
 			})
 
 		}
+        
+        function getProductLikes(){
+            console.log("likeservice, getproductlikes");
+            return $http({
+                method: 'GET',
+                url: 'http://localhost:3000/api/products/productlikes',
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
+            })
+            .then(function(response){
+                if (response.status == 200){
+                    console.log(response.data);
+                    console.log(response.data.length);
+                    console.log(response.data.length + "");
+                    return response.data;
+                }
+                else {
+                    console.log(response);
+                    console.log("Kunde inte ladda in mängden produkt likes");
+                }
+            })
+        }
 
 		function likeProduct(id) {
 			console.log("Likes product: " + id);
@@ -68,7 +89,8 @@
 			refresh: refresh,
 			likes: state.likes,
 			likeProduct: likeProduct,
-			getUserLikes: getUserLikes
+			getUserLikes: getUserLikes,
+            getProductLikes: getProductLikes
 		};
 
 	};
