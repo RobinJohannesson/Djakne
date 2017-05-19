@@ -79,9 +79,16 @@ ul.nav{
     bottom: 5%;
     right: 5%;
 }
+.heart-icon-prod{
+    transform: scale(3);
+    position:absolute;
+    padding-left: 1.3%;
+    bottom: -3%; 
+}
 .heart {
     font-size: 200%;
     color: rgba(255,255,255, 0.9);
+    
 }
 /*.numb-of-likes{
     position: absolute;
@@ -101,9 +108,9 @@ ul.nav{
     width: 10%;
     position: absolute;
     color: #000;
-    left: 20.0%;
-    top: 22%;
-    font-size: 38%;
+    left: 24.0%;
+    top: 24%;
+    font-size: 32%;
 }
 #numb-of-likes-white{
     font-family: 'Raleway', sans-serif;
@@ -111,9 +118,29 @@ ul.nav{
     width: 10%;
     position: absolute;
     color: #fff;
-    left: 22.0%;
+    left: 24.0%;
     top: 24%;
-    font-size: 35%;
+    font-size: 32%;
+}
+#numb-of-likes-prod{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    width: 10%;
+    position: absolute;
+    color: #fff;
+    font-size: 32%;
+    left: 52.0%;
+    top: 31%;
+}
+#numb-of-likes-white-prod{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    width: 10%;
+    position: absolute;
+    color: #000;
+    font-size: 32%;
+    left: 52.0%;
+    top: 31%;
 }
 /*----------*/
 @media screen and (min-width: 750px){
