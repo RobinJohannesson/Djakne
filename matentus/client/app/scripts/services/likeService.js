@@ -71,7 +71,6 @@
 					return response;
 			})
 		}
-	}
 
 
 	function refresh() {
@@ -85,7 +84,7 @@
 		getUserLikes: getUserLikes
 	};
 
-};
+}
 
  angular.module('matentusApp')
 	.factory('likeService', likeService);
