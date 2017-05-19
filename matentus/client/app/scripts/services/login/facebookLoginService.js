@@ -73,7 +73,7 @@
 
 		return {
 			login: login,
-			share: share,
+			share: share
 		};
 
 	};

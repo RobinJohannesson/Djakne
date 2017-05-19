@@ -63,7 +63,6 @@
 		function checkLoginStatus() {
 			localLoginService.checkLoginStatus()
 			.then(function(isOnline) {
-				console.log("User online? " + isOnline);
 				if(isOnline) {
 					ctrl.isOnline = isOnline;
 				} else {
@@ -76,7 +75,6 @@
 			localLoginService.checkAdmin()
 			.then(function(isAdmin) {
 				if(isAdmin) {
-					console.log("User is admin? " + isAdmin);
 					ctrl.isAdmin = true;
 					adminService.refresh();
 				} else {
@@ -108,24 +106,16 @@
 			} else {
 				uploadService.upload(ctrl.currentProduct);
 			}
-
-
-			// console.log("Laddar upp en ny produkt...");
-			// adminService.addProduct(ctrl.currentProduct);
-			// clearProductInput();
+			clearProductInput();
 		}
 
 		function addSuggestion() {
-			console.log("Laddar upp ett nytt förslag...");
 			uploadService.upload(ctrl.currentProduct);
 			clearProductInput();
 		}
 
 		function approveProduct() {
 			ctrl.currentProduct.approved = true;
-			if(!ctrl.currentProduct.supplier) {
-				ctrl.currentProduct.supplier = 'Information saknas';
-			}
 			adminService.update(ctrl.currentProduct);
 		}
 
@@ -135,9 +125,6 @@
 		}
 
 		function updateProduct() {
-			if(!ctrl.currentProduct.supplier) {
-				ctrl.currentProduct.supplier = 'Information saknas';
-			}
 			adminService.update(ctrl.currentProduct);
 		}
 
@@ -147,7 +134,6 @@
 		}
 
 		function addCategory() {
-			console.log(ctrl.currentCategory);
 			adminService.addCategory(ctrl.currentCategory);
 			clearCurrentCategory();
 		}
@@ -164,7 +150,7 @@
 
 		function clearProductInput() {
 			ctrl.currentProduct = {};
-			ctrl.formAddproduct.$setPristine();
+			ctrl.formaddproduct.$setPristine();
 			document.getElementById('file').value = null;
 			$scope.$broadcast('angucomplete-alt:clearInput');
 		}

@@ -1,6 +1,6 @@
 
 // ------------------------------------------------------------
-//  Product Service. All properties of the returned object is
+//  Admin Service. All properties of the returned object is
 //  reachable for any controller who $inject this service.
 // ------------------------------------------------------------
 
@@ -15,7 +15,6 @@
 		state.suggestions = [];
 
 		function update(product) {
-			console.log(product);
 
 			var formData = new FormData();
 			for(var key in product) {
@@ -25,20 +24,17 @@
 			$http({
 				method: 'PUT',
 				url: api + '/products/' + product.id,
-				headers: { 'Authorization': 'JWT '+ localStorage.getItem('matentustoken') },
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken'), 'Content-Type': undefined},				
 				data: formData,
 				transformRequest: angular.identity,
-				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken'), 'Content-Type': undefined}
 			})
 			.then(function(response) {
 				refresh();
-				console.log(response);
-				console.log(localStorage.getItem('matentustoken'));
 				productService.refresh();
 			})
 			.catch(function(error) {
 				errorHandler(error);
-			});;
+			});
 		}
 
 		function remove(product) {
@@ -53,9 +49,8 @@
 			})
 			.catch(function(error) {
 				errorHandler(error);
-			});;
+			});
 		}
-
 
 		function addProduct(product) {
 
@@ -89,7 +84,7 @@
 			})
 			.catch(function(error) {
 				errorHandler(error);
-			});;
+			});
 		}
 
 		function updateCategory(category) {
@@ -104,7 +99,7 @@
 			})
 			.catch(function(error) {
 				errorHandler(error);
-			});;
+			});
 		}
 
 		function deleteCategory(category) {
@@ -118,7 +113,7 @@
 			})
 			.catch(function(error) {
 				errorHandler(error);
-			});;
+			});
 		}
 
 		function getSuggestion(id) {
@@ -128,11 +123,11 @@
 				headers: { 'Authorization': 'JWT '+ localStorage.getItem('matentustoken') }
 			})
 			.then(function(response) {
-				return response.data;	        	
+				return response.data;
 			})
 			.catch(function(error) {
 				errorHandler(error);
-			});
+			})
 		};
 
 		function getSuggestions() {
@@ -146,12 +141,13 @@
 			})
 			.catch(function(error) {
 				errorHandler(error);
-	        });;
+			});
 		}
 
 		function setSuggestions(suggestions) {
 			state.suggestions.length = 0;
 			state.suggestions.push.apply(state.suggestions, suggestions);
+
 		}
 
 		var errorHandler = function(error) {
