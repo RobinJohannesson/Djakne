@@ -10,8 +10,6 @@
 	var facebookLoginService = function ($http, $location, likeService, adminService) {
 
 
-
-
 		var isOnline = false;
 
 		var login = function() {
@@ -24,7 +22,7 @@
 						if(response.authResponse) {
 							loginLocal(response.authResponse.accessToken);
 						}
-					},{scope:'email', return_scopes:true});
+					}, {scope:'email', return_scopes:true});
 				}
 			});
 		}
@@ -33,21 +31,28 @@
 			$http({
 				method: 'POST',
 				url: 'http://localhost:3000/api/login/facebook',
-				data: {fbtoken: facebookAccessToken}
-			})
-			.then(function(response){
-				var status = response.status;
-				console.log(status);
-				if (status===200){
-					var token=response.data.token;
-					console.log(token);
-					localStorage.setItem('matentustoken', token);
-					console.log(localStorage.getItem('matentustoken'))
-					$location.url('/');
-					likeService.refresh();
-					adminService.refresh();
+				data: {
+					fbtoken: facebookAccessToken
 				}
 			})
+			.then(function(response){
+				switch(response.status) {
+					case 200:
+						console.log("An existing user was logged in.");
+						saveToken(response.data.token);
+						break;
+					case 201:
+						console.log("A new user was created and logged in.")
+						saveToken(response.data.token);
+						break;
+					default:
+						console.log("Something happened when logging in: " + status);
+				}
+			})
+			.catch(function(error) {
+				console.log("Something happened when logging in...");
+				console.log(error);
+			});
 		}
 
 		var share = function() {
@@ -58,6 +63,13 @@
 			}, function(response){
 				console.log(response);
 			});
+		}
+
+		function saveToken(token) {
+			localStorage.setItem('matentustoken', token);
+			$location.url('/');
+			likeService.refresh();
+			adminService.refresh();
 		}
 
 		return {
