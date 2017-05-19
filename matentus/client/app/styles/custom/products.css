@@ -165,9 +165,8 @@ ul.nav{
     .numb-of-likes{
         left: 85.9%;
     }
-}
-#page-header{
-    padding-left: 8%;
+    #page-header{
+    padding-left: 5%;
 }
 .home{
     color: black;
@@ -176,7 +175,20 @@ ul.nav{
 }
 .home:hover{
     color: #9d9d9d;
+    }
 }
+@media screen and (min-width: 992px){
+#page-header{
+    padding-left: 3%;
+}
+.home{
+    color: black;
+    font-size: 150%;
+    top: 45%;
+}
+.home:hover{
+    color: #9d9d9d;
+    }}
 /*      THE FOLLOWING CSS IS FOR THE PRODUCT.HTML    */
 
 /*               RELATED PRODUCTS CSS                */
@@ -188,6 +200,17 @@ ul.nav{
     #img-label-related{
         width: 95.8%;
     }
+#page-header{
+    padding-left: 5%;
+}
+.home{
+    color: black;
+    font-size: 150%;
+    top: 45%;
+}
+.home:hover{
+    color: #9d9d9d;
+}
 }
 .img-label-related {
     position: absolute;
