@@ -18,8 +18,10 @@
 		ctrl.loginLocal = loginLocal;
 		ctrl.registerLocal = registerLocal;
 		ctrl.checkLoginStatus = checkLoginStatus;
-		//ctrl.loginStatus=checkLoginStatus();
-		//checkLoginStatus();
+		ctrl.getLoginStatus=getLoginStatus();
+		ctrl.getUserType=getUserType();
+		
+		ctrl.checkLoginStatus();
 
         ctrl.loginForm = {};
 
@@ -42,6 +44,15 @@
         function checkLoginStatus() {
             localLoginService.checkLoginStatus();
         }
+		
+		function getLoginStatus() {
+			localLoginService.getLoginStatus();
+		}
+		
+		function getUserType() {
+			localLoginService.getUserType();
+			
+		}
     }
     
 })();

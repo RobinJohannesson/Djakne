@@ -9,7 +9,8 @@
 
 	var localLoginService = function ($http, $location, adminService, likeService) {
 		var isOnline = false;
-		
+		var isAdmin = false;
+        
 		var login = function(loginForm) {
 			
 			$http({
@@ -48,33 +49,55 @@
 
 
         var checkLoginStatus = function() {
+            console.log("HEJ");
             if (!localStorage.getItem('matentustoken'))
-                return true;
+                isOnline=false;
             else{
                 var token=localStorage.getItem('matentustoken');
                 $http({
-                    method: 'POST',
+                    method: 'GET',
                     url: 'http://localhost:3000/api/login/status',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                    data: $.param({token: "JWT "+token})
+                    headers: {},
                 })
                 .then(function(response){
                     var status = response.status;
-                    console.log(status);
-                //        if (status==0){
-                //          return true;
-                //        }
-                //        else if (status==1){
-                //          return false;
-                //        }
+                    
+                    if(status==200){
+                        //Dölj login-flikar.
+                        
+                        if (req.body.userType=="user"){
+                            isOnline=true;
+                        }
+                        
+                        if (req.body.userType=="admin"){
+                            isOnline=true;
+                        }  
+                    }
+                    else if(status==401){
+                        isOnline=false;
+                    }
                 })
             }
         };
+        
+        var getUserType = function(){
+            console.log(isAdmin);
+            return isAdmin;
+        };
+        
+        var getLoginStatus = function(){
+            console.log(isOnline);
+            return isOnline;
+        };
+        
 
 		return {
 			login: login,
 			register: register,
-            checkLoginStatus: checkLoginStatus
+            checkLoginStatus: checkLoginStatus,
+            getLoginStatus: getLoginStatus,
+            getUserType: getUserType
+            
 		};
 
 	};

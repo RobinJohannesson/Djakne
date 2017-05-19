@@ -68,16 +68,23 @@
 	        <i class="fa fa-envelope-o" aria-hidden="true"></i>
 	    </a>-->
 
-	    <a ng-click="ctrl.loginFacebook()" class="btn btn-block btn-social label-default hover-social" id="facebook">
+	    <a ng-click="ctrl.loginFacebook()" class="btn btn-block btn-social label-default hover-social" id="facebook" ng-show="ctrl.getLoginStatus()">
 	    	<i class="fa fa-facebook-official" aria-hidden="true"></i>Sign in with Facebook
 	    </a>
-	    <a ng-click="ctrl.loginGoogle()" class="btn btn-block btn-social label-default hover-social" id="google">
+	    <a ng-click="ctrl.loginGoogle()" class="btn btn-block btn-social label-default hover-social" id="google" ng-show="ctrl.getLoginStatus()">
 	    	<i class="fa fa-google-plus-official" aria-hidden="true"></i>
 	    	Sign in with Google
 	    </a>
-	    <a onclick="location.href='/#!/login';" class="btn btn-block btn-social label-default hover-social" id="email">
+	    <a onclick="location.href='/#!/login';" class="btn btn-block btn-social label-default hover-social" id="email" ng-show="ctrl.getLoginStatus()">
 	    	<i class="fa fa-envelope-o" aria-hidden="true"></i>Sign in with Email
-	    </a>   
+	    </a>
+		<a onclick="location.href='/#!/login';" class="btn btn-block btn-social label-default hover-social" id="loggedin" ng-show="ctrl.getLoginStatus()">
+	    	<i class="fa fa-user-o" aria-hidden="true"></i>Inloggad
+	    </a>
+		<a onclick="location.href='/#!/login';" class="btn btn-block btn-social label-default hover-social" id="admin" ng-show="ctrl.getUserType()">
+	    	<i class="fa fa-cogs" aria-hidden="true"></i>Admin
+	    </a>
+		
 	</div>
 
 </div>
