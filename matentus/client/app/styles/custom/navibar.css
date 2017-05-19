@@ -31,6 +31,14 @@ ul.nav{
 }
 /*----END SORTERINGSKNAPPAR----*/
 /*-----------------------------*/
+@media screen and (max-width: 970px){
+    .category{
+        font-size: 20px;
+        margin-left: -240%;
+        width: 400%;
+    }
+}
+/*-----------------------------*/
 /*---TRIANGLE FOR KATEGORIER---*/
 .triangle{
     font-size: 10px;
