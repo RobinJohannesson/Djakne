@@ -17,11 +17,11 @@ router.get('/:id', function(req, res) {
 	categoryController.get(req, res);
 });
 
-router.post('/',passport.authenticate('jwt', { session: false }), function (req, res){
+router.post('/',passport.authenticate('jwt', { session: false }), function (req, res) {
 	categoryController.create(req, res);
 });
 
-router.put('/',passport.authenticate('jwt', { session: false }), function(req, res) {
+router.put('/:id',passport.authenticate('jwt', { session: false }), function(req, res) {
 	categoryController.update(req, res);
 });
 

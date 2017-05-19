@@ -23,10 +23,12 @@
                     case 200:
                         console.log("An existing user was logged in with email.");
                         saveToken(response.data.token);
+                        console.log(response.data.token);
                         break;
                     case 201:
                         console.log("A new user was created and logged in with email.")
                         saveToken(response.data.token);
+                        console.log(response.data.token);
                         break;
                     default:
                         console.log("Something happened when logging in with email: " + status);

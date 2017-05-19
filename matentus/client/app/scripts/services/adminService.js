@@ -69,7 +69,7 @@
 		function updateCategory(category) {
 			$http({
 				method: 'PUT',
-				url: 'http://localhost:3000/api/categories',
+				url: 'http://localhost:3000/api/categories/' + category.id,
 				data: category
 			})
 			.then(function(response) {
