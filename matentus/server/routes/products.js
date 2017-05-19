@@ -49,6 +49,7 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), function(re
 });
 
 router.post('/', upload.single('file'), passport.authenticate('jwt', { session: false }), function(req, res) {
+	console.log("Someone is trying to upload a product");
 	productController.createProduct(req, res);
 });
 

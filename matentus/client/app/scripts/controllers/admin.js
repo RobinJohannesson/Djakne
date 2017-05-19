@@ -36,15 +36,16 @@
 		ctrl.currentCategory = {};
 
 		ctrl.addProduct = addProduct;
+		ctrl.addSuggestion = addSuggestion;
 		ctrl.approveProduct = approveProduct;
 		ctrl.dismissProduct = dismissProduct;
 		ctrl.updateProduct = updateProduct;
 		ctrl.deleteProduct = deleteProduct;
-		ctrl.addCategory = addCategory;
 		ctrl.changeView = changeView;
 		ctrl.setCurrentProduct = setCurrentProduct;
 		ctrl.setCurrentCategory = setCurrentCategory;
 		ctrl.clearCurrentProduct = clearCurrentProduct;
+		ctrl.clearCurrentCategory = clearCurrentCategory;
 		ctrl.addCategory = addCategory;
 		ctrl.updateCategory = updateCategory;
 		ctrl.deleteCategory = deleteCategory;
@@ -54,10 +55,6 @@
 
 
 		//adminService.refresh();
-
-
-		// Kontrollera om användaren online - om inte, be den logga in.
-		// Kontrollera om användare är admin - om inte, härled till startsida.
 
 		checkLoginStatus();
 		checkAdmin();
@@ -81,6 +78,7 @@
 				if(isAdmin) {
 					console.log("User is admin? " + isAdmin);
 					ctrl.isAdmin = true;
+					adminService.refresh();
 				} else {
 					localLoginService.logout();
 					showLoginModal();
@@ -105,6 +103,20 @@
 		}
 
 		function addProduct() {
+			if(ctrl.currentProduct.approved) {
+				adminService.addProduct(ctrl.currentProduct);
+			} else {
+				uploadService.upload(ctrl.currentProduct);
+			}
+
+
+			// console.log("Laddar upp en ny produkt...");
+			// adminService.addProduct(ctrl.currentProduct);
+			// clearProductInput();
+		}
+
+		function addSuggestion() {
+			console.log("Laddar upp ett nytt förslag...");
 			uploadService.upload(ctrl.currentProduct);
 			clearProductInput();
 		}
@@ -135,6 +147,7 @@
 		}
 
 		function addCategory() {
+			console.log(ctrl.currentCategory);
 			adminService.addCategory(ctrl.currentCategory);
 			clearCurrentCategory();
 		}
@@ -151,7 +164,7 @@
 
 		function clearProductInput() {
 			ctrl.currentProduct = {};
-			ctrl.form.$setPristine();
+			ctrl.formAddproduct.$setPristine();
 			document.getElementById('file').value = null;
 			$scope.$broadcast('angucomplete-alt:clearInput');
 		}

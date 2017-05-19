@@ -130,7 +130,7 @@ module.exports = {
 		.then(function(product) {
 			var file = req.file;
 			if(file) {
-				updateProductImage(id, file.filename);
+				updateProductImage(product.id, file.filename);
 			}
 			return product;
 		})
@@ -145,12 +145,15 @@ module.exports = {
 
 	createProduct:	function(req, res) {
 
+		console.log(req.res);
+
 		userController.isAdmin(req)
 		.then(function(isAdmin) {
 			if(!isAdmin) {
 				res.sendStatus(status.NOT_ADMIN);
 				return;
 			}
+			console.log("Is admin...");
 		})
 		.then(function() {
 			models.Product.create({
@@ -167,7 +170,7 @@ module.exports = {
 			.then(function(product) {
 				var file = req.file;
 				if(file) {
-					updateProductImage(id, file.filename);
+					updateProductImage(product.id, file.filename);
 				}
 				return product;
 			})
@@ -207,7 +210,7 @@ module.exports = {
 			.then(function(product) {
 				var file = req.file;
 				if(file) {
-					updateProductImage(id, file.filename);
+					updateProductImage(req.params.id, file.filename);
 				}
 				return product;
 			})
@@ -238,11 +241,16 @@ module.exports = {
 				}
 			})
 			.then(function(product) {
+				console.log(product);
 				if(product) {
 					product.destroy();
 					try {
+						console.log("Removing image...");
+						console.log('public/images/' + product.image);
 						fs.unlinkSync('public/images/' + product.image);
-					} catch(error) {}
+					} catch(error) {
+						console.log("Could not remove image");
+					}
 					res.sendStatus(200);
 				} else {
 					res.sendStatus(404);

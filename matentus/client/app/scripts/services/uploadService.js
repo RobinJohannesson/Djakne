@@ -13,10 +13,6 @@
 
 		function upload(product) {
 
-			if(!product.approved) {
-				product.approved = false;
-			}
-
 			var formData = new FormData();
 			for(var key in product) {
 				formData.append(key, product[key]);
@@ -24,10 +20,10 @@
 			
 			$http({
 				method: 'POST',
-				url: api + '/products',
+				url: api + '/products/suggestions',
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken'), 'Content-Type': undefined},
 				data: formData,
 				transformRequest: angular.identity,
-				headers: { 'Content-Type': undefined }
 			})
 			.then(function(response) {
 				productService.refresh();
