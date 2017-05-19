@@ -8,40 +8,61 @@
 	'use strict';
 
 	var googleLoginService = function ($http, $location, adminService, likeService) {
+
 		var isOnline = false;
+
 		var login = function() {
-			gapi.load('auth2', function(){
+			gapi.load('auth2', function() {
 				gapi.auth2.init({
 					client_id: '1062166543636-m8nnt9b73m9o566ohuqtrsp32c7dvq5a.apps.googleusercontent.com'
 				});
 				var GoogleAuth  = gapi.auth2.getAuthInstance();
-				GoogleAuth.signIn().then(function(response){
-					$http({
-						method: 'POST',
-						url: 'http://localhost:3000/api/login/google',
-						data: {googletoken: response.Zi.access_token}
-					})
-						.then(function(response){
-							console.log("response from server login: ");
-							console.log(response);
-							console.log(response.status);
-
-						var status = response.status;
-						if (status === 200){
-							var token = response.data.token;
-							localStorage.setItem('matentustoken', token);
-							console.log(localStorage.getItem('matentustoken'));
-							$location.url('/');
-							likeService.refresh();
-							adminService.refresh();
-						}
-					})
+				GoogleAuth.signIn().then(function(response) {
+					loginLocal(response.Zi.access_token);
 				});
 			});
 		}
+
+
+		var loginLocal = function(googleAccessToken) {
+			$http({
+				method: 'POST',
+				url: 'http://localhost:3000/api/login/google',
+				data: {
+					googletoken: googleAccessToken
+				}
+			})
+			.then(function(response){
+				switch(response.status) {
+					case 200:
+						console.log("An existing user was logged in with Google.");
+						saveToken(response.data.token);
+						break;
+					case 201:
+						console.log("A new user was created and logged in with Google.")
+						saveToken(response.data.token);
+						break;
+					default:
+						console.log("Something happened when logging in with Google: " + status);
+				}
+			})
+			.catch(function(error) {
+				console.log("Something happened when logging in...");
+				console.log(error);
+			});
+		}
+
+		function saveToken(token) {
+			localStorage.setItem('matentustoken', token);
+			$location.url('/');
+			likeService.refresh();
+			adminService.refresh();
+		}
+
 		return {
 			login: login,
 		};
+
 	};
 	angular.module('matentusApp')
 		.factory('googleLoginService', googleLoginService);

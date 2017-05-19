@@ -105,7 +105,9 @@ html, body{
 
 .fbshare{
     color: #000;
-    font-size: 18px;
+    font-size: 90%;
+    margin-top: 1%;
+    margin-left: 0.3%;
     padding: 0;
     border: 0;
 }

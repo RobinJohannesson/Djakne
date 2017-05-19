@@ -1,0 +1,105 @@
+
+    
+/*GENERAL*/
+
+/*product*/
+
+.home:hover{
+    color: #9d9d9d;
+}
+.home{
+    position: absolute;
+    font-size: 140%;
+    color: black;   
+}
+#page-header{
+    padding-left: 7%;
+}
+.heart-icon-prod{
+    transform: scale(3);
+    position:absolute; 
+    margin: 3%;
+}
+#numb-of-likes-prod{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    width: 10%;
+    position: absolute;
+    color: #fff;
+    font-size: 32%;
+    left: 25.0%;
+    top: 31%;
+}
+#numb-of-likes-white-prod{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    width: 10%;
+    position: absolute;
+    color: #000;
+    font-size: 32%;
+    left: 25.0%;
+    top: 31%;
+}
+.title-row{
+    padding: 0 3%;
+    margin-top: -2%;
+}
+
+/*               RELATED PRODUCTS CSS                */
+
+.img-label-related {
+    position: absolute;
+    bottom: 0%;
+    height: 22%;
+    width: 92.0%;
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,0.7);  
+    padding-left: 4%;
+}
+#label-text-related {
+    color: white;
+    padding: 0%;
+    margin: 0%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+}
+.related-wrap{
+    padding: 0px;
+}
+.portfolio-item-related{
+    overflow: hidden;
+    height: 25%;
+    padding: 1%;
+    margin: 2% 0%;
+}
+.related {
+    min-height: 80%;
+    width: 100%;
+}
+.heart-icon-related {
+    font-size: 11px;
+    transform: translate(0px, 1px);
+}
+/*-----RELATED END-----*/
+
+
+/*        MEDIA QUERIES       */
+@media screen and (max-width: 768px){
+    /*Mobile*/
+    #img-label-related{
+        width: 95.8%;
+    }
+    .home{
+        top: 45%;
+    }
+    .rel-row{
+        padding-top: 10%; 
+    }
+    
+}
+ @media screen and (max-width: 992px){
+    /*Tablet*/
+}

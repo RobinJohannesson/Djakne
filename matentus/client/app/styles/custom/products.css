@@ -1,35 +1,6 @@
-@media screen and (max-width: 970px){
-    ul.nav{
-        padding: 0px;
-    }
-    .navbar, .container-fluid{
-        background: #000!important;
-    }
-}
-.navbar, .container-fluid{
-    background: none!important;
-}
-ul.nav{
-    background: #000;
-    border-radius: 2px;
-}
-/*Sorteringsknappar*/
-.sort-btn{
-    border-bottom: solid #000;
-    border-width: 2px;
-}
 
-.sort-btn:hover, .sort-btn:active{
-    border-color: #fff;
-}
-.sort-active{
-    border-color: #fff!important;
-}
-/*--triangle for kategorier--*/
-.triangle{
-    font-size: 10px;
-    margin-top: -1px;
-}
+/*GENERAL*/
+
 .portfolio-item, .portfolio-item img{
     border-radius: 2px;
 }
@@ -81,29 +52,17 @@ ul.nav{
 }
 .heart {
     font-size: 200%;
-    color: rgba(255,255,255, 0.9);
+    color: rgba(255,255,255, 0.9);    
 }
-/*.numb-of-likes{
-    position: absolute;
-    color: #fff;
-    left: 88%;
-    top: -340%;
-    padding: 0px 2px 0px 2px;
-    font-weight: 100;
-    font-size: 15px;
-    box-shadow: 0 0 20px 1px rgba(0,0,0,0.3);
-    background: rgba(0,0,0,0.15);
-    border-radius: 3px;
-}*/
 #numb-of-likes{
     font-family: 'Raleway', sans-serif;
     text-align: center;
     width: 10%;
     position: absolute;
     color: #000;
-    left: 20.0%;
-    top: 22%;
-    font-size: 38%;
+    left: 24.0%;
+    top: 24%;
+    font-size: 32%;
 }
 #numb-of-likes-white{
     font-family: 'Raleway', sans-serif;
@@ -111,11 +70,11 @@ ul.nav{
     width: 10%;
     position: absolute;
     color: #fff;
-    left: 22.0%;
+    left: 24.0%;
     top: 24%;
-    font-size: 35%;
+    font-size: 32%;
 }
-/*----------*/
+/*media queries*/
 @media screen and (min-width: 750px){
     .products-row{
         padding: 3% 0.3%;
@@ -124,52 +83,9 @@ ul.nav{
         left: 85.9%;
     }
 }
+
+/*----------*/
+
+
 /*      THE FOLLOWING CSS IS FOR THE PRODUCT.HTML    */
 
-/*               RELATED PRODUCTS CSS                */
-.title-row{
-    padding: 0 3%;
-    margin-top: -2%;
-}
-@media screen and (max-width: 750px){
-    #img-label-related{
-        width: 95.8%;
-    }
-}
-.img-label-related {
-    position: absolute;
-    bottom: 0%;
-    height: 22%;
-    width: 92.0%;
-    background: rgb(0,0,0);
-    background: rgba(0,0,0,0.7);  
-    padding-left: 4%;
-}
-#label-text-related {
-    color: white;
-    padding: 0%;
-    margin: 0%;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-}
-.related-wrap{
-    padding: 0px;
-}
-.portfolio-item-related{
-    overflow: hidden;
-    height: 25%;
-    padding: 1%;
-    margin: 2% 0%;
-}
-.related {
-    min-height: 80%;
-    width: 100%;
-}
-.heart-icon-related {
-    font-size: 11px;
-    transform: translate(0px, 1px);
-}
-/*-----RELATED END-----*/

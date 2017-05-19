@@ -24,7 +24,6 @@
 
 		ctrl.likes = likeService.likes;
 		
-		
 		ctrl.categories = categoryService.categories;
 		ctrl.products = productService.products;
 		ctrl.toggleCategories = toggleCategories;
@@ -69,6 +68,10 @@
 
 		function toggleDropdown() {
 			ctrl.shouldShowDropdown = ctrl.shouldShowDropdown ? false : true;
+		}
+		
+		function csvEmailList(){
+			likeService.getEmailList(productId);
 		}
 
 		function checkUserLike (id) {

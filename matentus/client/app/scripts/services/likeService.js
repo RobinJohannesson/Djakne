@@ -61,7 +61,7 @@
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
 				data: {productId: id}
 			})
-			.then(function(response){
+				.then(function(response){
 				console.log(response);
 				var status = response.status;
 				if (status === 200){
@@ -81,9 +81,21 @@
 			state.likes.push.apply(state.likes, likes);
 		}
 
-		function refresh() {
-			getUserLikes();
+		function getEmailList(id){
+			return $http({
+				method: 'POST',
+				url: 'http://localhost:3000/api/products/getemaillist',
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
+				data: {productId: id}
+			})
+				.then(function(response){
+					return response;
+			})
 		}
+        
+        function refresh() {
+		getUserLikes();
+	   }
 		
 		return {
 			refresh: refresh,
@@ -93,9 +105,11 @@
             getProductLikes: getProductLikes
 		};
 
-	};
+	}
 
-	angular.module('matentusApp')
+};
+
+ angular.module('matentusApp')
 	.factory('likeService', likeService);
-	
+
 })();

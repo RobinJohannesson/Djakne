@@ -9,116 +9,102 @@ var jwt = require('jsonwebtoken');
 var passportJWT = require("passport-jwt");
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
+var jwtDecode = require('jwt-decode');
 
 var jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeader();
 jwtOptions.secretOrKey = 'tasmanianDevil';
 
 module.exports = {
-	fblogin: 	function(req, res) {
+
+	// --------------------------------------------------------------------------------------------
+	//	Login with Facebook. If user does not already exists, one will be created and stored in db.
+	// --------------------------------------------------------------------------------------------
+
+	facebookLogin: 	function(req, res) {
 		var fbtoken = req.body.fbtoken;
 
-		request.get({ url: 'https://graph.facebook.com/me?fields=name,email&access_token='+fbtoken },      function(error, response, body) { 
+		request.get({ url: 'https://graph.facebook.com/me?fields=name,email&access_token=' + fbtoken }, function(error, response, body) { 
 
-			if (!error && response.statusCode == 200) {
+			if(!error && response.statusCode == 200) {
 
-				var info =JSON.parse(response.body);
-
+				var info = JSON.parse(response.body);
 				var email = info['email'];
 				var name = info['name'];
 
-				models.User.find( {
+				models.User.find({
 					where: {
 						email: email
 					}
 				})
 				.then(function(user) {
-					if(!user) {
-						models.User.create({name: name, email: email, admin: 0})
-						.then(function() {
-							models.User.find( {
-								where: {
-									email: email
-								}
-							})
-							.then(function(user) {
-								var payload = {id: user.id};
-								var token = jwt.sign(payload, jwtOptions.secretOrKey);
-								res.json({token: token});
-							});
-						})
-					}
-
-					else {
-						var payload = {id: user.id};
-						var token = jwt.sign(payload, jwtOptions.secretOrKey);
-						res.json({token: token});
+					if(user) {
+						sendTokenResponse(res, user, 200);				
 					} 
-
+					else {
+						models.User.create({ 
+							name: name, 
+							email: email, 
+							admin: 0
+						})
+						.then(function(user) {
+							sendTokenResponse(res, user, 201);
+						});
+					}
 				});
-
-			}
-		})
+			} 
+		});
 	},
 
-	googlelogin: 	function(req, res) {
+	// --------------------------------------------------------------------------------------------
+	//	Login with Google. If user does not already exists, one will be created and stored in db.
+	// --------------------------------------------------------------------------------------------
+
+	googleLogin: 	function(req, res) {
 
 		var googletoken = req.body.googletoken;
 		request.get({ url: 'https://www.googleapis.com/oauth2/v1/userinfo?access_token='+googletoken },      function(error, response, body) { 
-			if (!error && response.statusCode == 200) {
+			
+			if(!error && response.statusCode == 200) {
 
 				var info = JSON.parse(response.body);
-
 				var email = info['email'];
 				var name = info['name'];
 
-				models.User.find( {
+				models.User.find({
 					where: {
 						email: email
 					}
 				})
 				.then(function(user) {
-					if(!user) {
-						console.log("No such user");
-						models.User.create({name: name, email: email, admin: 0})
-						.then(function() {
-							models.User.find( {
-								where: {
-									email: email
-								}
-							})
-							.then(function(user) {
-								console.log("New user: ");
-								console.log(user);
-								var payload = {id: user.id};
-								var token = jwt.sign(payload, jwtOptions.secretOrKey);
-								res.json({token: token});
-							});
-						})
-					}
-
-					else {
-						var payload = {id: user.id};
-						var token = jwt.sign(payload, jwtOptions.secretOrKey);
-						res.json({token: token});
+					if(user) {
+						sendTokenResponse(res, user, 200);				
 					} 
-
+					else {
+						models.User.create({ 
+							name: name, 
+							email: email, 
+							admin: 0
+						})
+						.then(function(user) {
+							sendTokenResponse(res, user, 201);
+						});
+					}
 				});
-
-			}
-		})
-
+			} 
+		});
 	},
-	/*
-	Local Login
-	*/
-	locallogin: 	function(req, res) {
-		console.log("Local login: ");
-		console.log(req);
-		if(req.body.email && req.body.password){
-			var email = req.body.email;
-			var password = req.body.password;
-		}
+	
+	// --------------------------------------------------------------------------------------------
+	//	Login with email. If user does not already exists, one will be created and stored in db.
+	// --------------------------------------------------------------------------------------------
+
+	localLogin: 	function(req, res) {
+
+		console.log(req.body);
+
+		var email = req.body.email;
+		var password = req.body.password;
 
 		models.User.find( {
 			where: {
@@ -126,52 +112,49 @@ module.exports = {
 			}
 		})
 		.then(function(user) {
-			if (!user) {
-				res.sendStatus(401);
+			if(user) {
+				sendTokenResponse(res, user, 200);				
 			} 
-			if(userController.controlPassword(password, user.password)) {
-				var payload = {id: user.id};
-				var token = jwt.sign(payload, jwtOptions.secretOrKey);
-				res.json({token: token});
-			} else {
-				res.sendStatus(401);
-			} 
+			else {
+
+				var hashedPassword = passwordHash.generate(password);
+				var name = (req.body.name) ? req.body.name : '';
+
+				models.User.create({ 
+					name: name, 
+					email: email, 
+					password: hashedPassword,
+					admin: 0
+				})
+				.then(function(user) {
+					sendTokenResponse(res, user, 201);
+				});
+			}
 		});
 	},
 
-	/*
-	Create Local User
-	*/
-	createEmailUser:	function(req, res) {
+	// --------------------------------------------------------------------------------------------
+	//	Returns JSON response telling if user is admin or not.
+	// --------------------------------------------------------------------------------------------
 
-		console.log(req.body);
+	getUserType:	function(req, res){
+		var token = req.headers.authorization.replace("JWT ", "");
+		var id = jwtDecode(token).id;
 
-		var hashedPassword = passwordHash.generate(req.body.password);       
-
-		models.User.find({
-			where: {email: req.body.email}	   
+		models.User.find( {
+			where: {id: id}
 		})
 		.then(function(user) {
-			if(!user) {
-				console.log("There was no such user...");
-				models.User.create({name: req.body.name, email: req.body.email, password: hashedPassword, admin: 0})
-				.then(function() {
-					models.User.find({
-						where: {email: req.body.email}
-					})
-					.then(function(user) {
-						console.log("Now there is one");
-						console.log(user);
-						var payload = {id: user.id};
-						var token = jwt.sign(payload, jwtOptions.secretOrKey);
-						res.json({token: token});
-					});
-				});
-			} else {
-				var payload = {id: user.id};
-				var token = jwt.sign(payload, jwtOptions.secretOrKey);
-				res.json({token: token});
-			}
-		})
+			res.json({
+				isAdmin: user.admin
+			});
+		});
 	}
+}
+
+function sendTokenResponse(res, user, status) {
+	var payload = {id: user.id};
+	var token = jwt.sign(payload, jwtOptions.secretOrKey);
+	res.status(status);
+	res.json({token: token});
 }
