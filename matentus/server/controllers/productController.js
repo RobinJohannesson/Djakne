@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var router  = express.Router();
 var fs = require('fs');
 var moment = require('moment');
+var status = require('./httpStatusCodes');
+var userController = require('./userController');
 
 module.exports = {
 
@@ -15,11 +17,12 @@ module.exports = {
 				approved: true
 			}
 		})
-			.then(function(product) {
+		.then(function(product) {
 			if(product) {
+				res.status(status.OK);
 				res.json(product);
 			} else {
-				res.sendStatus(404);
+				res.sendStatus(status.NOT_FOUND);
 			}
 		});
 	},
@@ -31,41 +34,62 @@ module.exports = {
 			}
 		})
 		.then(function(products) {
-			res.json(products);
+			if(products) {
+				res.status(status.OK);
+				res.json(products);
+			} else {
+				res.sendStatus(status.NOT_FOUND);
+			}
 		});
 	},
 
 	getSuggestion:	function(req, res) {
-		var id = req.params.id;
-		models.Product.find({
-			where: {
-				id: id,
-				approved: false
+
+		userController.isAdmin(req)
+		.then(function(isAdmin) {
+			if(!isAdmin) {
+				res.sendStatus(status.NOT_ADMIN);
+				return;
 			}
 		})
-			.then(function(product) {
-			if(product) {
-				res.json(product);
-			} else {
-				res.sendStatus(404);
-			}
+		.then(function() {
+			var id = req.params.id;
+				models.Product.find({
+					where: {
+						id: id,
+						approved: false
+					}
+				})
+				.then(function(products) {
+					res.json(products);
+				});
 		});
 	},
 
 	getAllSuggestions: function(req, res) {
-		models.Product.findAll({
-			where: {
-				approved: false
+
+		userController.isAdmin(req)
+		.then(function(isAdmin) {
+			if(!isAdmin) {
+				res.sendStatus(status.NOT_ADMIN);
+				return;
 			}
 		})
+		.then(function() {
+			models.Product.findAll({
+				where: {
+					approved: false
+				}
+			})
 			.then(function(products) {
-			res.json(products);
+				res.json(products);
+			});
 		});
 	},
 
 	getAllSuppliers: 	function(req, res) {
 		models.Product.aggregate('supplier', 'DISTINCT', { plain: false })
-			.then(function(suppliers) {
+		.then(function(suppliers) {
 			var list = [];
 			suppliers.forEach(function(supplier) {
 				if(supplier.DISTINCT) {
@@ -91,111 +115,145 @@ module.exports = {
 		});
 	},
 
-	createProduct:	function(req, res) {
+	createSuggestion: function(req, res) {
 		models.Product.create({
 			title: req.body.title, 
 			description: req.body.description, 
 			keyword: req.body.keyword, 
 			supplier: req.body.supplier, 
-			image: req.file.filename, 
 			rating: 0, 
-			approved: req.body.approved, 
+			approved: 0, 
 			likeAmount: 100, 
 			category_id: req.body.category_id, 
 			created: moment().format().slice(0, 19)
 		})
-		.then(function() {
-			res.sendStatus(201);
+		.then(function(product) {
+			var file = req.file;
+			if(file) {
+				updateProductImage(id, file.filename);
+			}
+			return product;
 		})
-		.catch(function(err) {
-			res.sendStatus(500);
-		});;
+		.then(function(product) {
+			if(product) {
+				res.sendStatus(status.CREATED);
+			} else {
+				res.sendStatus(status.BAD_REQUEST);
+			}
+		});
 	},
 
+	createProduct:	function(req, res) {
 
-//	editProduct:	function(req, res){
-//		var id = req.body.id;
-//		models.Product.find({
-//			where: {
-//				id: id
-//				//approved: true
-//			}
-//		})
-//			.then(function(product) {
-//			console.log(product.title)
-//			if(product) {
-//				if (product.title!=req.body.title){
-//					product.update({ title: req.body.title});
-//
-//				}
-//				if (product.description!=req.body.description){
-//					product.update({ description: req.body.description});
-//				}
-//				if (product.category_id!=req.body.category_id){
-//					product.update({ category_id: req.body.category_id});
-//				}
-//				if (product.supplier!=req.body.supplier){
-//					product.update({ supplier: req.body.supplier});
-//				}
-//				res.json(product)	
-//			} else {
-//				res.sendStatus(404);
-//			}
-//		});
-//	}, 
-
-
-	updateProduct: 	function(req, res) {
-
-		var id = req.body.id;
-		var file = req.file;
-
-		if(file) {
-			updateImage(id, file.filename);
-		}
-
-		models.Product.update({
-			title: req.body.title,
-			description: req.body.description,
-			keyword: req.body.keyword,
-			supplier: req.body.supplier,
-			category_id: req.body.category_id,
-			approved: req.body.approved
-		}, {
-			where: {
-				id: id
+		userController.isAdmin(req)
+		.then(function(isAdmin) {
+			if(!isAdmin) {
+				res.sendStatus(status.NOT_ADMIN);
+				return;
 			}
 		})
 		.then(function() {
-			res.sendStatus(200);
+			models.Product.create({
+				title: req.body.title, 
+				description: req.body.description, 
+				keyword: req.body.keyword, 
+				supplier: req.body.supplier, 
+				rating: 0, 
+				approved: 1, 
+				likeAmount: 100, 
+				category_id: req.body.category_id, 
+				created: moment().format().slice(0, 19)
+			})
+			.then(function(product) {
+				var file = req.file;
+				if(file) {
+					updateProductImage(id, file.filename);
+				}
+				return product;
+			})
+			.then(function(product) {
+				if(product) {
+					res.sendStatus(status.CREATED);
+				} else {
+					res.sendStatus(status.BAD_REQUEST);
+				}
+			});
+		});
+		
+	},
+
+	update: 	function(req, res) {
+
+		userController.isAdmin(req)
+		.then(function(isAdmin) {
+			if(!isAdmin) {
+				res.sendStatus(status.NOT_ADMIN);
+				return;
+			}
 		})
-		.catch(function(err) {
-			res.sendStatus(500);
+		.then(function() {
+			models.Product.update({
+				title: req.body.title,
+				description: req.body.description,
+				keyword: req.body.keyword,
+				supplier: req.body.supplier,
+				category_id: req.body.category_id,
+				approved: req.body.approved,
+			}, {
+				where: {
+					id: req.params.id
+				}
+			})
+			.then(function(product) {
+				var file = req.file;
+				if(file) {
+					updateProductImage(id, file.filename);
+				}
+				return product;
+			})
+			.then(function(product) {
+				if(product) {
+					res.sendStatus(status.OK);
+				} else {
+					res.sendStatus(status.BAD_REQUEST);
+				}
+			});
 		});
 	},
 
 
-	deleteProduct:	function (req, res){
-		var id = req.params.id;
-		models.Product.find({
-			where: {
-				id: id
+	delete:	function (req, res){
+
+		userController.isAdmin(req)
+		.then(function(isAdmin) {
+			if(!isAdmin) {
+				res.sendStatus(status.NOT_ADMIN);
+				return;
 			}
 		})
-		.then(function(product) {
-			if(product) {
-				product.destroy();
-				fs.unlinkSync('public/images/' + product.image);
-				res.sendStatus(200);
-			} else {
-				res.sendStatus(404);
-			}
+		.then(function() {
+			models.Product.find({
+				where: {
+					id: req.params.id
+				}
+			})
+			.then(function(product) {
+				if(product) {
+					product.destroy();
+					try {
+						fs.unlinkSync('public/images/' + product.image);
+					} catch(error) {}
+					res.sendStatus(200);
+				} else {
+					res.sendStatus(404);
+				}
+			});
 		});
 	}
 }
 
 
-function updateImage(id, filename) {
+function updateProductImage(id, filename) {
 	models.Product.update({
 		image: filename
 	}, {
