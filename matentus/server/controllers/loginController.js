@@ -95,26 +95,6 @@ module.exports = {
 		});
 	},
 	
-	getUserType:	function(req, res){
-		token=req.headers.authorization;
-		token=token.replace("JWT", "");
-		token=token.replace(" ", "");
-		var decoded = jwtDecode(token);
-		userId=decoded.id;
-		console.log("----------");
-		console.log("HEj");
-		console.log("----------");
-		models.User.find( {
-			where: {id: userId}
-		})
-			.then(function(user) {
-				var isAdmin=user.admin;
-				res.json({isAdmin: isAdmin});
-		});
-		
-		
-	},
-	
 	// --------------------------------------------------------------------------------------------
 	//	Login with email. If user does not already exists, one will be created and stored in db.
 	// --------------------------------------------------------------------------------------------
@@ -150,6 +130,24 @@ module.exports = {
 					sendTokenResponse(res, user, 201);
 				});
 			}
+		});
+	},
+
+	// --------------------------------------------------------------------------------------------
+	//	Returns JSON response telling if user is admin or not.
+	// --------------------------------------------------------------------------------------------
+
+	getUserType:	function(req, res){
+		var token = req.headers.authorization.replace("JWT ", "");
+		var id = jwtDecode(token).id;
+
+		models.User.find( {
+			where: {id: id}
+		})
+		.then(function(user) {
+			res.json({
+				isAdmin: user.admin
+			});
 		});
 	}
 }
