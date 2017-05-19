@@ -43,6 +43,16 @@ body{
         transform: scale(1.3) rotate(-25deg);
     }
 }
+@media screen and (min-width: 450px) and (max-width: 767px){
+    #beta-stamp{
+        position: absolute;
+        margin-top: 3%;
+        top: 5%;
+        left: 1%;
+        transform: scale(1) rotate(-25deg);
+        width: 80px;
+    }
+}
 /*
 .portfolio-item {
     margin-bottom: 25px;
