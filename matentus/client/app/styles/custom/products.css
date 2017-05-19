@@ -111,9 +111,9 @@ ul.nav{
     width: 10%;
     position: absolute;
     color: #fff;
-    left: 20.0%;
-    top: 22%;
-    font-size: 38%;
+    left: 22.0%;
+    top: 24%;
+    font-size: 35%;
 }
 /*----------*/
 @media screen and (min-width: 750px){
