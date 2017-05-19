@@ -8,9 +8,9 @@
 	angular.module('matentusApp')
 		.controller('LoginCtrl', LoginCtrl);
 
-	LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginService', '$scope', '$http', '$location'];
+	LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginService', '$scope', '$http', '$location','$window'];
 
-	function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, $scope, $http, $location) {
+	function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, $scope, $http, $location$,$window) {
 
 		var ctrl = this;
 		ctrl.loginFacebook = loginFacebook;
@@ -28,17 +28,17 @@
 
 		function loginFacebook() {
 			facebookLoginService.login();
-			
+			setTimeout(function(){ $window.location.reload(); }, 500);
 		}
 
 		function loginGoogle() {
 			googleLoginService.login();
-			ctrl.checkLoginStatus();
+			setTimeout(function(){ $window.location.reload(); }, 500);
 		}
 
 		function loginLocal() {
 			localLoginService.login(ctrl.loginForm);
-			ctrl.checkLoginStatus();
+			setTimeout(function(){ $window.location.reload(); }, 500);
 		}
 
 		function registerLocal() {

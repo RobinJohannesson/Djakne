@@ -40,10 +40,12 @@
 					case 200:
 						console.log("An existing user was logged in with Facebook.");
 						saveToken(response.data.token);
+						isOnline=true;
 						break;
 					case 201:
 						console.log("A new user was created and logged in with Facebook.")
 						saveToken(response.data.token);
+						isOnline=true;
 						break;
 					default:
 						console.log("Something happened when logging in with Facebook: " + status);
@@ -74,7 +76,8 @@
 
 		return {
 			login: login,
-			share: share
+			share: share,
+			isOnline: isOnline
 		};
 
 	};
