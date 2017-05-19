@@ -35,7 +35,8 @@ router.post('/google', function(req, res) {
 // Login Status Route
 // -----------------------------------------------------
 router.get('/status', passport.authenticate('jwt', { session: false }), function(req, res) {
-	res.sendStatus(200);
+	console.log("STATUS");
+	loginController.getUserType(req, res);
 });
 
 // -----------------------------------------------------
