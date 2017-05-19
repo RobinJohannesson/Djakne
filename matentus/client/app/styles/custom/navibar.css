@@ -1,0 +1,39 @@
+/*---------- NAVBAR ----------*/
+.navbar, .container-fluid{
+    background: none!important;
+}
+ul.nav{
+    background: #000;
+    border-radius: 2px;
+}
+@media screen and (max-width: 970px){
+    ul.nav{
+        padding: 0px;
+    }
+    .navbar, .container-fluid{
+        background: #000!important;
+    }
+}
+/*---------NAVBAR END ---------*/
+/*-----------------------------*/
+/*------SORTERINGSKNAPPAR------*/
+.sort-btn{
+    border-bottom: solid #000;
+    border-width: 2px;
+    padding: 0px;
+}
+
+.sort-btn:hover, .sort-btn:active{
+    border-color: #fff;
+}
+.sort-active{
+    border-color: #fff!important;
+}
+/*----END SORTERINGSKNAPPAR----*/
+/*-----------------------------*/
+/*---TRIANGLE FOR KATEGORIER---*/
+.triangle{
+    font-size: 10px;
+    margin-top: -1px;
+}
+/*-------END OF TRIANGLE-------*/
