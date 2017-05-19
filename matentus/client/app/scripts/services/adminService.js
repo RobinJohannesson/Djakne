@@ -9,6 +9,8 @@
 
 	var adminService = function ($http, $location, productService, categoryService) {
 
+		var api = localStorage.getItem('matentusServer') + '/api';
+
 		var state = {};
 		state.suggestions = [];
 		refresh();
@@ -22,7 +24,7 @@
 			
 			$http({
 				method: 'PUT',
-				url: 'http://localhost:3000/api/products',
+				url: api + '/products',
 				data: formData,
 				transformRequest: angular.identity,
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken'), 'Content-Type': undefined}
@@ -41,7 +43,7 @@
 		function remove(product) {
 			$http({
 				method: 'DELETE',
-				url: 'http://localhost:3000/api/products/' + product.id
+				url: api + '/products/' + product.id
 			})
 			.then(function(response) {
 				getSuggestions();
@@ -55,7 +57,7 @@
 		function addCategory(category) {
 			$http({
 				method: 'POST',
-				url: 'http://localhost:3000/api/categories',
+				url: api + '/categories',
 				data: category
 			})
 			.then(function(response) {
@@ -69,7 +71,7 @@
 		function updateCategory(category) {
 			$http({
 				method: 'PUT',
-				url: 'http://localhost:3000/api/categories/' + category.id,
+				url: api + '/categories/' + category.id,
 				data: category
 			})
 			.then(function(response) {
@@ -83,7 +85,7 @@
 		function deleteCategory(category) {
 			$http({
 				method: 'DELETE',
-				url: 'http://localhost:3000/api/categories/' + category.id,
+				url: api + '/categories/' + category.id,
 			})
 			.then(function(response) {
 				categoryService.refresh();
@@ -96,7 +98,7 @@
 		function getSuggestion(id) {
 			return $http({
 				method: 'GET', 
-				url:'http://localhost:3000/api/products/suggestions/' + id
+				url: api + '/products/suggestions/' + id
 			})
 			.then(function(response) {
 				return response.data;	        	
@@ -109,7 +111,7 @@
 		function getSuggestions() {
 			$http({
 				method: 'GET',
-				url: 'http://localhost:3000/api/products/suggestions'
+				url: api + '/products/suggestions'
 			})
 			.then(function(response) {
 				setSuggestions(response.data);
@@ -131,7 +133,7 @@
 		};    
 
 		function refresh() {
-			getSuggestions();
+			//getSuggestions();
 		}
 		
 		return {

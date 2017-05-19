@@ -9,6 +9,8 @@
 
     var localLoginService = function ($http, $location, $window, adminService, likeService) {
 
+        var api = localStorage.getItem('matentusServer') + '/api';
+
         var isOnline = false;
         var isAdmin = false;
 
@@ -16,7 +18,7 @@
 
             $http({
                 method: 'POST',
-                url: 'http://localhost:3000/api/login/email',
+                url: api + '/login/email',
                 data: loginForm
             })
                 .then(function(response){
@@ -41,29 +43,11 @@
             });
         };
 
-        var register = function(registerForm) {
-            $http({
-                method: 'POST',
-                url: 'http://localhost:3000/api/register/email',
-                data: registerForm
-            })
-                .then(function(response) {
-                var status = response.status;
-                if (status === 200) {
-                    var token = response.data.token;
-                    localStorage.setItem('matentustoken', token);
-                    $location.url('/');
-                    likeService.refresh();
-                    adminService.refresh();
-                }
-            });
-        };
-
 
         var checkLoginStatus = function() {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:3000/api/login/status',
+                url: api + '/login/status',
                 headers: {'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
             }).then(function(response){
                     return response;
@@ -82,7 +66,6 @@
 
         return {
             login: login,
-            register: register,
             checkLoginStatus: checkLoginStatus,
             isOnline: isOnline
         };

@@ -13,21 +13,12 @@
 
 	function AdminCtrl($scope, adminService, uploadService, categoryService, productService) {
 
-		function checkLoginStatus() {
-			var matentusToken = localStorage.getItem('matentusToken');
-			if(!matentusToken) {
-				// Be användaren att logga in
-				console.log("Var snäll logga in som admin");
-			}
-		}
-
-
-
 		// Kolla om matentustoken finns
 		// Om det finns - Skicka till servern och kolla så att användaren är inloggad och är admin. Hämta och visa produkter.
 		// Om det inte finns - Visa inga produkter, be användaren att logga in som admin. Led tillbaka till samma sida.
 
 		var ctrl = this;
+		ctrl.matentusServer = localStorage.getItem('matentusServer');
 
 		ctrl.manageSuggestionsView = 'views/admin/views/manageSuggestions.html';
 		ctrl.manageProductsView = 'views/admin/views/manageProducts.html';
@@ -56,6 +47,17 @@
 		ctrl.addCategory = addCategory;
 		ctrl.updateCategory = updateCategory;
 		ctrl.deleteCategory = deleteCategory;
+
+		adminService.refresh();
+
+
+		function checkLoginStatus() {
+			var matentusToken = localStorage.getItem('matentusToken');
+			if(!matentusToken) {
+				// Be användaren att logga in
+				console.log("Var snäll logga in som admin");
+			}
+		}
 
 		function setCurrentProduct(product) {
 			ctrl.currentProduct = product;

@@ -9,6 +9,8 @@
 
 	var uploadService = function ($http, productService, adminService) {
 
+		var api = localStorage.getItem('matentusServer') + '/api';
+
 		function upload(product) {
 
 			if(!product.approved) {
@@ -22,7 +24,7 @@
 			
 			$http({
 				method: 'POST',
-				url: 'http://localhost:3000/api/products',
+				url: api + '/products',
 				data: formData,
 				transformRequest: angular.identity,
 				headers: { 'Content-Type': undefined }

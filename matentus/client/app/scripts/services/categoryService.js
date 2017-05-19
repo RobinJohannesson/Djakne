@@ -9,6 +9,8 @@
 
 	var categoryService = function ($http) {
 
+		var api = localStorage.getItem('matentusServer') + '/api';
+
 		var state = {};
 		state.categories = [];
 
@@ -17,7 +19,7 @@
 		function getAllCategories() {
 			$http({
 				method: 'GET',
-				url: 'http://localhost:3000/api/categories'
+				url: api + '/categories'
 			})
 			.then(function(response) {
 				setCategories(response.data);

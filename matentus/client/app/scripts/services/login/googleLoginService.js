@@ -9,6 +9,8 @@
 
 	var googleLoginService = function ($http, $location, $window, adminService, likeService) {
 
+		var api = localStorage.getItem('matentusServer') + '/api';
+		
 		var isOnline = false;
 
 		var login = function() {
@@ -27,7 +29,7 @@
 		var loginLocal = function(googleAccessToken) {
 			$http({
 				method: 'POST',
-				url: 'http://localhost:3000/api/login/google',
+				url: api + '/login/google',
 				data: {
 					googletoken: googleAccessToken
 				}

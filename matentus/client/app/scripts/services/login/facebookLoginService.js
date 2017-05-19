@@ -9,6 +9,8 @@
 
 	var facebookLoginService = function ($http, $location, $window, likeService, adminService) {
 
+		var api = localStorage.getItem('matentusServer') + '/api';
+
 
 		var isOnline = false;
 
@@ -30,7 +32,7 @@
 		var loginLocal = function(facebookAccessToken) {
 			$http({
 				method: 'POST',
-				url: 'http://localhost:3000/api/login/facebook',
+				url: api + '/login/facebook',
 				data: {
 					fbtoken: facebookAccessToken
 				}
