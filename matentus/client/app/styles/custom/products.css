@@ -71,6 +71,21 @@ ul.nav{
     padding: 2%;
     margin-top: -3%;
 }
+.home{
+    position: absolute;
+    font-size: 90%;
+    margin-right: 5%;
+        
+}
+.home a{
+    color: black;
+}
+.home a:hover{
+    color: #9d9d9d;
+}
+#page-header{
+
+}
 /*LIKE ICONS*/
 .heart-icon {
     transform: scale(1.5);
@@ -150,7 +165,30 @@ ul.nav{
     .numb-of-likes{
         left: 85.9%;
     }
+    #page-header{
+    padding-left: 5%;
 }
+.home{
+    color: black;
+    font-size: 150%;
+    top: 45%;
+}
+.home:hover{
+    color: #9d9d9d;
+    }
+}
+@media screen and (min-width: 992px){
+#page-header{
+    padding-left: 3%;
+}
+.home{
+    color: black;
+    font-size: 150%;
+    top: 45%;
+}
+.home:hover{
+    color: #9d9d9d;
+    }}
 /*      THE FOLLOWING CSS IS FOR THE PRODUCT.HTML    */
 
 /*               RELATED PRODUCTS CSS                */
@@ -162,6 +200,17 @@ ul.nav{
     #img-label-related{
         width: 95.8%;
     }
+#page-header{
+    padding-left: 5%;
+}
+.home{
+    color: black;
+    font-size: 150%;
+    top: 45%;
+}
+.home:hover{
+    color: #9d9d9d;
+}
 }
 .img-label-related {
     position: absolute;
