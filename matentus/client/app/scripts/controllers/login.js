@@ -40,6 +40,7 @@
 		function checkLoginStatus() {
 			localLoginService.checkLoginStatus()
 			.then(function(isOnline) {
+				console.log("Is online? " + isOnline);
 				ctrl.isOnline = isOnline;
 			});	
 		}
@@ -47,6 +48,7 @@
 		function checkAdmin() {
 			localLoginService.checkAdmin() 
 			.then(function(isAdmin) {
+				console.log("Is admin? " + isAdmin);
 				ctrl.isAdmin = isAdmin;
 			});
 		}

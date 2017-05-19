@@ -7,7 +7,7 @@
 (function () {
 	'use strict';
 
-	var facebookLoginService = function ($http, $location, $window, likeService, adminService) {
+	var facebookLoginService = function ($http, $window, likeService, adminService) {
 
 		var api = localStorage.getItem('matentusServer') + '/api';
 
@@ -21,7 +21,7 @@
 						if(response.authResponse) {
 							loginLocal(response.authResponse.accessToken);
 						}
-					}, {scope:'email', return_scopes:true});
+					}, {scope: 'email', return_scopes: true});
 				}
 			});
 		}
@@ -66,7 +66,6 @@
 
 		function saveToken(token) {
 			localStorage.setItem('matentustoken', token);
-			$location.url('/');
 			$window.location.reload();
 			likeService.refresh();
 			adminService.refresh();
@@ -74,7 +73,7 @@
 
 		return {
 			login: login,
-			share: share
+			share: share,
 		};
 
 	};

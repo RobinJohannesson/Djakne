@@ -7,7 +7,7 @@
 (function () {
     'use strict';
 
-    var localLoginService = function ($http, $location, $window, adminService, likeService) {
+    var localLoginService = function ($http, $window, adminService, likeService) {
 
         var api = localStorage.getItem('matentusServer') + '/api';
 
@@ -15,13 +15,12 @@
         var isAdmin = false;
 
         var login = function(loginForm) {
-
             $http({
                 method: 'POST',
                 url: api + '/login/email',
                 data: loginForm
             })
-                .then(function(response){
+            .then(function(response){
                 switch(response.status) {
                     case 200:
                         console.log("An existing user was logged in with email.");
@@ -37,7 +36,7 @@
                         console.log("Something happened when logging in with email: " + status);
                 }
             })
-                .catch(function(error) {
+            .catch(function(error) {
                 console.log("Something happened when logging in...");
                 console.log(error);
             });
@@ -70,11 +69,22 @@
                         return response.data.isAdmin;
                     });
         };
+
+        var logout = function() {
+            removeToken();
+        }
         
         function saveToken(token) {
             localStorage.setItem('matentustoken', token);
             isOnline = true;
-            $location.url('/');
+            $window.location.reload();
+            likeService.refresh();
+            adminService.refresh();
+        }
+
+        function removeToken() {
+            localStorage.setItem('matentustoken', '');
+            isOnline = false;
             $window.location.reload();
             likeService.refresh();
             adminService.refresh();
@@ -85,7 +95,8 @@
             login: login,
             checkLoginStatus: checkLoginStatus,
             checkAdmin: checkAdmin,
-            isOnline: isOnline
+            isOnline: isOnline,
+            logout: logout
         };
 
     };

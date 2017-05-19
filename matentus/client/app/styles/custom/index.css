@@ -303,3 +303,30 @@ footer {
 .col-pad {
     padding: 0 10px 0 10px;
 }
+
+/* Bootstrap Modal */
+
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.modal-content {
+    -webkit-box-shadow: 0px 0px 34px -2px rgba(0,0,0,0.67);
+    -moz-box-shadow: 0px 0px 34px -2px rgba(0,0,0,0.67);
+    box-shadow: 0px 0px 34px -2px rgba(0,0,0,0.67);
+}

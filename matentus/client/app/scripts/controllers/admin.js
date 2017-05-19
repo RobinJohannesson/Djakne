@@ -9,9 +9,9 @@
 	angular.module('matentusApp')
 	.controller('AdminCtrl', AdminCtrl);
 
-	AdminCtrl.$inject = ['$scope', 'adminService', 'uploadService', 'categoryService', 'productService'];
+	AdminCtrl.$inject = ['$scope', 'adminService', 'uploadService', 'categoryService', 'productService', 'facebookLoginService', 'googleLoginService', 'localLoginService'];
 
-	function AdminCtrl($scope, adminService, uploadService, categoryService, productService) {
+	function AdminCtrl($scope, adminService, uploadService, categoryService, productService, facebookLoginService, googleLoginService, localLoginService) {
 
 		// Kolla om matentustoken finns
 		// Om det finns - Skicka till servern och kolla så att användaren är inloggad och är admin. Hämta och visa produkter.
@@ -26,6 +26,7 @@
 		ctrl.addProductView = 'views/admin/views/addProduct.html';
 		ctrl.currentView = ctrl.manageSuggestionsView;
 
+		ctrl.isAdmin = false;
 		ctrl.suggestions = adminService.suggestions;
 		ctrl.categories = categoryService.categories;
 		ctrl.suppliers = productService.suppliers;
@@ -47,16 +48,48 @@
 		ctrl.addCategory = addCategory;
 		ctrl.updateCategory = updateCategory;
 		ctrl.deleteCategory = deleteCategory;
+		ctrl.loginFacebook = facebookLoginService.login;
+		ctrl.loginGoogle = googleLoginService.login;
+		ctrl.loginLocal = localLoginService.login;
 
-		adminService.refresh();
+
+		//adminService.refresh();
+
+
+		// Kontrollera om användaren online - om inte, be den logga in.
+		// Kontrollera om användare är admin - om inte, härled till startsida.
+
+		checkLoginStatus();
+		checkAdmin();
 
 
 		function checkLoginStatus() {
-			var matentusToken = localStorage.getItem('matentusToken');
-			if(!matentusToken) {
-				// Be användaren att logga in
-				console.log("Var snäll logga in som admin");
-			}
+			localLoginService.checkLoginStatus()
+			.then(function(isOnline) {
+				console.log("User online? " + isOnline);
+				if(isOnline) {
+					ctrl.isOnline = isOnline;
+				} else {
+					showLoginModal();
+				}
+			});
+		}
+
+		function checkAdmin() {
+			localLoginService.checkAdmin()
+			.then(function(isAdmin) {
+				if(isAdmin) {
+					console.log("User is admin? " + isAdmin);
+					ctrl.isAdmin = true;
+				} else {
+					localLoginService.logout();
+					showLoginModal();
+				}
+			});
+		}
+
+		function showLoginModal(){
+			$('#modal-login').modal('show');
 		}
 
 		function setCurrentProduct(product) {

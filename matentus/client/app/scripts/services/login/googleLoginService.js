@@ -7,22 +7,24 @@
 (function () {
 	'use strict';
 
-	var googleLoginService = function ($http, $location, $window, adminService, likeService) {
+	var googleLoginService = function ($http, $window, adminService, likeService) {
 
 		var api = localStorage.getItem('matentusServer') + '/api';
 		
 		var login = function() {
-			gapi.load('auth2', function() {
-				gapi.auth2.init({
-					client_id: '1062166543636-m8nnt9b73m9o566ohuqtrsp32c7dvq5a.apps.googleusercontent.com'
-				});
-				var GoogleAuth  = gapi.auth2.getAuthInstance();
-				GoogleAuth.signIn().then(function(response) {
-					loginLocal(response.Zi.access_token);
-				});
-			});
+			 gapi.load('auth2', function() {
+						gapi.auth2.init({
+							client_id: '1062166543636-m8nnt9b73m9o566ohuqtrsp32c7dvq5a.apps.googleusercontent.com'
+						})
+						.then(function() {
+							var GoogleAuth  = gapi.auth2.getAuthInstance();
+							GoogleAuth.signIn()
+							.then(function(response) {
+								loginLocal(response.Zi.access_token);
+							});
+						});
+					});
 		}
-
 
 		var loginLocal = function(googleAccessToken) {
 			$http({
@@ -54,7 +56,6 @@
 
 		function saveToken(token) {
 			localStorage.setItem('matentustoken', token);
-			$location.url('/');
 			$window.location.reload();
 			likeService.refresh();
 			adminService.refresh();
