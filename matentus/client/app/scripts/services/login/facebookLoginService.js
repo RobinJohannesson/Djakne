@@ -7,7 +7,7 @@
 (function () {
 	'use strict';
 
-	var facebookLoginService = function ($http, $location, likeService, adminService) {
+	var facebookLoginService = function ($http, $location, $window, likeService, adminService) {
 
 
 		var isOnline = false;
@@ -40,12 +40,10 @@
 					case 200:
 						console.log("An existing user was logged in with Facebook.");
 						saveToken(response.data.token);
-						isOnline=true;
 						break;
 					case 201:
 						console.log("A new user was created and logged in with Facebook.")
 						saveToken(response.data.token);
-						isOnline=true;
 						break;
 					default:
 						console.log("Something happened when logging in with Facebook: " + status);
@@ -69,7 +67,9 @@
 
 		function saveToken(token) {
 			localStorage.setItem('matentustoken', token);
+			isOnline = true;
 			$location.url('/');
+			$window.location.reload();
 			likeService.refresh();
 			adminService.refresh();
 		}

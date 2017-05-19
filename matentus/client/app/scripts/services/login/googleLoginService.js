@@ -7,7 +7,7 @@
 (function () {
 	'use strict';
 
-	var googleLoginService = function ($http, $location, adminService, likeService) {
+	var googleLoginService = function ($http, $location, $window, adminService, likeService) {
 
 		var isOnline = false;
 
@@ -54,13 +54,16 @@
 
 		function saveToken(token) {
 			localStorage.setItem('matentustoken', token);
+			isOnline = true;
 			$location.url('/');
+			$window.location.reload();
 			likeService.refresh();
 			adminService.refresh();
 		}
 
 		return {
 			login: login,
+			isOnline: isOnline
 		};
 
 	};

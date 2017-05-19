@@ -7,7 +7,8 @@
 (function () {
     'use strict';
 
-    var localLoginService = function ($http, $location, adminService, likeService) {
+    var localLoginService = function ($http, $location, $window, adminService, likeService) {
+
         var isOnline = false;
         var isAdmin = false;
 
@@ -71,7 +72,9 @@
         
         function saveToken(token) {
             localStorage.setItem('matentustoken', token);
+            isOnline = true;
             $location.url('/');
+            $window.location.reload();
             likeService.refresh();
             adminService.refresh();
         }
@@ -80,7 +83,8 @@
         return {
             login: login,
             register: register,
-            checkLoginStatus: checkLoginStatus
+            checkLoginStatus: checkLoginStatus,
+            isOnline: isOnline
         };
 
     };
