@@ -35,15 +35,15 @@
 			.then(function(response){
 				switch(response.status) {
 					case 200:
-						console.log("An existing user was logged in.");
+						console.log("An existing user was logged in with Google.");
 						saveToken(response.data.token);
 						break;
 					case 201:
-						console.log("A new user was created and logged in.")
+						console.log("A new user was created and logged in with Google.")
 						saveToken(response.data.token);
 						break;
 					default:
-						console.log("Something happened when logging in: " + status);
+						console.log("Something happened when logging in with Google: " + status);
 				}
 			})
 			.catch(function(error) {
