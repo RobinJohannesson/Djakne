@@ -12,7 +12,7 @@ var loginController = require('../controllers/loginController');
 // -----------------------------------------------------
 
 router.post('/facebook', function(req, res) {
-	loginController.fblogin(req, res);
+	loginController.facebookLogin(req, res);
 });
 
 // -----------------------------------------------------
@@ -20,7 +20,7 @@ router.post('/facebook', function(req, res) {
 // -----------------------------------------------------
 
 router.post('/email', function(req, res) {
-	loginController.locallogin(req, res);
+	loginController.localLogin(req, res);
 });
 
 // -----------------------------------------------------
@@ -28,13 +28,13 @@ router.post('/email', function(req, res) {
 // -----------------------------------------------------
 
 router.post('/google', function(req, res) {
-	loginController.googlelogin(req, res);
+	loginController.googleLogin(req, res);
 });
 
 // -----------------------------------------------------
 // Login Status Route
 // -----------------------------------------------------
-router.get('/status',passport.authenticate('jwt', { session: false }), function(req, res) {
+router.get('/status', passport.authenticate('jwt', { session: false }), function(req, res) {
 	res.sendStatus(200);
 });
 
