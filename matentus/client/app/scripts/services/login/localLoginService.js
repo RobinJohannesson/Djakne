@@ -45,13 +45,19 @@
 
 
         var checkLoginStatus = function() {
-            return $http({
-                method: 'GET',
-                url: api + '/login/status',
-                headers: {'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
-            }).then(function(response){
-                    return response;
-                })
+            return  $http({
+                        method: 'GET',
+                        url: api + '/login/status',
+                        headers: {'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
+                    })
+                    .then(function(response) {
+                        return true;
+                    })
+                    .catch(function(error) {
+                        if(error.status === 401)  {
+                            return false;
+                        }
+                    });
         };
         
         function saveToken(token) {

@@ -11,8 +11,6 @@
 
 		var api = localStorage.getItem('matentusServer') + '/api';
 		
-		var isOnline = false;
-
 		var login = function() {
 			gapi.load('auth2', function() {
 				gapi.auth2.init({
@@ -56,7 +54,6 @@
 
 		function saveToken(token) {
 			localStorage.setItem('matentustoken', token);
-			isOnline = true;
 			$location.url('/');
 			$window.location.reload();
 			likeService.refresh();
@@ -64,8 +61,7 @@
 		}
 
 		return {
-			login: login,
-			isOnline: isOnline
+			login: login
 		};
 
 	};

@@ -44,16 +44,9 @@
 
 		function checkLoginStatus() {
 			localLoginService.checkLoginStatus()
-				.then(function(response) {
-				if (response.status){
-					ctrl.isOnline=true;
-					if(response.data.isAdmin){
-						ctrl.isAdmin=true;
-					}
-
-				}
-			}
-					 );	
+			.then(function(isOnline) {
+				ctrl.isOnline = isOnline;
+			});	
 		}
 
 		function getLoginStatus() {

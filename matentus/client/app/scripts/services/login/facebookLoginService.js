@@ -11,9 +11,6 @@
 
 		var api = localStorage.getItem('matentusServer') + '/api';
 
-
-		var isOnline = false;
-
 		var login = function() {
 			FB.getLoginStatus(function(response) {
 				if (response.authResponse && response.status === 'connected') {
@@ -69,7 +66,6 @@
 
 		function saveToken(token) {
 			localStorage.setItem('matentustoken', token);
-			isOnline = true;
 			$location.url('/');
 			$window.location.reload();
 			likeService.refresh();
@@ -78,8 +74,7 @@
 
 		return {
 			login: login,
-			share: share,
-			isOnline: isOnline
+			share: share
 		};
 
 	};
