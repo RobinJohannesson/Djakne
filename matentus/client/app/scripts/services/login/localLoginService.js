@@ -19,14 +19,23 @@
     			data: loginForm
     		})
     		.then(function(response){
-    			var status = response.status;
-    			if (status === 200){
-    				var token = response.data.token;
-    				localStorage.setItem('matentustoken', token);
-                    console.log("Logged in: " + localStorage.getItem('matentustoken'));
-    				$location.url('/');
-    			}
-    		});
+    		    switch(response.status) {
+                    case 200:
+                        console.log("An existing user was logged in with email.");
+                        saveToken(response.data.token);
+                        break;
+                    case 201:
+                        console.log("A new user was created and logged in with email.")
+                        saveToken(response.data.token);
+                        break;
+                    default:
+                        console.log("Something happened when logging in with email: " + status);
+                }
+            })
+            .catch(function(error) {
+                console.log("Something happened when logging in...");
+                console.log(error);
+            });
 		};
 
 		var register = function(registerForm) {
@@ -89,6 +98,13 @@
             console.log(isOnline);
             return isOnline;
         };
+
+        function saveToken(token) {
+            localStorage.setItem('matentustoken', token);
+            $location.url('/');
+            likeService.refresh();
+            adminService.refresh();
+        }
         
 
 		return {
