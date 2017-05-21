@@ -65,12 +65,17 @@
 		function getEmailList(id){
 			return $http({
 				method: 'POST',
-				url: api + '/products/getemaillist',
-				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
-				data: {productId: id}
+				url: api + '/products/emaillist/id',
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
 			})
 				.then(function(response){
-					return response;
+					if (response.status==200){
+						return true;
+					}
+				
+					else{
+						console.log("Fel uppstod!");
+					}
 			})
 		}
 
