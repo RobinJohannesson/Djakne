@@ -22,17 +22,6 @@ module.exports = {
 		});
 	},
 
-	getAllLikesOfProduct: 		function(req, res) {
-		var productId = req.params.id;
-        console.log("produkt ID = " + productId);
-		models.Like.findAll( {
-			where: {product_id: productId}
-        })
-        .then(function(likes) {
-			res.json(likes);
-		})
-	},
-
 	postLike:		function(req,res){
 		token=req.headers.authorization;
 		token=token.replace("JWT", "");
@@ -93,7 +82,7 @@ module.exports = {
 									var obj = JSON.parse(emailList);
 									var fields = ['email'];
 									var csv = json2csv({ data: obj, fields: ['email']});
-									var file='admin/emaillists/emailList_'+productId+'.csv';
+									var file='public/emaillists/emailList_'+productId+'.csv';
 									fs.writeFile(file, csv, function(err) {
 										if (err) throw err;
 										console.log('file saved');
@@ -107,7 +96,7 @@ module.exports = {
 									var obj = JSON.parse(emailList);
 									var fields = ['email'];
 									var csv = json2csv({ data: obj, fields: ['email']});
-									var file='admin/emaillists/emailList_'+productId+'.csv';
+									var file='public/emaillists/emailList_'+productId+'.csv';
 									fs.writeFile(file, csv, function(err) {
 										if (err) throw err;
 										console.log('file saved');

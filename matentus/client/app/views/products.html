@@ -67,13 +67,17 @@
                 </li>
 
                 <!-- Categories -->
-
+                
                 <li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-2 col-md-3 col-xs-4 text-center">
                     <a class="sort-btn dropdown-toggle col-xs-12" data-toggle="dropdown">{{ ctrl.categoryHeader }}<span class="caret"></span></a>
                     <ul ng-if="ctrl.shouldShowCategories" class="dropdown-menu col-md-3 col-lg-12">
+                        <li class="category col-xs-12 col-lg-12">
+                            <a href="/">Visa alla</a>
+                        </li>
                         <li class="category col-xs-12 col-lg-12" ng-repeat="category in ctrl.categories">
                             <a class="col-xs-12" href="#!/{{ category.title }}/{{ category.id }}"> {{ category.title }} </a>
                         </li>
+                        
                     </ul>
                 </li>
             </ul>
@@ -107,14 +111,12 @@
 		<div ng-click="ctrl.likeProduct(product.id)" class="heart-icon">
             <i class="fa fa-heart-o heart" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)">
                 <p id="numb-of-likes-white" class="numb-of-likes">
-                    <!--<span ng-bind="ctrl.updateProductLikes(product.id)"></span>-->
-                    <!-- <span ng-bind="product.id"></span> -->
                     <span>{{ product.likeAmount }}</span>
                 </p>
             </i>
             <i class="fa fa-heart heart" aria-hidden="true" ng-show="ctrl.checkUserLike(product.id)">
                 <p id="numb-of-likes" class="numb-of-likes">
-                    <span ng-bind="product.id"></span>
+                    <span>{{ product.likeAmount }}</span>
                 </p>
             </i>
 		</div>

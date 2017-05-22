@@ -35,28 +35,6 @@
 
 		}
         
-        function getProductLikes(id){
-            console.log(id);
-            console.log("likeservice, getproductlikes");
-            return $http({
-                method: 'GET',
-                url: 'http://localhost:3000/api/products/productlikes/' + id,
-				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
-                params: {productId: id},
-            })
-            .then(function(response) {
-				console.log("Get product likes: ");
-				console.log(response);
-                if (response.status == 200){
-                    return response.data;
-                }
-                else {
-                    console.log(response);
-                    console.log("Kunde inte ladda in mängden produkt likes");
-                }
-            })
-        }
-
 		function likeProduct(id) {
 			console.log("Likes product: " + id);
 			var token = localStorage.getItem('matentustoken');
@@ -95,9 +73,10 @@
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
 			})
 				.then(function(response){
-					console.log(response);
 					if (response.status==200){
-						console.log(response.data);
+						var link = localStorage.getItem('matentusServer')+"/"+response.data;
+						console.log(link);
+						return link;
 					}
 				
 					else{
@@ -108,7 +87,6 @@
         
         function refresh() {
 			getUserLikes();
-			getProductLikes();
 	    }
 		
 		return {
@@ -116,7 +94,6 @@
 			likes: state.likes,
 			likeProduct: likeProduct,
 			getUserLikes: getUserLikes,
-            getProductLikes: getProductLikes,
 			getEmailList:getEmailList
 		};
 

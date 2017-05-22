@@ -35,8 +35,6 @@
 		ctrl.checkUserLike = checkUserLike;
 		ctrl.getUserLikes = likeService.getUserLikes;
 		ctrl.likeProduct = likeService.likeProduct;
-        ctrl.getProductLikes = likeService.getProductLikes;
-        ctrl.updateProductLikes = updateProductLikes;
 
 		orderBy('likeAmount');
 		ctrl.getUserLikes();
@@ -46,15 +44,6 @@
 		function updateLikes(){
 			ctrl.getUserLikes();
 		}
-        
-        function updateProductLikes(id){
-            console.log("getProductLikes");
-            ctrl.getProductLikes(id)
-            .then(function(productlikes){
-                ctrl.productlikes = productlikes.length + "";
-                return productlikes;
-            });
-        }
 	
 		function orderBy(property) {
 			ctrl.currentOrder = property;
