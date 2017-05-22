@@ -31,6 +31,8 @@
     transform: scale(3);
     position:absolute; 
     margin: 3%;
+    left: 90%;
+    top: 90%;
 }
 #numb-of-likes-prod{
     font-family: 'Raleway', sans-serif;
