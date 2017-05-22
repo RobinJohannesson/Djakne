@@ -18,6 +18,10 @@ router.get('/', passport.authenticate('jwt', { session: false }), function(req, 
 	userController.getAll(req, res);
 });
 
+router.put('/', passport.authenticate('jwt', { session: false }), function(req, res) {
+	userController.update(req, res);
+});
+
 //TODO
 router.get('/:id/likes', passport.authenticate('jwt', { session: false }), function(req, res) {
 	likeController.getAllLikesOfUser(req, res);

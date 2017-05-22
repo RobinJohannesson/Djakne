@@ -1,6 +1,7 @@
 var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
+var status = require('./httpStatusCodes');
 var passwordHash = require('password-hash');
 var passwordHash2 = require('password-hash/lib/password-hash');
 var jwt = require('jsonwebtoken');
@@ -42,6 +43,26 @@ module.exports = {
 				res.json(user);
 			});
 		});
+	},
+
+	update: function(req, res) {
+
+		var token = req.headers.authorization.replace("JWT ", "");
+		var id = jwtDecode(token).id;
+
+		models.User.update({
+			name: req.body.name,
+			city: req.body.city
+		}, {
+			where: {
+				id: id
+			}
+		})
+		.then(function(ok) {
+			if(ok) {
+				res.sendStatus(status.OK);
+			}
+		})
 	},
 
 	controlPassword: function(password, hashedPassword){

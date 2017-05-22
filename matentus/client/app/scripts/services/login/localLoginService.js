@@ -77,6 +77,23 @@
         var logout = function() {
             removeToken();
         }
+
+        var updateUserInformation = function(user) {
+            $http({
+                method: 'PUT',
+                url: api + '/users',
+                headers: { 'Authorization':'JWT ' + localStorage.getItem('matentustoken') },               
+                data: user,
+                transformRequest: angular.identity,
+            })
+            .then(function(response) {
+                console.log("Update user information response: ");
+                console.log(response);
+            })
+            .catch(function(error) {
+                errorHandler(error);
+            });
+        }
         
         function saveToken(token) {
             localStorage.setItem('matentustoken', token);
@@ -104,7 +121,8 @@
             checkLoginStatus: checkLoginStatus,
             checkAdmin: checkAdmin,
             isOnline: isOnline,
-            logout: logout
+            logout: logout,
+            updateUserInformation: updateUserInformation
         };
 
     };

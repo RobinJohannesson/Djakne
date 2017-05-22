@@ -17,6 +17,7 @@
 		ctrl.loginGoogle = loginGoogle;
 		ctrl.loginLocal = loginLocal;
 		ctrl.checkLoginStatus = checkLoginStatus;
+		ctrl.updateUserInformation = localLoginService.updateUserInformation;
 		ctrl.isOnline = false;
 		ctrl.isAdmin = false;
 
