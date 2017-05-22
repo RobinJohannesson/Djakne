@@ -7,7 +7,7 @@
 (function () {
 	'use strict';
 
-	var facebookLoginService = function ($http, $window, likeService, adminService) {
+	var facebookLoginService = function ($http, $window, likeService, adminService, localLoginService) {
 
 		var api = localStorage.getItem('matentusServer') + '/api';
 

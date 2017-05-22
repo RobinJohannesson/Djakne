@@ -12,6 +12,7 @@ var passport = require('passport');
 // -----------------------------------------------------
 
 router.get('/', function(req, res) {
+	console.log("--> Requesting cities...");
 	cityController.getAll(req, res);
 });
 

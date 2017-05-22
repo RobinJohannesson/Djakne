@@ -22,6 +22,8 @@
 		ctrl.isOnline = false;
 		ctrl.isAdmin = false;
 
+		ctrl.cities = localLoginService.cities;
+
 		checkLoginStatus();
 		checkAdmin();
 
@@ -43,7 +45,6 @@
 			localLoginService.checkLoginStatus()
 			.then(function(isOnline) {
 				ctrl.isOnline = isOnline;
-				console.log("From login.js - User is online: " + ctrl.isOnline);
 			});	
 		}
 
@@ -51,8 +52,6 @@
 			localLoginService.checkAdmin() 
 			.then(function(isAdmin) {
 				ctrl.isAdmin = isAdmin;
-				console.log("From login.js - User is admin: " + ctrl.isAdmin);
-
 			});
 		}
 		

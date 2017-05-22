@@ -10,9 +10,13 @@
     var localLoginService = function ($http, $window, adminService, likeService) {
 
         var api = localStorage.getItem('matentusServer') + '/api';
-
         var isOnline = false;
         var isAdmin = false;
+
+        var state = {};
+        state.cities = [];
+
+        getCities();
 
         var login = function(loginForm) {
             $http({
@@ -118,13 +122,31 @@
             $('#modal-welcome').modal('show');
         }
 
+        function getCities() {
+            console.log("Getting cities");
+            $http({
+                method: 'GET',
+                url: api + '/cities'
+            })
+            .then(function(response) {
+                setCities(response.data);
+            });
+        }
+
+        function setCities(cities) {
+            state.cities.length = 0;
+            state.cities.push.apply(state.cities, cities);
+            console.log(state.cities);
+        }
+
         return {
             login: login,
             checkLoginStatus: checkLoginStatus,
             checkAdmin: checkAdmin,
             isOnline: isOnline,
             logout: logout,
-            updateUserInformation: updateUserInformation
+            updateUserInformation: updateUserInformation,
+            cities: state.cities
         };
 
     };

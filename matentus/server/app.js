@@ -20,6 +20,8 @@ var users = require('./routes/users');
 var categories = require('./routes/categories');
 var products = require('./routes/products');
 var login = require('./routes/login');
+var cities = require('./routes/cities');
+
 
 // -----------------------------------------------------
 // Create express application
@@ -80,6 +82,7 @@ app.use('/api/users', users);
 app.use('/api/categories', categories);
 app.use('/api/products', products);
 app.use('/api/login', login);
+app.use('/api/cities', cities);
 
 // -----------------------------------------------------
 // Error handler - Catch 404 and forward
