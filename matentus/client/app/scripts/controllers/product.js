@@ -23,6 +23,8 @@
 		ctrl.loggedIn = false;
         ctrl.likeProduct = likeService.likeProduct;
         ctrl.facebookshare = facebookshare;
+        ctrl.checkUserLike = checkUserLike;
+        ctrl.likes = likeService.likes;
 
 		fetchProduct();
 
@@ -46,6 +48,17 @@
 		
 		function showLoginModal(){
 			$('#modal-login').modal('show');
+		}
+        
+        function checkUserLike (id) {
+			var like = ctrl.likes.filter(function(like) {
+				return like.product_id === id;
+			});
+
+			if(like.length === 0) {
+				return false;
+			} 
+			return true;
 		}
         
         function facebookshare(){
