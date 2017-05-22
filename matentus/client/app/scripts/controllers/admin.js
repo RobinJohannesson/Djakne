@@ -81,6 +81,7 @@
 
 		function setCurrentProduct(product) {
 			ctrl.currentProduct = product;
+			console.log(ctrl.currentProduct);
 		}
 
 		function setCurrentCategory(category) {
@@ -155,7 +156,6 @@
 		}
 		
 		function getEmailList() {
-			console.log("HEEEEJ");
 			likeService.getEmailList(ctrl.currentProduct.id);
 		}
 	};

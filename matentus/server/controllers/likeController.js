@@ -82,7 +82,7 @@ module.exports = {
 									var obj = JSON.parse(emailList);
 									var fields = ['email'];
 									var csv = json2csv({ data: obj, fields: ['email']});
-									var file='admin/emaillists/emailList_'+productId+'.csv';
+									var file='public/emaillists/emailList_'+productId+'.csv';
 									fs.writeFile(file, csv, function(err) {
 										if (err) throw err;
 										console.log('file saved');
@@ -96,7 +96,7 @@ module.exports = {
 									var obj = JSON.parse(emailList);
 									var fields = ['email'];
 									var csv = json2csv({ data: obj, fields: ['email']});
-									var file='admin/emaillists/emailList_'+productId+'.csv';
+									var file='public/emaillists/emailList_'+productId+'.csv';
 									fs.writeFile(file, csv, function(err) {
 										if (err) throw err;
 										console.log('file saved');

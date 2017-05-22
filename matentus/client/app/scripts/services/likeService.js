@@ -73,9 +73,10 @@
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
 			})
 				.then(function(response){
-					console.log(response);
 					if (response.status==200){
-						console.log(response.data);
+						var link = localStorage.getItem('matentusServer')+"/"+response.data;
+						console.log(link);
+						return link;
 					}
 				
 					else{
