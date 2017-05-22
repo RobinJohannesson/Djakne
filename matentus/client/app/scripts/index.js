@@ -22,7 +22,7 @@ angular
 		controller: 'ProductCtrl',
 		controllerAs: 'ctrl' 
 	})
-	.when('/:category/:category_id', {
+	.when('/:category_title/:category_id', {
 		templateUrl: 'views/products.html',
 		controller: 'ProductsCtrl',
 		controllerAs: 'ctrl' 

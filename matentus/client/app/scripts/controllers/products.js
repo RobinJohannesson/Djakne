@@ -16,12 +16,10 @@
 
 		ctrl.matentusServer = localStorage.getItem('matentusServer');
 
-		ctrl.currentCategoryTitle = $routeParams.category;
+		ctrl.currentCategoryTitle = $routeParams.category_title;
 		ctrl.currentCategoryId = $routeParams.category_id;
-        ctrl.id = $routeParams.id;
 		ctrl.shouldShowCategories = false;
 		ctrl.shouldShowDropdown = false;
-		ctrl.currentCategoryId = null;
 		ctrl.categoryHeader = 'Kategorier';
 		ctrl.currentOrder = '';
 
@@ -39,9 +37,11 @@
 		ctrl.likeProduct = likeService.likeProduct;
         ctrl.getProductLikes = likeService.getProductLikes;
         ctrl.updateProductLikes = updateProductLikes;
-		
+
 		orderBy('likeAmount');
 		ctrl.getUserLikes();
+
+		console.log("Titel: " + ctrl.currentCategoryTitle + ", Id: " + ctrl.currentCategoryId);
 
 		function updateLikes(){
 			ctrl.getUserLikes();

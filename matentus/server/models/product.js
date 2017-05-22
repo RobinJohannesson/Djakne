@@ -26,10 +26,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
-    rating: {
-      type: DataTypes.INTEGER(1),
-      allowNull: false
-    },
     likeAmount: {
       type: DataTypes.INTEGER,
       allowNull: false

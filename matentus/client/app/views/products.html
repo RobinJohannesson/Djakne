@@ -71,7 +71,9 @@
                 <li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-2 col-md-3 col-xs-4 text-center">
                     <a class="sort-btn dropdown-toggle col-xs-12" data-toggle="dropdown">{{ ctrl.categoryHeader }}<span class="caret"></span></a>
                     <ul ng-if="ctrl.shouldShowCategories" class="dropdown-menu col-md-3 col-lg-12">
-                        <li class="category col-xs-12 col-lg-12" ng-repeat="category in ctrl.categories"><a class="col-xs-12" href="#!/{{ category.title }}"> {{ category.title }} </a></li>
+                        <li class="category col-xs-12 col-lg-12" ng-repeat="category in ctrl.categories">
+                            <a ng-if="!ctrl.currentCategoryId || category.id == ctrl.currentCategoryId" class="col-xs-12" href="#!/{{ category.title }}/{{ category.id }}"> {{ category.title }} </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
