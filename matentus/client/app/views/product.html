@@ -72,9 +72,10 @@
                     <div id="img-label-related" class="img-label-related col-xs-12">
                         <h5 id="label-text-related"> {{ product.title }} </h5>
                     </div>
-                    <div ng-click="ctrl.like(product.id)" class="heart-icon-related heart-icon">
-                        <i class="fa fa-heart-o heart" aria-hidden="true">
+                    <div ng-click="ctrl.likeProduct(product.id)" class="heart-icon-related heart-icon">
+                        <i class="fa fa-heart-o heart" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)">
                         </i>
+                        <i class="fa fa-heart heart heart-prod" aria-hidden="true" ng-show="ctrl.checkUserLike(product.id)"></i>
                     </div>
                 </div>
             </div>
@@ -94,10 +95,9 @@
             <a ng-click="ctrl.loginGoogle()" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey" ng-show="!ctrl.isOnline">
                 <span class="fa fa-google" aria-hidden="true"></span> Fortsätt med Google
             </a>
-            <div class="col-xs-12 color-grey">
-                <p class="line col-xs-4"></p>
-                <p class="or col-xs-4">eller</p>
-                <p class="line col-xs-4"></p>
+            <div class="or-div col-xs-12 color-grey">
+                <p class="line"></p>
+                <p class="or">eller</p>
             </div>
             <form id="email-form" name="ctrl.form" role="form" class="forced-email-form">
                 
