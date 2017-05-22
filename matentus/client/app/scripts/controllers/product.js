@@ -9,9 +9,9 @@
 	angular.module('matentusApp')
 	.controller('ProductCtrl', ProductCtrl);
 
-	ProductCtrl.$inject = ['$routeParams', 'productService'];
+	ProductCtrl.$inject = ['$routeParams', 'productService', 'likeService'];
 
-	function ProductCtrl($routeParams, productService) {
+	function ProductCtrl($routeParams, productService, likeService) {
 
 		var ctrl = this;
 		ctrl.matentusServer = localStorage.getItem('matentusServer');
@@ -21,6 +21,7 @@
 		ctrl.products = productService.products;
 		ctrl.filterRelated = filterRelated;
 		ctrl.loggedIn = false;
+        ctrl.likeProduct = likeService.likeProduct;
         ctrl.facebookshare = facebookshare;
 
 		fetchProduct();
