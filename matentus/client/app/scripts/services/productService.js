@@ -24,7 +24,6 @@
 					headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
 	        	})
 	        	.then(function(response) {
-					console.log(response);
 					return response.data;	        	
 				}, errorHandler)
 	        	.catch(function(error) {

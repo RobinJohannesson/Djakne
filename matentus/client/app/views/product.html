@@ -88,17 +88,21 @@
     <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog" role="document">
     	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+
             <h4 class="color-grey" style="margin-bottom: 20px;">Du måste <span style="font-size: 20px; color: #000">logga in</span> för att fortsätta utforska våra <span style="font-size: 20px; color: #000">fantastiska erbjudanden!</span></h4>
+
             <a ng-click="ctrl.loginFacebook()" ng-show="!ctrl.isOnline" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey">
                 <span class="fa fa-facebook" aria-hidden="true"></span> Fortsätt med Facebook
             </a>
             <a ng-click="ctrl.loginGoogle()" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey" ng-show="!ctrl.isOnline">
                 <span class="fa fa-google" aria-hidden="true"></span> Fortsätt med Google
             </a>
+
             <div class="or-div col-xs-12 color-grey">
                 <p class="line"></p>
                 <p class="or">eller</p>
             </div>
+
             <form id="email-form" name="ctrl.form" role="form" class="forced-email-form">
                 
 				<div class="form-group">
@@ -124,7 +128,9 @@
 					<button 
 						type="submit" 
 						class="white-input btn btn-primary form-control" 
-						ng-click="ctrl.loginLocal()">
+						ng-click="ctrl.loginLocal()"
+                        data-dismiss="modal"
+                        >
 						Logga In
 					</button>
 				</div>

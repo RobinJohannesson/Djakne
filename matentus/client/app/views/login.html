@@ -153,7 +153,7 @@
                    
                     <select 
 	                   	ng-model="ctrl.welcomeForm.city"
-	                   	ng-options="city.name as city.name for city in ctrl.cities"
+	                   	ng-options="city.name as city.name for city in ctrl.cities | orderBy: 'name'"
 	                   	style="margin-bottom: 10px;"
 	                   	id="kommun"
 	                   	class="kommuner"
