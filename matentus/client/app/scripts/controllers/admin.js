@@ -22,6 +22,7 @@
 		ctrl.addProductView = 'views/admin/views/addProduct.html';
 		ctrl.currentView = ctrl.manageSuggestionsView;
 
+		ctrl.isOnline = false;
 		ctrl.isAdmin = false;
 		ctrl.suggestions = adminService.suggestions;
 		ctrl.categories = categoryService.categories;

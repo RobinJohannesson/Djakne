@@ -10,7 +10,7 @@
 
 	LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginService', '$scope', '$http', '$location'];
 
-	function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, $scope, $http, $location$,$window) {
+	function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, $scope, $http, $location$, $window) {
 
 		var ctrl = this;
 		ctrl.loginFacebook = loginFacebook;
@@ -41,6 +41,7 @@
 			localLoginService.checkLoginStatus()
 			.then(function(isOnline) {
 				ctrl.isOnline = isOnline;
+				console.log("From login.js - User is online: " + ctrl.isOnline);
 			});	
 		}
 
@@ -48,6 +49,8 @@
 			localLoginService.checkAdmin() 
 			.then(function(isAdmin) {
 				ctrl.isAdmin = isAdmin;
+				console.log("From login.js - User is admin: " + ctrl.isAdmin);
+
 			});
 		}
 	}
