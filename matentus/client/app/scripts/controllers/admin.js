@@ -81,7 +81,6 @@
 
 		function setCurrentProduct(product) {
 			ctrl.currentProduct = product;
-			console.log(ctrl.currentProduct);
 		}
 
 		function setCurrentCategory(category) {
