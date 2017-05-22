@@ -18,7 +18,7 @@
 		ctrl.loginLocal = loginLocal;
 		ctrl.checkLoginStatus = checkLoginStatus;
 		ctrl.logout=logout;
-		ctrl.updateUserInformation = localLoginService.updateUserInformation;
+		ctrl.updateUserInformation = updateUserInformation;
 		ctrl.isOnline = false;
 		ctrl.isAdmin = false;
 
@@ -53,6 +53,10 @@
 			.then(function(isAdmin) {
 				ctrl.isAdmin = isAdmin;
 			});
+		}
+
+		function updateUserInformation() {
+			localLoginService.updateUserInformation(ctrl.welcomeForm);
 		}
 		
 		function logout(){

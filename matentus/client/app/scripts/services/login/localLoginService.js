@@ -83,22 +83,18 @@
         }
 
         var updateUserInformation = function(welcomeForm) {
-            console.log("Från localLoginServic: ");
-            console.log(welcomeForm);
-            // $http({
-            //     method: 'PUT',
-            //     url: api + '/users',
-            //     headers: { 'Authorization':'JWT ' + localStorage.getItem('matentustoken') },               
-            //     data: user,
-            //     transformRequest: angular.identity,
-            // })
-            // .then(function(response) {
-            //     console.log("Update user information response: ");
-            //     console.log(response);
-            // })
-            // .catch(function(error) {
-            //     errorHandler(error);
-            // });
+            $http({
+                method: 'PUT',
+                url: api + '/users',
+                headers: { 'Authorization':'JWT ' + localStorage.getItem('matentustoken')},               
+                data: welcomeForm,
+            })
+            .then(function(response) {
+                $window.location.reload();
+            })
+            .catch(function(error) {
+                errorHandler(error);
+            });
         }
         
         function saveToken(token) {
@@ -138,6 +134,10 @@
             state.cities.push.apply(state.cities, cities);
             console.log(state.cities);
         }
+
+        var errorHandler = function(response) {
+            console.log(response);
+        };    
 
         return {
             login: login,

@@ -72,7 +72,8 @@ module.exports = {
 		.then(function(isAdmin) {
 			if(!isAdmin) {
 				res.sendStatus(status.NOT_ADMIN);
-				res.set("Connection", "close");
+				//res.set("Connection", "close");
+				res.end();
 			}
 		})
 		.then(function() {

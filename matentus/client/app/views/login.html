@@ -148,26 +148,11 @@
 						required
 					>
 				</div>
-
-<!--                 <div class="form-group">
-                    <label for="kommun" style="margin-top: 10px;" class="col-xs-12">Kommun</label>
-                    <select 
-                    	name="city"                	
-	                   	ng-model="ctrl.welcomForm.city"
-	                   	ng-options="city.name for city in ctrl.cities"
-                    	style="margin-bottom: 10px;" 
-                    	id="kommun" 
-                    	class="kommuner col-xs-12"
-                    	required>
-                    	<option value="">Välj kommun</option>
-                    </select>
-                </div> -->
-
                 <div class="form-group">
                     <label for="kommun" style="margin-top: 10px;" class="col-xs-12">Kommun</label>
                     <select 
 	                   	ng-model="ctrl.welcomeForm.city"
-	                   	ng-options="city.name for city in ctrl.cities"
+	                   	ng-options="city.name as city.name for city in ctrl.cities"
 	                   	style="margin-bottom: 10px;"
 	                   	id="kommun"
 	                   	class="kommuner"
@@ -176,10 +161,6 @@
                     	<option value="" disabled>Välj kommun</option>
                     </select>
                 </div>
-
-
-
-                <!-- ng-options="city.name for city in ctrl.cities" -->
 
 				<div class="form-group">
                     <p class="color-white col-lg-8 col-lg-offset-2" style= "font-size: 10px; color: lightgrey; margin-bottom: 20px;">Fyll i namn och kommun för att ta del av just dina lokala och närproducerade produkter.</p>
