@@ -1,6 +1,6 @@
 /*FORCED TO LOGIN*/
 .line{
-    margin: 5% 0 0 0;
+    margin: 7% 0;
     display: inline-block;
     height: 1px;
     background: #000;
@@ -9,6 +9,11 @@
     background: #fff!important;
     color: #000!important;
     text-align: left;
+}
+.or{
+    margin: 2% 0;
+    font-size: 100%;
+    font-size-adjust: auto;
 }
 /*END*/
 /*GENERAL*/
