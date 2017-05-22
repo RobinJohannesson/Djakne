@@ -36,6 +36,8 @@
 		ctrl.checkUserLike = checkUserLike;
 		ctrl.getUserLikes = likeService.getUserLikes;
 		ctrl.likeProduct = likeService.likeProduct;
+        ctrl.getProductLikes = likeService.getProductLikes;
+        ctrl.updateProductLikes = updateProductLikes;
 		
 		orderBy('likeAmount');
 		ctrl.getUserLikes();
@@ -43,6 +45,16 @@
 		function updateLikes(){
 			ctrl.getUserLikes();
 		}
+        
+        function updateProductLikes(){
+            console.log("getProductLikes");
+            ctrl.getProductLikes()
+            .then(function(productlikes){
+                console.log(productlikes);
+                console.log(productlikes.length + "");
+                ctrl.productlikes = productlikes.length + "";
+            });
+        }
 	
 		function orderBy(property) {
 			ctrl.currentOrder = property;
