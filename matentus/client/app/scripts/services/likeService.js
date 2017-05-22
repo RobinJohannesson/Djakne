@@ -7,7 +7,7 @@
 (function () {
 	'use strict';
 
-	var likeService = function ($http) {
+	var likeService = function ($http,productService) {
 
 		var api = localStorage.getItem('matentusServer') + '/api';
 
@@ -49,9 +49,11 @@
 				var status = response.status;
 				if (status === 200){
 					refresh();
+					productService.refresh();
 				}
 				else if (status === 201){
 					refresh();
+					productService.refresh();
 				}
 				else if (status === 401){
 					console.log("Du måste logga in för att likea produkter");
