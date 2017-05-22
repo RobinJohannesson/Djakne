@@ -77,16 +77,16 @@
 					<i class="fa fa-instagram" aria-hidden="true"></i>
 				</a>
                
-                
                 <a href="#!/about" class="btn footer-link">
                     <i class="glyphicon glyphicon-info-sign footer-link"></i>
                 </a>
-                
+               
+				<div ng-controller="LoginCtrl as ctrl">
                   <a class="btn footer-link">
-                    <i class="glyphicon glyphicon-log-out footer-link"></i>
+                    <i class="glyphicon glyphicon-log-out footer-link" ng-click="ctrl.logout()"></i>
                 </a>
-                
-    
+                </div>
+				
 			</div>
             
             <div>
