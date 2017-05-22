@@ -23,20 +23,17 @@
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
 			})
 			.then(function(response){
-				console.log("Get user likes: ");
-				console.log(response);
 				if (response.status == 200){
 					setLikes(response.data);
 				}
 				else {
-					console.log("Failed to load your likes.");
+					console.log("Failed to load likes.");
 				}
 			});
 
 		}
         
 		function likeProduct(id) {
-			console.log("Likes product: " + id);
 			var token = localStorage.getItem('matentustoken');
 			return $http({
 				method: 'POST',
@@ -44,23 +41,20 @@
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
 				data: {productId: id}
 			})
-				.then(function(response){
-				console.log(response);
+			.then(function(response){
 				var status = response.status;
 				if (status === 200){
 					refresh();
 					productService.refresh();
 					productService.getProduct(id);
-					console.log("Like");
 				}
 				else if (status === 201){
 					refresh();
 					productService.refresh();
 					productService.getProduct(id);
-					console.log("!Like");
 				}
 				else if (status === 401){
-					console.log("Du måste logga in för att likea produkter");
+					console.log("Användaren måste logga in för att kunna gilla produkter.");
 				}
 			})
 		}
