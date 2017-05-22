@@ -40,15 +40,15 @@
                 <p>När tillräckligt många gillar denna produkt, kontaktar vi leverantören. Ett erbjudande mejlas sedan till er som visat intresse för produkten.
                 <p>Så glöm inte att gilla!</p>
             <div ng-controller="ProductsCtrl as ctrl">
-                <div ng-click="ctrl.likeProduct(product.id)" class="heart-icon-prod">
+                <div ng-click="ctrl.likeProduct(ctrl.product.id)" class="heart-icon-prod">
             <i class="fa fa-heart-o heart-prod" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)">
-                <p id="numb-of-likes-white-prod">
-                    123
+                <p id="numb-of-likes-white-prod" class="numb-of-likes">
+                    <span>{{ product.likeAmount }}</span>
                 </p>
             </i>
             <i class="fa fa-heart heart-prod" aria-hidden="true" ng-show="ctrl.checkUserLike(product.id)">
-                <p id="numb-of-likes-prod">
-                    123
+                <p id="numb-of-likes-prod" class="numb-of-likes">
+                    <span>{{ product.likeAmount }}</span>
                 </p>
             </i>
 		</div>   
@@ -75,7 +75,8 @@
                         <h5 id="label-text-related"> {{ product.title }} </h5>
                     </div>
                     <div ng-click="ctrl.like(product.id)" class="heart-icon-related heart-icon">
-                        <i class="fa fa-heart-o heart" aria-hidden="true"></i>
+                        <i class="fa fa-heart-o heart" aria-hidden="true">
+                        </i>
                     </div>
                 </div>
             </div>
