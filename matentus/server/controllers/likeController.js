@@ -30,9 +30,10 @@ module.exports = {
         console.log(productId);
 		models.Like.findAll( {
 			where: {product_id: productId}
-			.then(function(likes) {
+        })
+        .then(function(likes) {
 			res.json(likes);
-		});
+		})
 	},
 
 	postLike:		function(req,res){
