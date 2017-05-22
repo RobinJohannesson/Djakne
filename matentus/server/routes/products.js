@@ -44,10 +44,6 @@ router.get('/userlikes', passport.authenticate('jwt', { session: false }), funct
 	likeController.getAllLikesOfUser(req, res);
 });
 
-router.get('/productlikes/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
-	likeController.getAllLikesOfProduct(req, res);
-});
-
 router.get('/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
 	productController.getApproved(req, res);
 });

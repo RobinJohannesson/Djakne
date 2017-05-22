@@ -107,14 +107,12 @@
 		<div ng-click="ctrl.likeProduct(product.id)" class="heart-icon">
             <i class="fa fa-heart-o heart" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)">
                 <p id="numb-of-likes-white" class="numb-of-likes">
-                    <!--<span ng-bind="ctrl.updateProductLikes(product.id)"></span>-->
-                    <!-- <span ng-bind="product.id"></span> -->
                     <span>{{ product.likeAmount }}</span>
                 </p>
             </i>
             <i class="fa fa-heart heart" aria-hidden="true" ng-show="ctrl.checkUserLike(product.id)">
                 <p id="numb-of-likes" class="numb-of-likes">
-                    <span ng-bind="product.id"></span>
+                    <span>{{ product.likeAmount }}</span>
                 </p>
             </i>
 		</div>

@@ -22,17 +22,6 @@ module.exports = {
 		});
 	},
 
-	getAllLikesOfProduct: 		function(req, res) {
-		var productId = req.params.id;
-        console.log("produkt ID = " + productId);
-		models.Like.findAll( {
-			where: {product_id: productId}
-        })
-        .then(function(likes) {
-			res.json(likes);
-		})
-	},
-
 	postLike:		function(req,res){
 		token=req.headers.authorization;
 		token=token.replace("JWT", "");
