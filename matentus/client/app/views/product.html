@@ -84,15 +84,16 @@
         <!-- /.row -->
 </div>
         <hr>
+<div ng-controller="LoginCtrl as ctrl">
     <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog" role="document">
     	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
             <h4 class="color-grey" style="margin-bottom: 20px;">Du måste <span style="font-size: 20px; color: #000">logga in</span> för att fortsätta utforska våra <span style="font-size: 20px; color: #000">fantastiska erbjudanden!</span></h4>
-            <a class="btn btn-block btn-social color-grey">
-                <span class="fa fa-facebook"></span> Fortsätt med Facebook
+            <a ng-click="ctrl.loginFacebook()" ng-show="!ctrl.isOnline" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey">
+                <span class="fa fa-facebook" aria-hidden="true"></span> Fortsätt med Facebook
             </a>
-            <a class="btn btn-block btn-social color-grey">
-                <span class="fa fa-google"></span> Fortsätt med Google
+            <a ng-click="ctrl.loginGoogle()" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey" ng-show="!ctrl.isOnline">
+                <span class="fa fa-google" aria-hidden="true"></span> Fortsätt med Google
             </a>
             <div class="col-xs-12 color-grey">
                 <p class="line col-xs-4"></p>
@@ -149,7 +150,6 @@
 				</div>
 			</form>
             <button style="margin-top:10px" class="button btn btn-primary" onclick="location.href='/';" data-dismiss="modal">Stäng</button>
-
  		</div>
  	</div>
        
