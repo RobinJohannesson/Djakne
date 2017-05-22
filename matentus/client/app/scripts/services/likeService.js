@@ -38,7 +38,7 @@
 		function likeProduct(id) {
 			console.log("Likes product: " + id);
 			var token = localStorage.getItem('matentustoken');
-			$http({
+			return $http({
 				method: 'POST',
 				url: api + '/products/postlike',
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
@@ -50,10 +50,14 @@
 				if (status === 200){
 					refresh();
 					productService.refresh();
+					productService.getProduct(id);
+					console.log("Like");
 				}
 				else if (status === 201){
 					refresh();
 					productService.refresh();
+					productService.getProduct(id);
+					console.log("!Like");
 				}
 				else if (status === 401){
 					console.log("Du måste logga in för att likea produkter");

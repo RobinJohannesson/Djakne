@@ -21,11 +21,11 @@
 		ctrl.products = productService.products;
 		ctrl.filterRelated = filterRelated;
 		ctrl.loggedIn = false;
-        ctrl.likeProduct = likeService.likeProduct;
+        ctrl.likeProduct = likeProduct;
         ctrl.facebookshare = facebookshare;
         ctrl.checkUserLike = checkUserLike;
         ctrl.likes = likeService.likes;
-
+		
 		fetchProduct();
 
 		function fetchProduct() { 
@@ -60,9 +60,15 @@
 			} 
 			return true;
 		}
+		
+		function likeProduct(id){
+			likeService.likeProduct(id)
+			.then(function(){
+				fetchProduct();
+			})
+		}
         
         function facebookshare(){
-            console.log("testar loss");
             window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgoogle.com&amp;src=sdkpreparse', 'newwindow', 'width=500, height=500');
             return false;
         }
