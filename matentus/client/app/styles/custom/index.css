@@ -1,23 +1,25 @@
-body{
+body {
     font-family: 'Raleway', sans-serif;
-
 }
-.beta{
+
+.beta {
     text-align: center;
     color: #fff;
     font-size: 100%;
     font-weight: 100;
     padding: 0px;
 }
-#beta-stamp{
+
+#beta-stamp {
     position: absolute;
     margin-top: 8.5%;
     left: 5%;
     transform: scale(6.5) rotate(-25deg);
     max-width: 100px;
 }
-@media screen and (min-width: 768px){
-    #beta-stamp{
+
+@media screen and (min-width: 768px) {
+    #beta-stamp {
         position: absolute;
         margin-top: 5.5%;
         top: 7%;
@@ -25,8 +27,9 @@ body{
         transform: scale(2) rotate(-25deg);
     }
 }
-@media screen and (min-width: 992px){
-    #beta-stamp{
+
+@media screen and (min-width: 992px) {
+    #beta-stamp {
         position: absolute;
         margin-top: 5%;
         top: 7%;
@@ -34,8 +37,9 @@ body{
         transform: scale(1.5) rotate(-25deg);
     }
 }
-@media screen and (min-width: 1200px){
-    #beta-stamp{
+
+@media screen and (min-width: 1200px) {
+    #beta-stamp {
         position: absolute;
         margin-top: 4%;
         top: 5%;
@@ -43,8 +47,9 @@ body{
         transform: scale(1.3) rotate(-25deg);
     }
 }
-@media screen and (min-width: 450px) and (max-width: 767px){
-    #beta-stamp{
+
+@media screen and (min-width: 450px) and (max-width: 767px) {
+    #beta-stamp {
         position: absolute;
         margin-top: 3%;
         top: 5%;
@@ -53,6 +58,8 @@ body{
         width: 80px;
     }
 }
+
+
 /*
 .portfolio-item {
     margin-bottom: 25px;
@@ -62,13 +69,18 @@ footer {
     margin: 50px 0;
 }
 */
+
+
 /*footer*/
-.footer-icon{
+
+.footer-icon {
     color: black;
 }
 
+
 /*sorting*/
-.category-dropdown{
+
+.category-dropdown {
     display: block;
     margin: 0;
     float: left;
@@ -76,54 +88,59 @@ footer {
     border-style: none none solid none;
     border-width: thin;
     border-color: #fff;
-    
     animation: slide_back 1s;
 }
 
-.category-content{
-   
+.category-content {
     box-shadow: inset 0px 1px 8px 1px;
-    
 }
 
+
 /*Sidebar*/
+
 #side-menu {
-    position:absolute;
+    position: absolute;
     position: fixed;
     bottom: 0px;
     /*width is the width of current pic
     width:20%;*/
     height: 100%;
-    background: rgb(0,0,0);
-    background: rgba(0,0,0,0.9);
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.9);
     box-shadow: 1px 0px 30px 5px #000;
     display: block;
     z-index: 100;
     left: 0%;
 }
+
 .side-content {
     margin: 2.5%;
     color: white;
     list-style: none;
     margin-top: 30%;
 }
-.cross{
+
+.cross {
     padding-top: 50%;
     transform: scale(3);
 }
+
 .side-content li a {
     text-decoration: none;
     color: white;
 }
+
 .side-content li {
     padding: 5%;
     color: #9d9d9d;
     font-size: 18px;
 }
-.side-content li:hover{
+
+.side-content li:hover {
     color: #fff;
 }
-.beta-text{
+
+.beta-text {
     max-width: 250px;
     font-size: 15px;
     font-weight: 700;
@@ -131,11 +148,13 @@ footer {
     top: 90%;
     text-align: center;
     color: #000;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
     padding: 5px;
     margin: 0px;
     border-radius: 3px;
 }
+
+
 /*h3 {
     border-style: solid;
     border-width: 0px 0px 1px 0px;
@@ -143,160 +162,203 @@ footer {
 
 
 /*Login*/
-#facebook{
+
+#facebook {
     top: 6.7%;
 }
-#google{
+
+#google {
     top: 12%;
 }
-#email{
+
+#email {
     top: 18%;
 }
-@keyframes slider{
-    from {left:96%}
-    to {left:71%}   
+
+@keyframes slider {
+    from {
+        left: 96%
+    }
+    to {
+        left: 71%
+    }
 }
-@keyframes slider961{
-    from {left:95%}
-    to {left:80%}   
+
+@keyframes slider961 {
+    from {
+        left: 95%
+    }
+    to {
+        left: 80%
+    }
 }
-.sign-in i{
+
+.sign-in i {
     color: white;
     font-size: 150%;
     padding-left: 0.8%;
 }
-.label-default{
+
+.label-default {
     background-color: black;
     border-radius: 5px 0px 0px 5px;
     display: flex;
     align-items: center;
-    width:18%;
+    width: 18%;
 }
+
 .sign-in a {
     color: white;
     position: fixed;
-    left:96%;
+    left: 96%;
     z-index: 102;
     width: 100%;
 }
-.sign-in a:hover{
-    color: white;  
+
+.sign-in a:hover {
+    color: white;
     animation: slider 1s;
-    left:83%;
+    left: 83%;
 }
+
+
 /*.hover-social{
     animation-play-state: paused;
     animation: slide_back 1s;  
 }*/
 
+
 /*Create account with EMAIL*/
-#email-form{
+
+#email-form {
     background: #000;
     color: #fff;
     padding: 20px;
 }
-.email-click{
+
+.email-click {
     color: #fff;
 }
+
+
 /*Sign in CSS*/
-.sign-in-mobile{
+
+.sign-in-mobile {
     background: #000;
     display: none;
     text-align: center;
-    padding:4px;
+    padding: 4px;
 }
-.sign-in-mobile a{
+
+.sign-in-mobile a {
     width: 34px;
     transition: 0.5s;
     border-style: solid;
     border-width: 0.5px;
 }
-.color-grey{
+
+.color-grey {
     color: #777;
     border-color: #777;
 }
-.color-white{
+
+.color-white {
     color: #fff;
     border-color: #fff;
 }
-.sign-in-mobile a:hover{
+
+.sign-in-mobile a:hover {
     color: #eee;
     border-color: #eee
 }
-#sign-up-with{
+
+#sign-up-with {
     border-style: none;
     background: #000;
     width: auto;
 }
-#sign-up-with:hover{
+
+#sign-up-with:hover {
     background: #000;
     color: #fff;
     text-decoration: none;
 }
+
 .px-2 {
-  padding-left: ($spacer-x * .5) !important;
-  padding-right: ($spacer-x * .5) !important;
+    padding-left: ($spacer-x * .5) !important;
+    padding-right: ($spacer-x * .5) !important;
 }
-@media screen and (max-width: 992px){
-    .sign-in a{
+
+@media screen and (max-width: 992px) {
+    .sign-in a {
         display: none;
     }
-    .sign-in-mobile{
+    .sign-in-mobile {
         display: block;
     }
 }
 
-
-@media screen and (max-width: 960px){
-    .sign-in a{
+@media screen and (max-width: 960px) {
+    .sign-in a {
         left: 96%;
     }
-    .sign-in a:hover{ 
+    .sign-in a:hover {
         left: 71%;
         animation: slider 1s;
     }
 }
-@media screen and (min-width: 961px){
+
+@media screen and (min-width: 961px) {
     .sign-in a {
-        left:97%;
+        left: 97%;
         z-index: 102;
     }
-    .sign-in a:hover{ 
+    .sign-in a:hover {
         animation: slider961 1s;
-        left:80%;
+        left: 80%;
     }
 }
 
 
 /*Margin and padding classes*/
-.mb-10{
+
+.mb-10 {
     margin-bottom: 10px;
 }
-.mt-10{
+
+.mt-10 {
     margin-top: 10px;
 }
-.m-0{
+
+.m-0 {
     margin: 0;
 }
-.m-10{
+
+.m-10 {
     margin: 0px 10px;
 }
-.m-20{
+
+.m-20 {
     margin: 0px 20px;
 }
-.p-2{
+
+.p-2 {
     padding: 2px;
 }
-.p-4{
+
+.p-4 {
     padding: 4px;
 }
-.p-6{
+
+.p-6 {
     padding: 6px;
 }
-.p-8{
+
+.p-8 {
     padding: 8px;
 }
-.p-10{
+
+.p-10 {
     padding: 10px;
 }
 
@@ -304,29 +366,32 @@ footer {
     padding: 0 10px 0 10px;
 }
 
+
 /* Bootstrap Modal */
 
 .modal {
-  text-align: center;
+    text-align: center;
 }
 
-@media screen and (min-width: 768px) { 
-  .modal:before {
-    display: inline-block;
-    vertical-align: middle;
-    content: " ";
-    height: 100%;
-  }
+@media screen and (min-width: 768px) {
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
 }
 
 .modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    width: 70%;
+    padding: 10% 0%;
 }
 
 .modal-content {
-    -webkit-box-shadow: 0px 0px 34px -2px rgba(0,0,0,0.67);
-    -moz-box-shadow: 0px 0px 34px -2px rgba(0,0,0,0.67);
-    box-shadow: 0px 0px 34px -2px rgba(0,0,0,0.67);
+    -webkit-box-shadow: 0px 0px 34px -2px rgba(0, 0, 0, 0.67);
+    -moz-box-shadow: 0px 0px 34px -2px rgba(0, 0, 0, 0.67);
+    box-shadow: 0px 0px 34px -2px rgba(0, 0, 0, 0.67);
 }
