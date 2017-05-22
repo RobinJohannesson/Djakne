@@ -73,6 +73,9 @@
 		}
 
 		function addCategory(category) {
+			if(!category.title) {
+				category.title = '-';
+			}
 			$http({
 				method: 'POST',
 				url: api + '/categories',
@@ -88,6 +91,9 @@
 		}
 
 		function updateCategory(category) {
+			if(!category.title) {
+				category.title = '-';
+			}
 			$http({
 				method: 'PUT',
 				url: api + '/categories/' + category.id,

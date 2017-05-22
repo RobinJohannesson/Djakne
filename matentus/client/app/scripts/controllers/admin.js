@@ -83,10 +83,6 @@
 			ctrl.currentProduct = product;
 		}
 
-		function setCurrentCategory(category) {
-			ctrl.currentCategory = category;
-		}
-
 		function changeView(view) {
 			ctrl.currentView = view;
 		}
@@ -122,6 +118,10 @@
 		function deleteProduct() {
 			adminService.remove(ctrl.currentProduct);
 			clearCurrentProduct();
+		}
+
+		function setCurrentCategory(category) {
+			ctrl.currentCategory = category;
 		}
 
 		function addCategory() {
