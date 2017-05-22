@@ -17,10 +17,12 @@ ul.nav{
 /*---------NAVBAR END ---------*/
 /*-----------------------------*/
 /*------SORTERINGSKNAPPAR------*/
+
 .sort-btn{
     border-bottom: solid #000;
     border-width: 2px;
     padding: 0px;
+    margin: 2px 0;
 }
 
 .sort-btn:hover, .sort-btn:active{
