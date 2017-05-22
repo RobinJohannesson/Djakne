@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(500),
       allowNull: false
     },
     keyword: {
