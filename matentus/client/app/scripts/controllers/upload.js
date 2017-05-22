@@ -9,9 +9,9 @@
 	angular.module('matentusApp')
 	.controller('UploadCtrl', UploadCtrl);
 
-	UploadCtrl.$inject = ['$scope', 'categoryService', 'productService', 'uploadService'];
+	UploadCtrl.$inject = ['$scope', 'categoryService', 'productService', 'suggestionService'];
 
-	function UploadCtrl($scope, categoryService, productService, uploadService) {
+	function UploadCtrl($scope, categoryService, productService, suggestionService) {
 		var ctrl = this;
 
 		ctrl.categories = categoryService.categories;
@@ -21,7 +21,7 @@
 		ctrl.product = {};
 
 		function upload() {
-			uploadService.upload(ctrl.product);
+			suggestionService.addSuggestion(ctrl.product);
 			clearInput();
 		}
 

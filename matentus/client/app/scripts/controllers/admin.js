@@ -9,13 +9,9 @@
 	angular.module('matentusApp')
 	.controller('AdminCtrl', AdminCtrl);
 
-	AdminCtrl.$inject = ['$scope', 'adminService', 'uploadService', 'categoryService', 'productService', 'facebookLoginService', 'googleLoginService', 'localLoginService'];
+	AdminCtrl.$inject = ['$scope', 'adminService', 'suggestionService', 'categoryService', 'productService', 'localLoginService'];
 
-	function AdminCtrl($scope, adminService, uploadService, categoryService, productService, facebookLoginService, googleLoginService, localLoginService) {
-
-		// Kolla om matentustoken finns
-		// Om det finns - Skicka till servern och kolla så att användaren är inloggad och är admin. Hämta och visa produkter.
-		// Om det inte finns - Visa inga produkter, be användaren att logga in som admin. Led tillbaka till samma sida.
+	function AdminCtrl($scope, adminService, suggestionService, categoryService, productService, localLoginService) {
 
 		var ctrl = this;
 		ctrl.matentusServer = localStorage.getItem('matentusServer');
@@ -49,16 +45,9 @@
 		ctrl.addCategory = addCategory;
 		ctrl.updateCategory = updateCategory;
 		ctrl.deleteCategory = deleteCategory;
-		ctrl.loginFacebook = facebookLoginService.login;
-		ctrl.loginGoogle = googleLoginService.login;
-		ctrl.loginLocal = localLoginService.login;
-
-
-		//adminService.refresh();
 
 		checkLoginStatus();
 		checkAdmin();
-
 
 		function checkLoginStatus() {
 			localLoginService.checkLoginStatus()
@@ -104,13 +93,13 @@
 			if(ctrl.currentProduct.approved) {
 				adminService.addProduct(ctrl.currentProduct);
 			} else {
-				uploadService.upload(ctrl.currentProduct);
+				suggestionService.addSuggestion(ctrl.currentProduct);
 			}
 			clearProductInput();
 		}
 
 		function addSuggestion() {
-			uploadService.upload(ctrl.currentProduct);
+			suggestionService.addSuggestion(ctrl.currentProduct);
 			clearProductInput();
 		}
 

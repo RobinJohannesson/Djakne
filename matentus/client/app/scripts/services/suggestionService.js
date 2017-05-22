@@ -1,17 +1,17 @@
 
 // ------------------------------------------------------------
-//  Upload Service. All properties of the returned object is
+//  Suggestion Service. All properties of the returned object is
 //  reachable for any controller who $inject this service.
 // ------------------------------------------------------------
 
 (function () {
 	'use strict';
 
-	var uploadService = function ($http, productService, adminService) {
+	var suggestionService = function ($http, productService, adminService) {
 
 		var api = localStorage.getItem('matentusServer') + '/api';
 
-		function upload(product) {
+		function addSuggestion(product) {
 
 			var formData = new FormData();
 			for(var key in product) {
@@ -37,12 +37,12 @@
 		};    
 
 		return {
-			upload: upload
+			addSuggestion: addSuggestion
 		};
 
 	};
 
 	angular.module('matentusApp')
-	.factory('uploadService', uploadService);
+	.factory('suggestionService', suggestionService);
 	
 })();
