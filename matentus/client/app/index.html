@@ -81,11 +81,11 @@
                     <i class="glyphicon glyphicon-info-sign footer-link"></i>
                 </a>
                
-				<div ng-controller="LoginCtrl as ctrl" ng-show="ctrl.isOnline">
-                  <a class="btn footer-link">
+				
+                  <a class="btn footer-link" ng-controller="LoginCtrl as ctrl" ng-show="ctrl.isOnline">
                     <i class="glyphicon glyphicon-log-out footer-link" ng-click="ctrl.logout()"></i>
                 </a>
-                </div>
+
 				
 			</div>
             
