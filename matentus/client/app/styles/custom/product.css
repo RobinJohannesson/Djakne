@@ -22,6 +22,10 @@
     color: #fff;
     transition: 0.5s;
 }
+#email-form .white-input, .white-input {
+    background: #fff;
+    color: #000;
+}
 /*END*/
 /*GENERAL*/
 
