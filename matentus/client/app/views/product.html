@@ -87,17 +87,67 @@
     <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog" role="document">
     	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
-	        <h3 style="margin-bottom: 20px">Du måste logga in för att fortsätta utforska våra fantastiska erbjudanden!</h3>
+            <h4 class="color-grey" style="margin-bottom: 20px;">Du måste <span style="font-size: 20px; color: #000">logga in</span> för att fortsätta utforska våra <span style="font-size: 20px; color: #000">fantastiska erbjudanden!</span></h4>
             <a class="btn btn-block btn-social color-grey">
                 <span class="fa fa-facebook"></span> Fortsätt med Facebook
             </a>
             <a class="btn btn-block btn-social color-grey">
                 <span class="fa fa-google"></span> Fortsätt med Google
             </a>
-            <p>
-                <span class="line"></span>
-                eller
-                <span class="line"></span></p>
+            <div class="col-xs-12 color-grey">
+                <p class="line col-xs-4"></p>
+                <p class="col-xs-4">eller</p>
+                <p class="line col-xs-4"></p>
+            </div>
+            <form id="email-form" name="ctrl.form" role="form" class="forced-email-form">
+                <div class="form-group">
+					<label for="InputName">Namn</label>
+					<input 
+					type="email" 
+					ng-model="ctrl.loginForm.name" 
+					class="form-control" id="InputName" 
+					aria-describedby="nameHelp" 
+					placeholder="Namn"
+					required>
+				</div>
+                <div class="form-group">
+                    <label for="kommun">Kommun</label>
+                    <select id="kommun" class="form-control kommuner col-xs-12" aria-describedby="kommunHelp" style="margin-bottom: 15px">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>
+				<div class="form-group">
+					<label for="InputEmail">Email </label>
+					<input 
+					type="email" 
+					ng-model="ctrl.loginForm.email" 
+					class="form-control" id="InputEmail" 
+					aria-describedby="emailHelp" 
+					placeholder="Email"
+					required>
+				</div>
+				<div class="form-group">
+					<label for="InputPassword">Lösenord</label>
+					<input 
+					type="password" 
+					ng-model="ctrl.loginForm.password" 
+					class="form-control" 
+					id="InputPassword" 
+					placeholder="Lösenord"
+					required>
+				</div>
+				<div class="form-group">
+					<button 
+						type="submit" 
+						class="btn btn-primary form-control" 
+						ng-click="ctrl.loginLocal()">
+						Logga In
+					</button>
+				</div>
+			</form>
             <button style="margin-top:10px" class="button btn btn-primary" onclick="location.href='/';" data-dismiss="modal">Stäng</button>
 
  		</div>

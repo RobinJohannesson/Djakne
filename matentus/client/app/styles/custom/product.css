@@ -1,5 +1,16 @@
-
-    
+/*FORCED TO LOGIN*/
+.line{
+    margin: 5% 0 0 0;
+    display: inline-block;
+    height: 1px;
+    background: #000;
+}
+.forced-email-form{
+    background: #fff!important;
+    color: #000!important;
+    text-align: left;
+}
+/*END*/
 /*GENERAL*/
 
 /*product*/
