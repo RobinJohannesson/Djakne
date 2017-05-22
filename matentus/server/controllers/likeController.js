@@ -29,12 +29,7 @@ module.exports = {
 		var productId = req.params.id;
         console.log(productId);
 		models.Like.findAll( {
-<<<<<<< HEAD
-			where: {product_id: 78}
-=======
 			where: {product_id: productId}
->>>>>>> 6f6fcefce67cb730d95755a369d37db7c6eb340c
-		})
 			.then(function(likes) {
 			res.json(likes);
 		});
