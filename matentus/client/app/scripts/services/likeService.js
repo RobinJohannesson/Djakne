@@ -22,14 +22,16 @@
 				url: api + '/products/userlikes',
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
 			})
-				.then(function(response){
+			.then(function(response){
+				console.log("Get user likes: ");
+				console.log(response);
 				if (response.status == 200){
 					setLikes(response.data);
 				}
 				else {
 					console.log("Failed to load your likes.");
 				}
-			})
+			});
 
 		}
         
@@ -42,7 +44,9 @@
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
                 params: {productId: id},
             })
-            .then(function(response){
+            .then(function(response) {
+				console.log("Get product likes: ");
+				console.log(response);
                 if (response.status == 200){
                     return response.data;
                 }
@@ -103,8 +107,9 @@
 		}
         
         function refresh() {
-		getUserLikes();
-	   }
+			getUserLikes();
+			getProductLikes();
+	    }
 		
 		return {
 			refresh: refresh,
