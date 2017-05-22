@@ -114,8 +114,6 @@
 
 	}
 
-};
-
  angular.module('matentusApp')
 	.factory('likeService', likeService);
 
