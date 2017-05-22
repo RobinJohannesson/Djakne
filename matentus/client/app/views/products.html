@@ -49,7 +49,10 @@
                         <span class="icon-bar"></span>
                     </button>
                 </li>
-                <!-- Populärt -->
+                
+     <!-- Sort products by -->
+                
+                <!-- Popular -->
 
                 <li class="col-lg-2 col-md-3 col-xs-4 text-center">
                     <a class="sort-btn col-xs-12" ng-click="ctrl.orderBy('likeAmount')" type="button" ng-class="{active: ctrl.currentOrder == 'likeAmount'}">
@@ -57,17 +60,17 @@
                     </a>
                 </li>
 
-                <!-- Senaste -->
+                <!-- Latest -->
 
                 <li class="col-lg-2 col-md-3 col-xs-4 latest text-center">
                     <a class="sort-btn col-xs-12" ng-click="ctrl.orderBy('created')" type="button" ng-class="{active: ctrl.currentOrder == 'created'}">Senaste</a>
                 </li>
 
-                <!-- Kategorier -->
+                <!-- Categories -->
 
                 <li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-2 col-md-3 col-xs-4 text-center">
                     <a class="sort-btn dropdown-toggle col-xs-12" data-toggle="dropdown">{{ ctrl.categoryHeader }}<span class="caret"></span></a>
-                    <ul ng-if="ctrl.shouldShowCategories" class="dropdown-menu col-md-3 col-lg-12 ">
+                    <ul ng-if="ctrl.shouldShowCategories" class="dropdown-menu col-md-3 col-lg-12">
                         <li class="category col-xs-12 col-lg-12" ng-repeat="category in ctrl.categories"><a class="col-xs-12" href="#!/{{ category.title }}"> {{ category.title }} </a></li>
                     </ul>
                 </li>
@@ -75,37 +78,7 @@
         </div>
 	</div>
 </nav>
-    <!--
- <!-- Sort products by 
-
- <div class="btn-group btn-group-justified" role="group" aria-label="...">
-   <div class="btn-group" role="group">
-       <button ng-click="ctrl.orderBy('likeAmount')" type="button" class="col-xs-12 sort btn btn-default" ng-class="{active: ctrl.currentOrder == 'likeAmount'}">
-           Populära
-       </button>
-   </div>
-   <div class="btn-group" role="group">
-       <button ng-click="ctrl.orderBy('created')" type="button" class="col-xs-12 sort btn btn-default" ng-class="{active: ctrl.currentOrder == 'created'}">
-           Senaste
-       </button>
-   </div>
-     
- <!-- Categories dropdown 
-     
-<div class="btn-group" role="group">
-    <button ng-click="ctrl.toggleCategories()" class="navbar-toggle col-xs-12 sort btn btn-default col-xs-12" id="kategori" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-    {{ ctrl.categoryHeader }} <span class="glyphicon glyphicon-menu-down"></span>
-    </button>
     
-    <div ng-if="ctrl.shouldShowCategories" id="kat-div" class="kat-div col-xs-12 sort">
-        <div ng-repeat="category in ctrl.categories">
-       <a href="#!/{{ category.title }}"> {{ category.title }} </a>
-     </div>
-        </div>
-    </div>
-</div>
--->
-
 
 <!-- This is where all products are displayed -->
 
