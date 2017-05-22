@@ -39,8 +39,6 @@
 		orderBy('likeAmount');
 		ctrl.getUserLikes();
 
-		console.log("Titel: " + ctrl.currentCategoryTitle + ", Id: " + ctrl.currentCategoryId);
-
 		function updateLikes(){
 			ctrl.getUserLikes();
 		}
