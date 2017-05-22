@@ -26,6 +26,9 @@
 				transformRequest: angular.identity,
 			})
 			.then(function(response) {
+				if(response.status === 201) {
+					alert("Tack för ditt förslag!");
+				}
 				productService.refresh();
 				adminService.refresh();
 			}, errorHandler);

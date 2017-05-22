@@ -29,7 +29,9 @@
         <ul class="categ-list side-content col-xs-12">
             <a href="#!/about"><li class="col-xs-12">Om Oss</li></a>
             <li class="col-xs-12">Skicka in ett produktförslag!</li>
-            <li class="log-out col-xs-12">Logga ut</li>
+            <div ng-controller="LoginCtrl as ctrl">
+                <li class="log-out col-xs-12" ng-click="ctrl.logout()">Logga ut</li>
+            </div>
             <!--img class="beta col-xs-12" alt="beta" src="../images/beta-vit.PNG"-->
             <p class="beta-text col-xs-12">Beta Version: Vi leverar endast i Skåne</p>
         </ul>

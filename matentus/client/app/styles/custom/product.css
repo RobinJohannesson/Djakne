@@ -15,6 +15,17 @@
     font-size: 100%;
     font-size-adjust: auto;
 }
+#email-form input, #email-form select{
+    background: #000;
+    border-style: none none solid none;
+    border-radius: 5px;
+    color: #fff;
+    transition: 0.5s;
+}
+#email-form .white-input, .white-input {
+    background: #fff;
+    color: #000;
+}
 /*END*/
 /*GENERAL*/
 
@@ -115,7 +126,7 @@
         top: 45%;
     }
     .rel-row{
-        padding-top: 10%; 
+        padding-top: 5%; 
     }
     
 }
