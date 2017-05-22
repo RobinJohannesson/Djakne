@@ -17,6 +17,7 @@
 		ctrl.loginGoogle = loginGoogle;
 		ctrl.loginLocal = loginLocal;
 		ctrl.checkLoginStatus = checkLoginStatus;
+		ctrl.logout=logout;
 		ctrl.updateUserInformation = localLoginService.updateUserInformation;
 		ctrl.isOnline = false;
 		ctrl.isAdmin = false;
@@ -53,6 +54,10 @@
 				console.log("From login.js - User is admin: " + ctrl.isAdmin);
 
 			});
+		}
+		
+		function logout(){
+			localLoginService.logout();
 		}
 	}
 
