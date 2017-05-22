@@ -46,6 +46,7 @@
 		ctrl.addCategory = addCategory;
 		ctrl.updateCategory = updateCategory;
 		ctrl.deleteCategory = deleteCategory;
+		ctrl.getEmailList=getEmailList;
 
 		checkLoginStatus();
 		checkAdmin();
@@ -154,6 +155,7 @@
 		}
 		
 		function getEmailList() {
+			console.log("HEEEEJ");
 			likeService.getEmailList(ctrl.currentProduct.id);
 		}
 	};

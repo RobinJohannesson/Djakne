@@ -83,14 +83,15 @@
 		}
 
 		function getEmailList(id){
-			console.log("test");
+			var productId=id;
+			console.log(productId);
 			return $http({
 				method: 'POST',
-				url: api + '/products/emaillist/'+id,
+				url: api + '/products/emaillist/'+productId,
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
 			})
 				.then(function(response){
-					console.log("AAa");
+					console.log(response);
 					if (response.status==200){
 						console.log(response.data);
 					}
