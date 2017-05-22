@@ -68,10 +68,6 @@
 			ctrl.shouldShowDropdown = ctrl.shouldShowDropdown ? false : true;
 		}
 		
-		function csvEmailList(){
-			likeService.getEmailList(productId);
-		}
-
 		function checkUserLike (id) {
 			var like = ctrl.likes.filter(function(like) {
 				return like.product_id === id;
