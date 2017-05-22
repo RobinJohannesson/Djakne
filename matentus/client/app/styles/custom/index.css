@@ -367,7 +367,7 @@ footer {
 }
 
 
-/* Bootstrap Modal */
+/* Bootstrap Modal. AKA Login-Pop-Up */
 
 .modal {
     text-align: center;
@@ -394,4 +394,9 @@ footer {
     -webkit-box-shadow: 0px 0px 34px -2px rgba(0, 0, 0, 0.67);
     -moz-box-shadow: 0px 0px 34px -2px rgba(0, 0, 0, 0.67);
     box-shadow: 0px 0px 34px -2px rgba(0, 0, 0, 0.67);
+}
+
+.kommuner{
+    height: 35px;
+    color: #666;
 }
