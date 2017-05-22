@@ -14,6 +14,8 @@
 	function ProductsCtrl($routeParams, productService, categoryService, likeService) {
 		var ctrl = this;
 
+		ctrl.matentusServer = localStorage.getItem('matentusServer');
+
 		ctrl.currentCategoryTitle = $routeParams.category;
 		ctrl.currentCategoryId = $routeParams.category_id;
 		ctrl.shouldShowCategories = false;

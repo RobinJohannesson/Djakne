@@ -137,7 +137,8 @@ module.exports = {
 	//	Returns JSON response telling if user is admin or not.
 	// --------------------------------------------------------------------------------------------
 
-	getUserType:	function(req, res){
+	getLoginStatus:	function(req, res){
+
 		var token = req.headers.authorization.replace("JWT ", "");
 		var id = jwtDecode(token).id;
 

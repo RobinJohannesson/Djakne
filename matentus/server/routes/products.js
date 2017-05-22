@@ -24,6 +24,10 @@ router.get('/suppliers', function(req, res) {
 	productController.getAllSuppliers(req, res);
 });
 
+router.post('/emaillist/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
+	likeController.createEmailList(req, res);
+});
+
 router.get('/keywords', function(req, res) {
 	productController.getAllKeywords(req, res);
 });
@@ -40,7 +44,7 @@ router.get('/userlikes', passport.authenticate('jwt', { session: false }), funct
 	likeController.getAllLikesOfUser(req, res);
 });
 
-router.get('/productlikes', passport.authenticate('jwt', { session: false }), function(req, res) {
+router.get('/productlikes/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
 	likeController.getAllLikesOfProduct(req, res);
 });
 
@@ -49,6 +53,7 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), function(re
 });
 
 router.post('/', upload.single('file'), passport.authenticate('jwt', { session: false }), function(req, res) {
+	console.log("Someone is trying to upload a product");
 	productController.createProduct(req, res);
 });
 
@@ -62,10 +67,6 @@ router.put('/:id', upload.single('file'), passport.authenticate('jwt', { session
 
 router.delete('/:id', passport.authenticate('jwt', { session: false }), function(req, res){
 	productController.delete(req, res);
-});
-
-router.get('/emaillist', passport.authenticate('jwt', { session: false }), function(req, res) {
-	likeController.createEmailList(req, res);
 });
 
 router.post('/postlike', passport.authenticate('jwt', { session: false }), function(req, res){

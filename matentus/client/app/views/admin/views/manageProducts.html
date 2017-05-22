@@ -15,8 +15,8 @@
 				<td>{{ product.title }}</td>
 				<td>{{ product.supplier }}</td>
 				<td class="add-prod-img">
-  					<a href="http://localhost:3000/images/{{product.image}}">
-  						<img src="http://localhost:3000/images/{{product.image}}" alt="" class="img-thumbnail">
+  					<a href="{{ctrl.matentusServer}}/images/{{product.image}}">
+  						<img src="{{ctrl.matentusServer}}/images/{{product.image}}" alt="" class="img-thumbnail">
   					</a>
 				</td>
                 <td>
@@ -188,7 +188,10 @@
 				data-dismiss="modal">
 				Lägg tillbaka som förslag
 			</button>
-			<button type="button" class="btn btn-primary" data-dismiss="modal">
+			<button 
+				type="button" 
+				class="btn btn-primary" 
+				data-dismiss="modal">
 				Stäng
 			</button>
 	    </div>

@@ -7,10 +7,9 @@
 (function () {
 	'use strict';
 
-	var facebookLoginService = function ($http, $location, likeService, adminService) {
+	var facebookLoginService = function ($http, $window, likeService, adminService) {
 
-
-		var isOnline = false;
+		var api = localStorage.getItem('matentusServer') + '/api';
 
 		var login = function() {
 			FB.getLoginStatus(function(response) {
@@ -22,7 +21,7 @@
 						if(response.authResponse) {
 							loginLocal(response.authResponse.accessToken);
 						}
-					}, {scope:'email', return_scopes:true});
+					}, {scope: 'email', return_scopes: true});
 				}
 			});
 		}
@@ -30,7 +29,7 @@
 		var loginLocal = function(facebookAccessToken) {
 			$http({
 				method: 'POST',
-				url: 'http://localhost:3000/api/login/facebook',
+				url: api + '/login/facebook',
 				data: {
 					fbtoken: facebookAccessToken
 				}
@@ -40,12 +39,10 @@
 					case 200:
 						console.log("An existing user was logged in with Facebook.");
 						saveToken(response.data.token);
-						isOnline=true;
 						break;
 					case 201:
 						console.log("A new user was created and logged in with Facebook.")
 						saveToken(response.data.token);
-						isOnline=true;
 						break;
 					default:
 						console.log("Something happened when logging in with Facebook: " + status);
@@ -69,15 +66,14 @@
 
 		function saveToken(token) {
 			localStorage.setItem('matentustoken', token);
-			$location.url('/');
+			$window.location.reload();
 			likeService.refresh();
 			adminService.refresh();
 		}
 
 		return {
 			login: login,
-			share: share,
-			isOnline: isOnline
+			share: share
 		};
 
 	};

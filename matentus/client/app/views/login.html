@@ -3,7 +3,7 @@
 	<!--     Mobile Login    -->
 	<script src="../scripts/styling/style.js"></script>
 
-	<div class="row sign-in-mobile text-white" ng-show="!ctrl.getLoginStatus()">
+	<div class="row sign-in-mobile text-white" ng-show="!ctrl.isOnline">
 		<!--p class="mx-auto sign-up-with text-right col-xs-5">Logga in med:</p-->
 		<a id="sign-up-with" class="col-xs-10 p-8 m-10 bg-primary">
 			Logga in med:
@@ -14,7 +14,10 @@
 		<a ng-click="ctrl.loginGoogle()" class="mx-auto btn btn-social-icon m-20 color-grey">
 			<i class="fa fa-google"></i>
 		</a>
-		<a id="email-btn" class="mx-auto btn btn-social-icon color-grey">
+<!-- 		<a id="email-btn" class="mx-auto btn btn-social-icon color-grey">
+			<i class="fa fa-envelope"></i>
+		</a> -->
+		<a data-toggle="modal" data-target="#modal-login-email" class="mx-auto btn btn-social-icon color-grey">
 			<i class="fa fa-envelope"></i>
 		</a>
 	</div>
@@ -22,7 +25,6 @@
 	<!-- Login form --> 
 	<div id="email-form-div" class="row">
 		<form id="email-form" name="ctrl.form" role="form">
-			<!--action="http://localhost:3000/api/register/newuser" method="post"-->
 			<div class="form-group">
 				<label for="InputEmail">Email </label>
 				<input 
@@ -68,23 +70,62 @@
 	        <i class="fa fa-envelope-o" aria-hidden="true"></i>
 	    </a>-->
 
-	    <a ng-click="ctrl.loginFacebook()" class="btn btn-block btn-social label-default hover-social" id="facebook" ng-show="!ctrl.getLoginStatus()" >
+	    <a ng-click="ctrl.loginFacebook()" class="btn btn-block btn-social label-default hover-social" id="facebook" ng-show="!ctrl.isOnline" >
 	    	<i class="fa fa-facebook-official" aria-hidden="true"></i>Sign in with Facebook
 	    </a>
-	    <a ng-click="ctrl.loginGoogle()" class="btn btn-block btn-social label-default hover-social" id="google" ng-show="!ctrl.getLoginStatus()" >
+	    <a ng-click="ctrl.loginGoogle()" class="btn btn-block btn-social label-default hover-social" id="google" ng-show="!ctrl.isOnline" >
 	    	<i class="fa fa-google-plus-official" aria-hidden="true"></i>
 	    	Sign in with Google
 	    </a>
-	    <a onclick="location.href='/#!/login';" class="btn btn-block btn-social label-default hover-social" id="email" ng-show="!ctrl.getLoginStatus()" >
+	    <a data-toggle="modal" data-target="#modal-login-email"  class="btn btn-block btn-social label-default hover-social" id="email" ng-show="!ctrl.isOnline" >
 	    	<i class="fa fa-envelope-o" aria-hidden="true"></i>Sign in with Email
 	    </a>
-		<a onclick="location.href='/#!/;" class="btn btn-block btn-social label-default hover-social" id="loggedin" ng-show="ctrl.getLoginStatus()" >
+		<a onclick="location.href='/#!/;" class="btn btn-block btn-social label-default hover-social" id="loggedin" ng-show="ctrl.isOnline" >
 	    	<i class="fa fa-user-o" aria-hidden="true"></i>Inloggad
 	    </a>
-		<a onclick="location.href='/#!/admin';" class="btn btn-block btn-social label-default hover-social" id="admin" ng-show="ctrl.getUserType()" >
-	    	<i class="fa fa-cogs" aria-hidden="true"></i>Admin
+		<a onclick="location.href='/#!/admin';" class="btn btn-block btn-social label-default hover-social" id="admin" ng-show="ctrl.isAdmin" >
+	    	<i class="fa fa-cogs" aria-hidden="true"></i> Admin
 	    </a>
 		
 	</div>
+
+<!-- Login modal -->
+<div class="modal fade" id="modal-login-email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+		<div id="email-form-div" class="row">
+			<form id="email-form" name="ctrl.form" role="form">
+				<div class="form-group">
+					<label for="InputEmail">Email </label>
+					<input 
+					type="email" 
+					ng-model="ctrl.loginForm.email" 
+					class="form-control" id="InputEmail" 
+					aria-describedby="emailHelp" 
+					placeholder="Email"
+					required>
+				</div>
+				<div class="form-group">
+					<label for="InputPassword">Lösenord</label>
+					<input 
+					type="password" 
+					ng-model="ctrl.loginForm.password" 
+					class="form-control" 
+					id="InputPassword" 
+					placeholder="Lösenord"
+					required>
+				</div>
+				<div class="form-group">
+					<button 
+						type="submit" 
+						class="btn btn-primary form-control" 
+						ng-click="ctrl.loginLocal()">
+						Logga In
+					</button>
+				</div>
+			</form>
+		</div>
+ 	</div>
+</div>
+<!-- End of login modal -->
 
 </div>

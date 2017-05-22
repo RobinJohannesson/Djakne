@@ -9,6 +9,8 @@
 
 	var productService = function ($http, $location) {
 
+		var api = localStorage.getItem('matentusServer') + '/api';
+
 		var state = {};
 		state.products = [];
 		state.suppliers = [];
@@ -18,7 +20,7 @@
 		function getProduct(id) {
 	        return $http({
 	        		method: 'GET', 
-	        		url:'http://localhost:3000/api/products/' + id,
+	        		url: api + '/products/' + id,
 					headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
 	        	})
 	        	.then(function(response) {
@@ -33,7 +35,7 @@
 		function getProducts() {
 			$http({
 				method: 'GET',
-				url: 'http://localhost:3000/api/products'
+				url: api + '/products'
 			})
 			.then(function(response) {
 				setProducts(response.data);
@@ -43,7 +45,7 @@
 		function getSuppliers() {
 			$http({
 				method: 'GET',
-				url: 'http://localhost:3000/api/products/suppliers'
+				url: api + '/products/suppliers'
 			})
 			.then(function(response) {
 				setSuppliers(response.data);
@@ -53,7 +55,7 @@
 		function getKeywords() {
 			$http({
 				method: 'GET',
-				url: 'http://localhost:3000/api/products/keywords'
+				url: api + '/products/keywords'
 			})
 			.then(function(response) {
 				setKeywords(response.data);
@@ -84,15 +86,8 @@
 
 		function refresh() {
 			getProducts();
-
-			var matentusToken = localStorage.getItem('matentusToken');
-			
-			if(matentusToken) {
-				getSuppliers();
-				getKeywords();
-			} else {
-				console.log("Logga in för att hämta suppliers och keywords");
-			}
+			getSuppliers();
+			getKeywords();
 		};
 
 		return {

@@ -9,6 +9,8 @@
 
 	var likeService = function ($http) {
 
+		var api = localStorage.getItem('matentusServer') + '/api';
+
 		var state = {};
 		state.likes = [];
 
@@ -17,7 +19,7 @@
 		function getUserLikes(){
 			$http({
 				method: 'GET',
-				url: 'http://localhost:3000/api/products/userlikes',
+				url: api + '/products/userlikes',
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
 			})
 				.then(function(response){
@@ -57,7 +59,7 @@
 			var token = localStorage.getItem('matentustoken');
 			$http({
 				method: 'POST',
-				url: 'http://localhost:3000/api/products/postlike',
+				url: api + '/products/postlike',
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
 				data: {productId: id}
 			})
@@ -84,12 +86,17 @@
 		function getEmailList(id){
 			return $http({
 				method: 'POST',
-				url: 'http://localhost:3000/api/products/getemaillist',
-				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
-				data: {productId: id}
+				url: api + '/products/emaillist/id',
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
 			})
 				.then(function(response){
-					return response;
+					if (response.status==200){
+						return true;
+					}
+				
+					else{
+						console.log("Fel uppstod!");
+					}
 			})
 		}
         

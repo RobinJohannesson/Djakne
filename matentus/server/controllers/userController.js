@@ -59,8 +59,6 @@ module.exports = {
 					}
 				})
 				.then(function(user) {
-					console.log("Got user from db: ");
-					console.log(user);
 					var isAdmin = (user.id === 1) ? true : false;
 					return isAdmin;
 				});

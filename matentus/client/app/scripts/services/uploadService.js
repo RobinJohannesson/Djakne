@@ -9,11 +9,9 @@
 
 	var uploadService = function ($http, productService, adminService) {
 
-		function upload(product) {
+		var api = localStorage.getItem('matentusServer') + '/api';
 
-			if(!product.approved) {
-				product.approved = false;
-			}
+		function upload(product) {
 
 			var formData = new FormData();
 			for(var key in product) {
@@ -22,10 +20,10 @@
 			
 			$http({
 				method: 'POST',
-				url: 'http://localhost:3000/api/products',
+				url: api + '/products/suggestions',
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken'), 'Content-Type': undefined},
 				data: formData,
 				transformRequest: angular.identity,
-				headers: { 'Content-Type': undefined }
 			})
 			.then(function(response) {
 				productService.refresh();

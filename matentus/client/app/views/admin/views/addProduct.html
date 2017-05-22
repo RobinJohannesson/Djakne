@@ -1,8 +1,8 @@
 
     <form 
-        name="ctrl.form" 
-        class=" col-lg-10 col-lg-offset-1 admin_div" 
+        name="ctrl.formaddproduct" 
         ng-submit="ctrl.addProduct()"
+        class=" col-lg-10 col-lg-offset-1 admin_div" 
         id="admin-add-product" 
         data-toggle="validator" 
         role="form"> 
@@ -127,7 +127,6 @@
                     file-model="ctrl.currentProduct.file" 
                     class="form-control-file mt-10" 
                     aria-describedby="fileHelp" 
-                    required 
                 />
                 <small 
                     id="fileHelp" 
@@ -136,20 +135,18 @@
                 </small>
             </div>
 
-            <!-- Submit button -->
+            <!-- Submit buttons -->
             <div class="form-group col-lg-12">
                 <button 
-                    ng-disabled="ctrl.form.$invalid"
+                    ng-disabled="ctrl.formaddproduct.$invalid"
                     ng-click="ctrl.currentProduct.approved = false"
-                    type="submit"
                     class="btn btn-warning mt-10"
                     style="width: 100%; margin: 5px 15px 5px 15px">
                     Ladda upp som förslag
                 </button>
                 <button 
-                    ng-disabled="ctrl.form.$invalid"
+                    ng-disabled="ctrl.formaddproduct.$invalid"
                     ng-click="ctrl.currentProduct.approved = true"
-                    type="submit"
                     class="btn btn-success"
                     style="width: 100%; margin: 5px 15px 5px 15px">
                     Ladda upp som färdig produkt

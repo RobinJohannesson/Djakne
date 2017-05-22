@@ -1,6 +1,6 @@
 
 // ------------------------------------------------------------
-//  Product Service. All properties of the returned object is
+//  Admin Service. All properties of the returned object is
 //  reachable for any controller who $inject this service.
 // ------------------------------------------------------------
 
@@ -9,9 +9,10 @@
 
 	var adminService = function ($http, $location, productService, categoryService) {
 
+		var api = localStorage.getItem('matentusServer') + '/api';
+
 		var state = {};
 		state.suggestions = [];
-		refresh();
 
 		function update(product) {
 
@@ -22,26 +23,25 @@
 			
 			$http({
 				method: 'PUT',
-				url: 'http://localhost:3000/api/products',
+				url: api + '/products/' + product.id,
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken'), 'Content-Type': undefined},				
 				data: formData,
 				transformRequest: angular.identity,
-				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken'), 'Content-Type': undefined}
 			})
 			.then(function(response) {
 				refresh();
-				console.log(response);
-				console.log(localStorage.getItem('matentustoken'));
 				productService.refresh();
 			})
 			.catch(function(error) {
 				errorHandler(error);
-			});;
+			});
 		}
 
 		function remove(product) {
 			$http({
 				method: 'DELETE',
-				url: 'http://localhost:3000/api/products/' + product.id
+				url: api + '/products/' + product.id,
+				headers: { 'Authorization': 'JWT '+ localStorage.getItem('matentustoken') }
 			})
 			.then(function(response) {
 				getSuggestions();
@@ -49,13 +49,34 @@
 			})
 			.catch(function(error) {
 				errorHandler(error);
-			});;
+			});
+		}
+
+		function addProduct(product) {
+
+			var formData = new FormData();
+			for(var key in product) {
+				formData.append(key, product[key]);
+			}
+			
+			$http({
+				method: 'POST',
+				url: api + '/products',
+				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken'), 'Content-Type': undefined},
+				data: formData,
+				transformRequest: angular.identity,
+			})
+			.then(function(response) {
+				productService.refresh();
+				refresh();
+			}, errorHandler);
 		}
 
 		function addCategory(category) {
 			$http({
 				method: 'POST',
-				url: 'http://localhost:3000/api/categories',
+				url: api + '/categories',
+				headers: { 'Authorization': 'JWT '+ localStorage.getItem('matentustoken') },
 				data: category
 			})
 			.then(function(response) {
@@ -63,13 +84,14 @@
 			})
 			.catch(function(error) {
 				errorHandler(error);
-			});;
+			});
 		}
 
 		function updateCategory(category) {
 			$http({
 				method: 'PUT',
-				url: 'http://localhost:3000/api/categories/' + category.id,
+				url: api + '/categories/' + category.id,
+				headers: { 'Authorization': 'JWT '+ localStorage.getItem('matentustoken') },
 				data: category
 			})
 			.then(function(response) {
@@ -77,54 +99,59 @@
 			})
 			.catch(function(error) {
 				errorHandler(error);
-			});;
+			});
 		}
 
 		function deleteCategory(category) {
 			$http({
 				method: 'DELETE',
-				url: 'http://localhost:3000/api/categories/' + category.id,
+				url: api + '/categories/' + category.id,
+				headers: { 'Authorization': 'JWT '+ localStorage.getItem('matentustoken') }
 			})
 			.then(function(response) {
 				categoryService.refresh();
 			})
 			.catch(function(error) {
 				errorHandler(error);
-			});;
+			});
 		}
 
 		function getSuggestion(id) {
 			return $http({
 				method: 'GET', 
-				url:'http://localhost:3000/api/products/suggestions/' + id
+				url: api + '/products/suggestions/' + id,
+				headers: { 'Authorization': 'JWT '+ localStorage.getItem('matentustoken') }
 			})
 			.then(function(response) {
-				return response.data;	        	
+				return response.data;
 			})
 			.catch(function(error) {
 				errorHandler(error);
-			});
+			})
 		};
 
 		function getSuggestions() {
 			$http({
 				method: 'GET',
-				url: 'http://localhost:3000/api/products/suggestions'
+				url: api + '/products/suggestions',
+				headers: { 'Authorization': 'JWT '+ localStorage.getItem('matentustoken') }
 			})
 			.then(function(response) {
 				setSuggestions(response.data);
 			})
 			.catch(function(error) {
 				errorHandler(error);
-	        });;
+			});
 		}
 
 		function setSuggestions(suggestions) {
 			state.suggestions.length = 0;
 			state.suggestions.push.apply(state.suggestions, suggestions);
+
 		}
 
 		var errorHandler = function(error) {
+			console.log(error.status);
 			if(error.status === 404) $location.path('/404');
 			//if(error.status === 401) do something
 			//console.log(response);
@@ -141,6 +168,7 @@
 			addCategory: addCategory,
 			updateCategory: updateCategory,
 			deleteCategory: deleteCategory,
+			addProduct: addProduct,
 			refresh: refresh
 		};
 

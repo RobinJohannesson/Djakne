@@ -14,6 +14,8 @@
 	function ProductCtrl($routeParams, productService) {
 
 		var ctrl = this;
+		ctrl.matentusServer = localStorage.getItem('matentusServer');
+		
 		ctrl.id = $routeParams.id;
 		ctrl.product = {};
 		ctrl.products = productService.products;

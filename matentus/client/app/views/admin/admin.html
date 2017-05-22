@@ -1,49 +1,61 @@
-<h3>Admin</h3>
-<div class="btn-group btn-group-justified admin_btns" role="group" aria-label="...">
+<div ng-show="ctrl.isAdmin">
+	<div class="btn-group btn-group-justified admin_btns" role="group" aria-label="...">
 
-	<div class="btn-group" role="group">
-		<button 
-			ng-click ="ctrl.changeView(ctrl.manageSuggestionsView); ctrl.clearCurrentProduct();" 
-			type="button" 
-			class="col-xs-12 admin_btn btn btn-default"
-			ng-class="{active: ctrl.currentView == ctrl.manageSuggestionsView}" 
-			id="product_request_btn">
-			Produktförfrågningar
-		</button>
+		<div class="btn-group" role="group">
+			<button 
+				ng-click ="ctrl.changeView(ctrl.manageSuggestionsView); ctrl.clearCurrentProduct();" 
+				type="button" 
+				class="col-xs-12 admin_btn btn btn-default"
+				ng-class="{active: ctrl.currentView == ctrl.manageSuggestionsView}" 
+				id="product_request_btn">
+				Produktförfrågningar
+			</button>
+		</div>
+
+		<div class="btn-group" role="group">
+			<button 
+				ng-click = "ctrl.changeView(ctrl.addProductView); ctrl.clearCurrentProduct();" 
+				type="button" 
+				class="col-xs-12 admin_btn btn btn-default"
+				ng-class="{active: ctrl.currentView == ctrl.addProductView}"  
+				id="add_product_btn">
+				Lägg till produkt
+			</button>
+		</div>
+
+		<div class="btn-group" role="group">
+			<button 
+				ng-click ="ctrl.changeView(ctrl.manageProductsView); ctrl.clearCurrentProduct();" 
+				type="button" 
+				class="col-xs-12 admin_btn btn btn-default"
+				ng-class="{active: ctrl.currentView == ctrl.manageProductsView}"
+				id="manage_product_btn">
+				Ändra produkt
+			</button>
+		</div>
+
+		<div class="btn-group" role="group">
+			<button 
+				ng-click ="ctrl.changeView(ctrl.manageCategoriesView); ctrl.clearCurrentProduct();" 
+				type="button" 
+				class="col-xs-12 admin_btn btn btn-default"
+				ng-class="{active: ctrl.currentView == ctrl.manageCategoriesView}"
+				id="manage_cat_btn">
+				Hantera kategorier
+			</button>
+		</div>
 	</div>
 
-<div class="btn-group" role="group">
-	<button 
-		ng-click = "ctrl.changeView(ctrl.addProductView); ctrl.clearCurrentProduct();" 
-		type="button" 
-		class="col-xs-12 admin_btn btn btn-default"
-		ng-class="{active: ctrl.currentView == ctrl.addProductView}"  
-		id="add_product_btn">
-		Lägg till produkt
-	</button>
+	<div ng-include src="ctrl.currentView"></div>
 </div>
 
-<div class="btn-group" role="group">
-	<button 
-		ng-click ="ctrl.changeView(ctrl.manageProductsView); ctrl.clearCurrentProduct();" 
-		type="button" 
-		class="col-xs-12 admin_btn btn btn-default"
-		ng-class="{active: ctrl.currentView == ctrl.manageProductsView}"
-		id="manage_product_btn">
-		Ändra produkt
-	</button>
+<!-- Login modal -->
+<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+	        <h3 style="margin-bottom: 20px">Vänligen logga in som administratör för att se innehållet på denna sidan.</h3>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Stäng</button>
+ 		</div>
+ 	</div>
 </div>
-
-<div class="btn-group" role="group">
-	<button 
-		ng-click ="ctrl.changeView(ctrl.manageCategoriesView); ctrl.clearCurrentProduct();" 
-		type="button" 
-		class="col-xs-12 admin_btn btn btn-default"
-		ng-class="{active: ctrl.currentView == ctrl.manageCategoriesView}"
-		id="manage_cat_btn">
-			Hantera kategorier
-		</button>
-	</div>
-</div>
-
-<div ng-include src="ctrl.currentView"></div>
+<!-- End of login modal -->

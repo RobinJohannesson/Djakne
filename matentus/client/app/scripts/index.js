@@ -54,4 +54,6 @@ angular
 		redirectTo: '/'
 	});
 
+	localStorage.setItem('matentusServer', 'http://localhost:3000');
+
 }]);
