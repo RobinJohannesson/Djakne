@@ -11,7 +11,6 @@
 
         var api = localStorage.getItem('matentusServer') + '/api';
         var isOnline = false;
-        var isAdmin = false;
 
         var state = {};
         state.cities = [];
@@ -28,11 +27,11 @@
                 var isNewUser = false;
                 switch(response.status) {
                     case 200:
-                        saveToken(response.data.token);
+                        saveToken(response.data.token, isNewUser);
                         break;
                     case 201:
-                        saveToken(response.data.token);
                         isNewUser = true;
+                        saveToken(response.data.token, isNewUser);
                         break;
                     default:
                         console.log("Something happened when logging in with email: " + status);
@@ -97,12 +96,14 @@
             });
         }
         
-        function saveToken(token) {
+        function saveToken(token, isNewUser) {
             localStorage.setItem('matentustoken', token);
             isOnline = true;
-            //$window.location.reload();
             likeService.refresh();
             adminService.refresh();
+            if(!isNewUser) {
+                $window.location.reload();
+            }
         }
 
         function removeToken() {
@@ -114,12 +115,10 @@
         }
 
         function showWelcomeModal() {
-            console.log("Visa welcome modal");
             $('#modal-welcome').modal('show');
         }
 
         function getCities() {
-            console.log("Getting cities");
             $http({
                 method: 'GET',
                 url: api + '/cities'
@@ -132,7 +131,6 @@
         function setCities(cities) {
             state.cities.length = 0;
             state.cities.push.apply(state.cities, cities);
-            console.log(state.cities);
         }
 
         var errorHandler = function(response) {

@@ -34,15 +34,15 @@
 					googletoken: googleAccessToken
 				}
 			})
-						.then(function(response) {
+			.then(function(response) {
                 var isNewUser = false;
                 switch(response.status) {
                     case 200:
-                        saveToken(response.data.token);
+                        saveToken(response.data.token, isNewUser);
                         break;
                     case 201:
-                        saveToken(response.data.token);
-                        isNewUser = true;
+                    	isNewUser = true;
+                        saveToken(response.data.token, isNewUser);
                         break;
                     default:
                         console.log("Something happened when logging in with Google: " + status);
@@ -60,12 +60,14 @@
 			});
 		}
 
-		function saveToken(token) {
-			localStorage.setItem('matentustoken', token);
-			//$window.location.reload();
-			likeService.refresh();
-			adminService.refresh();
-		}
+        function saveToken(token, isNewUser) {
+            localStorage.setItem('matentustoken', token);
+            likeService.refresh();
+            adminService.refresh();
+            if(!isNewUser) {
+                $window.location.reload();
+            }
+        }
 
         function showWelcomeModal(){
             $('#modal-welcome').modal('show');
