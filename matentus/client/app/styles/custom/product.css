@@ -41,7 +41,9 @@
 /*GENERAL*/
 
 /*product*/
-
+#email-form{
+    margin-top: 15%;
+}
 .home:hover{
     color: #9d9d9d;
 }
