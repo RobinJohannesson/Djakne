@@ -1,19 +1,30 @@
 /*FORCED TO LOGIN*/
+.or-div{
+    height: 40px; 
+}
 .line{
-    margin: 7% 0;
-    display: inline-block;
+    position: absolute;
+    background: #bbb;
+    width: 100%;
     height: 1px;
-    background: #000;
+    left: 0;
+    top: 42%;
+}
+.or{
+    font-weight: 100;
+    position: absolute;
+    color: #bbb;
+    background: #fff;
+    width: 25%;
+    height: 100%;
+    left: 37.5%;
+    top: 12%;
+    font-size: 120%;
 }
 .forced-email-form{
     background: #fff!important;
     color: #000!important;
     text-align: left;
-}
-.or{
-    margin: 2% 0;
-    font-size: 100%;
-    font-size-adjust: auto;
 }
 #email-form input, #email-form select{
     background: #000;
