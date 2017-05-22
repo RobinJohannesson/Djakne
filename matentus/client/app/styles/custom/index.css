@@ -19,9 +19,9 @@ body {
 }
 
 .footer-link {
-    padding: 4%;
-    color: #9d9d9d;
-    
+    font-size: 115%;
+    color: #000;
+    padding: 1%;
 }
 
 
