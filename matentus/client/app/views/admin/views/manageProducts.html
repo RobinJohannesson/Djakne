@@ -20,7 +20,10 @@
   					</a>
 				</td>
                 <td>
-                    <p class="likes-admin">
+                    <p ng-click="ctrl.setCurrentProduct(product)" 
+  				  		data-toggle="modal" 
+  				  		data-target="#modal-emaillist-product"
+   				  		class="likes-admin">		
                     <i class="fa fa-file-text-o" aria-hidden="true"></i></p>
                 </td>
 				<td>
@@ -200,6 +203,15 @@
   </div>
 </div>
 <!-- End of change product modal -->
+
+<div class="modal fade" id="modal-emaillist-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+			<h2 style="margin-bottom: 20px"><a href="" ng-click="ctrl.getEmailList()">Ladda ner CSV-fil</a></h2>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Stäng</button>
+ 		</div> 
+ 	</div>
+</div>
 
 <!-- Delete product modal -->
 <div class="modal fade" id="modal-delete-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
