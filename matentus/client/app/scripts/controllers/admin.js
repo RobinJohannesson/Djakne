@@ -9,9 +9,9 @@
 	angular.module('matentusApp')
 	.controller('AdminCtrl', AdminCtrl);
 
-	AdminCtrl.$inject = ['$scope', 'adminService', 'suggestionService', 'categoryService', 'productService', 'localLoginService'];
+	AdminCtrl.$inject = ['$scope', 'adminService', 'suggestionService', 'categoryService','likeService', 'productService', 'localLoginService'];
 
-	function AdminCtrl($scope, adminService, suggestionService, categoryService, productService, localLoginService) {
+	function AdminCtrl($scope, adminService, suggestionService, categoryService,likeService, productService, localLoginService) {
 
 		var ctrl = this;
 		ctrl.matentusServer = localStorage.getItem('matentusServer');
@@ -151,6 +151,10 @@
 
 		function clearCurrentProduct() {
 			ctrl.currentProduct = {};
+		}
+		
+		function getEmailList() {
+			likeService.getEmailList(ctrl.currentProduct.id);
 		}
 	};
 

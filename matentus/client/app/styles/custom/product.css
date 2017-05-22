@@ -9,7 +9,8 @@
 }
 .home{
     position: absolute;
-    font-size: 140%;
+    top: 45%;
+    font-size: 150%;
     color: black;   
 }
 #page-header{
@@ -27,7 +28,7 @@
     position: absolute;
     color: #fff;
     font-size: 32%;
-    left: 25.0%;
+    left: 85.0%;
     top: 31%;
 }
 #numb-of-likes-white-prod{

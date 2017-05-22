@@ -84,14 +84,16 @@
 		}
 
 		function getEmailList(id){
+			console.log("test");
 			return $http({
 				method: 'POST',
-				url: api + '/products/emaillist/id',
+				url: api + '/products/emaillist/'+id,
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
 			})
 				.then(function(response){
+					console.log("AAa");
 					if (response.status==200){
-						return true;
+						console.log(response.data);
 					}
 				
 					else{
@@ -109,7 +111,8 @@
 			likes: state.likes,
 			likeProduct: likeProduct,
 			getUserLikes: getUserLikes,
-            getProductLikes: getProductLikes
+            getProductLikes: getProductLikes,
+			getEmailList:getEmailList
 		};
 
 	}

@@ -64,18 +64,10 @@
 			ctrl.shouldShowCategories = ctrl.shouldShowCategories ? false : true;
 		}
 
-		function updateCategoryHeader() {
-			ctrl.categoryHeader = (ctrl.currentCategoryTitle) ? ctrl.currentCategoryTitle : 'Kategorier';
-		}
-
 		function toggleDropdown() {
 			ctrl.shouldShowDropdown = ctrl.shouldShowDropdown ? false : true;
 		}
 		
-		function csvEmailList(){
-			likeService.getEmailList(productId);
-		}
-
 		function checkUserLike (id) {
 			var like = ctrl.likes.filter(function(like) {
 				return like.product_id === id;

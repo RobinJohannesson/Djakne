@@ -72,12 +72,12 @@ module.exports = {
 		.then(function(isAdmin) {
 			if(!isAdmin) {
 				res.sendStatus(status.NOT_ADMIN);
-				console.log("--> Get all suggestions, not admin.");
-				return;
+				const err = new Error('Not Admin');
+				throw(err);
 			}
 		})
 		.then(function() {
-			console.log("--> Find all suggestions...");
+			console.log("error2");
 			models.Product.findAll({
 				where: {
 					approved: false
