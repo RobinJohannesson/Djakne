@@ -102,12 +102,9 @@
 				src= "{{ctrl.matentusServer}}/images/{{product.image}}" 
 				alt="">
 		</a>
-
 		<div class="img-label">
 			<h4 id="label-text"> {{ product.title }} </h4>
-            
 		</div>
-        
 		<div ng-click="ctrl.likeProduct(product.id)" class="heart-icon">
             <i class="fa fa-heart-o heart" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)">
                 <p id="numb-of-likes-white" class="numb-of-likes">
