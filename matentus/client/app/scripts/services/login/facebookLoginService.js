@@ -34,20 +34,26 @@
 					fbtoken: facebookAccessToken
 				}
 			})
-			.then(function(response){
-				switch(response.status) {
-					case 200:
-						console.log("An existing user was logged in with Facebook.");
-						saveToken(response.data.token);
-						break;
-					case 201:
-						console.log("A new user was created and logged in with Facebook.")
-						saveToken(response.data.token);
-						break;
-					default:
-						console.log("Something happened when logging in with Facebook: " + status);
-				}
-			})
+			.then(function(response) {
+                var isNewUser = false;
+                switch(response.status) {
+                    case 200:
+                        saveToken(response.data.token);
+                        break;
+                    case 201:
+                        saveToken(response.data.token);
+                        isNewUser = true;
+                        break;
+                    default:
+                        console.log("Something happened when logging in with Facebook: " + status);
+                }
+                return isNewUser;
+            })
+            .then(function(isNewUser) {
+                if(isNewUser) {
+                    showWelcomeModal();
+                }
+            })
 			.catch(function(error) {
 				console.log("Something happened when logging in...");
 				console.log(error);
@@ -66,10 +72,14 @@
 
 		function saveToken(token) {
 			localStorage.setItem('matentustoken', token);
-			$window.location.reload();
+			//$window.location.reload();
 			likeService.refresh();
 			adminService.refresh();
 		}
+
+        function showWelcomeModal() {
+            $('#modal-welcome').modal('show');
+        }
 
 		return {
 			login: login,

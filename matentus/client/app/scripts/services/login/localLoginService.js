@@ -20,20 +20,24 @@
                 url: api + '/login/email',
                 data: loginForm
             })
-            .then(function(response){
+            .then(function(response) {
+                var isNewUser = false;
                 switch(response.status) {
                     case 200:
-                        console.log("An existing user was logged in with email.");
                         saveToken(response.data.token);
-                        console.log(response.data.token);
                         break;
                     case 201:
-                        console.log("A new user was created and logged in with email.")
                         saveToken(response.data.token);
-                        console.log(response.data.token);
+                        isNewUser = true;
                         break;
                     default:
                         console.log("Something happened when logging in with email: " + status);
+                }
+                return isNewUser;
+            })
+            .then(function(isNewUser) {
+                if(isNewUser) {
+                    showWelcomeModal();
                 }
             })
             .catch(function(error) {
@@ -77,7 +81,7 @@
         function saveToken(token) {
             localStorage.setItem('matentustoken', token);
             isOnline = true;
-            $window.location.reload();
+            //$window.location.reload();
             likeService.refresh();
             adminService.refresh();
         }
@@ -90,6 +94,10 @@
             adminService.refresh();
         }
 
+        function showWelcomeModal() {
+            console.log("Visa welcome modal");
+            $('#modal-welcome').modal('show');
+        }
 
         return {
             login: login,
