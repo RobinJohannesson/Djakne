@@ -80,8 +80,7 @@ module.exports = {
 					}
 				})
 				.then(function(user) {
-					var isAdmin = (user.id === 1) ? true : false;
-					return isAdmin;
+					return user.admin;
 				});
 	}
 }

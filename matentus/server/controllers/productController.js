@@ -70,20 +70,22 @@ module.exports = {
 
 		userController.isAdmin(req)
 		.then(function(isAdmin) {
+			console.log("--> Is admin? " + isAdmin);
 			if(!isAdmin) {
+				console.log("--> Sending status NOT ADMIN");
 				res.sendStatus(status.NOT_ADMIN);
-				const err = new Error('Not Admin');
-				throw(err);
+				res.set("Connection", "close");
 			}
 		})
 		.then(function() {
-			console.log("error2");
+			console.log("--> Getting suggestions");
 			models.Product.findAll({
 				where: {
 					approved: false
 				}
 			})
 			.then(function(products) {
+				console.log("--> Trying to send suggestions");
 				res.json(products);
 			});
 		});
