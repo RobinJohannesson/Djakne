@@ -33,18 +33,17 @@
 
 		}
         
-        function getProductLikes(){
+        function getProductLikes(id){
+            console.log(id);
             console.log("likeservice, getproductlikes");
             return $http({
                 method: 'GET',
-                url: 'http://localhost:3000/api/products/productlikes',
+                url: 'http://localhost:3000/api/products/productlikes/' + id,
 				headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')},
+                params: {productId: id},
             })
             .then(function(response){
                 if (response.status == 200){
-                    console.log(response.data);
-                    console.log(response.data.length);
-                    console.log(response.data.length + "");
                     return response.data;
                 }
                 else {

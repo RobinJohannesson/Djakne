@@ -18,6 +18,7 @@
 
 		ctrl.currentCategoryTitle = $routeParams.category;
 		ctrl.currentCategoryId = $routeParams.category_id;
+        ctrl.id = $routeParams.id;
 		ctrl.shouldShowCategories = false;
 		ctrl.shouldShowDropdown = false;
 		ctrl.currentCategoryId = null;
@@ -46,13 +47,14 @@
 			ctrl.getUserLikes();
 		}
         
-        function updateProductLikes(){
+        updateProductLikes();
+        
+        function updateProductLikes(id){
             console.log("getProductLikes");
-            ctrl.getProductLikes()
+            ctrl.getProductLikes(id)
             .then(function(productlikes){
-                console.log(productlikes);
-                console.log(productlikes.length + "");
                 ctrl.productlikes = productlikes.length + "";
+                return productlikes;
             });
         }
 	
