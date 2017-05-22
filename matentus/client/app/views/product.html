@@ -37,8 +37,8 @@
                 <h3>Leverantör</h3>
                 <p>{{ ctrl.product.supplier }}</p>
                  <h3>Leverans</h3>
-                <p>När tillräckligt många gillar denna produkt, kontaktar vi leverantören. Ett erbjudande mejlas sedan till er som visat intresse för produkten.
-                <p>Så glöm inte att gilla!</p>
+                <p>När tillräckligt många gillar denna produkt, kontaktar vi leverantören. Ett erbjudande mejlas sedan till alla som visat intresse för produkten.
+                <p>Så glöm inte att gilla dina favoriter!</p>
             <div ng-controller="ProductsCtrl as ctrl">
                 <div ng-click="ctrl.likeProduct(ctrl.product.id)" class="heart-icon-prod">
             <i class="fa fa-heart-o heart-prod" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)">
