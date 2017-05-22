@@ -124,41 +124,55 @@
  	</div>
 </div>
 <!-- End of login modal -->
-     <form id="email-form" name="ctrl.form" role="form">
-                <div class="form-group">
-                    <h4 class="color-white col-lg-8 col-lg-offset-2" style= "font-size: 20px; font-weight: 100; margin-bottom: 18px;">Välkommen<br><span style="font-size: 16px; color: lightgray">Som medlem i Matentus kan du <span style="font-size: 16px; color: #fff">dela ditt intresse </span>för mat & dryck, samt ta del av</span><span style="font-size: 16px; color: #fff"> fantastiska erbjudanden!</span></h4>
-					<label for="InputName" class="col-xs-12">Namn</label>
-					<input 
-					type="text" 
-					ng-model="ctrl.loginForm.name" 
-					class="form-control col-xs-12" id="InputName" 
-					aria-describedby="nameHelp" 
-					placeholder="Namn"
-					required>
-				</div>
-                <div class="form-group">
-                    <label for="kommun" style="margin-top: 10px;" class="col-xs-12">Kommun</label>
-                    <select style="margin-bottom: 10px;" id="kommun" class="kommuner col-xs-12">
-                        <option disabled>1</option>
-                   
-                    </select>
-                </div>
-				<div class="form-group">
-                    <p class="color-white col-lg-8 col-lg-offset-2" style= "font-size: 10px; color: lightgrey; margin-bottom: 20px;">Fyll i namn och kommun för att ta del av just dina lokala och närproducerade produkter.</p>
-					<button
-						type="submit" 
-						class="btn btn-primary form-control next" 
-						ng-click="">
-						Nästa
-					</button>
-				</div>
-			</form>
 
 <!-- Welcome modal -->
 <div class="modal fade" id="modal-welcome" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog" role="document">
 		<div id="email-form-div" class="row align-items-center">
-			<!---Lägg tllbaka den här--->
+			
+		    <form 
+		    	id="email-form" 
+		    	name="ctrl.welcomeform" 
+		    	role="form"
+		    	ng-submit="ctrl.updateUserInformation()">
+
+                <div class="form-group">
+                    <h4 class="color-white col-lg-8 col-lg-offset-2" style= "font-size: 20px; font-weight: 100; margin-bottom: 18px;">Välkommen<br><span style="font-size: 16px; color: lightgray">Som medlem i Matentus kan du <span style="font-size: 16px; color: #fff">dela ditt intresse </span>för mat & dryck, samt ta del av</span><span style="font-size: 16px; color: #fff"> fantastiska erbjudanden!</span></h4>
+					<label for="InputName" class="col-xs-12">Namn</label>
+					<input 
+						type="text" 
+						ng-model="ctrl.welcomeForm.name" 
+						class="form-control col-xs-12" id="InputName" 
+						aria-describedby="nameHelp" 
+						placeholder="Namn"
+						required
+					>
+				</div>
+
+                <div class="form-group">
+                    <label for="kommun" style="margin-top: 10px;" class="col-xs-12">Kommun</label>
+                    <select 
+                    	style="margin-bottom: 10px;" 
+                    	id="kommun" 
+                    	class="kommuner col-xs-12"
+                    	ng-model="ctrl.welcomForm.city"
+                    	required>
+                    	<option disabled>1</option>
+                    </select>
+                </div>
+
+				<div class="form-group">
+                    <p class="color-white col-lg-8 col-lg-offset-2" style= "font-size: 10px; color: lightgrey; margin-bottom: 20px;">Fyll i namn och kommun för att ta del av just dina lokala och närproducerade produkter.</p>
+					<button
+						type="submit" 
+						class="btn btn-primary form-control next"
+						ng-disabled="ctrl.welcomeForm.$invalid">
+						Nästa
+					</button>
+				</div>
+
+			</form>
+
 		</div>
  	</div>
     </div>
