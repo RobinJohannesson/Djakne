@@ -47,7 +47,6 @@
 			ctrl.getUserLikes();
 		}
         
-        updateProductLikes();
         
         function updateProductLikes(id){
             console.log("getProductLikes");
