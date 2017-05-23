@@ -12,7 +12,6 @@
 		var api = localStorage.getItem('matentusServer') + '/api';
 
 		function addSuggestion(product) {
-
 			var formData = new FormData();
 			for(var key in product) {
 				formData.append(key, product[key]);

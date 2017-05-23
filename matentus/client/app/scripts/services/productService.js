@@ -69,6 +69,7 @@
 		function setSuppliers(suppliers) {
 			state.suppliers.length = 0;
 			state.suppliers.push.apply(state.suppliers, suppliers);
+			console.log(state.suppliers);
 		}
 
 		function setKeywords(keywords) {
