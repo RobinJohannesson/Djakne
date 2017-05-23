@@ -74,7 +74,7 @@
 			<!-- Input keyword -->
 			<div class="form-group col-lg-12">
 				<label 
-					for="product-keyword">
+					for="distributor">
 					Nyckelord
 				</label>
 				<angucomplete-alt
@@ -83,7 +83,7 @@
 					pause="100"
 					selected-object="selected"
 					ng-model="ctrl.product.keyword"
-					remote-url="{{ctrl.matentusServer}}/api/products/keywords"
+					local-data="ctrl.keywords"
 					search-fields="keyword"
 					title-field="keyword"
 					minlength="0"
@@ -94,7 +94,7 @@
 			<!-- Input supplier -->
 			<div class="form-group col-lg-12">
 				<label 
-					for="product-supplier">
+					for="distributor">
 					Leverantör
 				</label>
 				<angucomplete-alt
@@ -103,7 +103,7 @@
 					pause="100"
 					selected-object="selected"
 					ng-model="ctrl.product.supplier"
-					remote-url="{{ctrl.matentusServer}}/api/products/suppliers"
+					local-data="ctrl.suppliers"
 					search-fields="supplier"
 					title-field="supplier"
 					minlength="0"
