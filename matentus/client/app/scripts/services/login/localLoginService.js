@@ -12,6 +12,11 @@
         var api = localStorage.getItem('matentusServer') + '/api';
         var isOnline = false;
 
+        var state = {};
+        state.cities = [];
+
+        getCities();
+
         var login = function(loginForm) {
             $http({
                 method: 'POST',
@@ -113,6 +118,22 @@
             $('#modal-welcome').modal('show');
         }
 
+        function getCities() {
+            $http({
+                method: 'GET',
+                url: api + '/cities'
+            })
+            .then(function(response) {
+                setCities(response.data);
+            });
+        }
+
+        function setCities(cities) {
+            state.cities.length = 0;
+            state.cities.push.apply(state.cities, cities);
+            console.log(state.cities);
+        }
+
         var errorHandler = function(response) {
             console.log(response);
         };    
@@ -123,7 +144,8 @@
             checkAdmin: checkAdmin,
             isOnline: isOnline,
             logout: logout,
-            updateUserInformation: updateUserInformation
+            updateUserInformation: updateUserInformation,
+            cities: state.cities
         };
 
     };

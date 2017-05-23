@@ -11,7 +11,7 @@
 
 	AdminCtrl.$inject = ['$scope', 'adminService', 'suggestionService', 'categoryService','likeService', 'productService', 'localLoginService'];
 
-	function AdminCtrl($scope, adminService, suggestionService, categoryService,likeService, productService, localLoginService) {
+	function AdminCtrl($scope, adminService, suggestionService, categoryService, likeService, productService, localLoginService) {
 
 		var ctrl = this;
 		ctrl.matentusServer = localStorage.getItem('matentusServer');
@@ -27,6 +27,8 @@
 		ctrl.suggestions = adminService.suggestions;
 		ctrl.categories = categoryService.categories;
 		ctrl.products = productService.products;
+		ctrl.keywords = productService.keywords;
+		ctrl.suppliers = productService.suppliers;
 		ctrl.currentProduct = {};
 		ctrl.currentCategory = {};
 

@@ -21,6 +21,7 @@
 		ctrl.checkLoginStatus = checkLoginStatus;
 		ctrl.logout=logout;
 		ctrl.updateUserInformation = updateUserInformation;
+		ctrl.cities = localLoginService.cities;
 		ctrl.isOnline = false;
 		ctrl.isAdmin = false;
 
