@@ -26,8 +26,6 @@
 		ctrl.isAdmin = false;
 		ctrl.suggestions = adminService.suggestions;
 		ctrl.categories = categoryService.categories;
-		ctrl.suppliers = productService.suppliers;
-		ctrl.keywords = productService.keywords;
 		ctrl.products = productService.products;
 		ctrl.currentProduct = {};
 		ctrl.currentCategory = {};
