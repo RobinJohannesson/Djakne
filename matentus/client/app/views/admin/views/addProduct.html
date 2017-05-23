@@ -69,7 +69,7 @@
                 </select>
             </div>
 
-            <!-- Input subcategory -->
+            <!-- Input keyword -->
             <div class="form-group col-lg-12">
                 <label 
                     for="distributor">
@@ -80,8 +80,7 @@
                     placeholder=""
                     pause="100"
                     selected-object="selected"
-                    ng-model="ctrl.currentProduct.keyword"
-                    local-data="ctrl.keywords"
+                    remote-url="{{ctrl.matentusServer}}/api/products/keywords"
                     search-fields="keyword"
                     title-field="keyword"
                     minlength="0"
@@ -101,7 +100,7 @@
                     pause="100"
                     selected-object="selected"
                     ng-model="ctrl.currentProduct.supplier"
-                    local-data="ctrl.suppliers"
+                    remote-url="{{ctrl.matentusServer}}/api/products/suppliers"
                     search-fields="supplier"
                     title-field="supplier"
                     minlength="0"

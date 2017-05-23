@@ -13,6 +13,8 @@
 	function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, $scope, $http, $location$, $window) {
 
 		var ctrl = this;
+		ctrl.matentusServer = localStorage.getItem('matentusServer');
+		
 		ctrl.loginFacebook = loginFacebook;
 		ctrl.loginGoogle = loginGoogle;
 		ctrl.loginLocal = loginLocal;
@@ -21,8 +23,6 @@
 		ctrl.updateUserInformation = updateUserInformation;
 		ctrl.isOnline = false;
 		ctrl.isAdmin = false;
-
-		ctrl.cities = localLoginService.cities;
 
 		checkLoginStatus();
 		checkAdmin();
