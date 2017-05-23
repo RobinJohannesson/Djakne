@@ -68,12 +68,15 @@ module.exports = {
 
 	getAllSuggestions: function(req, res) {
 
+		var sent = false;
+
 		userController.isAdmin(req)
 		.then(function(isAdmin) {
 			if(!isAdmin) {
 				res.sendStatus(status.NOT_ADMIN);
-				//res.set("Connection", "close");
+				// res.set("Connection", "close");
 				res.end();
+				sent = true;
 			}
 		})
 		.then(function() {
@@ -83,7 +86,9 @@ module.exports = {
 				}
 			})
 			.then(function(products) {
-				res.json(products);
+				if(!sent) {
+					res.json(products);
+				}
 			});
 		});
 	},
