@@ -29,27 +29,31 @@ module.exports = {
 		var decoded = jwtDecode(token);
 		userId=decoded.id;
 		productId=req.body.productId;
-		console.log(productId);
 
 		models.Like.find( {
-			where: {user_id: userId,
-					product_id: productId
-				   }
+			where: {
+				user_id: userId,
+				product_id: productId
+			}
 		})
-			.then(function(like) {
+		.then(function(like) {
 			if(!like){
-				models.Like.create({user_id: userId, product_id: productId})
-					.then(function() {
-					res.sendStatus(200);
-				}).then (function(){
+				models.Like.create({
+					user_id: userId, 
+					product_id: productId
+				})
+				.then(function() {
 					models.Product.find({
-						where:{id: productId}
-					}).then(function(product){
-						return product.increment('likeAmount', {by: 1})
-					}).then(function(){
-						res.sendStatus(200);
+						where: {
+							id: productId
+						}
 					})
-
+					.then(function(product){
+						product.increment('likeAmount', {by: 1})
+					})
+					.then(function(){
+						res.sendStatus(201);
+					});
 				});
 			}
 			else if(like){
@@ -59,7 +63,7 @@ module.exports = {
 						return product.decrement('likeAmount', {by: 1})
 					}).then(function(){
 						like.destroy();
-						res.sendStatus(201);
+						res.sendStatus(200);
 					})
 				
 				

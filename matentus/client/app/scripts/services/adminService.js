@@ -7,7 +7,7 @@
 (function () {
 	'use strict';
 
-	var adminService = function ($http, $location, productService, categoryService) {
+	var adminService = function ($http, $location, $window, productService, categoryService) {
 
 		var api = localStorage.getItem('matentusServer') + '/api';
 
@@ -239,8 +239,8 @@
 		var errorHandler = function(error) {
 			console.log(error.status);
 			if(error.status === 404) $location.path('/404');
-			//if(error.status === 401) do something
-			//console.log(response);
+			if(error.status === 403) $window.location.reload();
+			if(error.status === 401) $window.location.reload();
 		};    
 
 		function refresh() {
