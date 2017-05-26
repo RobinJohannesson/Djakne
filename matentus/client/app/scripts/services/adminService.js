@@ -239,7 +239,6 @@
 		var errorHandler = function(error) {
 			console.log(error.status);
 			if(error.status === 404) $location.path('/404');
-			if(error.status === 403) $window.location.reload();
 			if(error.status === 401) $window.location.reload();
 		};    
 

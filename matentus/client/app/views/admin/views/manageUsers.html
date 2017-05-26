@@ -52,56 +52,6 @@
 	</table>
 </div>
 
-<!-- Change user modal -->
-<div class="modal fade" id="modal-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  	<div class="modal-dialog" role="document">
-    	<div class="modal-content row text-center" style="border-radius: 0; padding: 20px">
-
-	    	<div class="col-lg-6">
-	    		
-	    		{{ ctrl.currentUser.notes}}
-
-	    	</div>
-
-	    	<div class="col-lg-6">
-	    		
-		        <button type="button" 
-		        		class="btn btn-success" 
-		        		data-dismiss="modal" 
-		        		style="width: 80%; margin-bottom: 10px"
-		        		ng-click="ctrl.updateUserToAdmin(true)">
-		        		Lägg till som administratör
-		        </button>
-		        <br>
-		        <button type="button" 
-		        		class="btn btn-warning" 
-		        		data-dismiss="modal" 
-		        		style="width: 80%; margin-bottom: 10px"
-		        		ng-click="ctrl.updateUserToAdmin(false)">
-		        		Ta bort som administratör
-		        </button>
-		        <br>
-		        <button type="button" 
-		        		class="btn btn-danger" 
-		        		data-dismiss="modal" 
-		        		style="width: 80%; margin-bottom: 10px"
-		        		ng-click="ctrl.deleteUser(ctrl.currentUser)">
-		        		Ta bort användare
-		        </button>
-		        <br>
-		        <button type="button" 
-		        		class="btn btn-primary" 
-		        		data-dismiss="modal"
-		        		style="width: 80%; margin-bottom: 10px">
-		        		Stäng
-		        </button>
-	    		
-	    	</div>
- 		</div>
- 	</div>
-</div>
-<!-- End of change user modal -->
-
 <!-- Change address modal -->
 <div class="modal fade" id="modal-address" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog" role="document">

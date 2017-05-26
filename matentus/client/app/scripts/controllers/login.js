@@ -8,12 +8,15 @@
 	angular.module('matentusApp')
 		.controller('LoginCtrl', LoginCtrl);
 
-	LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginService', '$scope', '$http', '$location'];
+	LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginService', 'userService', '$scope', '$http', '$location'];
 
-	function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, $scope, $http, $location$, $window) {
+	function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, userService, $scope, $http, $location, $window) {
 
 		var ctrl = this;
 		ctrl.matentusServer = localStorage.getItem('matentusServer');
+
+		ctrl.thisUser = {};
+		ctrl.getThisUser = getThisUser;
 		
 		ctrl.loginFacebook = loginFacebook;
 		ctrl.loginGoogle = loginGoogle;
@@ -42,6 +45,13 @@
 			localLoginService.login(ctrl.loginForm);
 		}
 
+		function getThisUser() {
+			userService.getThisUser()
+			.then(function(user) {
+				ctrl.thisUser = user;
+			});
+		}
+
 		function checkLoginStatus() {
 			localLoginService.checkLoginStatus()
 			.then(function(isOnline) {
@@ -57,7 +67,9 @@
 		}
 
 		function updateUserInformation() {
-			localLoginService.updateUserInformation(ctrl.welcomeForm);
+			console.log("Update user info...");
+			console.log(ctrl.thisUser);
+			userService.updateUserInformation(ctrl.thisUser);
 		}
 		
 		function logout(){

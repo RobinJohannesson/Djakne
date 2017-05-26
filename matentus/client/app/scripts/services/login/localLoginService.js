@@ -1,4 +1,3 @@
-
 // --------------------------------------------------------------
 //  Local Login Service. All properties of the returned object
 //  is reachable for any controller who $inject this service.
@@ -18,6 +17,7 @@
         getCities();
 
         var login = function(loginForm) {
+
             $http({
                 method: 'POST',
                 url: api + '/login/email',
@@ -80,21 +80,6 @@
         var logout = function() {
             removeToken();
         }
-
-        var updateUserInformation = function(welcomeForm) {
-            $http({
-                method: 'PUT',
-                url: api + '/users',
-                headers: { 'Authorization':'JWT ' + localStorage.getItem('matentustoken')},               
-                data: welcomeForm,
-            })
-            .then(function(response) {
-                $window.location.reload();
-            })
-            .catch(function(error) {
-                errorHandler(error);
-            });
-        }
         
         function saveToken(token, isNewUser) {
             localStorage.setItem('matentustoken', token);
@@ -143,7 +128,6 @@
             checkAdmin: checkAdmin,
             isOnline: isOnline,
             logout: logout,
-            updateUserInformation: updateUserInformation,
             cities: state.cities
         };
 

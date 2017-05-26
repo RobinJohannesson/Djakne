@@ -77,11 +77,11 @@
 	    <a data-toggle="modal" data-target="#modal-login-email"  class="btn btn-block btn-social label-default hover-social" id="email" ng-show="!ctrl.isOnline" >
 	    	<i class="fa fa-envelope-o" aria-hidden="true"></i>Sign in with Email
 	    </a>
-		<a onclick="location.href='/#!/;" class="btn btn-block btn-social label-default hover-social" id="loggedin" ng-show="ctrl.isOnline" >
+		<a ng-click="ctrl.getThisUser()" data-toggle="modal" data-target="#modal-userinfo" class="btn btn-block btn-social label-default hover-social" id="loggedin" ng-show="ctrl.isOnline" >
 	    	<i class="fa fa-user-o" aria-hidden="true"></i>Inloggad
 	    </a>
-		<a onclick="location.href='/#!/admin';" class="btn btn-block btn-social label-default hover-social" id="admin" ng-show="ctrl.isAdmin" >
-	    	<i class="fa fa-cogs" aria-hidden="true"></i> Admin
+		<a ng-click="ctrl.getThisUser()" data-toggle="modal" data-target="#modal-userinfo" class="btn btn-block btn-social label-default hover-social" id="admin" ng-show="ctrl.isAdmin" >
+	    	<i class="fa fa-cogs" aria-hidden="true"></i>Admin
 	    </a>
 		
 	</div>
@@ -132,7 +132,7 @@
 			
 		    <form 
 		    	id="email-form" 
-		    	name="ctrl.welcomeform" 
+		    	name="ctrl.welcomeForm" 
 		    	role="form"
 		    	ng-submit="ctrl.updateUserInformation()">
 
@@ -141,7 +141,7 @@
 				
 					<input 
 						type="text" 
-						ng-model="ctrl.welcomeForm.name" 
+						ng-model="ctrl.thisUser.name" 
 						class="form-control col-xs-12" id="InputName" 
                         style="margin-bottom: 20px;"
 						aria-describedby="nameHelp" 
@@ -149,9 +149,7 @@
 						required
 					>
 				</div>
-
                 <div class="form-group">
-
 					<label 
 						for="city">
 						Kommun
@@ -161,16 +159,14 @@
 						placeholder=""
 						pause="100"
 						selected-object="selected"
-						ng-model="ctrl.welcomeForm.city"
+						ng-model="ctrl.thisUser.city"
 						local-data="ctrl.cities"
 						search-fields="name"
 						title-field="name"
 						minlength="0"
 						input-class="form-control form-control-small"
 					/>
-
                 </div>
-
 				<div class="form-group">
                     <p class="color-white" style= "font-size: 10px; color: lightgrey; margin-bottom: 20px;">Fyll i namn och kommun för att ta del av just dina lokala och närproducerade produkter.</p>
 					<button
@@ -185,7 +181,125 @@
 
 		</div>
  	</div>
-    </div>
+</div>
 <!-- End of welcome modal -->
 
+<!-- User info modal -->
+<div class="modal fade" id="modal-userinfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content text-center" style="border-radius: 0; padding: 40px;">
+
+    		<i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+    		<h3>{{ ctrl.thisUser.name }}</h3>
+    		<hr style="margin: 40px">
+
+    		<i class="fa fa-home fa-2x" aria-hidden="true"></i>
+    		<h3 ng-show="ctrl.thisUser.street">{{ ctrl.thisUser.street }}<br>{{ ctrl.thisUser.zipcode }}, {{ ctrl.thisUser.city }}</h3>
+    		<h3 ng-hide="ctrl.thisUser.street">{{ ctrl.thisUser.city }}</h3>
+    		<hr style="margin: 40px">
+
+    		<i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+    		<h3>{{ ctrl.thisUser.email }}</h3>
+    		<hr style="margin: 40px">
+
+			<button type="button" 
+	        		class="btn btn-warning" 
+	        		data-dismiss="modal" 
+	        		data-toggle="modal" 
+	        		data-target="#modal-userupdate">
+	        		Redigera
+	        </button>
+	        <button type="button" 
+	        		class="btn btn-primary" 
+	        		data-dismiss="modal">
+	        		Stäng
+	        </button>
+
+ 		</div>
+ 	</div>
 </div>
+<!-- End of user info modal -->
+
+<!-- Update user info modal -->
+<div class="modal fade" id="modal-userupdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content text-center" style="border-radius: 0; padding: 40px;">
+
+    		<form 
+				name="ctrl.userForm" 
+				ng-submit="ctrl.updateUserInformation()"
+				data-toggle="validator" 
+				role="form"> 
+
+				<div class="form-group">
+		    		<i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+		    		<input  
+		                type="text"
+		                class="form-control" 
+		                ng-model="ctrl.thisUser.name" 
+		                placeholder="Namn" 
+		                maxlength="30"
+		                style="margin-top: 30px" 
+		                required 
+		            />
+	            </div>
+				<div class="form-group">
+		    		<i class="fa fa-home fa-2x" aria-hidden="true"></i>
+		    		<input  
+		                type="text"
+		                class="form-control" 
+		                ng-model="ctrl.thisUser.street" 
+		                placeholder="Gata" 
+		                maxlength="255"
+		                style="margin-top: 30px" 
+		            />
+		            <input  
+		                type="text"
+		                class="form-control" 
+		                ng-model="ctrl.thisUser.zipcode" 
+		                placeholder="Postnummer" 
+		                maxlength="6"
+		                style="margin-top: 30px" 
+		            />
+		            <input  
+		                type="text"
+		                class="form-control" 
+		                ng-model="ctrl.thisUser.city" 
+		                placeholder="Postort" 
+		                maxlength="30"
+		                style="margin-top: 30px" 
+		                required 
+		            />
+		        </div>
+
+		        <div class="form-group">
+		    		<i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+		    		<input  
+		                type="email"
+		                class="form-control" 
+		                ng-model="ctrl.thisUser.email" 
+		                placeholder="Email" 
+		                maxlength="150"
+		                style="margin-top: 30px" 
+		                required 
+		            />
+		        </div>
+
+					<button type="submit" 
+			        		class="btn btn-success" 
+			        		ng-disabled="ctrl.userForm.$invalid">
+			        		Skicka
+			        </button>
+			        <button type="button" 
+			        		class="btn btn-primary" 
+			        		data-dismiss="modal">
+			        		Stäng
+			        </button>
+			    
+
+		     </form>
+
+ 		</div>
+ 	</div>
+</div>
+<!-- End of update user info modal -->

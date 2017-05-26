@@ -10,6 +10,10 @@ var passport = require('passport');
 // Define API routes
 // -----------------------------------------------------
 
+router.get('/me', passport.authenticate('jwt', { session: false }), function(req, res) {
+	userController.getThisUser(req, res);
+});
+
 router.get('/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
 	userController.get(req, res);
 });
