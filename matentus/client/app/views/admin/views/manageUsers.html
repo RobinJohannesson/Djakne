@@ -37,7 +37,11 @@
                 	data-target="#modal-address">
                 	Information saknas
                 </td>
-                <td>{{ user.city }}</td>
+                <td ng-click="ctrl.setCurrentUser(user)" 
+                	data-toggle="modal" 
+                	data-target="#modal-address">
+                	{{ user.city }}
+                </td>
                 <td>{{ user.email }}</td>
                 <td>
                 	<i ng-show="{{user.admin}}" ng-click="ctrl.setCurrentUser(user); ctrl.currentUser.admin = false; ctrl.updateUser(ctrl.currentUser)" class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>
