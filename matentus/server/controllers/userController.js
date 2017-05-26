@@ -80,11 +80,15 @@ module.exports = {
 		console.log("--> Update user by User: ");
 		console.log(req.body);
 
+		if(!req.body) {
+			next(req, res, status.BAD_REQUEST);
+		}
+
 		var token = req.headers.authorization.replace("JWT ", "");
 		var id = jwtDecode(token).id;
 
-		var name = req.body.name;
 		var email = req.body.email;
+		var name = (req.body.name) ? req.body.name : '';
 		var city = (req.body.city) ? req.body.city : '';
 		var street = (req.body.street) ? req.body.street : '';
 		var zipcode = (req.body.zipcode) ? req.body.zipcode : '';

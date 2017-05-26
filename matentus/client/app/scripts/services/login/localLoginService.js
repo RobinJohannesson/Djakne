@@ -16,14 +16,16 @@
 
         getCities();
 
-        var login = function(loginForm) {
+        var login = function(user) {
+            console.log("Trying to login");
 
             $http({
                 method: 'POST',
                 url: api + '/login/email',
-                data: loginForm
+                data: user
             })
             .then(function(response) {
+                console.log(response);
                 var isNewUser = false;
                 switch(response.status) {
                     case 200:

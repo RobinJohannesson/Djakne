@@ -17,10 +17,11 @@
 
 		ctrl.thisUser = {};
 		ctrl.getThisUser = getThisUser;
+
+		ctrl.loginFacebook = facebookLoginService.login;
+		ctrl.loginGoogle = googleLoginService.login;
+		ctrl.loginLocal = localLoginService.login;
 		
-		ctrl.loginFacebook = loginFacebook;
-		ctrl.loginGoogle = loginGoogle;
-		ctrl.loginLocal = loginLocal;
 		ctrl.checkLoginStatus = checkLoginStatus;
 		ctrl.logout=logout;
 		ctrl.updateUserInformation = updateUserInformation;
@@ -30,20 +31,6 @@
 
 		checkLoginStatus();
 		checkAdmin();
-
-		ctrl.loginForm = {};
-
-		function loginFacebook() {
-			facebookLoginService.login();
-		}
-
-		function loginGoogle() {
-			googleLoginService.login();
-		}
-
-		function loginLocal() {
-			localLoginService.login(ctrl.loginForm);
-		}
 
 		function getThisUser() {
 			userService.getThisUser()

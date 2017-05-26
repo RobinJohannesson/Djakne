@@ -85,11 +85,11 @@ app.use('/api/login', login);
 app.use('/api/cities', cities);
 
 // -----------------------------------------------------
-// Error handler - Catch 404 and forward
+// Error handler - Catch error and forward
 // -----------------------------------------------------
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
+app.use(function(req, res, status) {
+  var err = new Error();
+  err.status = status;
   next(err);
 });
 
