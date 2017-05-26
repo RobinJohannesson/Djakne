@@ -12,14 +12,14 @@
 	ProductsCtrl.$inject = ['$routeParams', 'productService', 'categoryService','likeService'];
 
 	function ProductsCtrl($routeParams, productService, categoryService, likeService) {
-		var ctrl = this;
 
+		var ctrl = this;
 		ctrl.matentusServer = localStorage.getItem('matentusServer');
 
 		ctrl.currentCategoryTitle = $routeParams.category_title;
 		ctrl.currentCategoryId = $routeParams.category_id;
 		ctrl.shouldShowCategories = false;
-		ctrl.shouldShowDropdown = false;
+		ctrl.shouldShowSidebar = false;
 		ctrl.categoryHeader = 'Kategorier';
 		ctrl.currentOrder = '';
 
@@ -28,7 +28,7 @@
 		ctrl.categories = categoryService.categories;
 		ctrl.products = productService.products;
 		ctrl.toggleCategories = toggleCategories;
-		ctrl.toggleDropdown = toggleDropdown;
+		ctrl.toggleSidebar = toggleSidebar;
 		ctrl.orderBy = orderBy;
 		ctrl.likeProduct = likeService.likeProduct;
 		ctrl.updateLikes = likeService.updateLikes;
@@ -51,8 +51,8 @@
 			ctrl.shouldShowCategories = ctrl.shouldShowCategories ? false : true;
 		}
 
-		function toggleDropdown() {
-			ctrl.shouldShowDropdown = ctrl.shouldShowDropdown ? false : true;
+		function toggleSidebar() {
+			ctrl.shouldShowSidebar = ctrl.shouldShowSidebar ? false : true;
 		}
 		
 		function checkUserLike (id) {

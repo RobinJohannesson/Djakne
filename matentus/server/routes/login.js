@@ -16,19 +16,19 @@ router.post('/facebook', function(req, res) {
 });
 
 // -----------------------------------------------------
-// Local Login Route
-// -----------------------------------------------------
-
-router.post('/email', function(req, res) {
-	loginController.localLogin(req, res);
-});
-
-// -----------------------------------------------------
 // Google Login Routee
 // -----------------------------------------------------
 
 router.post('/google', function(req, res) {
 	loginController.googleLogin(req, res);
+});
+
+// -----------------------------------------------------
+// Local Login Route
+// -----------------------------------------------------
+
+router.post('/email', function(req, res) {
+	loginController.localLogin(req, res);
 });
 
 // -----------------------------------------------------

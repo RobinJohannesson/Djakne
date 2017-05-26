@@ -68,7 +68,7 @@ module.exports = {
 
 		},
 
-				  createEmailList:	function(req,res){					
+		createEmailList:	function(req,res){					
 			var productId = req.params.id;
 			var emailList='[ ';
 			var count=0;

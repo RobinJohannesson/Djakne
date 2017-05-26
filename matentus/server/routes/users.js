@@ -19,12 +19,19 @@ router.get('/', passport.authenticate('jwt', { session: false }), function(req, 
 });
 
 router.put('/', passport.authenticate('jwt', { session: false }), function(req, res) {
-	userController.update(req, res);
+	userController.updateByUser(req, res);
 });
 
-//TODO
 router.get('/:id/likes', passport.authenticate('jwt', { session: false }), function(req, res) {
 	likeController.getAllLikesOfUser(req, res);
+});
+
+router.delete('/:id', passport.authenticate('jwt', { session: false }), function(req, res) {
+	userController.delete(req, res);
+});
+
+router.put('/:id/admin', passport.authenticate('jwt', { session: false }), function(req, res) {
+	userController.updateByAdmin(req, res);
 });
 
 // -----------------------------------------------------

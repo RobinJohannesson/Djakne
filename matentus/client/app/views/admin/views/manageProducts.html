@@ -2,16 +2,16 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Produktnamn</th>
-				<th>Leverantör</th>
-				<th>Bild</th>
-                <th>Intresse</th>
+				<th ng-click="ctrl.orderBy('title', false)">Produktnamn</th>
+				<th ng-click="ctrl.orderBy('supplier', false)">Leverantör</th>
+				<th >Bild</th>
+                <th ng-click="ctrl.orderBy('likeAmount', true)">Intresse</th>
                 <th></th>
                 
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="product in ctrl.products">
+			<tr ng-repeat="product in ctrl.products | orderBy: ctrl.currentOrder:ctrl.reverseOrder">
 				<td>{{ product.title }}</td>
 				<td>{{ product.supplier }}</td>
 				<td class="add-prod-img">
@@ -24,7 +24,8 @@
   				  		data-toggle="modal" 
   				  		data-target="#modal-emaillist-product"
    				  		class="likes-admin">		
-                    <i class="fa fa-file-text-o" aria-hidden="true"></i></p>
+                    {{ product.likeAmount }} 
+                    <i class="fa fa-download" aria-hidden="true"></i></p>
                 </td>
 				<td>
   				  	<p 
@@ -204,15 +205,6 @@
 </div>
 <!-- End of change product modal -->
 
-<div class="modal fade" id="modal-emaillist-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  	<div class="modal-dialog" role="document">
-    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
-			<h2><a href="{{ctrl.matentusServer}}/emaillists/emailList_{{ctrl.currentProduct.id}}.csv" download>Ladda ner CSV-fil</a></h2>
-	        <button type="button" class="btn btn-primary" data-dismiss="modal">Stäng</button>
- 		</div> 
- 	</div>
-</div>
-
 <!-- Delete product modal -->
 <div class="modal fade" id="modal-delete-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog" role="document">
@@ -224,3 +216,16 @@
  	</div>
 </div>
 <!-- End of delete product modal -->
+
+<!-- Download like-list modal -->
+<div class="modal fade" id="modal-emaillist-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+			<h3 style="padding-bottom: 15px">
+				<a href="{{ctrl.matentusServer}}/emaillists/emailList_{{ctrl.currentProduct.id}}.csv" download>Ladda ner CSV-fil</a>
+			</h3>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Stäng</button>
+ 		</div> 
+ 	</div>
+</div>
+<!-- End of download like-list modal -->

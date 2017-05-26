@@ -49,7 +49,6 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), function(re
 });
 
 router.post('/', upload.single('file'), passport.authenticate('jwt', { session: false }), function(req, res) {
-	console.log("Someone is trying to upload a product");
 	productController.createProduct(req, res);
 });
 
@@ -67,6 +66,11 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), function
 
 router.post('/postlike', passport.authenticate('jwt', { session: false }), function(req, res){
     likeController.postLike(req, res);
+});
+
+router.get('/:id/likes', passport.authenticate('jwt', { session: false }), function(req, res) {
+	console.log("--> Route: Get all users that likes product: " + req.params.id);
+	productController.getUsers(req, res);
 });
 
 

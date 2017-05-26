@@ -4,15 +4,15 @@
 
 		<thead>
 			<tr>
-				<th>Produkt</th>
-				<th>Leverantör</th>
+				<th ng-click="ctrl.orderBy('title', false)">Produkt</th>
+				<th ng-click="ctrl.orderBy('supplier', false)">Leverantör</th>
 				<th>Bild</th>
                 <th></th>
 			</tr>
 		</thead>
 
 		<tbody>
-			<tr ng-repeat="suggestion in ctrl.suggestions | orderBy: 'supplier'">
+			<tr ng-repeat="suggestion in ctrl.suggestions | orderBy: ctrl.currentOrder:ctrl.reverseOrder">
 				<td>{{ suggestion.title }}</td>
 				<td>{{ suggestion.supplier }}</td>
 				<td>

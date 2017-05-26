@@ -131,7 +131,6 @@
         function setCities(cities) {
             state.cities.length = 0;
             state.cities.push.apply(state.cities, cities);
-            console.log(state.cities);
         }
 
         var errorHandler = function(response) {

@@ -3,7 +3,7 @@
 
 		<div class="btn-group" role="group">
 			<button 
-				ng-click ="ctrl.changeView(ctrl.manageSuggestionsView); ctrl.clearCurrentProduct();" 
+				ng-click ="ctrl.changeView(ctrl.manageSuggestionsView); ctrl.refresh();" 
 				type="button" 
 				class="col-xs-12 admin_btn btn btn-default"
 				ng-class="{active: ctrl.currentView == ctrl.manageSuggestionsView}" 
@@ -14,7 +14,18 @@
 
 		<div class="btn-group" role="group">
 			<button 
-				ng-click = "ctrl.changeView(ctrl.addProductView); ctrl.clearCurrentProduct();" 
+				ng-click ="ctrl.changeView(ctrl.manageProductsView); ctrl.refresh();" 
+				type="button" 
+				class="col-xs-12 admin_btn btn btn-default"
+				ng-class="{active: ctrl.currentView == ctrl.manageProductsView}"
+				id="manage_product_btn">
+				Produkter
+			</button>
+		</div>
+
+		<div class="btn-group" role="group">
+			<button 
+				ng-click = "ctrl.changeView(ctrl.addProductView); ctrl.refresh();" 
 				type="button" 
 				class="col-xs-12 admin_btn btn btn-default"
 				ng-class="{active: ctrl.currentView == ctrl.addProductView}"  
@@ -25,23 +36,23 @@
 
 		<div class="btn-group" role="group">
 			<button 
-				ng-click ="ctrl.changeView(ctrl.manageProductsView); ctrl.clearCurrentProduct();" 
+				ng-click ="ctrl.changeView(ctrl.manageCategoriesView); ctrl.refresh();" 
 				type="button" 
 				class="col-xs-12 admin_btn btn btn-default"
-				ng-class="{active: ctrl.currentView == ctrl.manageProductsView}"
-				id="manage_product_btn">
-				Ändra produkt
+				ng-class="{active: ctrl.currentView == ctrl.manageCategoriesView}"
+				id="manage_cat_btn">
+				Kategorier
 			</button>
 		</div>
 
 		<div class="btn-group" role="group">
 			<button 
-				ng-click ="ctrl.changeView(ctrl.manageCategoriesView); ctrl.clearCurrentProduct();" 
+				ng-click ="ctrl.changeView(ctrl.manageUsersView); ctrl.refresh();" 
 				type="button" 
 				class="col-xs-12 admin_btn btn btn-default"
 				ng-class="{active: ctrl.currentView == ctrl.manageCategoriesView}"
 				id="manage_cat_btn">
-				Hantera kategorier
+				Användare
 			</button>
 		</div>
 	</div>

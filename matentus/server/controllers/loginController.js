@@ -45,7 +45,8 @@ module.exports = {
 						models.User.create({ 
 							name: name, 
 							email: email, 
-							admin: 0
+							admin: 0,
+							notes: 'Inga noteringar'
 						})
 						.then(function(user) {
 							sendTokenResponse(res, user, 201);
@@ -84,7 +85,8 @@ module.exports = {
 						models.User.create({ 
 							name: name, 
 							email: email, 
-							admin: 0
+							admin: 0,
+							notes: 'Inga noteringar'
 						})
 						.then(function(user) {
 							sendTokenResponse(res, user, 201);
@@ -124,7 +126,8 @@ module.exports = {
 					name: name, 
 					email: email, 
 					password: hashedPassword,
-					admin: 0
+					admin: 0,
+					notes: 'Inga noteringar'
 				})
 				.then(function(user) {
 					sendTokenResponse(res, user, 201);

@@ -43,9 +43,7 @@ angular
 		controllerAs: 'ctrl'
 	})
     .when('/about', {
-		templateUrl: 'views/about.html',
-		controller: 'AboutCtrl',
-		controllerAs: 'ctrl'
+		templateUrl: 'views/about.html'
 	})
 	.when('/404', {
 		templateUrl: 'views/error/404.html',

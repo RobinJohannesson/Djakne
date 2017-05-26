@@ -275,6 +275,47 @@ module.exports = {
 				}
 			});
 		});
+	},
+
+	getUsers: function(req, res) {
+
+		userController.isAdmin(req)
+		.then(function(isAdmin) {
+			if(!isAdmin) {
+				res.sendStatus(status.NOT_ADMIN);
+				return;
+			}
+		})
+		.then(function() {
+			models.Like.findAll({
+				attributes: ['user_id']
+			}, {
+				where: {
+					product_id: req.params.id
+				}
+			})
+			.then(function(likes) {
+				if(likes.length === 0) {
+					res.json([]);
+				}
+				var userIds = [];
+				likes.forEach(function(like) {
+					var userId = like.dataValues.user_id;
+					userIds.push({id: {$like: userId}});
+				});
+				return userIds;
+			})
+			.then(function(userIds) {
+				models.User.findAll({
+					where: {
+				  		$or: userIds
+				  	}
+				})
+				.then(function(users) {
+					res.json(users);
+				});
+			});
+		});
 	}
 }
 

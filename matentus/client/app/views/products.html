@@ -1,132 +1,105 @@
-<!-- Products HTML | Has access to variables and functions in "scripts/controllers/products.js" -->
-
 <div ng-controller="ProductsCtrl as ctrl">
 
-
- <!-- Categories button/dropdown old 
-
- <button ng-click="ctrl.toggleCategories()" id="kategori" type="button" class="navbar-toggle col-xs-12 sort btn btn-default col-xs-12" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
- {{ ctrl.categoryHeader }} <span class="glyphicon glyphicon-menu-down"></span>
- </button>
-
-
- <div ng-if="ctrl.shouldShowCategories" id="kat-div" class="kat-div col-xs-12 sort">
-   <div ng-repeat="category in ctrl.categories">
-     <h2 ng-click="ctrl.toggleSubCategories(category.id)"> {{ category.title }} </h2>
-     <div ng-if="ctrl.currentCategoryId === category.id" ng-repeat="subcategory in ctrl.subCategories">
-       <a href="#!/{{ category.title }}/{{ subcategory.title }}/{{ subcategory.id }}" ng-if="subcategory.category_id === category.id"> {{ subcategory.title }} </a>
-     </div>
-   </div>
-</div> -->
-<!-- Side menu -->
-<div ng-if="ctrl.shouldShowDropdown" class="col-xs-9 col-sm-5 col-lg-3" id="side-menu">
-    <div class="close-icon col-xs-3 col-xs-offset-9 col-md-2 col-md-offset-10 col-lg-3 col-lg-offset-9">
-        <a href="#">
-            <img ng-click="ctrl.toggleDropdown()" alt="#" src="../images/close.png" class="cross col-xs-12" >
-        </a>
-    </div>
-    <div>
-        <ul class="categ-list side-content col-xs-12">
-            <a href="#!/about"><li class="col-xs-12">Om Oss</li></a>
-            <li class="col-xs-12"><a href="/#!/products/suggest">Skicka produktförslag</a></li>
-            <div ng-controller="LoginCtrl as ctrl">
-                <li class="log-out col-xs-12" ng-click="ctrl.logout()">Logga ut</li>
-            </div>
-            <!--img class="beta col-xs-12" alt="beta" src="../images/beta-vit.PNG"-->
-            <p class="beta-text col-xs-12">Beta Version: Vi leverar endast i Skåne</p>
-        </ul>
-    </div>
-</div>
-<!-- End of side menu -->
-<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-        <div class="row">
-		<!-- Hamburger-->
-            <ul class="nav navbar-nav col-lg-12 col-md-12 col-xs-12">
-                <li id="burger-li" class="col-xs-0 col-md-3 col-lg-3">
-                    <button ng-click="ctrl.toggleDropdown()" id="burger" type="button" class="navbar-toggle col-xs-12">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </li>
-                
-     <!-- Sort products by -->
-                
-                <!-- Popular -->
-
-                <li class="col-lg-2 col-md-3 col-xs-4 text-center">
-                    <a class="sort-btn col-xs-12" ng-click="ctrl.orderBy('likeAmount')" type="button" ng-class="{'sort-active': ctrl.currentOrder == 'likeAmount'}">
-                        Populärt
-                    </a>
-                </li>
-
-                <!-- Latest -->
-
-                <li class="col-lg-2 col-md-3 col-xs-4 latest text-center">
-                    <a class="sort-btn col-xs-12" ng-click="ctrl.orderBy('created')" type="button" ng-class="{'sort-active': ctrl.currentOrder == 'created'}">Senaste</a>
-                </li>
-
-                <!-- Categories -->
-                
-                <li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-2 col-md-3 col-xs-4 text-center">
-                    <a class="sort-btn dropdown-toggle col-xs-12" data-toggle="dropdown">{{ ctrl.categoryHeader }}<span class="caret"></span></a>
-                    <ul ng-if="ctrl.shouldShowCategories" class="dropdown-menu col-md-3 col-lg-12">
-                        <li class="category col-xs-12 col-lg-12">
-                            <a href="/">Visa alla</a>
-                        </li>
-                        <li class="category col-xs-12 col-lg-12" ng-repeat="category in ctrl.categories">
-                            <a class="col-xs-12" href="#!/{{ category.title }}/{{ category.id }}"> {{ category.title }} </a>
-                        </li>
-                    </ul>
-                </li>
-                
+    <!-- Side menu -->
+    <div ng-if="ctrl.shouldShowSidebar" class="col-xs-9 col-sm-5 col-lg-3" id="side-menu">
+        <div class="close-icon col-xs-3 col-xs-offset-9 col-md-2 col-md-offset-10 col-lg-3 col-lg-offset-9">
+            <a href="#">
+                <img ng-click="ctrl.toggleSidebar()" alt="#" src="../images/close.png" class="cross col-xs-12" >
+            </a>
+        </div>
+        <div>
+            <ul class="categ-list side-content col-xs-12">
+                <a href="#!/about"><li class="col-xs-12">Om Oss</li></a>
+                <li class="col-xs-12"><a href="/#!/products/suggest">Skicka produktförslag</a></li>
+                <div ng-controller="LoginCtrl as ctrl">
+                    <li ng-show="ctrl.isOnline" class="log-out col-xs-12" ng-click="ctrl.logout()">Logga ut</li>
+                </div>
+                <!--img class="beta col-xs-12" alt="beta" src="../images/beta-vit.PNG"-->
+                <p class="beta-text col-xs-12">Beta Version: Vi leverar endast i Skåne</p>
             </ul>
         </div>
-	</div>
-</nav>
-    
+    </div>
+    <!-- End of side menu -->
 
-<!-- This is where all products are displayed -->
+    <!-- Navbar -->
+    <nav class="navbar navbar-inverse">
+    	<div class="container-fluid">
+            <div class="row">
+                <ul class="nav navbar-nav col-lg-12 col-md-12 col-xs-12">
 
-<div class="products-row row">
+                    <!-- Sidebar button-->
+                    <li id="burger-li" class="col-xs-0 col-md-3 col-lg-3">
+                        <button ng-click="ctrl.toggleSidebar()" id="burger" type="button" class="navbar-toggle col-xs-12">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </li>
+                    <!-- End of sidebar button -->
+                                    
+                    <!-- Sort by popular -->
+                    <li class="col-lg-2 col-md-3 col-xs-4 text-center">
+                        <a class="sort-btn col-xs-12" ng-click="ctrl.orderBy('likeAmount')" type="button" ng-class="{'sort-active': ctrl.currentOrder == 'likeAmount'}">
+                            Populärt
+                        </a>
+                    </li>
+                    <!-- End of sort by popular -->
 
-	<div 
-		ng-repeat="product in ctrl.products | orderBy: ctrl.currentOrder:true" 
-		class="col-xs-12 col-xs-12 col-md-6 col-lg-4 portfolio-item" 
-        ng-if="!ctrl.currentCategoryId || ctrl.currentCategoryId == product.category_id">
+                    <!-- Sort by created -->
+                    <li class="col-lg-2 col-md-3 col-xs-4 latest text-center">
+                        <a class="sort-btn col-xs-12" ng-click="ctrl.orderBy('created')" type="button" ng-class="{'sort-active': ctrl.currentOrder == 'created'}">Senaste</a>
+                    </li>
+                    <!-- End of sort by created -->
 
-		<a href="#!/products/{{ product.id }}">
-			<img 
-				title="ID: {{product.id}}, Likes: {{product.likeAmount}}, Created: {{product.created}}, Rating: {{product.rating}}" 
-				class="img-responsive" 
-				src= "{{ctrl.matentusServer}}/images/{{product.image}}" 
-				alt="">
-		</a>
-		<div class="img-label">
-			<h4 id="label-text"> {{ product.title }} </h4>
-		</div>
-		<div ng-click="ctrl.likeProduct(product.id)" class="heart-icon">
-            <i class="fa fa-heart-o heart" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)">
-                <p id="numb-of-likes-white" class="numb-of-likes">
-                    <span>{{ product.likeAmount }}</span>
-                </p>
-            </i>
-            <i class="fa fa-heart heart" aria-hidden="true" ng-show="ctrl.checkUserLike(product.id)">
-                <p id="numb-of-likes" class="numb-of-likes">
-                    <span>{{ product.likeAmount }}</span>
-                </p>
-            </i>
-		</div>
-        <!--<div>
-        När liked ska denna visas   
-            <i class="fa fa-heart heart" aria-hidden="true"></i>
+                    <!-- Categories dropdown -->
+                    <li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-2 col-md-3 col-xs-4 text-center">
+                        <a class="sort-btn dropdown-toggle col-xs-12" data-toggle="dropdown">{{ ctrl.categoryHeader }}<span class="caret"></span></a>
+                        <ul ng-if="ctrl.shouldShowCategories" class="dropdown-menu col-md-3 col-lg-12">
+                            <li class="category col-xs-12 col-lg-12">
+                                <a href="/">Visa alla</a>
+                            </li>
+                            <li class="category col-xs-12 col-lg-12" ng-repeat="category in ctrl.categories">
+                                <a class="col-xs-12" href="#!/{{ category.title }}/{{ category.id }}"> {{ category.title }} </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- End of categories dropdown -->
+                    
+                </ul>
+            </div>
+    	</div>
+    </nav>
+    <!-- End of navbar -->
 
-        </div>-->
+    <!-- Products -->
+    <div class="products-row row">
+    	<div 
+    		ng-repeat="product in ctrl.products | orderBy: ctrl.currentOrder:true" 
+    		class="col-xs-12 col-xs-12 col-md-6 col-lg-4 portfolio-item" 
+            ng-if="!ctrl.currentCategoryId || ctrl.currentCategoryId == product.category_id">
 
+    		<a href="#!/products/{{ product.id }}">
+    			<img title="{{product.title}}" class="img-responsive" src= "{{ctrl.matentusServer}}/images/{{product.image}}" alt="{{product.title}}" />
+    		</a>
+    		<div class="img-label">
+    			<h4 id="label-text"> {{ product.title }} </h4>
+    		</div>
+    		<div ng-click="ctrl.likeProduct(product.id)" class="heart-icon">
+                <i class="fa fa-heart-o heart" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)">
+                    <p id="numb-of-likes-white" class="numb-of-likes">
+                        <span>{{ product.likeAmount }}</span>
+                    </p>
+                </i>
+                <i class="fa fa-heart heart" aria-hidden="true" ng-show="ctrl.checkUserLike(product.id)">
+                    <p id="numb-of-likes" class="numb-of-likes">
+                        <span>{{ product.likeAmount }}</span>
+                    </p>
+                </i>
+    		</div>
 
-	</div>
-</div>
+    	</div>
+    </div>
+    <!-- End of products -->
 
 </div>

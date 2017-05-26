@@ -24,7 +24,6 @@
 					headers: { 'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
 	        	})
 	        	.then(function(response) {
-					console.log(response);
 					return response.data;	        	
 				}, errorHandler)
 	        	.catch(function(error) {
@@ -70,13 +69,11 @@
 		function setSuppliers(suppliers) {
 			state.suppliers.length = 0;
 			state.suppliers.push.apply(state.suppliers, suppliers);
-			console.log(state.suppliers);
 		}
 
 		function setKeywords(keywords) {
 			state.keywords.length = 0;
 			state.keywords.push.apply(state.keywords, keywords);
-			console.log(state.keywords);
 		}
 		var errorHandler = function(response) {
 			if (response.status==401){
