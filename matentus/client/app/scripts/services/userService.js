@@ -33,7 +33,7 @@
                 data: user,
             })
             .then(function(response) {
-               $window.location.reload();
+               	$window.location.reload();
             })
             .catch(function(error) {
                 errorHandler(error);
@@ -42,6 +42,7 @@
 
 		var errorHandler = function(response) {
 			if(response.status === 404) $location.path('/404');
+			if(response.status === 400) alert('Email-adressen används redan.');
 			console.log(response);
 		};    
 

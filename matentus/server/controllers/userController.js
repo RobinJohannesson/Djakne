@@ -72,6 +72,9 @@ module.exports = {
 		})
 		.then(function(user) {
 			res.json(user);
+		})
+		.catch(function (err) {
+			res.sendStatus(status.BAD_REQUEST);
 		});
 	},
 
@@ -109,6 +112,9 @@ module.exports = {
 				res.sendStatus(status.OK);
 			}
 		})
+		.catch(function (err) {
+			res.sendStatus(status.BAD_REQUEST);
+		});
 	},
 
 	updateByAdmin: function(req, res) {
@@ -143,6 +149,9 @@ module.exports = {
 					res.sendStatus(status.OK);
 				}
 			})
+			.catch(function (err) {
+				res.sendStatus(status.BAD_REQUEST);
+			});
 		});
 	},
 
@@ -168,6 +177,9 @@ module.exports = {
 				} else {
 					res.sendStatus(404);
 				}
+			})
+			.catch(function (err) {
+				res.sendStatus(status.BAD_REQUEST);
 			});
 		});
 	},
