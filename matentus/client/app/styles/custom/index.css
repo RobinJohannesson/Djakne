@@ -184,6 +184,14 @@ footer {
     top: 18%;
 }
 
+#loggedin {
+    top: 6.7%;
+}
+
+#admin {
+    top: 12%;   
+}
+
 @keyframes slider {
     from {
         left: 96%
