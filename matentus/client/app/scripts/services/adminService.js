@@ -162,6 +162,7 @@
 			})
 			.then(function(response) {
 				categoryService.refresh();
+				productService.refresh();
 			})
 			.catch(function(error) {
 				errorHandler(error);

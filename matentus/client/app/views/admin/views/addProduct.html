@@ -24,6 +24,7 @@
                     id="inputTitle" 
                     placeholder="" 
                     maxlength="30" 
+                    minlength="1"
                     required 
                 />
             </div>
@@ -43,6 +44,7 @@
                     id="inputDescription" 
                     placeholder=""
                     maxlength="500" 
+                    minlength="1" 
                     required>        
                 </textarea>
             </div>
@@ -63,7 +65,7 @@
                     ng-options="category.id as category.title for category in ctrl.categories" 
                     ng-model="ctrl.currentProduct.category_id" 
                     class="form-control" 
-                    id="select-main-cat" 
+                    id="select-main-cat"
                     required>
                     <option value=""></option>
                 </select>
@@ -79,7 +81,7 @@
                     name="product-keyword"
                     placeholder=""
                     pause="100"
-                    selected-object="selected"
+                    ng-model="ctrl.currentProduct.keyword"
                     local-data="ctrl.keywords"
                     search-fields="keyword"
                     title-field="keyword"
@@ -98,7 +100,6 @@
                     name="product-supplier"
                     placeholder=""
                     pause="100"
-                    selected-object="selected"
                     ng-model="ctrl.currentProduct.supplier"
                     local-data="ctrl.suppliers"
                     search-fields="supplier"
@@ -152,5 +153,8 @@
                 </button>
             </div>
         </div>
+
+        Valid: {{ctrl.formaddproduct.$valid}}<br>
+        Product: {{ctrl.currentProduct}}
 
     </form>

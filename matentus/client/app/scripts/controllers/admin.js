@@ -159,7 +159,7 @@
 			ctrl.currentProduct = {};
 			ctrl.formaddproduct.$setPristine();
 			document.getElementById('file').value = null;
-			$scope.$broadcast('angucomplete-alt:clearInput');
+			// $scope.$broadcast('angucomplete-alt:clearInput');
 		}
 
 		//------------------------------------------------------------------------
@@ -168,12 +168,10 @@
 
 		function addCategory() {
 			adminService.addCategory(ctrl.currentCategory);
-			clearCurrentCategory();
 		}
 
 		function updateCategory() {
 			adminService.updateCategory(ctrl.currentCategory);
-			clearCurrentCategory();
 		}
 
 		function deleteCategory() {

@@ -47,7 +47,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Product.belongsTo(models.Category),
-        Product.hasMany(models.Like)
+        Product.hasMany(models.Like, {onDelete: 'cascade'})
       }
     }
   });

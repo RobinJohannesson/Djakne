@@ -42,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
 		underscored: true,
 		classMethods: {
 			associate: function(models) {
-				User.hasMany(models.Like)
+				User.hasMany(models.Like, {onDelete: 'cascade'})
 			}
 		}
 	});

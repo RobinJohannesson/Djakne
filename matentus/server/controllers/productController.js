@@ -125,8 +125,6 @@ module.exports = {
 
 		var supplier = (req.body.supplier) ? req.body.supplier : 'Information saknas';
 		var keyword = (req.body.keyword) ? req.body.keyword : 'Information saknas';
-		console.log("--> KEYWORD");
-		console.log(keyword);
 
 		models.Product.create({
 			title: req.body.title, 
@@ -135,7 +133,7 @@ module.exports = {
 			supplier: supplier, 
 			rating: 0, 
 			approved: 0, 
-			likeAmount: 100, 
+			likeAmount: 0, 
 			category_id: req.body.category_id, 
 			created: moment().format().slice(0, 19)
 		})
@@ -175,7 +173,7 @@ module.exports = {
 				supplier: supplier, 
 				rating: 0, 
 				approved: 1, 
-				likeAmount: 100, 
+				likeAmount: 0, 
 				category_id: req.body.category_id, 
 				created: moment().format().slice(0, 19)
 			})
@@ -198,7 +196,7 @@ module.exports = {
 	},
 
 	update: 	function(req, res) {
-
+		console.log(req.body);
 		var title = req.body.title;
 		var description = req.body.description;
 		var category_id = req.body.category_id;

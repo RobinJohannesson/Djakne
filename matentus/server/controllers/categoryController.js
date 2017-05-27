@@ -70,12 +70,10 @@ module.exports = {
 			}
 		})
 		.then(function(category) {
-			console.log("deleted?");
 			if(category) {
 				category.destroy();
 				res.sendStatus(status.OK);
 			} else {
-				console.log(category);
 				res.sendStatus(status.BAD_REQUEST);
 			}
 		});

@@ -3,7 +3,7 @@
 	<div style="margin: 20px 0 20px 0">
 		<!-- <p style="background-color: white; padding: 15px">Visa användare som gillar</p> -->
 		<select   
-			ng-options="product.id as product.title for product in ctrl.products"
+			ng-options="product.id as product.title for product in ctrl.products | orderBy: 'title'"
 			ng-model="ctrl.currentProduct.id"
 			ng-change="ctrl.getUsersOfCurrentProduct()"
 			class="form-control" 

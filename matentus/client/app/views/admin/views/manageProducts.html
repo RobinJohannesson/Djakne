@@ -51,7 +51,7 @@
 
 
 <!-- Change product modal -->
-<div class="modal fade" id="modal-change-product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modal-change-product" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog" role="document">
 	    <div class="modal-content" style="border-radius: 0">  
 
@@ -110,13 +110,13 @@
 						ng-options="category.id as category.title for category in ctrl.categories" 
 						ng-model="ctrl.currentProduct.category_id" 
 						class="form-control" 
-						id="select-main-cat" 
+						id="select-main-cat"
 						required>
 						<option value=""></option>
 					</select>
 				</div>
 
-				<!-- Input subcategory -->
+				<!-- Input keyword -->
 				<div class="form-group col-lg-12">
 					<label 
 						for="distributor">
