@@ -20,7 +20,6 @@
 		ctrl.currentCategoryId = $routeParams.category_id;
 		ctrl.shouldShowCategories = false;
 		ctrl.shouldShowSidebar = false;
-		ctrl.categoryHeader = 'Kategorier';
 		ctrl.currentOrder = '';
 
 		ctrl.likes = likeService.likes;

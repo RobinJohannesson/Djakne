@@ -24,7 +24,7 @@
 		
 		ctrl.checkLoginStatus = checkLoginStatus;
 		ctrl.logout=logout;
-		ctrl.updateUserInformation = updateUserInformation;
+		ctrl.updateUserInformation = userService.updateUserInformation;
 		ctrl.cities = localLoginService.cities;
 		ctrl.isOnline = false;
 		ctrl.isAdmin = false;
@@ -51,12 +51,6 @@
 			.then(function(isAdmin) {
 				ctrl.isAdmin = isAdmin;
 			});
-		}
-
-		function updateUserInformation() {
-			console.log("Update user info...");
-			console.log(ctrl.thisUser);
-			userService.updateUserInformation(ctrl.thisUser);
 		}
 		
 		function logout(){

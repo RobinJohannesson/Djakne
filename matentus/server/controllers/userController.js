@@ -83,75 +83,125 @@ module.exports = {
 		console.log("--> Update user by User: ");
 		console.log(req.body);
 
-		if(!req.body) {
-			next(req, res, status.BAD_REQUEST);
-		}
-
 		var token = req.headers.authorization.replace("JWT ", "");
 		var id = jwtDecode(token).id;
 
+		var name = req.body.name;
 		var email = req.body.email;
-		var name = (req.body.name) ? req.body.name : '';
-		var city = (req.body.city) ? req.body.city : '';
-		var street = (req.body.street) ? req.body.street : '';
-		var zipcode = (req.body.zipcode) ? req.body.zipcode : '';
+		var city = req.body.city;
+		var street = req.body.street;
+		var zipcode = req.body.zipcode;
 
-		models.User.update({
-			name: name,
-			email: email,
-			city: city,
-			street: street,
-			zipcode: zipcode
-		}, {
-			where: {
-				id: id
-			}
+		models.User.find({ 
+			where: { 
+				id: id 
+			} 
 		})
-		.then(function(ok) {
-			if(ok) {
-				res.sendStatus(status.OK);
+		.then(function(user){
+			console.log("--> Old user:");
+			console.log(user);
+
+			if(name) {
+				user.updateAttributes({
+					name: name
+				});
 			}
+			if(email) {
+				user.updateAttributes({
+					email: email
+				});
+			}
+			if(city) {
+				user.updateAttributes({
+					city: city
+				});
+			}
+			if(street) {
+				user.updateAttributes({
+					street: street
+				});
+			}
+			if(zipcode) {
+				user.updateAttributes({
+					zipcode: zipcode
+				});
+			}
+
 		})
-		.catch(function (err) {
+		.then(function() {
+			res.sendStatus(status.OK);
+		})
+		.catch(function(err) {
 			res.sendStatus(status.BAD_REQUEST);
 		});
 	},
 
 	updateByAdmin: function(req, res) {
 
-		var name = (req.body.name) ? req.body.name : '';
-		var city = (req.body.city) ? req.body.city : '';
-		var street = (req.body.street) ? req.body.street : '';
-		var zipcode = (req.body.zipcode) ? req.body.zipcode : '';
+		var name = req.body.name;
+		var email = req.body.email;
+		var city = req.body.city;
+		var street = req.body.street;
+		var zipcode = req.body.zipcode;
 		var admin = req.body.admin;
 
 		this.isAdmin(req)
 		.then(function(isAdmin) {
 			if(!isAdmin) {
 				res.sendStatus(status.NOT_ADMIN);
-				return;
 			}
+			return isAdmin;
 		})
-		.then(function() {
-			models.User.update({
-				name: name,
-				city: city,
-				street: street,
-				zipcode: zipcode,
-				admin: admin
-			}, {
-				where: {
-					id: req.params.id
-				}
-			})
-			.then(function(ok) {
-				if(ok) {
+		.then(function(isAdmin) {
+			if(isAdmin) {
+				models.User.find({ 
+					where: { 
+						id: id 
+					} 
+				})
+				.then(function(user){
+					console.log("--> Old user:");
+					console.log(user);
+
+					if(name) {
+						user.updateAttributes({
+							name: name
+						});
+					}
+					if(email) {
+						user.updateAttributes({
+							email: email
+						});
+					}
+					if(city) {
+						user.updateAttributes({
+							city: city
+						});
+					}
+					if(street) {
+						user.updateAttributes({
+							street: street
+						});
+					}
+					if(zipcode) {
+						user.updateAttributes({
+							zipcode: zipcode
+						});
+					}
+					if(admin) {
+						user.updateAttributes({
+							zipcode: zipcode
+						});
+					}
+
+				})
+				.then(function() {
 					res.sendStatus(status.OK);
-				}
-			})
-			.catch(function (err) {
-				res.sendStatus(status.BAD_REQUEST);
-			});
+				})
+				.catch(function(err) {
+					res.sendStatus(status.BAD_REQUEST);
+				});
+			}
 		});
 	},
 

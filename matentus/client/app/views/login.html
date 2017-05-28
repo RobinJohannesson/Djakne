@@ -26,7 +26,7 @@
 				<label for="InputEmail">Email</label>
 				<input 
 				type="email" 
-				ng-model="ctrl.loginForm.email" 
+				ng-model="ctrl.loginData.email" 
 				class="form-control" id="InputEmail" 
 				aria-describedby="emailHelp" 
 				placeholder="Email"
@@ -36,7 +36,7 @@
 				<label for="InputPassword">Lösenord</label>
 				<input 
 				type="password" 
-				ng-model="ctrl.loginForm.password" 
+				ng-model="ctrl.loginData.password" 
 				class="form-control" 
 				id="InputPassword" 
 				placeholder="Lösenord"
@@ -46,7 +46,7 @@
 				<button 
 					type="submit" 
 					class="btn btn-primary form-control" 
-					ng-click="ctrl.loginLocal()">
+					ng-click="ctrl.loginLocal(ctrl.loginData)">
 					Logga In
 				</button>
 			</div>
@@ -95,13 +95,13 @@
 				id="email-form" 
 				name="ctrl.loginForm" 
 				role="form"
-				ng-submit="ctrl.loginLocal(ctrl.thisUser)"
+				ng-submit="ctrl.loginLocal(ctrl.loginData)"
 				>
 				<div class="form-group">
 					<label for="InputEmail"></label>
 					<input 
 					type="email" 
-					ng-model="ctrl.thisUser.email" 
+					ng-model="ctrl.loginData.email" 
 					class="form-control" id="InputEmail" 
 					aria-describedby="emailHelp" 
 					placeholder="Email"
@@ -111,7 +111,7 @@
 					<label for="InputPassword"></label>
 					<input 
 					type="password" 
-					ng-model="ctrl.thisUser.password" 
+					ng-model="ctrl.loginData.password" 
 					class="form-control" 
 					id="InputPassword" 
 					placeholder="Lösenord"
@@ -140,7 +140,7 @@
 		    	id="email-form" 
 		    	name="ctrl.welcomeForm" 
 		    	role="form"
-		    	ng-submit="ctrl.welcomeForm.$valid && ctrl.updateUserInformation()"
+		    	ng-submit="ctrl.welcomeForm.$valid && ctrl.updateUserInformation(ctrl.welcomeData)"
 		    	>
 
                 <div class="form-group">
@@ -149,7 +149,7 @@
 					<input 
 						name="name"
 						type="text" 
-						ng-model="ctrl.thisUser.name" 
+						ng-model="ctrl.welcomeData.name" 
 						class="form-control col-xs-12" 
                         style="margin-bottom: 20px;"
 						aria-describedby="nameHelp" 
@@ -167,7 +167,7 @@
 						placeholder=""
 						pause="100"
 						selected-object="selected"
-						ng-model="ctrl.thisUser.city"
+						ng-model="ctrl.welcomeData.city"
 						local-data="ctrl.cities"
 						search-fields="name"
 						title-field="name"
@@ -234,8 +234,8 @@
     	<div class="modal-content text-center" style="border-radius: 0; padding: 40px;">
 
     		<form 
-				name="ctrl.userForm" 
-				ng-submit="ctrl.updateUserInformation()"
+				name="ctrl.updateForm" 
+				ng-submit="ctrl.updateUserInformation(ctrl.thisUser)"
 				data-toggle="validator" 
 				role="form"> 
 

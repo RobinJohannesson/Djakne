@@ -26,6 +26,8 @@
 		}
 
 		function updateUserInformation(user) {
+			console.log("Updating user:");
+			console.log(user);
             $http({
                 method: 'PUT',
                 url: api + '/users',

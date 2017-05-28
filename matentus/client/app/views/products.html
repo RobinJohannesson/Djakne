@@ -54,7 +54,12 @@
 
                     <!-- Categories dropdown -->
                     <li ng-click="ctrl.toggleCategories()" class="dropdown col-lg-2 col-md-3 col-xs-4 text-center">
-                        <a class="sort-btn dropdown-toggle col-xs-12" data-toggle="dropdown">{{ ctrl.categoryHeader }}<span class="caret"></span></a>
+                        <a ng-show="ctrl.currentCategoryTitle" class="sort-btn dropdown-toggle col-xs-12" data-toggle="dropdown">
+                            {{ ctrl.currentCategoryTitle }}<span class="caret"></span>
+                        </a>
+                        <a ng-show="!ctrl.currentCategoryTitle" class="sort-btn dropdown-toggle col-xs-12" data-toggle="dropdown">
+                            Kategorier<span class="caret"></span>
+                        </a>
                         <ul ng-if="ctrl.shouldShowCategories" class="dropdown-menu col-md-3 col-lg-12">
                             <li class="category col-xs-12 col-lg-12">
                                 <a href="/">Visa alla</a>
@@ -80,7 +85,8 @@
             ng-if="!ctrl.currentCategoryId || ctrl.currentCategoryId == product.category_id">
 
     		<a href="#!/products/{{ product.id }}">
-    			<img title="{{product.title}}" class="img-responsive" src= "{{ctrl.matentusServer}}/images/{{product.image}}" alt="{{product.title}}" />
+    			<img ng-show="product.image" title="{{product.title}}" class="img-responsive" src= "{{ctrl.matentusServer}}/images/{{product.image}}" alt="{{product.title}}" />
+                <img ng-show="!product.image" title="{{product.title}}" class="img-responsive" src= "{{ctrl.matentusServer}}/images/img-placeholder.jpg" alt="{{product.title}}" />
     		</a>
     		<div class="img-label">
     			<h4 id="label-text"> {{ product.title }} </h4>
