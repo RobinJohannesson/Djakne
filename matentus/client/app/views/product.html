@@ -24,7 +24,8 @@
         <div class="row">
 
             <div class="col-md-6">
-                <img class="img-responsive" src="{{ctrl.matentusServer}}/images/{{ ctrl.product.image }}" alt="prod">
+                <img ng-show="ctrl.product.image" class="img-responsive" src="{{ctrl.matentusServer}}/images/{{ ctrl.product.image }}" alt="prod">
+                <img ng-show="!ctrl.product.image" class="img-responsive" src="{{ctrl.matentusServer}}/images/img-placeholder.jpg" alt="prod">
                  <a class="btn fbshare" ng-click="ctrl.facebookshare()">
 	           <i class="fa fa-facebook-official" aria-hidden="true"></i> Dela på facebook
 	        </a>
@@ -67,7 +68,8 @@
             <div ng-repeat="product in ctrl.products | filter: ctrl.filterRelated" class="related-wrap">
                 <div ng-if="!(product.id == ctrl.id)" class="col-xs-6 col-md-3 col-lg-3 portfolio-item-related">
                     <a href="#!/products/{{ product.id }}" id="related-a">
-                        <img title="{{ product.keyword }}" class="related img-responsive" src="http://localhost:3000/images/{{ product.image }}" alt="produktbild">
+                        <img ng-show="product.image" title="{{ product.keyword }}" class="related img-responsive" src="http://localhost:3000/images/{{ product.image }}" alt="produktbild">
+                        <img ng-show="!product.image" title="{{ product.keyword }}" class="related img-responsive" src="http://localhost:3000/images/img-placeholder.jpg" alt="produktbild">
                     </a>
                     <div id="img-label-related" class="img-label-related col-xs-12">
                         <h5 id="label-text-related"> {{ product.title }} </h5>
@@ -83,7 +85,9 @@
             </div>
         <!-- /.row -->
 </div>
-        <hr>
+
+<hr>
+
 <div ng-controller="LoginCtrl as ctrl">
     <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog" role="document">
@@ -103,12 +107,17 @@
                 <p class="or">eller</p>
             </div>
 
-            <form id="email-form" name="ctrl.form" role="form" class="forced-email-form">
+            <form 
+                id="email-form" 
+                name="ctrl.form" 
+                role="form" 
+                class="forced-email-form" 
+                ng-submit="ctrl.loginLocal(ctrl.loginData)">
                 
 				<div class="form-group">
 					<input 
 					type="email" 
-					ng-model="ctrl.loginForm.email" 
+					ng-model="ctrl.loginData.email" 
 					class="white-input form-control" id="InputEmail" 
 					aria-describedby="emailHelp" 
 					placeholder="Email"
@@ -117,7 +126,7 @@
 				<div class="form-group">
 					<input 
 					type="password" 
-					ng-model="ctrl.loginForm.password" 
+					ng-model="ctrl.loginData.password" 
 					class="white-input form-control" 
 					id="InputPassword" 
 					placeholder="Lösenord"
@@ -128,8 +137,6 @@
 					<button 
 						type="submit" 
 						class="white-input btn btn-primary form-control" 
-						ng-click="ctrl.loginLocal()"
-                        data-dismiss="modal"
                         >
 						Logga In
 					</button>
