@@ -1,6 +1,6 @@
 
     <form 
-        name="ctrl.formaddproduct" 
+        name="ctrl.form" 
         ng-submit="ctrl.addProduct()"
         class=" col-lg-10 col-lg-offset-1 admin_div" 
         id="admin-add-product" 
@@ -138,14 +138,14 @@
             <!-- Submit buttons -->
             <div class="form-group col-lg-12">
                 <button 
-                    ng-disabled="ctrl.formaddproduct.$invalid"
+                    ng-disabled="ctrl.form.$invalid"
                     ng-click="ctrl.currentProduct.approved = false"
                     class="btn btn-warning mt-10"
                     style="width: 100%; margin: 5px 15px 5px 15px">
                     Ladda upp som förslag
                 </button>
                 <button 
-                    ng-disabled="ctrl.formaddproduct.$invalid"
+                    ng-disabled="ctrl.form.$invalid"
                     ng-click="ctrl.currentProduct.approved = true"
                     class="btn btn-success"
                     style="width: 100%; margin: 5px 15px 5px 15px">

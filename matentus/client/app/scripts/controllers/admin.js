@@ -144,22 +144,22 @@
 
 		function deleteProduct() {
 			adminService.deleteProductOrSuggestion(ctrl.currentProduct);
-			clearCurrentProduct();
 		}
 
 		function setCurrentProduct(product) {
+			clearProductInput();
 			ctrl.currentProduct = product;
+		}
+
+		function clearProductInput() {
+			clearCurrentProduct()
+			ctrl.form.$setPristine();
+			document.getElementById('file').value = null;
+			// $scope.$broadcast('angucomplete-alt:clearInput');
 		}
 
 		function clearCurrentProduct() {
 			ctrl.currentProduct = {};
-		}
-
-		function clearProductInput() {
-			ctrl.currentProduct = {};
-			ctrl.formaddproduct.$setPristine();
-			document.getElementById('file').value = null;
-			// $scope.$broadcast('angucomplete-alt:clearInput');
 		}
 
 		//------------------------------------------------------------------------
