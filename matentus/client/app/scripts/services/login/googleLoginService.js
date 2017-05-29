@@ -63,7 +63,6 @@
         function saveToken(token, isNewUser) {
             localStorage.setItem('matentustoken', token);
             likeService.refresh();
-            adminService.refresh();
             if(!isNewUser) {
                 $window.location.reload();
             }

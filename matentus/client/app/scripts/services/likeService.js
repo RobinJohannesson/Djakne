@@ -14,8 +14,6 @@
 		var state = {};
 		state.likes = [];
 
-		refresh();
-
 		function getUserLikes(){
 			$http({
 				method: 'GET',
@@ -56,7 +54,7 @@
 				else if (status === 401){
 					console.log("Användaren måste logga in för att kunna gilla produkter.");
 				}
-			})
+			});
 		}
 
 		function setLikes(likes) {
@@ -64,9 +62,12 @@
 			state.likes.push.apply(state.likes, likes);
 		}
 
-		function getEmailList(id){
-			var productId=id;
-			console.log(productId);
+		function empty() {
+			state.likes.length = 0;
+		}
+
+		function getEmailList(id) {
+			var productId = id;
 			return $http({
 				method: 'POST',
 				url: api + '/products/emaillist/'+productId,
@@ -91,9 +92,9 @@
 		
 		return {
 			refresh: refresh,
+			empty: empty,
 			likes: state.likes,
 			likeProduct: likeProduct,
-			getUserLikes: getUserLikes,
 			getEmailList:getEmailList
 		};
 

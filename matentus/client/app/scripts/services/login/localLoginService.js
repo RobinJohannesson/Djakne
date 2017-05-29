@@ -6,7 +6,7 @@
 (function () {
     'use strict';
 
-    var localLoginService = function ($http, $window, adminService, likeService) {
+    var localLoginService = function ($http, $window, likeService) {
 
         var api = localStorage.getItem('matentusServer') + '/api';
         var isOnline = false;
@@ -80,25 +80,19 @@
         };
 
         var logout = function() {
-            removeToken();
+            localStorage.setItem('matentustoken', '');
+            isOnline = false;
+            $window.location.reload();
+            likeService.empty();
         }
         
         function saveToken(token, isNewUser) {
             localStorage.setItem('matentustoken', token);
             isOnline = true;
             likeService.refresh();
-            adminService.refresh();
             if(!isNewUser) {
                 $window.location.reload();
             }
-        }
-
-        function removeToken() {
-            localStorage.setItem('matentustoken', '');
-            isOnline = false;
-            $window.location.reload();
-            likeService.refresh();
-            adminService.refresh();
         }
 
         function showWelcomeModal() {

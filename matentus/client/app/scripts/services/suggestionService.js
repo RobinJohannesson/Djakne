@@ -27,15 +27,18 @@
 			.then(function(response) {
 				if(response.status === 201) {
 					alert("Tack för ditt förslag!");
-				}
-				productService.refresh();
-				adminService.refresh();
+					productService.refresh();
+				} 
 			}, errorHandler);
 		}
 
 		var errorHandler = function(response) {
-			if(response.status === 404) $location.path('/404');
-			console.log(response);
+			if(response.status === 401) {
+				alert("Vänligen logga in för att skicka förslag!");
+			}
+			if(response.status === 404) {
+				$location.path('/404');
+			}
 		};    
 
 		return {

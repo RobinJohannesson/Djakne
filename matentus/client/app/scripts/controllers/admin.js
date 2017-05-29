@@ -31,8 +31,6 @@
 		//	About current data state
 		//------------------------------------------------------------------------
 
-		ctrl.isOnline = false;
-		ctrl.isAdmin = false;
 		ctrl.currentOrder = '';
 		ctrl.reverseOrder = false;
 		ctrl.currentUser = {};
@@ -86,7 +84,7 @@
 			localLoginService.checkLoginStatus()
 			.then(function(isOnline) {
 				if(isOnline) {
-					ctrl.isOnline = isOnline;
+					checkAdmin();
 				} else {
 					showLoginModal();
 				}
@@ -155,7 +153,6 @@
 			clearCurrentProduct()
 			ctrl.form.$setPristine();
 			document.getElementById('file').value = null;
-			// $scope.$broadcast('angucomplete-alt:clearInput');
 		}
 
 		function clearCurrentProduct() {

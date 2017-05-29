@@ -7,7 +7,7 @@
 (function () {
 	'use strict';
 
-	var adminService = function ($http, $location, $window, productService, categoryService) {
+	var adminService = function ($http, $location, $window, productService, categoryService, localLoginService) {
 
 		var api = localStorage.getItem('matentusServer') + '/api';
 
@@ -238,14 +238,21 @@
 		//------------------------------------------------------------------------
 
 		var errorHandler = function(error) {
-			console.log(error.status);
 			if(error.status === 404) $location.path('/404');
 			if(error.status === 401) $window.location.reload();
 		};    
 
 		function refresh() {
-			getSuggestions();
-			getAllUsers();
+			localLoginService.checkAdmin()
+			.then(function(isAdmin) {
+				if(isAdmin) {
+					getSuggestions();
+					getAllUsers();
+				} else {
+					localLoginService.logout();
+					showLoginModal();
+				}
+			});
 		}
 		
 		return {

@@ -8,9 +8,9 @@
 	angular.module('matentusApp')
 		.controller('LoginCtrl', LoginCtrl);
 
-	LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginService', 'userService', '$scope', '$http', '$location'];
+	LoginCtrl.$inject = ['facebookLoginService', 'googleLoginService', 'localLoginService', 'userService', 'likeService', '$scope', '$http', '$location'];
 
-	function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, userService, $scope, $http, $location, $window) {
+	function LoginCtrl(facebookLoginService, googleLoginService, localLoginService, userService, likeService, $scope, $http, $location, $window) {
 
 		var ctrl = this;
 		ctrl.matentusServer = localStorage.getItem('matentusServer');
@@ -43,6 +43,9 @@
 			localLoginService.checkLoginStatus()
 			.then(function(isOnline) {
 				ctrl.isOnline = isOnline;
+				if(isOnline) {
+					likeService.refresh();
+				}
 			});	
 		}
 
@@ -54,6 +57,7 @@
 		}
 		
 		function logout(){
+			ctrl.isOnline = false;
 			localLoginService.logout();
 		}
 	}

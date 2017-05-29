@@ -84,6 +84,10 @@ app.use('/api/products', products);
 app.use('/api/login', login);
 app.use('/api/cities', cities);
 
+app.get('/images', function(req, res) {
+	res.sendStatus(204);
+});
+
 // -----------------------------------------------------
 // Error handler - Catch error and forward
 // -----------------------------------------------------

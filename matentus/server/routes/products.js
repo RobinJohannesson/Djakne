@@ -73,7 +73,6 @@ router.get('/:id/likes', passport.authenticate('jwt', { session: false }), funct
 	productController.getUsers(req, res);
 });
 
-
 // -----------------------------------------------------
 // Local exports
 // -----------------------------------------------------

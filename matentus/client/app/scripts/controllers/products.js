@@ -32,11 +32,11 @@
 		ctrl.likeProduct = likeService.likeProduct;
 		ctrl.updateLikes = likeService.updateLikes;
 		ctrl.checkUserLike = checkUserLike;
-		ctrl.getUserLikes = likeService.getUserLikes;
+		// ctrl.getUserLikes = likeService.getUserLikes;
 		ctrl.likeProduct = likeService.likeProduct;
 
 		orderBy('likeAmount');
-		ctrl.getUserLikes();
+		// ctrl.getUserLikes();
 
 		function updateLikes(){
 			ctrl.getUserLikes();
