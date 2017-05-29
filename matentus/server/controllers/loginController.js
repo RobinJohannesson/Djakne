@@ -115,37 +115,37 @@ module.exports = {
 		})
 			.then(function(user) {
 
-			if (user.password!=null){
-				if(user) {
+
+			if(user) {
+				if (user.password!=null){
 					if(passwordHash.verify(password, user.password)){
 						sendTokenResponse(res, user, 200);
 					}
 					else{
 						res.sendStatus(401);
 					}
+				}
 
-				} 
-				else {
+				else if (user.password==null){
+					res.sendStatus(401);
+				}
+			} 
+			else if (!user) {
 
-					var hashedPassword = passwordHash.generate(password);
-					var name = (req.body.name) ? req.body.name : '';
+				var hashedPassword = passwordHash.generate(password);
+				var name = (req.body.name) ? req.body.name : '';
 
-					models.User.create({ 
-						name: name, 
-						email: email, 
-						password: hashedPassword,
-						admin: 0,
-						notes: 'Inga noteringar'
-					})
-						.then(function(user) {
-						sendTokenResponse(res, user, 201);
-					});
-				}		
-			}
-			
-			else if (user.password==null){
-				res.sendStatus(401);
-			}
+				models.User.create({ 
+					name: name, 
+					email: email, 
+					password: hashedPassword,
+					admin: 0,
+					notes: 'Inga noteringar'
+				})
+					.then(function(user) {
+					sendTokenResponse(res, user, 201);
+				});
+			}		
 
 		});
 	},
