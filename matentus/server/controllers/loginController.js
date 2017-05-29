@@ -116,11 +116,9 @@ module.exports = {
 		.then(function(user) {
 			if(user) {
 				if(passwordHash.verify(password, user.password)){
-					console.log("Test Lösenord");
 					sendTokenResponse(res, user, 200);
 				}
 				else{
-					console.log("Fel lösenord");
 					res.status(201);
 				}
 				
