@@ -121,7 +121,7 @@ module.exports = {
 						sendTokenResponse(res, user, 200);
 					}
 					else{
-						res.status(201);
+						res.status(401);
 					}
 
 				} 
@@ -144,7 +144,7 @@ module.exports = {
 			}
 			
 			else if (user.password==null){
-				res.status(201);
+				res.status(401);
 			}
 
 		});
