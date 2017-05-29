@@ -144,7 +144,9 @@ module.exports = {
 		var street = req.body.street;
 		var zipcode = req.body.zipcode;
 		var admin = req.body.admin;
+		var id= req.body.id;
 
+		
 		this.isAdmin(req)
 		.then(function(isAdmin) {
 			if(!isAdmin) {
@@ -156,7 +158,7 @@ module.exports = {
 			if(isAdmin) {
 				models.User.find({ 
 					where: { 
-						id: id 
+						id: id
 					} 
 				})
 				.then(function(user){
@@ -190,7 +192,7 @@ module.exports = {
 					}
 					if(admin) {
 						user.updateAttributes({
-							zipcode: zipcode
+							admin: admin
 						});
 					}
 
