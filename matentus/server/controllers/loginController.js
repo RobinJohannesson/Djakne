@@ -37,7 +37,7 @@ module.exports = {
 						email: email
 					}
 				})
-				.then(function(user) {
+					.then(function(user) {
 					if(user) {
 						sendTokenResponse(res, user, 200);				
 					} 
@@ -48,7 +48,7 @@ module.exports = {
 							admin: 0,
 							notes: 'Inga noteringar'
 						})
-						.then(function(user) {
+							.then(function(user) {
 							sendTokenResponse(res, user, 201);
 						});
 					}
@@ -65,7 +65,7 @@ module.exports = {
 
 		var googletoken = req.body.googletoken;
 		request.get({ url: 'https://www.googleapis.com/oauth2/v1/userinfo?access_token='+googletoken },      function(error, response, body) { 
-			
+
 			if(!error && response.statusCode == 200) {
 
 				var info = JSON.parse(response.body);
@@ -77,7 +77,7 @@ module.exports = {
 						email: email
 					}
 				})
-				.then(function(user) {
+					.then(function(user) {
 					if(user) {
 						sendTokenResponse(res, user, 200);				
 					} 
@@ -88,7 +88,7 @@ module.exports = {
 							admin: 0,
 							notes: 'Inga noteringar'
 						})
-						.then(function(user) {
+							.then(function(user) {
 							sendTokenResponse(res, user, 201);
 						});
 					}
@@ -96,7 +96,7 @@ module.exports = {
 			} 
 		});
 	},
-	
+
 	// --------------------------------------------------------------------------------------------
 	//	Login with email. If user does not already exists, one will be created and stored in db.
 	// --------------------------------------------------------------------------------------------
@@ -113,32 +113,40 @@ module.exports = {
 				email: email
 			}
 		})
-		.then(function(user) {
-			if(user) {
-				if(passwordHash.verify(password, user.password)){
-					sendTokenResponse(res, user, 200);
-				}
-				else{
-					res.status(201);
-				}
-				
-			} 
-			else {
+			.then(function(user) {
 
-				var hashedPassword = passwordHash.generate(password);
-				var name = (req.body.name) ? req.body.name : '';
+			if (user.password!=null){
+				if(user) {
+					if(passwordHash.verify(password, user.password)){
+						sendTokenResponse(res, user, 200);
+					}
+					else{
+						res.status(201);
+					}
 
-				models.User.create({ 
-					name: name, 
-					email: email, 
-					password: hashedPassword,
-					admin: 0,
-					notes: 'Inga noteringar'
-				})
-				.then(function(user) {
-					sendTokenResponse(res, user, 201);
-				});
+				} 
+				else {
+
+					var hashedPassword = passwordHash.generate(password);
+					var name = (req.body.name) ? req.body.name : '';
+
+					models.User.create({ 
+						name: name, 
+						email: email, 
+						password: hashedPassword,
+						admin: 0,
+						notes: 'Inga noteringar'
+					})
+						.then(function(user) {
+						sendTokenResponse(res, user, 201);
+					});
+				}		
 			}
+			
+			else if (user.password==null){
+				res.status(201);
+			}
+
 		});
 	},
 
@@ -154,7 +162,7 @@ module.exports = {
 		models.User.find( {
 			where: {id: id}
 		})
-		.then(function(user) {
+			.then(function(user) {
 			res.json({
 				isAdmin: user.admin
 			});
