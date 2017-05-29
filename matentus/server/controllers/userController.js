@@ -145,8 +145,6 @@ module.exports = {
 		var zipcode = req.body.zipcode;
 		var admin = req.body.admin;
 		var id= req.body.id;
-
-		
 		this.isAdmin(req)
 		.then(function(isAdmin) {
 			if(!isAdmin) {
@@ -190,7 +188,7 @@ module.exports = {
 							zipcode: zipcode
 						});
 					}
-					if(admin) {
+					if(admin!=null) {
 						user.updateAttributes({
 							admin: admin
 						});
