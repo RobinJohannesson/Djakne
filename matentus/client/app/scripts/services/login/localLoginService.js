@@ -18,7 +18,6 @@
 
         var login = function(user) {
             console.log("Trying to login");
-
             $http({
                 method: 'POST',
                 url: api + '/login/email',
@@ -46,6 +45,7 @@
                 }
             })
             .catch(function(error) {
+                showWrongPassword();
                 console.log("Something happened when logging in...");
                 console.log(error);
             });
@@ -103,6 +103,10 @@
 
         function showWelcomeModal() {
             $('#modal-welcome').modal('show');
+        }
+        
+        function showWrongPassword() {
+            $('#loginError').show();
         }
 
         function getCities() {

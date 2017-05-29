@@ -386,6 +386,10 @@ footer {
 
 /* Bootstrap Modal. AKA Login-Pop-Up */
 
+#loginError{
+    display:none;
+}
+
 .modal {
     text-align: center;
 }
