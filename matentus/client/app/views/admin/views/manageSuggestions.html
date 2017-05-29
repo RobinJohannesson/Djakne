@@ -17,10 +17,10 @@
 				<td>{{ suggestion.supplier }}</td>
 				<td>
 					<a ng-show="suggestion.image" href="{{ctrl.matentusServer}}/images/{{suggestion.image}}">
-						<img src="{{ctrl.matentusServer}}/images/{{suggestion.image}}" alt="" class="img-thumbnail">
+						<img ng-src="{{ctrl.matentusServer}}/images/{{suggestion.image}}" alt="" class="img-thumbnail">
 					</a>
 					<a ng-show="!suggestion.image" href="{{ctrl.matentusServer}}/images/img-placeholder.jpg">
-						<img src="{{ctrl.matentusServer}}/images/img-placeholder.jpg" alt="" class="img-thumbnail">
+						<img ng-src="{{ctrl.matentusServer}}/images/img-placeholder.jpg" alt="" class="img-thumbnail">
 					</a>
 				</td>
 				<td>

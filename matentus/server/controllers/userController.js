@@ -64,7 +64,7 @@ module.exports = {
 		var id = jwtDecode(token).id;
 
 		models.User.find({
-			attributes: ['id', 'name', 'email', 'city', 'street', 'zipcode', 'admin']
+			attributes: ['id', 'name', 'email', 'city', 'street', 'zipcode']
 		}, {
 			where: {
 				id: id
@@ -79,9 +79,6 @@ module.exports = {
 	},
 
 	updateByUser: function(req, res) {
-
-		console.log("--> Update user by User: ");
-		console.log(req.body);
 
 		var token = req.headers.authorization.replace("JWT ", "");
 		var id = jwtDecode(token).id;
@@ -98,10 +95,8 @@ module.exports = {
 			} 
 		})
 		.then(function(user){
-			console.log("--> Old user:");
-			console.log(user);
 
-			if(name) {
+			if(name !== null) {
 				user.updateAttributes({
 					name: name
 				});
@@ -111,22 +106,21 @@ module.exports = {
 					email: email
 				});
 			}
-			if(city) {
+			if(city !== null) {
 				user.updateAttributes({
 					city: city
 				});
 			}
-			if(street) {
+			if(street !== null) {
 				user.updateAttributes({
 					street: street
 				});
 			}
-			if(zipcode) {
+			if(zipcode !== null) {
 				user.updateAttributes({
 					zipcode: zipcode
 				});
 			}
-
 		})
 		.then(function() {
 			res.sendStatus(status.OK);
@@ -159,11 +153,8 @@ module.exports = {
 						id: id
 					} 
 				})
-				.then(function(user){
-					console.log("--> Old user:");
-					console.log(user);
-
-					if(name) {
+				.then(function(user){				
+					if(name !== null) {
 						user.updateAttributes({
 							name: name
 						});
@@ -173,22 +164,22 @@ module.exports = {
 							email: email
 						});
 					}
-					if(city) {
+					if(city !== null) {
 						user.updateAttributes({
 							city: city
 						});
 					}
-					if(street) {
+					if(street !== null) {
 						user.updateAttributes({
 							street: street
 						});
 					}
-					if(zipcode) {
+					if(zipcode !== null) {
 						user.updateAttributes({
 							zipcode: zipcode
 						});
 					}
-					if(admin!=null) {
+					if(admin !== null) {
 						user.updateAttributes({
 							admin: admin
 						});

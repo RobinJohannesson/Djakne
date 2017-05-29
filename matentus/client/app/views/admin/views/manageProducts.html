@@ -16,10 +16,10 @@
 				<td>{{ product.supplier }}</td>
 				<td class="add-prod-img">
   					<a ng-show="product.image" href="{{ctrl.matentusServer}}/images/{{product.image}}">
-  						<img src="{{ctrl.matentusServer}}/images/{{product.image}}" alt="" class="img-thumbnail">
+  						<img ng-src="{{ctrl.matentusServer}}/images/{{product.image}}" alt="" class="img-thumbnail">
   					</a>
   					<a ng-show="!product.image" href="{{ctrl.matentusServer}}/images/img-placeholder.jpg">
-  						<img src="{{ctrl.matentusServer}}/images/img-placeholder.jpg" alt="" class="img-thumbnail">
+  						<img ng-src="{{ctrl.matentusServer}}/images/img-placeholder.jpg" alt="" class="img-thumbnail">
   					</a>
 				</td>
                 <td>

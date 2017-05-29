@@ -24,8 +24,8 @@
         <div class="row">
 
             <div class="col-md-6">
-                <img ng-show="ctrl.product.image" class="img-responsive" src="{{ctrl.matentusServer}}/images/{{ ctrl.product.image }}" alt="prod">
-                <img ng-show="!ctrl.product.image" class="img-responsive" src="{{ctrl.matentusServer}}/images/img-placeholder.jpg" alt="prod">
+                <img ng-show="ctrl.product.image" class="img-responsive" ng-src="{{ctrl.matentusServer}}/images/{{ctrl.product.image}}" alt="prod">
+                <img ng-show="!ctrl.product.image" class="img-responsive" ng-src="{{ctrl.matentusServer}}/images/img-placeholder.jpg" alt="prod">
                  <a class="btn fbshare" ng-click="ctrl.facebookshare()">
 	           <i class="fa fa-facebook-official" aria-hidden="true"></i> Dela på facebook
 	        </a>
@@ -68,8 +68,8 @@
             <div ng-repeat="product in ctrl.products | filter: ctrl.filterRelated" class="related-wrap">
                 <div ng-if="!(product.id == ctrl.id)" class="col-xs-6 col-md-3 col-lg-3 portfolio-item-related">
                     <a href="#!/products/{{ product.id }}" id="related-a">
-                        <img ng-show="product.image" title="{{ product.keyword }}" class="related img-responsive" src="http://localhost:3000/images/{{ product.image }}" alt="produktbild">
-                        <img ng-show="!product.image" title="{{ product.keyword }}" class="related img-responsive" src="http://localhost:3000/images/img-placeholder.jpg" alt="produktbild">
+                    <img ng-show="product.image" title="{{ product.keyword }}" class="related img-responsive" ng-src="{{ctrl.matentusServer}}/images/{{ product.image }}" alt="produktbild">
+                        <img ng-show="!product.image" title="{{ product.keyword }}" class="related img-responsive" ng-src="{{ctrl.matentusServer}}/images/img-placeholder.jpg" alt="produktbild">
                     </a>
                     <div id="img-label-related" class="img-label-related col-xs-12">
                         <h5 id="label-text-related"> {{ product.title }} </h5>
