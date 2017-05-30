@@ -143,7 +143,7 @@
 					  id="email-form" 
 					  name="ctrl.welcomeForm" 
 					  role="form"
-					  ng-submit="ctrl.welcomeForm.$valid && ctrl.updateUserInformation(ctrl.welcomeData)"
+					  ng-submit="ctrl.newUserInformation(ctrl.welcomeData)"
 					  >
 
 					<div class="form-group">
@@ -169,7 +169,7 @@
 										  name="city"
 										  placeholder=""
 										  pause="100"
-										  selected-object="selected"
+										  selected-object="ctrl.welcomeData.city"
 										  ng-model="ctrl.welcomeData.city"
 										  local-data="ctrl.cities"
 										  search-fields="name"
@@ -178,6 +178,9 @@
 										  input-class="form-control form-control-small"
 										  required
 										  />
+					</div>
+					<div class="alert alert-danger" id="cityError">
+						<strong>Kommun krävs</strong> Du måste välja kommun för att logga in första gången.
 					</div>
 					<div class="form-group">
 						<p class="color-white" style= "font-size: 10px; color: lightgrey; margin-bottom: 20px;">Fyll i namn och kommun för att ta del av just dina lokala och närproducerade produkter.</p>

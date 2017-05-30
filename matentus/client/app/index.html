@@ -1,169 +1,167 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html ng-app="matentusApp">
 
 <head>
 
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <meta property="og:url" content="http://localhost:9000" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Matentus" />
     <meta property="og:description" content="Färska varor direkt från skånska gårdar" />
     <meta property="og:image" content="http://www.your-domain.com/path/image.jpg" />
 
-	<title>Matentus</title>
+    <title>Matentus</title>
 
-	<!-- Import CSS -->
-	<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" />
-	<link rel="stylesheet" href="bower_components/angucomplete-alt/angucomplete-alt.css" />
+    <!-- Import CSS -->
+    <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/angucomplete-alt/angucomplete-alt.css" />
     <!-- Font from GoogleFonts-->
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
 
 
 
-	<!-- Bootstrap Core CSS -->
-	<link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="styles/bootstrap/bootstrap-social/bootstrap-social.css" />
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/bootstrap/bootstrap-social/bootstrap-social.css" />
 
-	<!-- Custom CSS -->
-	<link rel="stylesheet" href="styles/custom/index.css" />
-	<link rel="stylesheet" href="styles/custom/portfolio-item.css" />
-	<link rel="stylesheet" href="styles/custom/simple-sidebar.css" />
-	<link rel="stylesheet" href="styles/custom/admin.css" />
-	<link rel="stylesheet" href="styles/custom/products.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/custom/index.css" />
+    <link rel="stylesheet" href="styles/custom/portfolio-item.css" />
+    <link rel="stylesheet" href="styles/custom/simple-sidebar.css" />
+    <link rel="stylesheet" href="styles/custom/admin.css" />
+    <link rel="stylesheet" href="styles/custom/products.css" />
     <link rel="stylesheet" href="styles/custom/about.css" />
     <link rel="stylesheet" href="styles/custom/navibar.css" />
     <link rel="stylesheet" href="styles/custom/product.css" />
 
 
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
 </head>
 
 <body>
 
-	<div class="container">
-		<!-- Header area -->
-		<div id="header" class="row sorts">
-			<div ng-include src="'views/login.html'"></div>
-			<a href="#" class="col-xs-12">
-				<img alt="head" src="images/header2.PNG" class="col-xs-10 col-xs-offset-1 col-md-10 col-lg-8 col-lg-offset-2">
+    <div class="container">
+        <!-- Header area -->
+        <div id="header" class="row sorts">
+            <div ng-include src="'views/login.html'"></div>
+            <a href="#" class="col-xs-12">
+                <img alt="head" src="images/header2.PNG" class="col-xs-10 col-xs-offset-1 col-md-10 col-lg-8 col-lg-offset-2">
                 <img alt="beta" src="images/beta-stamp2.PNG" class="col-xs-1" id="beta-stamp">
-			</a>
-		</div>
-		<!-- End of header area -->
+            </a>
+        </div>
+        <!-- End of header area -->
 
-		<!-- Content area -->
-		<div class="row" ng-view=""></div>
-		<!-- End of content area -->
+        <!-- Content area -->
+        <div class="row" ng-view=""></div>
+        <!-- End of content area -->
 
-		<!-- Footer area -->
-		<div class="row copy text-center">
-			<div class="icon-footer">
-                
-				<a class="btn btn-social-icon footer-icon" href="#">
-					<i class="fa fa-facebook-official" aria-hidden="true"></i>
-				</a>
-                
-				<a class="btn btn-social-icon footer-icon" href="#">
-					<i class="fa fa-instagram" aria-hidden="true"></i>
-				</a>
-               
+        <!-- Footer area -->
+        <div class="row copy text-center">
+            <div class="icon-footer">
+
+                <a class="btn btn-social-icon footer-icon" href="#">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+
+                <a class="btn btn-social-icon footer-icon" href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+
                 <a href="#!/about" class="btn footer-link">
                     <i class="glyphicon glyphicon-info-sign footer-link"></i>
                 </a>
-               
-				
-                  <a class="btn footer-link" ng-controller="LoginCtrl as ctrl" ng-show="ctrl.isOnline">
+
+
+                <a class="btn footer-link" ng-controller="LoginCtrl as ctrl" ng-show="ctrl.isOnline">
                     <i class="glyphicon glyphicon-log-out footer-link" ng-click="ctrl.logout()"></i>
                 </a>
 
-				
-			</div>
-            
+
+            </div>
+
             <div>
-                
-            
-            <div class="20"></div>
-			<p>Copyright &copy; Matentus 2017</p>
-		</div>
-		<!-- End of footer area -->
-
-	</div>
-
-	<!-- Bower components -->
-	<script src="bower_components/jquery/dist/jquery.js"></script>
-	<script src="bower_components/angular/angular.js"></script>
-	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-	<script src="bower_components/angular-resource/angular-resource.js"></script>
-	<script src="bower_components/angular-route/angular-route.js"></script>
-	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-	<script src="bower_components/angucomplete-alt/angucomplete-alt.js"></script>
-
-	<!-- Controllers -->
-	<script src="scripts/index.js"></script>
-	<script src="scripts/controllers/products.js"></script>
-	<script src="scripts/controllers/login.js"></script>
-	<script src="scripts/controllers/product.js"></script>
-	<script src="scripts/controllers/admin.js"></script>
-	<script src="scripts/controllers/upload.js"></script>
-
-	<!-- Services -->
-	<script src="scripts/services/categoryService.js"></script>
-	<script src="scripts/services/login/facebookLoginService.js"></script>
-	<script src="scripts/services/login/googleLoginService.js"></script>
-	<script src="scripts/services/login/localLoginService.js"></script>
-	<script src="scripts/services/productService.js"></script>
-	<script src="scripts/services/suggestionService.js"></script>
-	<script src="scripts/services/adminService.js"></script>
-	<script src="scripts/services/likeService.js"></script>
-	<script src="scripts/services/userService.js"></script>
-
-	<!-- Directives -->
-	<script src="scripts/directives/fileModel.js"></script>
-
-	<!-- Custom DOM manipulation-->
-	<script src="scripts/styling/style.js"></script>
-
-	<script>
-		$("#menu-toggle").click(function(e) {
-			e.preventDefault();
-			$("#wrapper").toggleClass("toggled");
-		});
-	</script>
-
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<script src="https://apis.google.com/js/api.js"></script>
 
 
-	<!-- To load facebook login -->
-	<script>
-	  window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '636938996509987',
-	      xfbml      : true,
-	      version    : 'v2.9'
-	    });
-	    FB.AppEvents.logPageView();
-	  };
+                <div class="20"></div>
+                <p>Copyright &copy; Matentus 2017</p>
+            </div>
+            <!-- End of footer area -->
 
-	  (function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "//connect.facebook.net/en_US/sdk.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
-	</script>
-	<!-- End of load facebook login -->
+        </div>
+
+        <!-- Bower components -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angucomplete-alt/angucomplete-alt.js"></script>
+
+        <!-- Controllers -->
+        <script src="scripts/index.js"></script>
+        <script src="scripts/controllers/products.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/product.js"></script>
+        <script src="scripts/controllers/admin.js"></script>
+        <script src="scripts/controllers/upload.js"></script>
+
+        <!-- Services -->
+        <script src="scripts/services/categoryService.js"></script>
+        <script src="scripts/services/login/facebookLoginService.js"></script>
+        <script src="scripts/services/login/googleLoginService.js"></script>
+        <script src="scripts/services/login/localLoginService.js"></script>
+        <script src="scripts/services/productService.js"></script>
+        <script src="scripts/services/suggestionService.js"></script>
+        <script src="scripts/services/adminService.js"></script>
+        <script src="scripts/services/likeService.js"></script>
+        <script src="scripts/services/userService.js"></script>
+
+        <!-- Directives -->
+        <script src="scripts/directives/fileModel.js"></script>
+
+        <!-- Custom DOM manipulation-->
+        <script src="scripts/styling/style.js"></script>
+
+        <script>
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+
+        </script>
+
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://apis.google.com/js/api.js"></script>
+
+
+        <!-- To load facebook login -->
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId: '636938996509987',
+                    xfbml: true,
+                    version: 'v2.9'
+                });
+                FB.AppEvents.logPageView();
+            };
+
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+        </script>
+        <!-- End of load facebook login -->
 </body>
 
 </html>

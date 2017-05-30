@@ -17,6 +17,7 @@
         getCities();
 
         var login = function(user) {
+            
             console.log("Trying to login");
             $http({
                 method: 'POST',
@@ -96,6 +97,7 @@
         }
 
         function showWelcomeModal() {
+            $('#modal-login').modal('hide');
             $('#modal-welcome').modal('show');
         }
         
