@@ -4,18 +4,17 @@ body {
 
 .heading p {
     position: absolute;
-    right: 5%;
+    right:5%;
     top: 5%;
     font-size: 180%;
 }
 
-
 /*category*/
-
-#new-category i {
+#new-category i{
     color: black;
     font-size: 300%;
     padding: 0% 5% 5% 10%;
+    
 }
 
 #new-category {
@@ -24,86 +23,69 @@ body {
     color: black;
 }
 
-.label-default {
+.label-default{
     white-space: nowrap;
 }
-
-
 /*General*/
 
-.btn-primary:hover {
+.btn-primary:hover{
     background-color: grey;
     border-color: grey;
 }
-
-.btn-primary {
+.btn-primary{
     background-color: black;
     border-color: black;
 }
-
-.default-div {
+.default-div{
     margin-top: 3%;
 }
 
 #admin-add-product {
     margin-top: 1%
 }
-
-.btn-group>.active {
+.btn-group > .active{
     background: #fff;
     color: #000;
     border-bottom-style: none;
 }
-
-.img-thumbnail {
+.img-thumbnail{
     max-width: 50px;
 }
-
-.form-group {
+.form-group{
     padding-top: 3%;
 }
-
-.form-control {
+.form-control{
     resize: vertical;
 }
-
-.change {
+.change{
     color: black;
     float: right;
-    padding-right: 10%;
+    padding-right: 10%;   
 }
-
-.change:hover {
+.change:hover{
     color: darkgrey;
 }
-
-.delete {
+.delete{
     float: right;
-    color: black;
+    color: black; 
 }
-
-.delete:hover {
+.delete:hover{
     color: darkgrey;
 }
-
-.default-div tr:hover {
+.default-div tr:hover{
     background-color: #F8F8F8;
 }
-
-#image-upload {
-    padding-top: 5.5%;
+#image-upload{
+    padding-top:5.5%;
     padding-left: 3%;
 }
-
-.likes-admin i:hover {
-    color: darkgrey;
+.likes-admin i:hover{
+    color: darkgrey;   
 }
-
-.add-prod-img {
+.add-prod-img{
     width: 20%;
 }
-
-.fa-file-text-o {
+.fa-file-text-o{
     font-size: 100%;
     color: black;
     width: 25%;

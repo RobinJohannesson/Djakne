@@ -1,10 +1,8 @@
 /*FORCED TO LOGIN*/
-
-.or-div {
-    height: 40px;
+.or-div{
+    height: 40px; 
 }
-
-.line {
+.line{
     position: absolute;
     background: #bbb;
     width: 100%;
@@ -12,8 +10,7 @@
     left: 0;
     top: 42%;
 }
-
-.or {
+.or{
     font-weight: 100;
     position: absolute;
     color: #bbb;
@@ -24,65 +21,49 @@
     top: 12%;
     font-size: 120%;
 }
-
-.forced-email-form {
+.forced-email-form{
     background: #fff!important;
     color: #000!important;
     text-align: left;
 }
-
-#email-form input,
-#email-form select {
+#email-form input, #email-form select{
     background: #000;
     border-style: none none solid none;
     border-radius: 5px;
     color: #fff;
     transition: 0.5s;
 }
-
-#email-form .white-input,
-.white-input {
+#email-form .white-input, .white-input {
     background: #fff;
     color: #000;
 }
-
-
 /*END*/
-
-
 /*GENERAL*/
 
-
 /*product*/
-
-#email-form {
+#email-form{
     margin-top: 15%;
 }
-
-.home:hover {
+.home:hover{
     color: #9d9d9d;
 }
-
-.home {
+.home{
     position: absolute;
     top: 45%;
     font-size: 150%;
-    color: black;
+    color: black;   
 }
-
-#page-header {
+#page-header{
     padding-left: 7%;
 }
-
-.heart-icon-prod {
+.heart-icon-prod{
     transform: scale(3);
-    position: absolute;
+    position:absolute; 
     margin: 3%;
     left: 90%;
     top: 90%;
 }
-
-#numb-of-likes-prod {
+#numb-of-likes-prod{
     font-family: 'Raleway', sans-serif;
     text-align: center;
     width: 10%;
@@ -92,8 +73,7 @@
     left: 25.0%;
     top: 31%;
 }
-
-#numb-of-likes-white-prod {
+#numb-of-likes-white-prod{
     font-family: 'Raleway', sans-serif;
     text-align: center;
     width: 10%;
@@ -103,12 +83,10 @@
     left: 25.0%;
     top: 31%;
 }
-
-.title-row {
+.title-row{
     padding: 0 3%;
     margin-top: -2%;
 }
-
 
 /*               RELATED PRODUCTS CSS                */
 
@@ -117,11 +95,10 @@
     bottom: 0%;
     height: 22%;
     width: 92.0%;
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.7);
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,0.7);  
     padding-left: 4%;
 }
-
 #label-text-related {
     color: white;
     padding: 0%;
@@ -132,47 +109,40 @@
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
 }
-
-.related-wrap {
+.related-wrap{
     padding: 0px;
 }
-
-.portfolio-item-related {
+.portfolio-item-related{
     overflow: hidden;
     height: 25%;
     padding: 1%;
     margin: 2% 0%;
 }
-
 .related {
     min-height: 80%;
     width: 100%;
 }
-
 .heart-icon-related {
     font-size: 11px;
     transform: translate(0px, 1px);
 }
-
-
 /*-----RELATED END-----*/
 
 
 /*        MEDIA QUERIES       */
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px){
     /*Mobile*/
-    #img-label-related {
+    #img-label-related{
         width: 95.8%;
     }
-    .home {
+    .home{
         top: 45%;
     }
-    .rel-row {
-        padding-top: 5%;
+    .rel-row{
+        padding-top: 5%; 
     }
+    
 }
-
-@media screen and (max-width: 992px) {
+ @media screen and (max-width: 992px){
     /*Tablet*/
 }
