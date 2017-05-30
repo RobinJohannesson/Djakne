@@ -210,11 +210,17 @@
 
 		function setCurrentUser(user) {
 			ctrl.currentUser = user;
+            
 		}
 
 		function clearCurrentUser() {
 			ctrl.currentUser = {};
 		}
+        
+        function deleteUser(){
+            adminService.deleteUser(ctrl.currentUser);
+            console.log("hej");
+        }
 
 		//------------------------------------------------------------------------
 		//	General
