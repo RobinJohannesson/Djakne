@@ -25,6 +25,7 @@
 		ctrl.checkLoginStatus = checkLoginStatus;
 		ctrl.logout=logout;
 		ctrl.updateUserInformation = userService.updateUserInformation;
+		ctrl.newUserInformation=newUserInformation;
 		ctrl.cities = localLoginService.cities;
 		ctrl.isOnline = false;
 		ctrl.isAdmin = false;
@@ -55,6 +56,21 @@
 				ctrl.isAdmin = isAdmin;
 			});
 		}
+		
+		function newUserInformation(user){
+			
+			if(!user.city){
+				$('#cityError').show();
+			}
+			
+			else{
+				user.city=user.city['title'];
+				userService.updateUserInformation(user);
+				
+			}
+			
+		}
+		
 		
 		function logout(){
 			ctrl.isOnline = false;

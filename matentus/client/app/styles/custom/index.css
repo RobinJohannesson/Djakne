@@ -389,7 +389,9 @@ footer {
 #loginError{
     display:none;
 }
-
+#cityError{
+    display:none;
+}
 .modal {
     text-align: center;
 }
