@@ -48,7 +48,7 @@
 /*LIKE ICONS*/
 .heart-icon {
     transform: scale(1.5);
-    position:absolute;
+    position: absolute;
     margin: 0 12px 0 12px;
     bottom: 5%;
     right: 5%;
@@ -60,22 +60,22 @@
 #numb-of-likes{
     font-family: 'Raleway', sans-serif;
     text-align: center;
-    width: 10%;
+    width: 100%;
     position: absolute;
     color: #000;
-    left: 24.0%;
-    top: 24%;
-    font-size: 32%;
+    left: 0;
+    top: 28%;
+    font-size: 28%;
 }
 #numb-of-likes-white{
     font-family: 'Raleway', sans-serif;
     text-align: center;
-    width: 10%;
+    width: 100%;
     position: absolute;
     color: #fff;
-    left: 24.0%;
-    top: 24%;
-    font-size: 32%;
+    left: 0;
+    top: 28%;
+    font-size: 28%;
 }
 /*media queries*/
 @media screen and (min-width: 750px){

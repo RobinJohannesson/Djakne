@@ -66,22 +66,22 @@
 #numb-of-likes-prod{
     font-family: 'Raleway', sans-serif;
     text-align: center;
-    width: 10%;
+    width: 100%;
     position: absolute;
     color: #fff;
-    font-size: 32%;
-    left: 25.0%;
-    top: 31%;
+    font-size: 30%;
+    left: 0;
+    top: 38%;
 }
 #numb-of-likes-white-prod{
     font-family: 'Raleway', sans-serif;
     text-align: center;
-    width: 10%;
+    width: 100%;
     position: absolute;
     color: #000;
-    font-size: 32%;
-    left: 25.0%;
-    top: 31%;
+    font-size: 30%;
+    left: 0;
+    top: 38%;
 }
 .title-row{
     padding: 0 3%;
