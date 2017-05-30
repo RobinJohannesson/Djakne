@@ -52,6 +52,7 @@
 					productService.getProduct(id);
 				}
 				else if (status === 401){
+					 $('#modal-login').modal('show');
 					console.log("Användaren måste logga in för att kunna gilla produkter.");
 				}
 			});
