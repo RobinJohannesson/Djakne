@@ -40,6 +40,12 @@
     color: black;
     margin-top: -18%;
     margin-left: -10%;
+<<<<<<< HEAD
+=======
+}*/
+.text-center{
+    text-align: center;
+>>>>>>> parent of 2f29dee... Beautify CSS
 }
 .poweredby, .madeby{
     padding: 2%;
