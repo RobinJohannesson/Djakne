@@ -55,7 +55,7 @@
 		ctrl.deleteProduct = deleteProduct;
 		ctrl.setCurrentProduct = setCurrentProduct;
 		ctrl.clearCurrentProduct = clearCurrentProduct;
-		
+
 		ctrl.updateUser = updateUser;
 		ctrl.deleteUser = adminService.deleteUser;
 		ctrl.getUsersOfCurrentProduct = getUsersOfCurrentProduct;
@@ -210,13 +210,12 @@
 
 		function setCurrentUser(user) {
 			ctrl.currentUser = user;
-            
 		}
 
 		function clearCurrentUser() {
 			ctrl.currentUser = {};
 		}
-        
+
 		//------------------------------------------------------------------------
 		//	General
 		//------------------------------------------------------------------------

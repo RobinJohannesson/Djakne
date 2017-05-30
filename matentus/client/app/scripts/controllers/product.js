@@ -48,7 +48,8 @@
 		
 		function showLoginModal(){
 			$('#modal-login').modal('show');
-			
+			// var loginModal = document.getElementById('modal-login');
+			// loginModal.modal('show');
 		}
         
         function checkUserLike (id) {

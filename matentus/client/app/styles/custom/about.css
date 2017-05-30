@@ -1,49 +1,50 @@
-.text-center {
-    text-align: center;
-}
-
-.row {
-    font-weight: 200;
-}
-
-.about-content {
-    padding-top: 20px;
-}
-
-.big-text {
-    font-size: 30px;
-}
-
-.poweredby {
+/*html, body{
     height: 100%;
 }
-
-.powered {
+.row{
+    font-weight: 200;
+}
+.about-content{
+    padding-top: 20px;
+}
+.big-text{
+    font-size: 30px;
+}
+.poweredby{
+    height: 100%;
+}
+.powered{
     margin-bottom: 0px;
 }
-
-.djakne-img {
+.djakne-img{
     height: 120px;
     background-position: center;
     background-size: cover;
     background-image: url(http://www.djakne.se/wp-content/themes/djakne/images/djaknelogo.svg);
 }
-
-.madeby {}
-
-.mah-img {
+.madeby{
+    
+}
+.mah-img{
     background-color: #222;
     padding: 5px
+        
 }
 
-.back-btn {
+.back-btn{
     color: black;
     margin-top: -18%;
     margin-left: -10%;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 }*/
 .text-center{
+=======
+}*/
+
+.text-center {
+>>>>>>> parent of dc7c042... Beatify Conflicts...Merge remote-tracking branch 'origin/master'
     text-align: center;
 >>>>>>> parent of 2f29dee... Beautify CSS
 }

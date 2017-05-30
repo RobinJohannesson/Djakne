@@ -60,22 +60,22 @@
 #numb-of-likes{
     font-family: 'Raleway', sans-serif;
     text-align: center;
-    width: 100%;
+    width: 10%;
     position: absolute;
     color: #000;
-    left: 0;
-    top: 28%;
-    font-size: 28%;
+    left: 24.0%;
+    top: 24%;
+    font-size: 32%;
 }
 #numb-of-likes-white{
     font-family: 'Raleway', sans-serif;
     text-align: center;
-    width: 100%;
+    width: 10%;
     position: absolute;
     color: #fff;
-    left: 0;
-    top: 28%;
-    font-size: 28%;
+    left: 24.0%;
+    top: 24%;
+    font-size: 32%;
 }
 /*media queries*/
 @media screen and (min-width: 750px){

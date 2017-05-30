@@ -118,7 +118,7 @@
 					<angucomplete-alt
 						name="product-keyword"
 						pause="100"
-						selected-object="ctrl.currentProduct.keyword"
+						selected-object="selected"
 						ng-model="ctrl.currentProduct.keyword"
 						local-data="ctrl.keywords"
 						search-fields="keyword"
@@ -137,7 +137,7 @@
 					<angucomplete-alt
 						name="product-supplier"
 						pause="100"
-						selected-object="ctrl.currentProduct.supplier"
+						selected-object="selected"
 						ng-model="ctrl.currentProduct.supplier"
 						local-data="ctrl.suppliers"
 						search-fields="supplier"
@@ -173,12 +173,14 @@
 	    <div class="modal-footer">
 	       	<button 
 	       		ng-click="ctrl.approveProduct()"
+				ng-disabled="ctrl.form.$invalid"
 				class="btn btn-success"
 				data-dismiss="modal">
 				Acceptera
 			</button>
 	        <button 
 	        	ng-click="ctrl.updateProduct()"
+				ng-disabled="ctrl.form.$invalid"
 				class="btn btn-warning"
 				data-dismiss="modal">
 				Redigera
