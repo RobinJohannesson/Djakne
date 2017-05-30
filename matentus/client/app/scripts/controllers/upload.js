@@ -31,7 +31,7 @@
 			ctrl.product = {};
 			ctrl.form.$setPristine();
 			document.getElementById('file').value = null;
-			// $scope.$broadcast('angucomplete-alt:clearInput');
+			
 		}
 	}
 
