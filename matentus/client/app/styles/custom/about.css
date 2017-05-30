@@ -36,9 +36,12 @@
     margin-top: -18%;
     margin-left: -10%;
 }*/
-.text-center{
+
+.text-center {
     text-align: center;
 }
-.poweredby, .madeby{
+
+.poweredby,
+.madeby {
     padding: 2%;
 }
