@@ -45,7 +45,6 @@
 
 		function updateProductOrSuggestion(product) {
 			
-			
 			//Tillfällig lösning för angucomplete.
 			if(product.keyword['title']&&product.keyword['title']!=null){
 				product.keyword=product.keyword['title'];
@@ -55,7 +54,6 @@
 				product.supplier=product.supplier['title'];
 			}
 			
-	
 			var formData = new FormData();
 			for(var key in product) {
 				formData.append(key, product[key]);
