@@ -40,6 +40,7 @@
 				data: {productId: id}
 			})
 			.then(function(response){
+				console.log(response);
 				var status = response.status;
 				if (status === 200){
 					refresh();
@@ -52,6 +53,7 @@
 					productService.getProduct(id);
 				}
 				else if (status === 401){
+					$('#modal-login').modal('show');
 					console.log("Användaren måste logga in för att kunna gilla produkter.");
 				}
 			});

@@ -128,7 +128,7 @@
 					<angucomplete-alt
 						name="product-keyword"
 						pause="100"
-						selected-object="selected"
+						selected-object="ctrl.currentProduct.keyword"
 						ng-model="ctrl.currentProduct.keyword"
 						local-data="ctrl.keywords"
 						search-fields="keyword"
@@ -147,12 +147,12 @@
 					<angucomplete-alt
 						name="product-supplier"
 						pause="100"
-						selected-object="selected"
+						selected-object="ctrl.currentProduct.supplier"
 						ng-model="ctrl.currentProduct.supplier"
 						local-data="ctrl.suppliers"
 						search-fields="supplier"
 						title-field="supplier"
-						minlength="0"
+						minlength="0"			  
 						input-class="form-control form-control-small"
 					/>
 				</div>
@@ -183,7 +183,6 @@
 	    <div class="modal-footer">
 	    	<button 
 	        	ng-click="ctrl.updateProduct()"
-				ng-disabled="ctrl.form.$invalid"
 				class="btn btn-success"
 				data-dismiss="modal">
 				Uppdatera
@@ -225,7 +224,7 @@
   	<div class="modal-dialog" role="document">
     	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
 			<h3 style="padding-bottom: 15px">
-				<a href="{{ctrl.matentusServer}}/emaillists/emailList_{{ctrl.currentProduct.id}}.csv" download>Ladda ner CSV-fil</a>
+				<a href="{{ctrl.matentusServer}}/emaillists/emailList_{{ctrl.currentProduct.id}}.csv" download target="_blank">Ladda ner CSV-fil</a>
 			</h3>
 	        <button type="button" class="btn btn-primary" data-dismiss="modal">Stäng</button>
  		</div> 

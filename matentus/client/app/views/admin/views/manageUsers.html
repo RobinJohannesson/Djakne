@@ -1,7 +1,7 @@
 <div class="col-lg-12 default-div" id="admin_manage_users" >
 
 	<div style="margin: 20px 0 20px 0">
-		<!-- <p style="background-color: white; padding: 15px">Visa användare som gillar</p> -->
+		
 		<select   
 			ng-options="product.id as product.title for product in ctrl.products | orderBy: 'title'"
 			ng-model="ctrl.currentProduct.id"
@@ -20,6 +20,7 @@
 				<th ng-click="ctrl.orderBy('city', false)">Postort</th>
 				<th ng-click="ctrl.orderBy('email', false)">Email</th>
                 <th ng-click="ctrl.orderBy('admin', true)">Admin</th>
+                <th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -46,6 +47,15 @@
                 <td>
                 	<i ng-show="{{user.admin}}" ng-click="ctrl.setCurrentUser(user); ctrl.currentUser.admin = false; ctrl.updateUser(ctrl.currentUser)" class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>
                 	<i ng-show="{{!user.admin}}" ng-click="ctrl.setCurrentUser(user); ctrl.currentUser.admin = true; ctrl.updateUser(ctrl.currentUser)" class="fa fa-circle-o fa-lg" aria-hidden="true"></i>
+                </td>
+                <td>
+                    <p 
+  				  		ng-click="ctrl.setCurrentUser(user)" 
+  				  		data-toggle="modal" 
+  				  		data-target="#modal-delete-user"
+   				  		class="change"> 
+  						<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+  					</p> 
                 </td>
 			</tr>
 		</tbody>
@@ -122,3 +132,14 @@
  	</div>
 </div>
 <!-- End of change address modal -->
+<!-- Delete User modal -->
+<div class="modal fade" id="modal-delete-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+	        <h3 style="margin-bottom: 20px">Är du säker på att du vill ta bort "{{ ctrl.currentUser.name }}"?</h3>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Stäng</button>
+	        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="ctrl.deleteUser(ctrl.currentUser)">Ta bort</button>
+ 		</div>
+ 	</div>
+</div>
+<!-- End of delete user modal -->
