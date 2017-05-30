@@ -1,149 +1,115 @@
-html,
-body {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
+html, body {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
 }
-
 #burger {
-    float: left;
-    display: block;
-    width: 50px;
-    height: 50px;
-    background: #000;
+	float: left;
+	display: block;
+	width: 50px;
+	height: 50px;
+	background: #000;
 }
-
 @media screen and (max-width: 960px) {
-    #burger-li {
-        display: none;
-    }
+	#burger-li {
+		display: none;
+	}
 }
-
 #burger:hover .icon-bar {
-    background-color: #fff!important;
+	background-color: #fff!important;
 }
-
 .icon-bar {
-    background-color: #9d9d9d!important;
-    width: 100%;
-    height: 2px!important;
-    margin-top: 6px!important;
+	background-color: #9d9d9d!important;
+	width: 100%;
+	height: 2px!important;
+	margin-top: 6px!important;
 }
-
 .dropdown {}
-
 .dropdown ul {
-    position: absolute;
-    border-radius: 0 0 0 0;
-    color: white;
-    background-color: black;
-    top: 92%;
+	position: absolute;
+	border-radius: 0 0 0 0;
+	color: white;
+	background-color: black;
+	top: 92%;
 }
-
 .dropdown li a {
-    text-align: center;
-    color: #9d9d9d;
+	text-align: center;
+	color: #9d9d9d;
 }
-
 .dropdown li a:hover {
-    color: white;
-    background-color: black;
+	color: white;
+	background-color: black;
 }
-
 .latest {}
-
 .dropdown-toggle {
-    position: absolute;
+	position: absolute;
 }
-
 #kategori {
-    margin: 0;
-    float: left;
-    border-radius: 0;
-    display: block;
-    border-style: none none solid none;
-    border-width: thin;
-    border-color: #fff;
-    animation: slide_back 1s;
+	margin: 0;
+	float: left;
+	border-radius: 0;
+	display: block;
+	border-style: none none solid none;
+	border-width: thin;
+	border-color: #fff;
+	animation: slide_back 1s;
 }
-
 .btn-group>.active {
-    background: #fff;
-    color: #000;
-    border-bottom-style: none;
+	background: #fff;
+	color: #000;
+	border-bottom-style: none;
 }
-
 .kat-div {
-    box-shadow: inset 0px 2px 20px 1px;
-    padding: 0px 0px 10px 0px;
+	box-shadow: inset 0px 2px 20px 1px;
+	padding: 0px 0px 10px 0px;
 }
-
 .sorts {
-    margin-top: 0px;
-    padding-top: 0px;
+	margin-top: 0px;
+	padding-top: 0px;
 }
-
 .sort {
-    transition: 0.5s;
-    font-size: 120%;
-    background: #d3d3d3;
-    color: #fff;
-    border-color: #d3d3d3;
+	transition: 0.5s;
+	font-size: 120%;
+	background: #d3d3d3;
+	color: #fff;
+	border-color: #d3d3d3;
 }
-
 .btn-group>.sort:hover {
-    background: #fff;
+	background: #fff;
 }
-
 .btn-group>.sort:active:focus {
-    background: #fff;
+	background: #fff;
 }
-
 .padding-0 {
-    padding: 0;
+	padding: 0;
 }
-
 .margin-0 {
-    margin: 0;
+	margin: 0;
 }
-
 .collapse {
-    background: #111;
-    transform: 0.5s;
+	background: #111;
+	transform: 0.5s;
 }
-
 .navbar {
-    border-style: none;
+	border-style: none;
 }
-
 .social-div {
-    text-align: center;
-    margin-top: 0px;
+	text-align: center;
+	margin-top: 0px;
 }
-
 .fbshare {
-    color: #000;
-    font-size: 90%;
-    margin-top: 1%;
-    margin-left: 0.3%;
-    padding: 0;
-    border: 0;
+	color: #000;
+	font-size: 90%;
+	margin-top: 1%;
+	margin-left: 0.3%;
+	padding: 0;
+	border: 0;
 }
-
-
-/*!
- * Start Bootstrap - Portfolio Item (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
-
 .portfolio-item {
-    margin-bottom: 25px;
+	margin-bottom: 25px;
 }
-
 footer {
-    margin: 40px 0;
+	margin: 40px 0;
 }
-
 .copy {
-    margin: 10px 0px;
+	margin: 10px 0px;
 }

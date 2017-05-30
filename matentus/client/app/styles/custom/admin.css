@@ -1,111 +1,90 @@
 body {
-    font-family: 'Raleway', sans-serif;
+	font-family: 'Raleway', sans-serif;
 }
-
 .heading p {
-    position: absolute;
-    right: 5%;
-    top: 5%;
-    font-size: 180%;
+	position: absolute;
+	right: 5%;
+	top: 5%;
+	font-size: 180%;
 }
-
 
 /*category*/
 
 #new-category i {
-    color: black;
-    font-size: 300%;
-    padding: 0% 5% 5% 10%;
+	color: black;
+	font-size: 300%;
+	padding: 0% 5% 5% 10%;
 }
-
 #new-category {
-    font-size: 100%;
-    background-color: white;
-    color: black;
+	font-size: 100%;
+	background-color: white;
+	color: black;
 }
-
 .label-default {
-    white-space: nowrap;
+	white-space: nowrap;
 }
-
 
 /*General*/
 
 .btn-primary:hover {
-    background-color: grey;
-    border-color: grey;
+	background-color: grey;
+	border-color: grey;
 }
-
 .btn-primary {
-    background-color: black;
-    border-color: black;
+	background-color: black;
+	border-color: black;
 }
-
 .default-div {
-    margin-top: 3%;
+	margin-top: 3%;
 }
-
 #admin-add-product {
-    margin-top: 1%
+	margin-top: 1%
 }
-
 .btn-group>.active {
-    background: #fff;
-    color: #000;
-    border-bottom-style: none;
+	background: #fff;
+	color: #000;
+	border-bottom-style: none;
 }
-
 .img-thumbnail {
-    max-width: 50px;
+	max-width: 50px;
 }
-
 .form-group {
-    padding-top: 3%;
+	padding-top: 3%;
 }
-
 .form-control {
-    resize: vertical;
+	resize: vertical;
 }
-
 .change {
-    color: black;
-    float: right;
-    padding-right: 10%;
+	color: black;
+	float: right;
+	padding-right: 10%;
 }
-
 .change:hover {
-    color: darkgrey;
+	color: darkgrey;
 }
-
 .delete {
-    float: right;
-    color: black;
+	float: right;
+	color: black;
 }
-
 .delete:hover {
-    color: darkgrey;
+	color: darkgrey;
 }
-
 .default-div tr:hover {
-    background-color: #F8F8F8;
+	background-color: #F8F8F8;
 }
-
 #image-upload {
-    padding-top: 5.5%;
-    padding-left: 3%;
+	padding-top: 5.5%;
+	padding-left: 3%;
 }
-
 .likes-admin i:hover {
-    color: darkgrey;
+	color: darkgrey;
 }
-
 .add-prod-img {
-    width: 20%;
+	width: 20%;
 }
-
 .fa-file-text-o {
-    font-size: 100%;
-    color: black;
-    width: 25%;
-    margin-left: 3%;
+	font-size: 100%;
+	color: black;
+	width: 25%;
+	margin-left: 3%;
 }
