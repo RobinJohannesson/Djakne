@@ -195,6 +195,8 @@
 		}
 
 		function deleteUser(user) {
+			console.log("hej");
+			console.log(user.id);
 			$http({
 				method: 'DELETE',
 				url: api + '/users/' + user.id,
@@ -273,6 +275,7 @@
 			addCategory: addCategory,
 			updateCategory: updateCategory,
 			deleteCategory: deleteCategory,
+			deleteUser: deleteUser,
 			getAllUsers: getAllUsers,
 			getUsersOfProduct: getUsersOfProduct,
 			updateUser: updateUser,

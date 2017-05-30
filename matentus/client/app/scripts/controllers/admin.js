@@ -55,7 +55,7 @@
 		ctrl.deleteProduct = deleteProduct;
 		ctrl.setCurrentProduct = setCurrentProduct;
 		ctrl.clearCurrentProduct = clearCurrentProduct;
-
+		
 		ctrl.updateUser = updateUser;
 		ctrl.deleteUser = adminService.deleteUser;
 		ctrl.getUsersOfCurrentProduct = getUsersOfCurrentProduct;
@@ -217,11 +217,6 @@
 			ctrl.currentUser = {};
 		}
         
-        function deleteUser(){
-            adminService.deleteUser(ctrl.currentUser);
-            console.log("hej");
-        }
-
 		//------------------------------------------------------------------------
 		//	General
 		//------------------------------------------------------------------------
