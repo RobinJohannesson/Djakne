@@ -37,6 +37,7 @@
     margin-left: -10%;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 }*/
 .text-center{
@@ -45,9 +46,16 @@
 
 .text-center {
 >>>>>>> parent of dc7c042... Beatify Conflicts...Merge remote-tracking branch 'origin/master'
+=======
+}
+
+.text-center {
+>>>>>>> parent of 195e48f... Fixed conflict, css
     text-align: center;
 >>>>>>> parent of 2f29dee... Beautify CSS
 }
-.poweredby, .madeby{
+
+.poweredby,
+.madeby {
     padding: 2%;
 }

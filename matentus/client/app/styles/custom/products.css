@@ -1,22 +1,30 @@
 /*GENERAL*/
-.portfolio-item img:hover,.portfolio-item:hover .img-label, portfolio-item:hover{
+
+.portfolio-item img:hover,
+.portfolio-item:hover .img-label,
+portfolio-item:hover {
     transform: scale(1.02);
 }
-.portfolio-item, .portfolio-item img{
+
+.portfolio-item,
+.portfolio-item img {
     border-radius: 2px;
     transition: 0.5s;
 }
+
 .portfolio-item {
     padding: 0 12px 0 12px;
     height: 280px;
     overflow: hidden;
 }
+
 .portfolio-item img {
     display: block;
     width: 100%;
     min-height: 280px;
     position: relative;
 }
+
 .img-label {
     transition: 0.5s;
     border-radius: 2px;
@@ -26,11 +34,12 @@
     left: 0;
     margin: 0 12px 0 12px;
     height: 22%;
-    background: rgb(0,0,0);
-    background: rgba(0,0,0,0.6);  
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.6);
     padding-left: 13px;
     box-shadow: 0 -5px 20px -5px #000;
 }
+
 #label-text {
     color: white;
     padding: 0;
@@ -41,23 +50,29 @@
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
 }
-.products-row{
+
+.products-row {
     padding: 2%;
     margin-top: -3%;
 }
+
+
 /*LIKE ICONS*/
+
 .heart-icon {
     transform: scale(1.5);
-    position:absolute;
+    position: absolute;
     margin: 0 12px 0 12px;
     bottom: 5%;
     right: 5%;
 }
+
 .heart {
     font-size: 200%;
-    color: rgba(255,255,255, 0.9);    
+    color: rgba(255, 255, 255, 0.9);
 }
-#numb-of-likes{
+
+#numb-of-likes {
     font-family: 'Raleway', sans-serif;
     text-align: center;
     width: 10%;
@@ -67,7 +82,8 @@
     top: 24%;
     font-size: 32%;
 }
-#numb-of-likes-white{
+
+#numb-of-likes-white {
     font-family: 'Raleway', sans-serif;
     text-align: center;
     width: 10%;
@@ -77,13 +93,18 @@
     top: 24%;
     font-size: 32%;
 }
+
+
 /*media queries*/
-@media screen and (min-width: 750px){
-    .products-row{
+
+@media screen and (min-width: 750px) {
+    .products-row {
         padding: 3% 0.3%;
     }
-    .numb-of-likes{
+    .numb-of-likes {
         left: 85.9%;
     }
 }
+
+
 /*----------*/
