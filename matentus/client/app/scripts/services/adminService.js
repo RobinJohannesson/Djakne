@@ -44,7 +44,18 @@
 		}
 
 		function updateProductOrSuggestion(product) {
-
+			
+			
+			//Tillfällig lösning för angucomplete.
+			if(product.keyword['title']&&product.keyword['title']!=null){
+				product.keyword=product.keyword['title'];
+			}
+						
+			if (product.supplier['title']&&product.supplier['title']!=null){
+				product.supplier=product.supplier['title'];
+			}
+			
+	
 			var formData = new FormData();
 			for(var key in product) {
 				formData.append(key, product[key]);
