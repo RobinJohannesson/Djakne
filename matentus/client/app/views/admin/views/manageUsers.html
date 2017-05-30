@@ -20,6 +20,7 @@
 				<th ng-click="ctrl.orderBy('city', false)">Postort</th>
 				<th ng-click="ctrl.orderBy('email', false)">Email</th>
                 <th ng-click="ctrl.orderBy('admin', true)">Admin</th>
+                <th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -46,6 +47,9 @@
                 <td>
                 	<i ng-show="{{user.admin}}" ng-click="ctrl.setCurrentUser(user); ctrl.currentUser.admin = false; ctrl.updateUser(ctrl.currentUser)" class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>
                 	<i ng-show="{{!user.admin}}" ng-click="ctrl.setCurrentUser(user); ctrl.currentUser.admin = true; ctrl.updateUser(ctrl.currentUser)" class="fa fa-circle-o fa-lg" aria-hidden="true"></i>
+                </td>
+                <td>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
                 </td>
 			</tr>
 		</tbody>
