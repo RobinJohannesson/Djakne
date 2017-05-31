@@ -1,20 +1,20 @@
-<div ng-controller="ProductCtrl as ctrl" >
-   <div ng-if='ctrl.loggedIn' class="title-row">
-        
+<div ng-controller="ProductCtrl as ctrl">
+    <div ng-if='ctrl.loggedIn' class="title-row">
+
         <!-- Portfolio Item Heading -->
         <div class="row">
-            
+
             <div class="col-xs-12">
-            <div>
-                    
-            
-                <a href="/#!" class="home">
-                <span class="glyphicon glyphicon-home"></span>  
-                </a>
-                <h1 class="page-header" id="page-header">
-                
-                    {{ ctrl.product.title }}
-                </h1>
+                <div>
+
+
+                    <a href="/#!" class="home">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                    <h1 class="page-header" id="page-header">
+
+                        {{ ctrl.product.title }}
+                    </h1>
                 </div>
             </div>
         </div>
@@ -26,9 +26,9 @@
             <div class="col-md-6">
                 <img ng-show="ctrl.product.image" class="img-responsive" ng-src="{{ctrl.matentusServer}}/images/{{ctrl.product.image}}" alt="prod">
                 <img ng-show="!ctrl.product.image" class="img-responsive" ng-src="{{ctrl.matentusServer}}/images/img-placeholder.jpg" alt="prod">
-                 <a class="btn fbshare" ng-click="ctrl.facebookshare()">
-	           <i class="fa fa-facebook-official" aria-hidden="true"></i> Dela på facebook
-	        </a>
+                <a class="btn fbshare" ng-click="ctrl.facebookshare()">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i> Dela på facebook
+                </a>
             </div>
 
             <div class="col-md-6">
@@ -37,38 +37,38 @@
 
                 <h3>Leverantör</h3>
                 <p>{{ ctrl.product.supplier }}</p>
-                 <h3>Leverans</h3>
+                <h3>Leverans</h3>
                 <p>När tillräckligt många gillar denna produkt, kontaktar vi leverantören. Ett erbjudande mejlas sedan till er som visat intresse för produkten.
-                <p>Så glöm inte att gilla!</p>
-                <div ng-click="ctrl.likeProduct(ctrl.product.id)" class="heart-icon-prod">
-                    <i class="fa fa-heart-o heart-prod" aria-hidden="true" ng-show="!ctrl.checkUserLike(ctrl.product.id)">
+                    <p>Så glöm inte att gilla!</p>
+                    <div ng-click="ctrl.likeProduct(ctrl.product.id)" class="heart-icon-prod">
+                        <i class="fa fa-heart-o heart-prod" aria-hidden="true" ng-show="!ctrl.checkUserLike(ctrl.product.id)">
                         <p id="numb-of-likes-white-prod" class="numb-of-likes">
                             <span>{{ ctrl.product.likeAmount }}</span>
                         </p>
                     </i>
-                    <i class="fa fa-heart heart-prod" aria-hidden="true" ng-show="ctrl.checkUserLike(ctrl.product.id)">
+                        <i class="fa fa-heart heart-prod" aria-hidden="true" ng-show="ctrl.checkUserLike(ctrl.product.id)">
                         <p id="numb-of-likes-prod" class="numb-of-likes">
                         <span>{{ ctrl.product.likeAmount }}</span>
                         </p>
                     </i>
-                </div>   
-                
+                    </div>
+
             </div>
-            
+
 
         </div>
-           
+
         <!-- /.row -->
         <!-- Related Projects Row -->
         <div class="row rel-row">
             <div class="col-lg-12">
                 <h3 class="page-header-rel">Relaterade produkter</h3>
             </div>
-         
+
             <div ng-repeat="product in ctrl.products | filter: ctrl.filterRelated" class="related-wrap">
                 <div ng-if="!(product.id == ctrl.id)" class="col-xs-6 col-md-3 col-lg-3 portfolio-item-related">
                     <a href="#!/products/{{ product.id }}" id="related-a">
-                    <img ng-show="product.image" title="{{ product.keyword }}" class="related img-responsive" ng-src="{{ctrl.matentusServer}}/images/{{ product.image }}" alt="produktbild">
+                        <img ng-show="product.image" title="{{ product.keyword }}" class="related img-responsive" ng-src="{{ctrl.matentusServer}}/images/{{ product.image }}" alt="produktbild">
                         <img ng-show="!product.image" title="{{ product.keyword }}" class="related img-responsive" ng-src="{{ctrl.matentusServer}}/images/img-placeholder.jpg" alt="produktbild">
                     </a>
                     <div id="img-label-related" class="img-label-related col-xs-12">
@@ -82,72 +82,49 @@
                 </div>
             </div>
 
-            </div>
+        </div>
         <!-- /.row -->
-</div>
+    </div>
 
-<hr>
+    <hr>
 
-<div ng-controller="LoginCtrl as ctrl">
-    <div class="modal fade" id="modal-login" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  	<div class="modal-dialog" role="document">
-    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+    <div ng-controller="LoginCtrl as ctrl">
+        <div class="modal fade" id="modal-login" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content text-center" style="border-radius: 0; padding: 20px">
 
-            <h4 class="color-grey" style="margin-bottom: 20px;">Du måste <span style="font-size: 20px; color: #000">logga in</span> för att fortsätta utforska våra <span style="font-size: 20px; color: #000">fantastiska erbjudanden!</span></h4>
+                    <h4 class="color-grey" style="margin-bottom: 20px;">Du måste <span style="font-size: 20px; color: #000">logga in</span> för att fortsätta utforska våra <span style="font-size: 20px; color: #000">fantastiska erbjudanden!</span></h4>
 
-            <a ng-click="ctrl.loginFacebook()" ng-show="!ctrl.isOnline" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey">
-                <span class="fa fa-facebook" aria-hidden="true"></span> Fortsätt med Facebook
-            </a>
-            <a ng-click="ctrl.loginGoogle()" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey" ng-show="!ctrl.isOnline">
-                <span class="fa fa-google" aria-hidden="true"></span> Fortsätt med Google
-            </a>
+                    <a ng-click="ctrl.loginFacebook()" ng-show="!ctrl.isOnline" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey">
+                        <span class="fa fa-facebook" aria-hidden="true"></span> Fortsätt med Facebook
+                    </a>
+                    <a ng-click="ctrl.loginGoogle()" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey" ng-show="!ctrl.isOnline">
+                        <span class="fa fa-google" aria-hidden="true"></span> Fortsätt med Google
+                    </a>
 
-            <div class="or-div col-xs-12 color-grey">
-                <p class="line"></p>
-                <p class="or">eller</p>
-            </div>
+                    <div class="or-div col-xs-12 color-grey">
+                        <p class="line"></p>
+                        <p class="or">eller</p>
+                    </div>
 
-            <form 
-                id="email-form" 
-                name="ctrl.form" 
-                role="form" 
-                class="forced-email-form" 
-                ng-submit="ctrl.loginLocal(ctrl.loginData)">
-                
-				<div class="form-group">
-					<input 
-					type="email" 
-					ng-model="ctrl.loginData.email" 
-					class="white-input form-control" id="InputEmail" 
-					aria-describedby="emailHelp" 
-					placeholder="Email"
-					required>
-				</div>
-				<div class="form-group">
-					<input 
-					type="password"
-					ng-model="ctrl.loginData.password" 
-					class="white-input form-control" 
-					id="InputPassword" 
-					placeholder="Lösenord"
-					required>
-				</div>
-                
-				<div class="form-group">
-					<button 
-						type="submit" 
-						class="white-input btn btn-primary form-control"
-                        >
+                    <form id="email-form" name="ctrl.form" role="form" class="forced-email-form" ng-submit="ctrl.loginLocal(ctrl.loginData)">
+
+                        <div class="form-group">
+                            <input type="email" ng-model="ctrl.loginData.email" class="white-input form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" ng-model="ctrl.loginData.password" class="white-input form-control" id="InputPassword" placeholder="Lösenord" required>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="white-input btn btn-primary form-control">
 						Logga In
 					</button>
-				</div>
-			</form>
-            <button style="margin-top:10px" class="white-input button btn btn-primary" onclick="location.href='/';" data-dismiss="modal">Stäng</button>
- 		</div>
- 	</div>
-       
-</div>
-</div>
+                        </div>
+                    </form>
+                    <button style="margin-top:10px" class="white-input button btn btn-primary" onclick="location.href='/';" data-dismiss="modal">Stäng</button>
+                </div>
+            </div>
 
-
-    
+        </div>
+    </div>

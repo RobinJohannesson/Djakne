@@ -1,52 +1,51 @@
-
 // ------------------------------------------------------------
 //  Category Service. All properties of the returned object is
 //  reachable for any controller who $inject this service.
 // ------------------------------------------------------------
 
 (function () {
-	'use strict';
+    'use strict';
 
-	var categoryService = function ($http) {
+    var categoryService = function ($http) {
 
-		var api = localStorage.getItem('matentusServer') + '/api';
+        var api = localStorage.getItem('matentusServer') + '/api';
 
-		var state = {};
-		state.categories = [];
+        var state = {};
+        state.categories = [];
 
-		getAllCategories();
+        getAllCategories();
 
-		function getAllCategories() {
-			$http({
-				method: 'GET',
-				url: api + '/categories'
-			})
-			.then(function(response) {
-				setCategories(response.data);
-			}, errorLogger);
-		}
+        function getAllCategories() {
+            $http({
+                    method: 'GET',
+                    url: api + '/categories'
+                })
+                .then(function (response) {
+                    setCategories(response.data);
+                }, errorLogger);
+        }
 
-		function setCategories(categories) {
-			state.categories.length = 0;
-			state.categories.push.apply(state.categories, categories);
-		}  
+        function setCategories(categories) {
+            state.categories.length = 0;
+            state.categories.push.apply(state.categories, categories);
+        }
 
-		function refresh() {
-			getAllCategories();
-		}
+        function refresh() {
+            getAllCategories();
+        }
 
-		var errorLogger = function(response) {
-			console.log(response);
-		};  
-		
-		return {
-			categories: state.categories,
-			refresh: refresh
-		};
+        var errorLogger = function (response) {
+            console.log(response);
+        };
 
-	};
+        return {
+            categories: state.categories,
+            refresh: refresh
+        };
 
-	angular.module('matentusApp')
-	.factory('categoryService', categoryService);
-	
+    };
+
+    angular.module('matentusApp')
+        .factory('categoryService', categoryService);
+
 })();

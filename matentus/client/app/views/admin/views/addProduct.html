@@ -1,159 +1,79 @@
+<form name="ctrl.form" ng-submit="ctrl.addProduct()" class=" col-lg-10 col-lg-offset-1 admin_div" id="admin-add-product" data-toggle="validator" role="form">
 
-    <form 
-        name="ctrl.form" 
-        ng-submit="ctrl.addProduct()"
-        class=" col-lg-10 col-lg-offset-1 admin_div" 
-        id="admin-add-product" 
-        data-toggle="validator" 
-        role="form"> 
+    <div class="col-lg-4">
 
-        <div class="col-lg-4">
-
-            <!-- Input title -->
-            <div class="form-group col-lg-12">
-                <label 
-                    for="inputTitle" 
-                    class="control-label">
+        <!-- Input title -->
+        <div class="form-group col-lg-12">
+            <label for="inputTitle" class="control-label">
                     Titel
                 </label>
-                <input  
-                    type="text"
-                    name="product-name"  
-                    class="form-control" 
-                    ng-model="ctrl.currentProduct.title" 
-                    id="inputTitle" 
-                    placeholder="" 
-                    maxlength="30" 
-                    minlength="1"
-                    required 
-                />
-            </div>
+            <input type="text" name="product-name" class="form-control" ng-model="ctrl.currentProduct.title" id="inputTitle" placeholder="" maxlength="30" minlength="1" required />
+        </div>
 
-            <!-- Input description -->
-            <div class="form-group col-lg-12">
-                <label 
-                    for="inputDescription" 
-                    class="control-label">
+        <!-- Input description -->
+        <div class="form-group col-lg-12">
+            <label for="inputDescription" class="control-label">
                     Beskrivning
                 </label>
-                <textarea   
-                    name="product-description"  
-                    class="form-control"    
-                    ng-model="ctrl.currentProduct.description" 
-                    rows="6" 
-                    id="inputDescription" 
-                    placeholder=""
-                    maxlength="500" 
-                    minlength="1" 
-                    required>        
+            <textarea name="product-description" class="form-control" ng-model="ctrl.currentProduct.description" rows="6" id="inputDescription" placeholder="" maxlength="500" minlength="1" required>        
                 </textarea>
-            </div>
-
         </div>
 
+    </div>
 
-        <div class="col-lg-4">
 
-            <!-- Choose category -->
-            <div class="form-group col-lg-12">
-                <label 
-                    for="select-main-cat">
+    <div class="col-lg-4">
+
+        <!-- Choose category -->
+        <div class="form-group col-lg-12">
+            <label for="select-main-cat">
                     Kategori
                 </label>
-                <select   
-                    name="product-category" 
-                    ng-options="category.id as category.title for category in ctrl.categories" 
-                    ng-model="ctrl.currentProduct.category_id" 
-                    class="form-control" 
-                    id="select-main-cat"
-                    required>
+            <select name="product-category" ng-options="category.id as category.title for category in ctrl.categories" ng-model="ctrl.currentProduct.category_id" class="form-control" id="select-main-cat" required>
                     <option value=""></option>
                 </select>
-            </div>
+        </div>
 
-            <!-- Input keyword -->
-            <div class="form-group col-lg-12">
-                <label 
-                    for="distributor">
+        <!-- Input keyword -->
+        <div class="form-group col-lg-12">
+            <label for="distributor">
                     Nyckelord
                 </label>
-                <angucomplete-alt
-                    name="product-keyword"
-                    placeholder=""
-                    pause="100"
-                    ng-model="ctrl.currentProduct.keyword"
-                    selected-object="selected"
-                    local-data="ctrl.keywords"
-                    search-fields="keyword"
-                    title-field="keyword"
-                    minlength="0"
-                    input-class="form-control form-control-small"
-                />
-            </div>
+            <angucomplete-alt name="product-keyword" placeholder="" pause="100" ng-model="ctrl.currentProduct.keyword" selected-object="selected" local-data="ctrl.keywords" search-fields="keyword" title-field="keyword" minlength="0" input-class="form-control form-control-small" />
+        </div>
 
-            <!-- Input supplier -->
-            <div class="form-group col-lg-12">
-                <label 
-                    for="distributor">
+        <!-- Input supplier -->
+        <div class="form-group col-lg-12">
+            <label for="distributor">
                     Leverantör
                 </label>
-                <angucomplete-alt
-                    name="product-supplier"
-                    placeholder=""
-                    pause="100"
-                    ng-model="ctrl.currentProduct.supplier"
-                    selected-object="selected"
-                    local-data="ctrl.suppliers"
-                    search-fields="supplier"
-                    title-field="supplier"
-                    minlength="0"
-                    input-class="form-control form-control-small"
-                />
-            </div>
-
+            <angucomplete-alt name="product-supplier" placeholder="" pause="100" ng-model="ctrl.currentProduct.supplier" selected-object="selected" local-data="ctrl.suppliers" search-fields="supplier" title-field="supplier" minlength="0" input-class="form-control form-control-small" />
         </div>
 
-        <div class="col-lg-4">
+    </div>
 
-            <!-- Choose image file -->
-            <div class="form-group col-lg-12" id="image-upload">
-                <label 
-                    for="image-upload">
+    <div class="col-lg-4">
+
+        <!-- Choose image file -->
+        <div class="form-group col-lg-12" id="image-upload">
+            <label for="image-upload">
                     Bilduppladdning
                 </label>
-                <input 
-                    name="product-file"  
-                    id="file"
-                    type="file" 
-                    accept="image/*" 
-                    file-model="ctrl.currentProduct.file" 
-                    class="form-control-file mt-10" 
-                    aria-describedby="fileHelp" 
-                />
-                <small 
-                    id="fileHelp" 
-                    class="form-text text-muted">
+            <input name="product-file" id="file" type="file" accept="image/*" file-model="ctrl.currentProduct.file" class="form-control-file mt-10" aria-describedby="fileHelp" />
+            <small id="fileHelp" class="form-text text-muted">
                     Bilden bör vara bredare än 450px.
                 </small>
-            </div>
-
-            <!-- Submit buttons -->
-            <div class="form-group col-lg-12">
-                <button 
-                    ng-disabled="ctrl.form.$invalid"
-                    ng-click="ctrl.currentProduct.approved = false"
-                    class="btn btn-warning mt-10"
-                    style="width: 100%; margin: 5px 15px 5px 15px">
-                    Ladda upp som förslag
-                </button>
-                <button 
-                    ng-disabled="ctrl.form.$invalid"
-                    ng-click="ctrl.currentProduct.approved = true"
-                    class="btn btn-success"
-                    style="width: 100%; margin: 5px 15px 5px 15px">
-                    Ladda upp som färdig produkt
-                </button>
-            </div>
         </div>
 
-    </form>
+        <!-- Submit buttons -->
+        <div class="form-group col-lg-12">
+            <button ng-disabled="ctrl.form.$invalid" ng-click="ctrl.currentProduct.approved = false" class="btn btn-warning mt-10" style="width: 100%; margin: 5px 15px 5px 15px">
+                    Ladda upp som förslag
+                </button>
+            <button ng-disabled="ctrl.form.$invalid" ng-click="ctrl.currentProduct.approved = true" class="btn btn-success" style="width: 100%; margin: 5px 15px 5px 15px">
+                    Ladda upp som färdig produkt
+                </button>
+        </div>
+    </div>
+
+</form>

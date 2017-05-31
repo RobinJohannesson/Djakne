@@ -4,17 +4,19 @@
     <div ng-if="ctrl.shouldShowSidebar" class="col-xs-9 col-sm-5 col-lg-3" id="side-menu">
         <div class="close-icon col-xs-3 col-xs-offset-9 col-md-2 col-md-offset-10 col-lg-3 col-lg-offset-9">
             <a href="#">
-                <img ng-click="ctrl.toggleSidebar()" alt="#" src="../images/close.png" class="cross col-xs-12" >
+                <img ng-click="ctrl.toggleSidebar()" alt="#" src="../images/close.png" class="cross col-xs-12">
             </a>
         </div>
         <div>
             <ul class="categ-list side-content col-xs-12">
-                <a href="#!/about"><li class="col-xs-12">Om Oss</li></a>
+                <a href="#!/about">
+                    <li class="col-xs-12">Om Oss</li>
+                </a>
                 <li class="col-xs-12"><a href="/#!/products/suggest">Skicka produktförslag</a></li>
                 <div ng-controller="LoginCtrl as ctrl">
                     <li ng-show="ctrl.isOnline" class="log-out col-xs-12" ng-click="ctrl.logout()">Logga ut</li>
                 </div>
-                
+
                 <p class="beta-text col-xs-12">Beta Version: Vi leverar endast i Skåne</p>
             </ul>
         </div>
@@ -23,7 +25,7 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-inverse">
-    	<div class="container-fluid">
+        <div class="container-fluid">
             <div class="row">
                 <ul class="nav navbar-nav col-lg-12 col-md-12 col-xs-12">
 
@@ -37,7 +39,7 @@
                         </button>
                     </li>
                     <!-- End of sidebar button -->
-                                    
+
                     <!-- Sort by popular -->
                     <li class="col-xs-4 col-sm-4 col-md-3 col-lg-2 text-center">
                         <a class="sort-btn col-xs-12" ng-click="ctrl.orderBy('likeAmount')" type="button" ng-class="{'sort-active': ctrl.currentOrder == 'likeAmount'}">
@@ -70,28 +72,25 @@
                         </ul>
                     </li>
                     <!-- End of categories dropdown -->
-                    
+
                 </ul>
             </div>
-    	</div>
+        </div>
     </nav>
     <!-- End of navbar -->
 
     <!-- Products -->
     <div class="products-row row">
-    	<div 
-    		ng-repeat="product in ctrl.products | orderBy: ctrl.currentOrder:true" 
-    		class="col-xs-12 col-xs-12 col-md-6 col-lg-4 portfolio-item" 
-            ng-if="!ctrl.currentCategoryId || ctrl.currentCategoryId == product.category_id">
+        <div ng-repeat="product in ctrl.products | orderBy: ctrl.currentOrder:true" class="col-xs-12 col-xs-12 col-md-6 col-lg-4 portfolio-item" ng-if="!ctrl.currentCategoryId || ctrl.currentCategoryId == product.category_id">
 
-    		<a href="#!/products/{{ product.id }}">
-    			<img ng-show="product.image" title="{{product.title}}" class="img-responsive" ng-src="{{ctrl.matentusServer}}/images/{{product.image}}" alt="{{product.title}}" />
+            <a href="#!/products/{{ product.id }}">
+                <img ng-show="product.image" title="{{product.title}}" class="img-responsive" ng-src="{{ctrl.matentusServer}}/images/{{product.image}}" alt="{{product.title}}" />
                 <img ng-show="!product.image" title="{{product.title}}" class="img-responsive" ng-src="{{ctrl.matentusServer}}/images/img-placeholder.jpg" alt="{{product.title}}" />
-    		</a>
-    		<div class="img-label">
-    			<h4 id="label-text"> {{ product.title }} </h4>
-    		</div>
-    		<div ng-click="ctrl.likeProduct(product.id)" class="heart-icon">
+            </a>
+            <div class="img-label">
+                <h4 id="label-text"> {{ product.title }} </h4>
+            </div>
+            <div ng-click="ctrl.likeProduct(product.id)" class="heart-icon">
                 <i class="fa fa-heart-o heart" aria-hidden="true" ng-show="!ctrl.checkUserLike(product.id)">
                     <p id="numb-of-likes-white" class="numb-of-likes">
                         <span>{{ product.likeAmount }}</span>
@@ -102,70 +101,50 @@
                         <span>{{ product.likeAmount }}</span>
                     </p>
                 </i>
-    		</div>
-
-    	</div>
-    </div>
-    <!-- End of products -->
-    
-    <div ng-controller="LoginCtrl as ctrl">
-    <div class="modal fade" id="modal-login" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  	<div class="modal-dialog" role="document">
-    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
-
-            <h4 class="color-grey" style="margin-bottom: 20px;">Du måste <span style="font-size: 20px; color: #000">logga in</span> för att fortsätta utforska våra <span style="font-size: 20px; color: #000">fantastiska erbjudanden!</span></h4>
-
-            <a ng-click="ctrl.loginFacebook()" ng-show="!ctrl.isOnline" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey">
-                <span class="fa fa-facebook" aria-hidden="true"></span> Fortsätt med Facebook
-            </a>
-            <a ng-click="ctrl.loginGoogle()" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey" ng-show="!ctrl.isOnline">
-                <span class="fa fa-google" aria-hidden="true"></span> Fortsätt med Google
-            </a>
-
-            <div class="or-div col-xs-12 color-grey">
-                <p class="line"></p>
-                <p class="or">eller</p>
             </div>
 
-            <form 
-                id="email-form" 
-                name="ctrl.form" 
-                role="form" 
-                class="forced-email-form" 
-                ng-submit="ctrl.loginLocal(ctrl.loginData)">
-                
-				<div class="form-group">
-					<input 
-					type="email" 
-					ng-model="ctrl.loginData.email" 
-					class="white-input form-control" id="InputEmail" 
-					aria-describedby="emailHelp" 
-					placeholder="Email"
-					required>
-				</div>
-				<div class="form-group">
-					<input 
-					type="password"
-					ng-model="ctrl.loginData.password" 
-					class="white-input form-control" 
-					id="InputPassword" 
-					placeholder="Lösenord"
-					required>
-				</div>
-                
-				<div class="form-group">
-					<button 
-						type="submit" 
-						class="white-input btn btn-primary form-control"
-                        >
+        </div>
+    </div>
+    <!-- End of products -->
+
+    <div ng-controller="LoginCtrl as ctrl">
+        <div class="modal fade" id="modal-login" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+
+                    <h4 class="color-grey" style="margin-bottom: 20px;">Du måste <span style="font-size: 20px; color: #000">logga in</span> för att fortsätta utforska våra <span style="font-size: 20px; color: #000">fantastiska erbjudanden!</span></h4>
+
+                    <a ng-click="ctrl.loginFacebook()" ng-show="!ctrl.isOnline" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey">
+                        <span class="fa fa-facebook" aria-hidden="true"></span> Fortsätt med Facebook
+                    </a>
+                    <a ng-click="ctrl.loginGoogle()" class="mb-10 col-xs-12 col-sm-6 btn btn-social color-grey" ng-show="!ctrl.isOnline">
+                        <span class="fa fa-google" aria-hidden="true"></span> Fortsätt med Google
+                    </a>
+
+                    <div class="or-div col-xs-12 color-grey">
+                        <p class="line"></p>
+                        <p class="or">eller</p>
+                    </div>
+
+                    <form id="email-form" name="ctrl.form" role="form" class="forced-email-form" ng-submit="ctrl.loginLocal(ctrl.loginData)">
+
+                        <div class="form-group">
+                            <input type="email" ng-model="ctrl.loginData.email" class="white-input form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" ng-model="ctrl.loginData.password" class="white-input form-control" id="InputPassword" placeholder="Lösenord" required>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="white-input btn btn-primary form-control">
 						Logga In
 					</button>
-				</div>
-			</form>
-            <button style="margin-top:10px" class="white-input button btn btn-primary" onclick="location.href='/';" data-dismiss="modal">Stäng</button>
- 		</div>
- 	</div>
-       
-</div>
-</div>
+                        </div>
+                    </form>
+                    <button style="margin-top:10px" class="white-input button btn btn-primary" onclick="location.href='/';" data-dismiss="modal">Stäng</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>

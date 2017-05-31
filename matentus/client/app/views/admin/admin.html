@@ -1,72 +1,47 @@
 <div ng-show="ctrl.isAdmin">
-	<div class="btn-group btn-group-justified admin_btns" role="group" aria-label="...">
+    <div class="btn-group btn-group-justified admin_btns" role="group" aria-label="...">
 
-		<div class="btn-group" role="group">
-			<button 
-				ng-click ="ctrl.changeView(ctrl.manageSuggestionsView); ctrl.refresh();" 
-				type="button" 
-				class="col-xs-12 admin_btn btn btn-default"
-				ng-class="{active: ctrl.currentView == ctrl.manageSuggestionsView}" 
-				id="product_request_btn">
+        <div class="btn-group" role="group">
+            <button ng-click="ctrl.changeView(ctrl.manageSuggestionsView); ctrl.refresh();" type="button" class="col-xs-12 admin_btn btn btn-default" ng-class="{active: ctrl.currentView == ctrl.manageSuggestionsView}" id="product_request_btn">
 				Produktförfrågningar
 			</button>
-		</div>
+        </div>
 
-		<div class="btn-group" role="group">
-			<button 
-				ng-click ="ctrl.changeView(ctrl.manageProductsView); ctrl.refresh();" 
-				type="button" 
-				class="col-xs-12 admin_btn btn btn-default"
-				ng-class="{active: ctrl.currentView == ctrl.manageProductsView}"
-				id="manage_product_btn">
+        <div class="btn-group" role="group">
+            <button ng-click="ctrl.changeView(ctrl.manageProductsView); ctrl.refresh();" type="button" class="col-xs-12 admin_btn btn btn-default" ng-class="{active: ctrl.currentView == ctrl.manageProductsView}" id="manage_product_btn">
 				Produkter
 			</button>
-		</div>
+        </div>
 
-		<div class="btn-group" role="group">
-			<button 
-				ng-click = "ctrl.changeView(ctrl.addProductView); ctrl.refresh();" 
-				type="button" 
-				class="col-xs-12 admin_btn btn btn-default"
-				ng-class="{active: ctrl.currentView == ctrl.addProductView}"  
-				id="add_product_btn">
+        <div class="btn-group" role="group">
+            <button ng-click="ctrl.changeView(ctrl.addProductView); ctrl.refresh();" type="button" class="col-xs-12 admin_btn btn btn-default" ng-class="{active: ctrl.currentView == ctrl.addProductView}" id="add_product_btn">
 				Lägg till produkt
 			</button>
-		</div>
+        </div>
 
-		<div class="btn-group" role="group">
-			<button 
-				ng-click ="ctrl.changeView(ctrl.manageCategoriesView); ctrl.refresh();" 
-				type="button" 
-				class="col-xs-12 admin_btn btn btn-default"
-				ng-class="{active: ctrl.currentView == ctrl.manageCategoriesView}"
-				id="manage_cat_btn">
+        <div class="btn-group" role="group">
+            <button ng-click="ctrl.changeView(ctrl.manageCategoriesView); ctrl.refresh();" type="button" class="col-xs-12 admin_btn btn btn-default" ng-class="{active: ctrl.currentView == ctrl.manageCategoriesView}" id="manage_cat_btn">
 				Kategorier
 			</button>
-		</div>
+        </div>
 
-		<div class="btn-group" role="group">
-			<button 
-				ng-click ="ctrl.changeView(ctrl.manageUsersView); ctrl.refresh();" 
-				type="button" 
-				class="col-xs-12 admin_btn btn btn-default"
-				ng-class="{active: ctrl.currentView == ctrl.manageUsersView}"
-				id="manage_cat_btn">
+        <div class="btn-group" role="group">
+            <button ng-click="ctrl.changeView(ctrl.manageUsersView); ctrl.refresh();" type="button" class="col-xs-12 admin_btn btn btn-default" ng-class="{active: ctrl.currentView == ctrl.manageUsersView}" id="manage_cat_btn">
 				Användare
 			</button>
-		</div>
-	</div>
+        </div>
+    </div>
 
-	<div ng-include src="ctrl.currentView"></div>
+    <div ng-include src="ctrl.currentView"></div>
 </div>
 
 <!-- Login modal -->
 <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  	<div class="modal-dialog" role="document">
-    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
-	        <h4 style="padding: 30px; font-weight: bold">Vänligen logga in som administratör <br>för att se innehållet på denna sidan.</h4>
-	        <button type="button" class="btn btn-primary" data-dismiss="modal">Stäng</button>
- 		</div>
- 	</div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+            <h4 style="padding: 30px; font-weight: bold">Vänligen logga in som administratör <br>för att se innehållet på denna sidan.</h4>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Stäng</button>
+        </div>
+    </div>
 </div>
 <!-- End of login modal -->

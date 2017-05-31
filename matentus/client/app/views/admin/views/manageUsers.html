@@ -1,145 +1,104 @@
-<div class="col-lg-12 default-div" id="admin_manage_users" >
+<div class="col-lg-12 default-div" id="admin_manage_users">
 
-	<div style="margin: 20px 0 20px 0">
-		
-		<select   
-			ng-options="product.id as product.title for product in ctrl.products | orderBy: 'title'"
-			ng-model="ctrl.currentProduct.id"
-			ng-change="ctrl.getUsersOfCurrentProduct()"
-			class="form-control" 
-			id="select-main-cat" >
+    <div style="margin: 20px 0 20px 0">
+
+        <select ng-options="product.id as product.title for product in ctrl.products | orderBy: 'title'" ng-model="ctrl.currentProduct.id" ng-change="ctrl.getUsersOfCurrentProduct()" class="form-control" id="select-main-cat">
 			<option value="">Visa användare som gillar...</option>
 		</select>
-	</div>
+    </div>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th ng-click="ctrl.orderBy('name', false)">Namn</th>
-				<th ng-click="ctrl.orderBy('street', false)">Adress</th>
-				<th ng-click="ctrl.orderBy('city', false)">Postort</th>
-				<th ng-click="ctrl.orderBy('email', false)">Email</th>
+    <table class="table">
+        <thead>
+            <tr>
+                <th ng-click="ctrl.orderBy('name', false)">Namn</th>
+                <th ng-click="ctrl.orderBy('street', false)">Adress</th>
+                <th ng-click="ctrl.orderBy('city', false)">Postort</th>
+                <th ng-click="ctrl.orderBy('email', false)">Email</th>
                 <th ng-click="ctrl.orderBy('admin', true)">Admin</th>
                 <th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="user in ctrl.users | orderBy: ctrl.currentOrder:ctrl.reverseOrder">
-				<td>{{ user.name }}</td>
-                <td ng-show="user.street" 
-                	ng-click="ctrl.setCurrentUser(user)" 
-                	data-toggle="modal" 
-                	data-target="#modal-address">
-                	{{ user.street }}, {{ user.zipcode }}
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in ctrl.users | orderBy: ctrl.currentOrder:ctrl.reverseOrder">
+                <td>{{ user.name }}</td>
+                <td ng-show="user.street" ng-click="ctrl.setCurrentUser(user)" data-toggle="modal" data-target="#modal-address">
+                    {{ user.street }}, {{ user.zipcode }}
                 </td>
-                <td ng-show="!user.street" 
-                	ng-click="ctrl.setCurrentUser(user)" 
-                	data-toggle="modal" 
-                	data-target="#modal-address">
-                	Information saknas
+                <td ng-show="!user.street" ng-click="ctrl.setCurrentUser(user)" data-toggle="modal" data-target="#modal-address">
+                    Information saknas
                 </td>
-                <td ng-click="ctrl.setCurrentUser(user)" 
-                	data-toggle="modal" 
-                	data-target="#modal-address">
-                	{{ user.city }}
+                <td ng-click="ctrl.setCurrentUser(user)" data-toggle="modal" data-target="#modal-address">
+                    {{ user.city }}
                 </td>
                 <td>{{ user.email }}</td>
                 <td>
-                	<i ng-show="{{user.admin}}" ng-click="ctrl.setCurrentUser(user); ctrl.currentUser.admin = false; ctrl.updateUser(ctrl.currentUser)" class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>
-                	<i ng-show="{{!user.admin}}" ng-click="ctrl.setCurrentUser(user); ctrl.currentUser.admin = true; ctrl.updateUser(ctrl.currentUser)" class="fa fa-circle-o fa-lg" aria-hidden="true"></i>
+                    <i ng-show="{{user.admin}}" ng-click="ctrl.setCurrentUser(user); ctrl.currentUser.admin = false; ctrl.updateUser(ctrl.currentUser)" class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>
+                    <i ng-show="{{!user.admin}}" ng-click="ctrl.setCurrentUser(user); ctrl.currentUser.admin = true; ctrl.updateUser(ctrl.currentUser)" class="fa fa-circle-o fa-lg" aria-hidden="true"></i>
                 </td>
                 <td>
-                    <p 
-  				  		ng-click="ctrl.setCurrentUser(user)" 
-  				  		data-toggle="modal" 
-  				  		data-target="#modal-delete-user"
-   				  		class="change"> 
-  						<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
-  					</p> 
+                    <p ng-click="ctrl.setCurrentUser(user)" data-toggle="modal" data-target="#modal-delete-user" class="change">
+                        <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+                    </p>
                 </td>
-			</tr>
-		</tbody>
-	</table>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <!-- Change address modal -->
 <div class="modal fade" id="modal-address" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  	<div class="modal-dialog" role="document">
-    	<div class="modal-content" style="border-radius: 0; padding: 20px">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-radius: 0; padding: 20px">
 
-    		<h3>{{ ctrl.currentUser.name }}</h3>
-    		<tr>
+            <h3>{{ ctrl.currentUser.name }}</h3>
+            <tr>
 
-			<!-- Input street -->
-			<div class="form-group">
-				<label 
-					class="control-label">
+                <!-- Input street -->
+                <div class="form-group">
+                    <label class="control-label">
 					Gata
 				</label>
-				<input  
-					type="text"
-					name="user-street"  
-					class="form-control" 
-					ng-model="ctrl.currentUser.street" 
-				/>
-			</div>
-			<!-- End of input street -->
+                    <input type="text" name="user-street" class="form-control" ng-model="ctrl.currentUser.street" />
+                </div>
+                <!-- End of input street -->
 
-			<!-- Input zipcode -->
-			<div class="form-group">
-				<label 
-					class="control-label">
+                <!-- Input zipcode -->
+                <div class="form-group">
+                    <label class="control-label">
 					Postnummer
 				</label>
-				<input  
-					type="text"
-					name="user-zipcode"  
-					class="form-control" 
-					ng-model="ctrl.currentUser.zipcode" 
-					maxlength="6" 
-				/>
-			</div>
-			<!-- End of input zipcode -->
+                    <input type="text" name="user-zipcode" class="form-control" ng-model="ctrl.currentUser.zipcode" maxlength="6" />
+                </div>
+                <!-- End of input zipcode -->
 
-			<!-- Input city -->
-			<div class="form-group">
-				<label 
-					class="control-label">
+                <!-- Input city -->
+                <div class="form-group">
+                    <label class="control-label">
 					Postort
 				</label>
-				<input  
-					type="text"
-					name="user-street"  
-					class="form-control" 
-					ng-model="ctrl.currentUser.city" 
-				/>
-			</div>
-			<!-- End of input city -->
+                    <input type="text" name="user-street" class="form-control" ng-model="ctrl.currentUser.city" />
+                </div>
+                <!-- End of input city -->
 
-			<button type="button" 
-	        		class="btn btn-success" 
-	        		data-dismiss="modal" 
-	        		ng-click="ctrl.updateUser(ctrl.currentUser)">
+                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="ctrl.updateUser(ctrl.currentUser)">
 	        		Uppdatera
 	        </button>
-	        <button type="button" 
-	        		class="btn btn-primary" 
-	        		data-dismiss="modal">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">
 	        		Stäng
 	        </button>
 
- 		</div>
- 	</div>
+        </div>
+    </div>
 </div>
 <!-- End of change address modal -->
 <!-- Delete User modal -->
 <div class="modal fade" id="modal-delete-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  	<div class="modal-dialog" role="document">
-    	<div class="modal-content text-center" style="border-radius: 0; padding: 20px">
-	        <h3 style="margin-bottom: 20px">Är du säker på att du vill ta bort "{{ ctrl.currentUser.name }}"?</h3>
-	        <button type="button" class="btn btn-primary" data-dismiss="modal">Stäng</button>
-	        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="ctrl.deleteUser(ctrl.currentUser)">Ta bort</button>
- 		</div>
- 	</div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content text-center" style="border-radius: 0; padding: 20px">
+            <h3 style="margin-bottom: 20px">Är du säker på att du vill ta bort "{{ ctrl.currentUser.name }}"?</h3>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Stäng</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="ctrl.deleteUser(ctrl.currentUser)">Ta bort</button>
+        </div>
+    </div>
 </div>
 <!-- End of delete user modal -->

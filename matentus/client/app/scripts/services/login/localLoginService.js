@@ -16,82 +16,86 @@
 
         getCities();
 
-        var login = function(user) {
-            
+        var login = function (user) {
+
             console.log("Trying to login");
             $http({
-                method: 'POST',
-                url: api + '/login/email',
-                data: user
-            })
-            .then(function(response) {
-                console.log(response);
-                var isNewUser = false;
-                switch(response.status) {
-                    case 200:
-                        saveToken(response.data.token, isNewUser);
-                        break;
-                    case 201:
-                        isNewUser = true;
-                        saveToken(response.data.token, isNewUser);
-                        break;
-                    default:
-                        console.log("Something happened when logging in with email: " + status);
-                }
-                return isNewUser;
-            })
-            .then(function(isNewUser) {
-                if(isNewUser) {
-                    showWelcomeModal();
-                }
-            })
-            .catch(function(error) {
-                showWrongPassword();
-                console.log("Something happened when logging in...");
-                console.log(error);
-            });
+                    method: 'POST',
+                    url: api + '/login/email',
+                    data: user
+                })
+                .then(function (response) {
+                    console.log(response);
+                    var isNewUser = false;
+                    switch (response.status) {
+                        case 200:
+                            saveToken(response.data.token, isNewUser);
+                            break;
+                        case 201:
+                            isNewUser = true;
+                            saveToken(response.data.token, isNewUser);
+                            break;
+                        default:
+                            console.log("Something happened when logging in with email: " + status);
+                    }
+                    return isNewUser;
+                })
+                .then(function (isNewUser) {
+                    if (isNewUser) {
+                        showWelcomeModal();
+                    }
+                })
+                .catch(function (error) {
+                    showWrongPassword();
+                    console.log("Something happened when logging in...");
+                    console.log(error);
+                });
         };
 
 
-        var checkLoginStatus = function() {
-            return  $http({
-                        method: 'GET',
-                        url: api + '/login/status',
-                        headers: {'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
-                    })
-                    .then(function(response) {
-                        return true;
-                    })
-                    .catch(function(error) {
-                        if(error.status === 401)  {
-                            return false;
-                        }
-                    });
+        var checkLoginStatus = function () {
+            return $http({
+                    method: 'GET',
+                    url: api + '/login/status',
+                    headers: {
+                        'Authorization': 'JWT ' + localStorage.getItem('matentustoken')
+                    }
+                })
+                .then(function (response) {
+                    return true;
+                })
+                .catch(function (error) {
+                    if (error.status === 401) {
+                        return false;
+                    }
+                });
         };
 
-        var checkAdmin = function() {
-            return  $http({
-                        method: 'GET',
-                        url: api + '/login/status',
-                        headers: {'Authorization':'JWT '+ localStorage.getItem('matentustoken')}
-                    })
-                    .then(function(response) {
-                        return response.data.isAdmin;
-                    });
+        var checkAdmin = function () {
+            return $http({
+                    method: 'GET',
+                    url: api + '/login/status',
+                    headers: {
+                        'Authorization': 'JWT ' + localStorage.getItem('matentustoken')
+                    }
+                })
+                .then(function (response) {
+                    return response.data.isAdmin;
+                });
         };
 
-        var logout = function() {
+        var logout = function () {
             localStorage.setItem('matentustoken', '');
             isOnline = false;
             $window.location.reload();
             likeService.empty();
         }
-        
+
         function saveToken(token, isNewUser) {
             localStorage.setItem('matentustoken', token);
             isOnline = true;
             likeService.refresh();
-            if(!isNewUser) {
+            if (!isNewUser) {
                 $window.location.reload();
             }
         }
@@ -100,19 +104,19 @@
             $('#modal-login').modal('hide');
             $('#modal-welcome').modal('show');
         }
-        
+
         function showWrongPassword() {
             $('#loginError').show();
         }
 
         function getCities() {
             $http({
-                method: 'GET',
-                url: api + '/cities'
-            })
-            .then(function(response) {
-                setCities(response.data);
-            });
+                    method: 'GET',
+                    url: api + '/cities'
+                })
+                .then(function (response) {
+                    setCities(response.data);
+                });
         }
 
         function setCities(cities) {
@@ -120,9 +124,9 @@
             state.cities.push.apply(state.cities, cities);
         }
 
-        var errorHandler = function(response) {
+        var errorHandler = function (response) {
             console.log(response);
-        };    
+        };
 
         return {
             login: login,
